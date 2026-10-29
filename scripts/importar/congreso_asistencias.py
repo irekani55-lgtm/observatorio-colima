@@ -108,7 +108,7 @@ PARTIDOS = {
     "PT": ("PT", "Partido del Trabajo", "PT", 4, "#d9a400", "#e8bb2e"),
     "Verde": ("PVEM", "Partido Verde Ecologista de México", "PVEM", 6, "#3a9c3a", "#5cc25c"),
     "PRI": ("PRI", "Partido Revolucionario Institucional", "PRI", 7, "#d0202a", "#ef5350"),
-    "morena": ("MORENA", "Morena", "Morena", 8, "#9b1d45", "#c9496f"),  # vino / tinto
+    "morena": ("MORENA", "MORENA", "MORENA", 8, "#9b1d45", "#c9496f"),  # vino / tinto
 }
 PARTIDO_POR_TEXTO = {"pan": "PAN", "movimiento ciudadano": "MC", "nueva alianza": "PANAL", "pt": "PT", "partido verde": "PVEM", "pri": "PRI", "morena": "MORENA"}
 
@@ -188,7 +188,7 @@ def aplicar_licencias(diputados: list[dict]) -> None:
     # Titular de representación proporcional que ya no aparece en el directorio actual.
     if "DIP-RP-JCLT" not in por_id:
         ev = evidencia("EV-ACUERDO-4", "acta", "Acuerdo 4: licencia del Dip. Julio César León Trujillo", ACUERDO_PDF.format(n=4), fecha="2024-10-02")
-        d = {"id_diputado": "DIP-RP-JCLT", "nombre_completo": "Julio César León Trujillo", "id_partido": "MORENA", "criterio_adscripcion": "Lista de representación proporcional de Morena (IEE)",
+        d = {"id_diputado": "DIP-RP-JCLT", "nombre_completo": "Julio César León Trujillo", "id_partido": "MORENA", "criterio_adscripcion": "Lista de representación proporcional de MORENA (IEE)",
              "tipo_representacion": "RP", "distrito": "", "calidad": "propietario", "fecha_inicio": "2024-10-01", "fecha_fin": "", "url_ficha_oficial": "", "url_foto": "",
              "id_fuente": "EV-IEE-DIPUTACIONES-2024", "estado_verificacion": "verificado", "notas": "", "_fotos": set()}
         diputados.append(d)

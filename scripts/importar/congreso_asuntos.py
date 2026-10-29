@@ -118,7 +118,7 @@ EXTERNOS = [
     (r"tribunal de justicia administrativa", "Tribunal de Justicia Administrativa del Estado de Colima"),
     (r"tribunal electoral", "Tribunal Electoral del Estado de Colima"),
 ]
-GRUPOS = [(r"morena", "Morena"), (r"revolucionario institucional|\bpri\b", "PRI"), (r"accion nacional|\bpan\b", "PAN"), (r"del trabajo|\bpt\b", "PT"),
+GRUPOS = [(r"morena", "MORENA"), (r"revolucionario institucional|\bpri\b", "PRI"), (r"accion nacional|\bpan\b", "PAN"), (r"del trabajo|\bpt\b", "PT"),
           (r"verde|pvem", "PVEM"), (r"movimiento ciudadano|\bmc\b", "Movimiento Ciudadano"), (r"nueva alianza|panal", "Nueva Alianza")]
 
 

@@ -30,7 +30,7 @@ from coincidencias import Indice  # noqa: E402
 from congreso_asistencias import CRUDOS, GACETA, texto  # noqa: E402
 from congreso_asuntos import EVID, GRUPOS, Reconocedor, colectivos, ev, escribir, leer_csv, lista_gaceta, sin_acentos, url_abs  # noqa: E402
 
-PARTIDO_DE_GRUPO = {"Morena": "MORENA", "PRI": "PRI", "PAN": "PAN", "PT": "PT", "PVEM": "PVEM", "Movimiento Ciudadano": "MC", "Nueva Alianza": "PANAL"}
+PARTIDO_DE_GRUPO = {"MORENA": "MORENA", "PRI": "PRI", "PAN": "PAN", "PT": "PT", "PVEM": "PVEM", "Movimiento Ciudadano": "MC", "Nueva Alianza": "PANAL"}
 
 PRESENTA = re.compile(r"(?i)(present[óo]|propus[oi]|propone|dio lectura|expuso|someti[óo]).{0,120}(punto de acuerdo|exhort)")
 # Solo fórmulas con que el acta declara el resultado; se evitan verbos en futuro del debate («aprobarán»).
