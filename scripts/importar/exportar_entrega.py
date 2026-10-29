@@ -358,8 +358,107 @@ LIMITACIONES
 """
 
 
+SEGUIMIENTO = {"en_tramite": "En trámite legislativo", "no_aprobado": "No aprobado", "pendiente_seguimiento": "Pendiente de seguimiento",
+               "sin_respuesta_localizada": "Sin respuesta localizada", "con_respuesta": "Respuesta oficial localizada", "con_acciones": "Acciones posteriores documentadas", "no_verificado": "No verificado"}
+
+
+def seguimiento_de(a: dict, e: dict | None) -> str:
+    """Misma regla que el observatorio (src/indicadores/exhortos.ts)."""
+    if a["estado_procesal"] == "rechazado":
+        return "no_aprobado"
+    if a["estado_procesal"] not in ("aprobado", "publicado"):
+        return "en_tramite"
+    if not e:
+        return "pendiente_seguimiento"
+    if e["verificacion_seguimiento"] == "no_verificado":
+        return "no_verificado"
+    if e.get("acciones_posteriores"):
+        return "con_acciones"
+    return {"si": "con_respuesta", "no": "sin_respuesta_localizada"}.get(e["respuesta_localizada"], "pendiente_seguimiento")
+
+
+def bloque_exhortos() -> None:
+    global DESTINO
+    DESTINO = RAIZ / "entrega" / "exhortos"
+    if DESTINO.exists():
+        shutil.rmtree(DESTINO)
+    DESTINO.mkdir(parents=True)
+    dips = {d["id_diputado"]: d for d in leer("diputados")}
+    partidos = {p["id_partido"]: p for p in leer("partidos")}
+    asuntos = {a["id_asunto"]: a for a in leer("asuntos")}
+    exh = {e["id_asunto"]: e for e in leer("exhortos")}
+    prom = defaultdict(list)
+    for p in leer("asunto_promoventes"):
+        prom[p["id_asunto"]].append(p)
+    nombre = lambda p: (f"{dips[p['id_diputado']]['nombre_completo']} ({partidos.get(dips[p['id_diputado']]['id_partido'], {}).get('siglas', '')})" if p["id_diputado"] in dips else p["promovente_externo"])
+    anio = lambda f: next((str(n) for n, i, j in [(1, "2024-10-01", "2025-09-30"), (2, "2025-10-01", "2026-09-30"), (3, "2026-10-01", "2027-09-30")] if f and i <= f <= j), "")
+    pas = [a for a in asuntos.values() if a["id_asunto"].startswith("PA-")]
+    filas = []
+    for a in sorted(pas, key=lambda x: x["fecha_presentacion"]):
+        e = exh.get(a["id_asunto"])
+        sg = seguimiento_de(a, e) if a["tipo"] == "exhorto" else ""
+        filas.append({"id_asunto": a["id_asunto"], "tipo": "Exhorto" if a["tipo"] == "exhorto" else "Punto de acuerdo", "fecha_presentacion": a["fecha_presentacion"], "anio_legislativo": anio(a["fecha_presentacion"]),
+                      "descripcion": a["descripcion"], "promoventes": "; ".join(nombre(p) for p in prom[a["id_asunto"]]), "autoridad_destinataria": e["autoridad_destinataria"] if e else "",
+                      "orden_gobierno": e["orden_gobierno"] if e else "", "estado": a["estado_procesal"], "estado_texto": ESTADO_ASUNTO.get(a["estado_procesal"], a["estado_procesal"]),
+                      "fecha_aprobacion": a["fecha_aprobacion"], "respuesta_localizada": {"si": "Sí", "no": "No"}.get(e["respuesta_localizada"], "") if e else "", "fecha_respuesta": e["fecha_respuesta"] if e else "",
+                      "seguimiento": SEGUIMIENTO.get(sg, ""), "fuente": a["url_documento"] or a["url_ficha"], "notas": a["notas"] + (" " + e["notas"] if e and e.get("notas") else "")})
+    escribir("01_exhortos_y_puntos_de_acuerdo.csv", filas, list(filas[0].keys()))
+    import json as _json
+    resp = _json.loads((RAIZ / "datos_crudos" / "congreso" / "respuestas_exhortos.json").read_text(encoding="utf-8")) if (RAIZ / "datos_crudos" / "congreso" / "respuestas_exhortos.json").exists() else []
+    filas_r = [{"fecha_sintesis": r["fecha_sintesis"], "fecha_oficio": r["fecha_oficio"], "exhorto_relacionado": r.get("_asignada") or "", "texto": r["texto"], "fuente": r["url"]} for r in resp]
+    escribir("02_respuestas_de_autoridades.csv", filas_r, ["fecha_sintesis", "fecha_oficio", "exhorto_relacionado", "texto", "fuente"])
+    acuerdos = [{"numero": int(a["id_asunto"][-3:]), "id_asunto": a["id_asunto"], "fecha_aprobacion": a["fecha_aprobacion"], "descripcion": a["descripcion"], "iniciativa_origen": a["id_asunto_origen"], "url_documento": a["url_documento"]}
+                for a in asuntos.values() if a["id_asunto"].startswith("ACU-")]
+    escribir("03_acuerdos_parlamentarios.csv", sorted(acuerdos, key=lambda x: x["numero"]), ["numero", "id_asunto", "fecha_aprobacion", "descripcion", "iniciativa_origen", "url_documento"])
+    resumen = []
+    for id_d, d in sorted(dips.items(), key=lambda x: x[1]["nombre_completo"]):
+        suyos = [f for f in filas if any(p["id_diputado"] == id_d for p in prom[f["id_asunto"]])]
+        ex = [f for f in suyos if f["tipo"] == "Exhorto"]
+        resumen.append({"id_diputado": id_d, "nombre": d["nombre_completo"], "partido": partidos.get(d["id_partido"], {}).get("siglas", ""), "puntos_de_acuerdo_y_exhortos": len(suyos),
+                        "exhortos_presentados": len(ex), "exhortos_aprobados": len([f for f in ex if f["estado"] in ("aprobado", "publicado")]), "exhortos_no_aprobados": len([f for f in ex if f["estado"] == "rechazado"]),
+                        "exhortos_con_respuesta_localizada": len([f for f in ex if f["respuesta_localizada"] == "Sí"])})
+    escribir("04_resumen_por_diputado.csv", resumen, list(resumen[0].keys()))
+    ex = [f for f in filas if f["tipo"] == "Exhorto"]
+    apro = [f for f in ex if f["estado"] in ("aprobado", "publicado")]
+    ind = [("Exhortos presentados", len(ex), ""), ("Exhortos aprobados", len(apro), f"de {len(ex)}"), ("Exhortos no aprobados", len([f for f in ex if f["estado"] == "rechazado"]), ""),
+           ("Exhortos con resultado no localizado", len([f for f in ex if f["estado"] in ("pendiente", "turnado")]), ""),
+           ("Exhortos enviados a la autoridad", "", "Las fuentes revisadas no publican los oficios de envío"),
+           ("Exhortos con respuesta oficial localizada", len([f for f in apro if f["respuesta_localizada"] == "Sí"]), f"de {len(apro)} aprobados"),
+           ("Exhortos sin respuesta localizada", len([f for f in apro if f["respuesta_localizada"] == "No"]), "No equivale a incumplimiento"),
+           ("Exhortos con acciones posteriores documentadas", 0, "No se localizaron documentos de seguimiento")]
+    escribir("05_indicadores_exhortos.csv", [{"indicador": a, "valor": b, "nota": c} for a, b, c in ind], ["indicador", "valor", "nota"])
+    (DESTINO / "00_LEEME.txt").write_text(LEEME_EXH, encoding="utf-8")
+    zip_ = shutil.make_archive(str(DESTINO.parent / "exhortos_LXI_legislatura"), "zip", DESTINO)
+    print("Listo:", Path(zip_).relative_to(RAIZ))
+
+
+LEEME_EXH = """EXHORTOS, PUNTOS DE ACUERDO Y ACUERDOS — LXI LEGISLATURA DEL H. CONGRESO DEL ESTADO DE COLIMA
+Fuentes: Gaceta Parlamentaria (listas de acuerdos y de puntos de acuerdo), actas de sesión (presentación y resultado
+en el Pleno) y síntesis de comunicaciones (oficios de autoridades que responden a puntos de acuerdo).
+
+ARCHIVOS (en orden)
+01_exhortos_y_puntos_de_acuerdo.csv  Cada punto de acuerdo o exhorto: promoventes, autoridad destinataria, orden de gobierno,
+                                     resultado en el Pleno, respuesta de la autoridad y estado de seguimiento.
+02_respuestas_de_autoridades.csv     Oficios de respuesta encontrados en las síntesis y el exhorto con que se relacionaron.
+03_acuerdos_parlamentarios.csv       Los acuerdos de la LXI (premios, designaciones, recintos, prórrogas, etc.).
+04_resumen_por_diputado.csv          Por persona: exhortos presentados, aprobados, no aprobados y con respuesta localizada.
+05_indicadores_exhortos.csv          Indicadores generales con su nota.
+
+IMPORTANTE
+- Que el Congreso apruebe un exhorto no significa que la autoridad lo haya atendido.
+- «Sin respuesta localizada»: no se encontró respuesta en las síntesis de comunicaciones revisadas (107 de 113
+  publicadas). No significa que la autoridad no haya respondido ni que haya incumplido.
+- La fecha de envío del oficio a la autoridad no se publica en estas fuentes; el indicador de envío queda sin dato.
+- Exhorto = punto de acuerdo que solicita a una autoridad realizar o informar sobre una acción.
+- El resultado se toma de la frase con que el acta lo declara («se aprueba», «fue desechado», «se turnó a comisión»).
+- Los puntos de acuerdo que se presentan sin pasar por tribuna (directamente a comisión) pueden no aparecer en las actas.
+"""
+
+
 if __name__ == "__main__":
     bloque = sys.argv[1] if len(sys.argv) > 1 else "todo"
+    if bloque in ("exhortos", "todo"):
+        bloque_exhortos()
     if bloque in ("dictamenes", "todo"):
         bloque_dictamenes()
     if bloque in ("asistencias", "todo"):

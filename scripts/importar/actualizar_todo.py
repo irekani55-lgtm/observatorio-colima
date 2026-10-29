@@ -21,6 +21,7 @@ pasos = [
     ("Actas y síntesis de comunicaciones", [sys.executable, str(AQUI / "congreso_actas.py"), *extra]),
     ("Iniciativas, decretos y comisiones", [sys.executable, str(AQUI / "congreso_asuntos.py"), *extra]),
     ("Dictámenes", [sys.executable, str(AQUI / "congreso_dictamenes.py"), *extra]),
+    ("Acuerdos, puntos de acuerdo y exhortos", [sys.executable, str(AQUI / "congreso_acuerdos.py"), *extra]),
     ("Validación", ["npx", "tsx", "scripts/validar-datos.ts", "oficial"]),
     ("Entregas CSV", [sys.executable, str(AQUI / "exportar_entrega.py"), "todo"]),
 ]

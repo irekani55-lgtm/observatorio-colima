@@ -55,7 +55,13 @@ export default function Exhortos() {
         <Tarjeta titulo="Exhortos presentados" valor={fmt(r.presentados)} />
         <Tarjeta titulo="Aprobados" valor={fmt(r.aprobados)} detalle={`${pct(r.aprobados, r.presentados)} de los presentados`} />
         <Tarjeta titulo="Pendientes" valor={fmt(r.pendientes)} explica="Aún en trámite legislativo." />
-        <Tarjeta titulo="Enviados a la autoridad" valor={fmt(r.enviados)} detalle={`${pct(r.enviados, r.aprobados)} de los aprobados`} explica="Con oficio de envío documentado." />
+        <Tarjeta
+          titulo="Enviados a la autoridad"
+          valor={todas.some((x) => x.exhorto?.fecha_envio) ? fmt(r.enviados) : null}
+          pendiente="Sin dato: las fuentes no publican los oficios de envío"
+          detalle={todas.some((x) => x.exhorto?.fecha_envio) ? `${pct(r.enviados, r.aprobados)} de los aprobados` : undefined}
+          explica="Con oficio de envío documentado."
+        />
         <Tarjeta titulo="Con respuesta oficial localizada" valor={fmt(r.conRespuesta)} detalle={`${pct(r.conRespuesta, r.aprobados)} de los aprobados`} />
         <Tarjeta titulo="Con acciones posteriores documentadas" valor={fmt(r.conAcciones)} detalle={`${pct(r.conAcciones, r.aprobados)} de los aprobados`} />
       </div>
