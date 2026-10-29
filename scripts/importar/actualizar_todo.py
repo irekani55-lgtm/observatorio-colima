@@ -23,6 +23,7 @@ pasos = [
     ("Dictámenes", [sys.executable, str(AQUI / "congreso_dictamenes.py"), *extra]),
     ("Acuerdos, puntos de acuerdo y exhortos", [sys.executable, str(AQUI / "congreso_acuerdos.py"), *extra]),
     ("Votaciones", [sys.executable, str(AQUI / "congreso_votaciones.py")]),
+    ("Intervenciones en tribuna", [sys.executable, str(AQUI / "congreso_intervenciones.py"), *extra]),
     ("Validación", ["npx", "tsx", "scripts/validar-datos.ts", "oficial"]),
     ("Entregas CSV", [sys.executable, str(AQUI / "exportar_entrega.py"), "todo"]),
 ]

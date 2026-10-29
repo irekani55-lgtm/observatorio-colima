@@ -541,8 +541,86 @@ CALIDAD
 """
 
 
+TIPO_INT = {"presentacion": "Presentación de asunto", "a_favor": "A favor", "en_contra": "En contra", "posicionamiento": "Posicionamiento",
+            "asuntos_generales": "Asuntos generales", "mocion": "Moción, alusión o rectificación", "otro": "Otro"}
+
+
+def bloque_intervenciones() -> None:
+    global DESTINO
+    DESTINO = RAIZ / "entrega" / "intervenciones"
+    if DESTINO.exists():
+        shutil.rmtree(DESTINO)
+    DESTINO.mkdir(parents=True)
+    import json as _json
+    dips = {d["id_diputado"]: d for d in leer("diputados")}
+    partidos = {p["id_partido"]: p for p in leer("partidos")}
+    sesiones = {x["id_sesion"]: x for x in leer("sesiones")}
+    asuntos = {a["id_asunto"]: a for a in leer("asuntos")}
+    evid = {e["id_fuente"]: e for e in leer("evidencias")}
+    resumen_txt = _json.loads((RAIZ / "datos_crudos" / "congreso" / "intervenciones_resumen.json").read_text(encoding="utf-8"))
+    ints = leer("intervenciones")
+    anio = lambda f: next((str(n) for n, i, j in [(1, "2024-10-01", "2025-09-30"), (2, "2025-10-01", "2026-09-30"), (3, "2026-10-01", "2027-09-30")] if f and i <= f <= j), "")
+    detalle = []
+    for x in ints:
+        s_ = sesiones.get(x["id_sesion"], {})
+        d = dips.get(x["id_diputado"], {})
+        fecha = s_.get("fecha") or x["id_intervencion"][7:15][:4] + "-" + x["id_intervencion"][11:13] + "-" + x["id_intervencion"][13:15]
+        detalle.append({"id_intervencion": x["id_intervencion"], "fecha": fecha, "anio_legislativo": anio(fecha), "id_sesion": x["id_sesion"], "id_diputado": x["id_diputado"],
+                        "nombre": d.get("nombre_completo", ""), "partido": partidos.get(d.get("id_partido", ""), {}).get("siglas", ""), "tipo": TIPO_INT.get(x["tipo_intervencion"], x["tipo_intervencion"]),
+                        "tema": x["tema"], "asunto": asuntos.get(x["id_asunto"], {}).get("titulo", "") or x["asunto_texto"], "resumen_del_acta": resumen_txt.get(x["id_intervencion"], ""),
+                        "diario_de_los_debates": x["url_documento"], "acta": evid.get(x["id_fuente"], {}).get("url", "")})
+    detalle.sort(key=lambda r: (r["fecha"], r["id_intervencion"]))
+    escribir("01_intervenciones_detalle.csv", detalle, list(detalle[0].keys()))
+    res = []
+    for id_d, d in sorted(dips.items(), key=lambda x: x[1]["nombre_completo"]):
+        for clave in ("1", "2", "3", "Total"):
+            mias = [r for r in detalle if r["id_diputado"] == id_d and (clave == "Total" or r["anio_legislativo"] == clave)]
+            c = Counter(r["tipo"] for r in mias)
+            fila = {"id_diputado": id_d, "nombre": d["nombre_completo"], "partido": partidos.get(d["id_partido"], {}).get("siglas", ""), "periodo": ANIO.get(clave, "Toda la Legislatura (a la fecha de corte)"),
+                    "intervenciones": len(mias), "sesiones_con_intervencion": len({r["id_sesion"] for r in mias if r["id_sesion"]})}
+            fila.update({t: c[t] for t in TIPO_INT.values() if t != "Otro"})
+            res.append(fila)
+    escribir("02_resumen_por_diputado.csv", res, list(res[0].keys()))
+    temas = Counter((r["tema"], r["anio_legislativo"]) for r in detalle)
+    filas_t = [{"tema": t, "anio_legislativo": a, "anio_legislativo_texto": ANIO.get(a, ""), "intervenciones": n} for (t, a), n in sorted(temas.items())]
+    escribir("03_resumen_por_tema.csv", filas_t, ["tema", "anio_legislativo", "anio_legislativo_texto", "intervenciones"])
+    f_ = leer("intervenciones")
+    escribir("04_intervenciones.csv", f_, list(f_[0].keys()))
+    (DESTINO / "00_LEEME.txt").write_text(LEEME_INT, encoding="utf-8")
+    zip_ = shutil.make_archive(str(DESTINO.parent / "intervenciones_LXI_legislatura"), "zip", DESTINO)
+    print("Listo:", Path(zip_).relative_to(RAIZ))
+
+
+LEEME_INT = """INTERVENCIONES EN TRIBUNA — LXI LEGISLATURA DEL H. CONGRESO DEL ESTADO DE COLIMA
+Fuentes: actas de sesión (resumen de cada participación) y Diario de los Debates (versión íntegra, enlazada).
+
+ARCHIVOS (en orden)
+01_intervenciones_detalle.csv  Una fila por intervención: fecha, sesión, persona, partido, tipo, tema, asunto,
+                               resumen tomado del acta y enlaces al Diario de los Debates y al acta.
+02_resumen_por_diputado.csv    Por persona y año legislativo: intervenciones, sesiones en que intervino y por tipo.
+03_resumen_por_tema.csv        Intervenciones por tema y año legislativo.
+04_intervenciones.csv          Tabla normalizada que usa el observatorio.
+
+CÓMO SE OBTUVO
+- Intervención = párrafo del acta cuyo sujeto es una diputada o un diputado. No se cuentan los trámites de la Presidencia
+  y la Secretaría (conducir la sesión, pedir que se obvie una lectura, leer la síntesis).
+- Tipo (clasificación automática por el texto del acta): presentación de un asunto (iniciativa, punto de acuerdo,
+  lectura de dictamen); a favor o en contra cuando expresa su intención de voto; moción, alusión o rectificación;
+  asuntos generales; posicionamiento (el resto).
+- Tema: clasificación automática por palabras clave del resumen; «Otros temas» cuando no hay coincidencias.
+
+IMPORTANTE
+- El número de intervenciones describe participación documentada. No mide la calidad de los argumentos ni su impacto,
+  y una cifra mayor no significa mejor desempeño.
+- El acta resume; para el contenido exacto consulte el Diario de los Debates enlazado.
+- Algunas erratas de nombres en las actas se corrigieron por similitud (p. ej. «Batatamente» → Bustamante).
+"""
+
+
 if __name__ == "__main__":
     bloque = sys.argv[1] if len(sys.argv) > 1 else "todo"
+    if bloque in ("intervenciones", "todo"):
+        bloque_intervenciones()
     if bloque in ("votaciones", "todo"):
         bloque_votaciones()
     if bloque in ("exhortos", "todo"):
