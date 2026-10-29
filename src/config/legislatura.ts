@@ -9,7 +9,7 @@ export const LEGISLATURA = {
   congreso: 'H. Congreso del Estado de Colima',
   periodo: '2024–2027',
   /** Integración constitucional: 16 de mayoría relativa + 9 de representación proporcional. */
-  integracion: { MR: 16, RP: 9, total: 25, verificado: false },
+  integracion: { MR: 16, RP: 9, total: 25, verificado: true }, // directorio del Congreso e IEE Colima (consulta 29 oct 2026)
   distritos: 16,
 };
 
@@ -25,11 +25,11 @@ export interface AnioLegislativo {
  * intervenciones por fecha. Las sesiones llevan su año legislativo de forma
  * explícita en los datos, porque la numeración se reinicia cada año.
  *
- * PENDIENTE DE VERIFICAR contra la Ley Orgánica del Poder Legislativo del
- * Estado de Colima y el acta de instalación de la LXI Legislatura.
+ * Verificado con las sesiones solemnes de instalación registradas en la Gaceta
+ * Parlamentaria (1 oct 2024, 1 oct 2025 y 1 oct 2026).
  */
 export const ANIOS_LEGISLATIVOS: { verificado: boolean; anios: AnioLegislativo[] } = {
-  verificado: false,
+  verificado: true,
   anios: [
     { numero: 1, etiqueta: 'Primer año (2024–2025)', inicio: '2024-10-01', fin: '2025-09-30' },
     { numero: 2, etiqueta: 'Segundo año (2025–2026)', inicio: '2025-10-01', fin: '2026-09-30' },

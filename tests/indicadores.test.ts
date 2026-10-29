@@ -53,6 +53,13 @@ describe('asistencia', () => {
     expect(r.sinRegistro).toBe(1);
   });
 
+  it('no cuenta las sesiones en que la persona estaba con licencia', () => {
+    const conLic = base({ diputados: [dip('D1', { licencias: '2025-01-10/2025-01-20' })], sesiones: [sesion('S1', '2025-01-07'), sesion('S2', '2025-01-14'), sesion('S3', '2025-01-21')] });
+    expect(asistenciaDeDiputado(conLic, conLic.diputados[0], {}).sesionesElegibles).toBe(2);
+    const vigente = base({ diputados: [dip('D1', { licencias: '2025-01-10/' })], sesiones: [sesion('S1', '2025-01-07'), sesion('S2', '2025-01-14')] });
+    expect(asistenciaDeDiputado(vigente, vigente.diputados[0], {}).sesionesElegibles).toBe(1);
+  });
+
   it('respeta el filtro por año legislativo', () => {
     const r = asistenciaDeDiputado(b, b.idx.diputado.get('D1')!, { anio: 2 });
     expect(r.sesionesElegibles).toBe(0);

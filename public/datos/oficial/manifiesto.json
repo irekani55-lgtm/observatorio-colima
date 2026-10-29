@@ -2,6 +2,6 @@
   "id": "oficial",
   "nombre": "Datos oficiales verificados",
   "es_demo": false,
-  "fecha_corte": "",
-  "descripcion": "Información pública documentada de la LXI Legislatura. Pendiente de integración."
+  "fecha_corte": "2026-10-28",
+  "descripcion": "Información pública documentada de la LXI Legislatura. Integrado: diputaciones, licencias y suplencias, distritos, sesiones y asistencias al Pleno (Gaceta Parlamentaria). En integración: iniciativas, dictámenes, acuerdos, exhortos, votaciones, intervenciones y comisiones."
 }

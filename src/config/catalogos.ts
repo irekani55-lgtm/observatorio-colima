@@ -54,6 +54,8 @@ export const ASISTENCIA_EVALUABLE: readonly EstadoAsistencia[] = ['asistencia', 
 export const PERIODOS_SESION = {
   primer_ordinario: { etiqueta: 'Primer periodo ordinario', descripcion: 'Primer periodo ordinario de sesiones del año legislativo.' },
   segundo_ordinario: { etiqueta: 'Segundo periodo ordinario', descripcion: 'Segundo periodo ordinario de sesiones del año legislativo.' },
+  primer_receso: { etiqueta: 'Primer periodo de receso', descripcion: 'Receso entre el primer y el segundo periodo ordinario; sesiona la Comisión Permanente y puede haber sesiones extraordinarias.' },
+  segundo_receso: { etiqueta: 'Segundo periodo de receso', descripcion: 'Receso al final del año legislativo; sesiona la Comisión Permanente y puede haber sesiones extraordinarias.' },
   extraordinario: { etiqueta: 'Periodo extraordinario', descripcion: 'Sesiones convocadas fuera de los periodos ordinarios.' },
   diputacion_permanente: { etiqueta: 'Comisión / Diputación Permanente', descripcion: 'Sesiones del órgano que funciona durante los recesos.' },
   otro: { etiqueta: 'Otro', descripcion: 'Periodo no clasificado.' },

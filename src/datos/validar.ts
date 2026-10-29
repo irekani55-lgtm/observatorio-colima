@@ -7,6 +7,7 @@ import { ETAPAS_POR_TIPO, ESTADOS_APROBADOS } from '../config/catalogos';
 import { ESQUEMA, NOMBRES_TABLAS, idLegible, claveDeFila, type NombreTabla, type TablasCrudas } from './esquema';
 import type { Base } from './modelo';
 import { LEGISLATURA, anioLegislativoDeFecha } from '../config/legislatura';
+import { enFunciones } from '../indicadores/filtro';
 
 const LEGISLATURA_DISTRITOS = LEGISLATURA.distritos;
 
@@ -167,6 +168,10 @@ export function validarReglas(b: Base): Problema[] {
     if (d.tipo_representacion === 'RP' && d.distrito != null) p.push({ severidad: 'error', categoria: 'inconsistencia', tabla: 'diputados', registro: r, columna: 'distrito', mensaje: 'Una diputación de representación proporcional no debe asociarse a un distrito.' });
     if (d.distrito != null && (d.distrito < 1 || d.distrito > LEGISLATURA_DISTRITOS)) p.push({ severidad: 'error', categoria: 'valor_invalido', tabla: 'diputados', registro: r, columna: 'distrito', mensaje: `Distrito ${d.distrito} fuera del rango 1–${LEGISLATURA_DISTRITOS}.` });
     if (antes(d.fecha_inicio, d.fecha_fin)) p.push({ severidad: 'error', categoria: 'fecha_invalida', tabla: 'diputados', registro: r, mensaje: 'La fecha de fin es anterior a la de inicio.' });
+    for (const [desde, hasta] of d.licencias) {
+      if (!esFechaValida(desde) || (hasta && !esFechaValida(hasta))) p.push({ severidad: 'error', categoria: 'fecha_invalida', tabla: 'diputados', registro: r, columna: 'licencias', mensaje: `Periodo de licencia inválido: "${desde}/${hasta}". Formato: AAAA-MM-DD/AAAA-MM-DD.` });
+      else if (hasta && hasta < desde) p.push({ severidad: 'error', categoria: 'fecha_invalida', tabla: 'diputados', registro: r, columna: 'licencias', mensaje: `La licencia termina (${hasta}) antes de empezar (${desde}).` });
+    }
     if (d.calidad === 'suplente' && !d.id_titular) p.push({ severidad: 'advertencia', categoria: 'dato_incompleto', tabla: 'diputados', registro: r, columna: 'id_titular', mensaje: 'Suplente sin titular indicado.' });
   }
   // Dos personas en el mismo distrito con periodos que se traslapan.
@@ -178,7 +183,7 @@ export function validarReglas(b: Base): Problema[] {
         const [x, y] = [lista[i], lista[j]];
         const finX = x.fecha_fin || '9999-12-31';
         const finY = y.fecha_fin || '9999-12-31';
-        if (x.fecha_inicio <= finY && y.fecha_inicio <= finX) {
+        if (x.fecha_inicio <= finY && y.fecha_inicio <= finX && traslapeReal(x, y)) {
           p.push({ severidad: 'error', categoria: 'inconsistencia', tabla: 'diputados', registro: `${x.id_diputado} / ${y.id_diputado}`, columna: 'distrito', mensaje: `Dos personas ocupan el distrito ${dist} en periodos que se traslapan.` });
         }
       }
@@ -201,7 +206,7 @@ export function validarReglas(b: Base): Problema[] {
     const d = b.idx.diputado.get(a.id_diputado);
     const s = b.idx.sesion.get(a.id_sesion);
     if (!d || !s || !s.fecha || !d.fecha_inicio) continue;
-    if (s.fecha < d.fecha_inicio || (d.fecha_fin && s.fecha > d.fecha_fin)) p.push({ severidad: 'advertencia', categoria: 'inconsistencia', tabla: 'asistencias', registro: `${a.id_sesion} / ${a.id_diputado}`, mensaje: 'Registro de asistencia en una fecha en que la persona no ejercía el cargo; se excluye del cálculo.' });
+    if (!enFunciones(d, s.fecha)) p.push({ severidad: 'advertencia', categoria: 'inconsistencia', tabla: 'asistencias', registro: `${a.id_sesion} / ${a.id_diputado}`, mensaje: 'Registro de asistencia en una fecha en que la persona no ejercía el cargo (fuera de su periodo o con licencia); se excluye del cálculo.' });
     if (a.estado === 'justificada' && !a.justificacion) p.push({ severidad: 'aviso', categoria: 'dato_incompleto', tabla: 'asistencias', registro: `${a.id_sesion} / ${a.id_diputado}`, columna: 'justificacion', mensaje: 'Ausencia justificada sin texto de justificación.' });
   }
 
@@ -297,6 +302,22 @@ export function validarReglas(b: Base): Problema[] {
   }
   return p;
 }
+
+/** ¿Hay algún día en que ambas personas ejercían (fuera de licencias)? Se revisan los extremos de cada periodo. */
+function traslapeReal(x: Base['diputados'][number], y: Base['diputados'][number]): boolean {
+  const puntos = new Set<string>([x.fecha_inicio, y.fecha_inicio, x.fecha_fin, y.fecha_fin].filter(Boolean));
+  for (const d of [x, y]) for (const [a, b] of d.licencias) { puntos.add(a); if (b) puntos.add(b); const sig = siguienteDia(b || a); if (sig) puntos.add(sig); const ant = diaAnterior(a); if (ant) puntos.add(ant); }
+  for (const f of puntos) if (f && enFunciones(x, f) && enFunciones(y, f)) return true;
+  return false;
+}
+const desplazar = (f: string, n: number) => {
+  if (!esFechaValida(f)) return '';
+  const d = new Date(`${f}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+};
+const siguienteDia = (f: string) => desplazar(f, 1);
+const diaAnterior = (f: string) => desplazar(f, -1);
 
 export function validarTodo(b: Base): Problema[] {
   return [...validarEstructura(b.crudas, b.archivosFaltantes), ...validarReglas(b)];

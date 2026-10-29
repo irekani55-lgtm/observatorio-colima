@@ -57,11 +57,12 @@ export function diputadosFiltrados(b: Base, f: Filtro): Diputado[] {
   return b.diputados.filter((d) => diputadoCumpleFiltro(d, f));
 }
 
-/** ¿La persona ejercía el cargo en esa fecha? */
+/** ¿La persona ejercía el cargo en esa fecha? (fuera de su periodo o durante una licencia, no) */
 export function enFunciones(d: Diputado, fecha: string): boolean {
   if (!fecha) return true;
   if (d.fecha_inicio && fecha < d.fecha_inicio) return false;
   if (d.fecha_fin && fecha > d.fecha_fin) return false;
+  for (const [desde, hasta] of d.licencias ?? []) if (desde && fecha >= desde && (!hasta || fecha <= hasta)) return false;
   return true;
 }
 

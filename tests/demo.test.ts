@@ -19,10 +19,10 @@ describe('conjuntos de datos incluidos', () => {
     for (const anio of [1, 2, 3] as const) expect(autoverificar(b, { anio })).toEqual([]);
   });
 
-  it('las plantillas oficiales están vacías y no generan errores', async () => {
+  it('el conjunto oficial no tiene errores de validación ni de cálculo', async () => {
     const b = construirBase(await cargarConjunto(leer, 'oficial'));
     expect(b.manifiesto.es_demo).toBe(false);
-    expect(b.diputados).toHaveLength(0);
     expect(validarTodo(b).filter((p) => p.severidad === 'error')).toEqual([]);
+    expect(autoverificar(b)).toEqual([]);
   });
 });

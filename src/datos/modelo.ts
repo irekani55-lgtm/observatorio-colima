@@ -38,7 +38,7 @@ export interface Partido {
   id_partido: string;
   nombre: string;
   siglas: string;
-  /** Posición en el catálogo: fija el color de forma estable. */
+  /** Posición de color (0–7): color_serie − 1 si se indica; si no, el orden en el catálogo. */
   orden: number;
 }
 
@@ -53,6 +53,8 @@ export interface Diputado {
   id_titular: string;
   fecha_inicio: string;
   fecha_fin: string;
+  /** Periodos [desde, hasta] en que la persona estuvo con licencia (hasta vacío = vigente). */
+  licencias: [string, string][];
   url_ficha_oficial: string;
   url_foto: string;
   archivo_foto: string;
@@ -298,7 +300,7 @@ export function construirBase(c: ConjuntoCargado): Base {
     id_partido: s(f, 'id_partido'),
     nombre: s(f, 'nombre'),
     siglas: s(f, 'siglas') || s(f, 'id_partido'),
-    orden: i,
+    orden: /^[1-8]$/.test(s(f, 'color_serie')) ? Number(s(f, 'color_serie')) - 1 : i,
   }));
 
   const diputados: Diputado[] = t.diputados.map((f) => ({
@@ -312,6 +314,14 @@ export function construirBase(c: ConjuntoCargado): Base {
     id_titular: s(f, 'id_titular'),
     fecha_inicio: s(f, 'fecha_inicio'),
     fecha_fin: s(f, 'fecha_fin'),
+    licencias: s(f, 'licencias')
+      .split(';')
+      .map((x) => x.trim())
+      .filter(Boolean)
+      .map((x) => {
+        const [desde = '', hasta = ''] = x.split('/').map((y) => y.trim());
+        return [desde, hasta] as [string, string];
+      }),
     url_ficha_oficial: s(f, 'url_ficha_oficial'),
     url_foto: s(f, 'url_foto'),
     archivo_foto: s(f, 'archivo_foto'),

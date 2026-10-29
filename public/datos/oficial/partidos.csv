@@ -1,2 +1,8 @@
-id_partido,nombre,siglas,notas
-
+id_partido,nombre,siglas,color_serie,notas
+PAN,Partido Acción Nacional,PAN,1,
+MC,Movimiento Ciudadano,MC,2,
+PANAL,Nueva Alianza Colima,NA,3,
+PT,Partido del Trabajo,PT,4,
+PVEM,Partido Verde Ecologista de México,PVEM,6,
+PRI,Partido Revolucionario Institucional,PRI,7,
+MORENA,Morena,Morena,8,
