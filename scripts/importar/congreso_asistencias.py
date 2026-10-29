@@ -392,6 +392,43 @@ def asistencias(lista_sesiones: list[dict], diputados: list[dict], refrescar: bo
     return registros, list(nuevos.values())
 
 
+# ----------------------------------------------------------------- fotografías
+def fotos(diputados: list[dict], refrescar: bool) -> None:
+    """Copia local de la fotografía oficial de cada persona (public/fotos/<id>.jpg), reducida
+    para la web. Se conserva url_foto como fuente. Si la descarga falla, archivo_foto queda vacío
+    y la interfaz muestra «Fotografía no disponible»."""
+    from io import BytesIO
+    from urllib.parse import quote
+    try:
+        from PIL import Image
+    except ImportError:
+        print("  (instale Pillow para copiar las fotografías: pip install Pillow)")
+        return
+    destino = RAIZ / "public" / "fotos"
+    destino.mkdir(parents=True, exist_ok=True)
+    for d in diputados:
+        if not d.get("url_foto"):
+            continue
+        nombre = d["url_foto"].rsplit("/", 1)[-1]
+        crudo = CRUDOS / "fotos" / nombre
+        salida = destino / f"{d['id_diputado']}.jpg"
+        try:
+            if refrescar or not crudo.exists():
+                r = sesion_http.get(quote(d["url_foto"], safe=":/"), timeout=60)
+                r.raise_for_status()
+                crudo.parent.mkdir(parents=True, exist_ok=True)
+                crudo.write_bytes(r.content)
+                time.sleep(PAUSA)
+            img = Image.open(BytesIO(crudo.read_bytes()))
+            img = img.convert("RGB")
+            img.thumbnail((480, 640))
+            img.save(salida, "JPEG", quality=84, optimize=True, progressive=True)
+            d["archivo_foto"] = f"fotos/{salida.name}"
+        except Exception as e:  # imagen rota o inaccesible: se informa y se sigue
+            print(f"  AVISO: no se pudo copiar la foto de {d['nombre_completo']}: {e}", file=sys.stderr)
+            d["archivo_foto"] = ""
+
+
 # ----------------------------------------------------------------- principal
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -412,6 +449,8 @@ def main() -> None:
     n = reatribuir_por_licencia(asis, {x["id_sesion"]: x for x in ses})
     print(f"   {n} registros reasignados a la persona que ejercía la curul")
 
+    print("   fotografías oficiales…")
+    fotos(dips, args.refrescar)
     todos = dips + extra
     usados = {d["id_partido"] for d in todos if d["id_partido"]}
     partidos = sorted((v for v in PARTIDOS.values() if v[0] in usados), key=lambda v: v[3])
@@ -421,7 +460,13 @@ def main() -> None:
     escribir_csv("distritos", ["distrito", "cabecera", "municipios", "id_fuente", "notas"], dist)
     escribir_csv("sesiones", ["id_sesion", "fecha", "anio_legislativo", "periodo", "tipo_sesion", "numero_sesion", "cuenta_para_asistencia", "id_fuente", "notas"], ses)
     escribir_csv("asistencias", ["id_sesion", "id_diputado", "estado", "justificacion", "id_fuente", "notas"], asis)
-    escribir_csv("evidencias", ["id_fuente", "tipo", "titulo", "institucion", "url", "fecha_documento", "fecha_consulta", "oficial", "pagina", "notas"], list(EVIDENCIAS.values()))
+    # Se conservan las evidencias que agregaron otros importadores (iniciativas, etc.).
+    previas = {}
+    if (SALIDA / "evidencias.csv").exists():
+        with open(SALIDA / "evidencias.csv", encoding="utf-8-sig") as f:
+            previas = {e["id_fuente"]: e for e in csv.DictReader(f)}
+    previas.update(EVIDENCIAS)
+    escribir_csv("evidencias", ["id_fuente", "tipo", "titulo", "institucion", "url", "fecha_documento", "fecha_consulta", "oficial", "pagina", "notas"], list(previas.values()))
     if extra:
         print(f"\nAVISO: {len(extra)} personas aparecen en listas pero no en el directorio (revisar suplencias):")
         for e in extra:

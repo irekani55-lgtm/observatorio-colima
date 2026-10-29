@@ -22,7 +22,9 @@ export function enlaceConPeriodo(ruta: string, f: Filtro, extra: Record<string, 
 }
 
 export function periodoEjercicio(d: Diputado): string {
-  return `${fechaCorta(d.fecha_inicio)} – ${d.fecha_fin ? fechaCorta(d.fecha_fin) : 'en funciones'}`;
+  const base = `${fechaCorta(d.fecha_inicio)} – ${d.fecha_fin ? fechaCorta(d.fecha_fin) : 'en funciones'}`;
+  const lic = (d.licencias ?? []).map(([a, b]) => `licencia ${fechaCorta(a)} – ${b ? fechaCorta(b) : 'vigente'}`);
+  return lic.length ? `${base} (${lic.join('; ')})` : base;
 }
 
 export function DatosGenerales({ d }: { d: Diputado }) {
