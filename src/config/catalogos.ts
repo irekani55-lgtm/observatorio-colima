@@ -90,6 +90,7 @@ export const ESTADOS_PROCESALES = {
   dictaminado: { etiqueta: 'Dictaminado', descripcion: 'La comisión emitió dictamen; falta su discusión o votación en el Pleno.', tono: 'info' },
   aprobado: { etiqueta: 'Aprobado', descripcion: 'El Pleno lo aprobó (en sus términos o con modificaciones).', tono: 'positivo' },
   rechazado: { etiqueta: 'Rechazado o desechado', descripcion: 'El Pleno o la comisión lo rechazó o desechó.', tono: 'negativo' },
+  retirado: { etiqueta: 'Retirado', descripcion: 'Quien lo presentó lo retiró antes de que se resolviera.', tono: 'neutro' },
   publicado: { etiqueta: 'Publicado', descripcion: 'Aprobado y publicado en el Periódico Oficial "El Estado de Colima".', tono: 'positivo' },
   pendiente: { etiqueta: 'Pendiente', descripcion: 'Sigue en trámite sin una etapa más precisa documentada.', tono: 'pendiente' },
   no_localizado: { etiqueta: 'Información no localizada', descripcion: 'No se encontró información pública sobre su estado actual.', tono: 'alerta' },
@@ -108,13 +109,13 @@ export const ESTADOS_APROBADOS: readonly EstadoProcesal[] = ['aprobado', 'public
  * "turna". Un estado fuera de esta lista se marca como incompatible.
  */
 export const ETAPAS_POR_TIPO: Record<TipoAsunto, readonly EstadoProcesal[]> = {
-  iniciativa: ['presentado', 'turnado', 'dictaminado', 'aprobado', 'rechazado', 'publicado', 'pendiente', 'no_localizado', 'no_verificado'],
+  iniciativa: ['presentado', 'turnado', 'dictaminado', 'aprobado', 'rechazado', 'retirado', 'publicado', 'pendiente', 'no_localizado', 'no_verificado'],
   dictamen: ['presentado', 'aprobado', 'rechazado', 'publicado', 'pendiente', 'no_localizado', 'no_verificado'],
   decreto: ['aprobado', 'publicado', 'pendiente', 'no_localizado', 'no_verificado'],
   acuerdo: ['presentado', 'aprobado', 'rechazado', 'pendiente', 'no_localizado', 'no_verificado'],
-  punto_acuerdo: ['presentado', 'turnado', 'dictaminado', 'aprobado', 'rechazado', 'pendiente', 'no_localizado', 'no_verificado'],
-  exhorto: ['presentado', 'turnado', 'dictaminado', 'aprobado', 'rechazado', 'pendiente', 'no_localizado', 'no_verificado'],
-  otro: ['presentado', 'turnado', 'dictaminado', 'aprobado', 'rechazado', 'publicado', 'pendiente', 'no_localizado', 'no_verificado'],
+  punto_acuerdo: ['presentado', 'turnado', 'dictaminado', 'aprobado', 'rechazado', 'retirado', 'pendiente', 'no_localizado', 'no_verificado'],
+  exhorto: ['presentado', 'turnado', 'dictaminado', 'aprobado', 'rechazado', 'retirado', 'pendiente', 'no_localizado', 'no_verificado'],
+  otro: ['presentado', 'turnado', 'dictaminado', 'aprobado', 'rechazado', 'retirado', 'publicado', 'pendiente', 'no_localizado', 'no_verificado'],
 };
 
 export const ROLES_PROMOVENTE = {

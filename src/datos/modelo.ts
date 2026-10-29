@@ -268,6 +268,7 @@ export interface Base {
 }
 
 const s = (f: Fila, c: string) => f[c] ?? '';
+const anioExplicito = (v: string): 1 | 2 | 3 | undefined => (v === '1' || v === '2' || v === '3' ? (Number(v) as 1 | 2 | 3) : undefined);
 const entero = (v: string): number | null => (/^-?\d+$/.test(v) ? Number(v) : null);
 const minus = (v: string) => v.toLowerCase();
 
@@ -412,7 +413,7 @@ export function construirBase(c: ConjuntoCargado): Base {
       url_documento: s(f, 'url_documento'),
       id_fuente: s(f, 'id_fuente'),
       estado_verificacion: (minus(s(f, 'estado_verificacion')) || 'no_verificado') as EstadoVerificacion,
-      anio_legislativo: anioLegislativoDeFecha(s(f, 'fecha_presentacion')),
+      anio_legislativo: anioLegislativoDeFecha(s(f, 'fecha_presentacion')) ?? anioExplicito(s(f, 'anio_legislativo')),
       promoventes: promoventesPorAsunto.get(id) ?? [],
       turnos: turnosPorAsunto.get(id) ?? [],
     };

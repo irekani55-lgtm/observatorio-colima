@@ -224,6 +224,7 @@ export const ESQUEMA: Record<NombreTabla, TablaDef> = {
       { nombre: 'descripcion', descripcion: 'Descripción neutral del contenido.' },
       { nombre: 'tema', descripcion: 'Tema principal (catálogo libre, p. ej. Salud, Seguridad).' },
       { nombre: 'fecha_presentacion', descripcion: 'AAAA-MM-DD', tipo: 'fecha' },
+      { nombre: 'anio_legislativo', descripcion: 'Opcional: 1, 2 o 3 cuando no se conoce la fecha exacta pero sí el año legislativo (por ejemplo, acotado por la numeración consecutiva).', tipo: 'catalogo', valores: ['1', '2', '3'] },
       { nombre: 'expediente', descripcion: 'Número de expediente o folio.' },
       { nombre: 'estado_procesal', descripcion: 'Estado actual documentado.', tipo: 'catalogo', valores: k(ESTADOS_PROCESALES), requerido: true },
       { nombre: 'fecha_dictamen', descripcion: 'AAAA-MM-DD', tipo: 'fecha' },
@@ -319,6 +320,7 @@ export const ESQUEMA: Record<NombreTabla, TablaDef> = {
       { nombre: 'tipo', descripcion: 'permanente | especial | otra' },
       { nombre: 'url', descripcion: 'Micrositio oficial.', tipo: 'url' },
       fuente(false),
+      notas,
     ],
   },
   comision_integrantes: {

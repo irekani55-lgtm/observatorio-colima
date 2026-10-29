@@ -13,7 +13,16 @@
  */
 import { ESTADOS_APROBADOS, ESTADOS_PENDIENTES, ROLES_ATRIBUIBLES, type EstadoProcesal, type TipoAsunto } from '../config/catalogos';
 import type { Asunto, Base, Diputado } from '../datos/modelo';
-import { diputadoCumpleFiltro, fechaEnPeriodo, type Filtro } from './filtro';
+import { diputadoCumpleFiltro, fechaEnPeriodo, hayFiltroDePeriodo, type Filtro } from './filtro';
+
+/**
+ * ¿El asunto cae en el periodo? Por fecha de presentación; si no hay fecha pero se conoce
+ * el año legislativo, cuenta solo para el filtro por año (no para rangos de fechas).
+ */
+export function asuntoEnPeriodo(a: Asunto, f: Filtro): boolean {
+  if (a.fecha_presentacion || !hayFiltroDePeriodo(f)) return fechaEnPeriodo(a.fecha_presentacion, f);
+  return Boolean(f.anio && !f.desde && !f.hasta && a.anio_legislativo === f.anio);
+}
 
 export function promoventesAtribuibles(a: Asunto) {
   return a.promoventes.filter((p) => (ROLES_ATRIBUIBLES as readonly string[]).includes(p.rol));
@@ -42,7 +51,7 @@ export function asuntosFiltrados(b: Base, f: Filtro, tipos?: TipoAsunto[]): Asun
   const filtraPersonas = Boolean(f.partido || f.tipoRepresentacion || f.distrito != null);
   return b.asuntos.filter((a) => {
     if (tipos && !tipos.includes(a.tipo)) return false;
-    if (!fechaEnPeriodo(a.fecha_presentacion, f)) return false;
+    if (!asuntoEnPeriodo(a, f)) return false;
     if (filtraPersonas) {
       return idsDiputadosPromoventes(a).some((id) => {
         const d = b.idx.diputado.get(id);
@@ -55,7 +64,7 @@ export function asuntosFiltrados(b: Base, f: Filtro, tipos?: TipoAsunto[]): Asun
 
 export function asuntosDeDiputado(b: Base, idDiputado: string, f: Filtro, tipos?: TipoAsunto[]): Asunto[] {
   return b.asuntos.filter(
-    (a) => (!tipos || tipos.includes(a.tipo)) && fechaEnPeriodo(a.fecha_presentacion, f) && idsDiputadosPromoventes(a).includes(idDiputado),
+    (a) => (!tipos || tipos.includes(a.tipo)) && asuntoEnPeriodo(a, f) && idsDiputadosPromoventes(a).includes(idDiputado),
   );
 }
 

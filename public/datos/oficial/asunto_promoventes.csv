@@ -1,2 +1,467 @@
 id_asunto,id_diputado,promovente_externo,rol,id_fuente
-
+INI-61-001,DIP-129,,autor,EV-GACETA-INICIATIVAS
+INI-61-002,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-003,DIP-132,,autor,EV-GACETA-INICIATIVAS
+INI-61-003,DIP-135,,coautor,EV-GACETA-INICIATIVAS
+INI-61-004,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-005,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-006,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-007,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-008,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-009,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-010,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-011,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-012,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-013,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-014,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-015,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-016,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-017,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-018,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-019,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-020,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-021,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-022,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-023,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-024,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-025,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-026,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-027,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-028,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-029,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-030,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-031,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-032,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-033,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-034,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-035,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-036,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-037,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-038,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-039,DIP-130,,autor,EV-GACETA-INICIATIVAS
+INI-61-040,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-041,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-042,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-043,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-044,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-045,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-046,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-047,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-048,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-049,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-050,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-051,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-052,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-053,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-054,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-055,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-055,,Grupo Parlamentario de PT (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-055,,Grupo Parlamentario de PVEM (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-055,,Grupo Parlamentario de Nueva Alianza (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-056,,"Comisión de Desarrollo Urbano, Medio Ambiente Y Movilidad (integrantes no nombrados)",autor,EV-GACETA-INICIATIVAS
+INI-61-057,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-058,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-059,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-060,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-061,DIP-136,,autor,EV-GACETA-INICIATIVAS
+INI-61-062,DIP-139,,autor,EV-GACETA-INICIATIVAS
+INI-61-063,DIP-S13,,autor,EV-GACETA-INICIATIVAS
+INI-61-064,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-065,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-066,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-067,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-068,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-069,DIP-125,,autor,EV-GACETA-INICIATIVAS
+INI-61-070,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-071,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-072,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-073,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-074,DIP-133,,autor,EV-GACETA-INICIATIVAS
+INI-61-075,DIP-132,,autor,EV-GACETA-INICIATIVAS
+INI-61-076,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-077,,Grupo Parlamentario de PRI (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-078,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-079,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-080,DIP-147,,autor,EV-GACETA-INICIATIVAS
+INI-61-081,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-082,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-083,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-084,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-085,DIP-128,,autor,EV-GACETA-INICIATIVAS
+INI-61-086,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-087,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-088,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-089,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-090,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-091,DIP-132,,autor,EV-GACETA-INICIATIVAS
+INI-61-091,DIP-135,,coautor,EV-GACETA-INICIATIVAS
+INI-61-091,DIP-149,,coautor,EV-GACETA-INICIATIVAS
+INI-61-091,DIP-127,,coautor,EV-GACETA-INICIATIVAS
+INI-61-091,DIP-126,,coautor,EV-GACETA-INICIATIVAS
+INI-61-092,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-093,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-094,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-095,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-096,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-096,DIP-139,,coautor,EV-GACETA-INICIATIVAS
+INI-61-096,DIP-134,,coautor,EV-GACETA-INICIATIVAS
+INI-61-097,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-098,,Grupo Parlamentario de Movimiento Ciudadano (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-099,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-100,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-101,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-102,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-103,DIP-135,,autor,EV-GACETA-INICIATIVAS
+INI-61-103,DIP-132,,coautor,EV-GACETA-INICIATIVAS
+INI-61-104,DIP-141,,autor,EV-GACETA-INICIATIVAS
+INI-61-105,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-106,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-107,,Grupo Parlamentario de PRI (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-108,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-109,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-110,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-111,DIP-148,,autor,EV-GACETA-INICIATIVAS
+INI-61-112,DIP-142,,autor,EV-GACETA-INICIATIVAS
+INI-61-112,DIP-146,,coautor,EV-GACETA-INICIATIVAS
+INI-61-113,,Grupo Parlamentario de PRI (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-114,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-115,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-116,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-117,DIP-147,,autor,EV-GACETA-INICIATIVAS
+INI-61-118,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-119,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-120,,Grupo Parlamentario de PRI (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-121,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-122,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-123,DIP-139,,autor,EV-GACETA-INICIATIVAS
+INI-61-124,DIP-143,,autor,EV-GACETA-INICIATIVAS
+INI-61-125,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-126,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-127,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-127,DIP-139,,coautor,EV-GACETA-INICIATIVAS
+INI-61-127,DIP-134,,coautor,EV-GACETA-INICIATIVAS
+INI-61-128,DIP-129,,autor,EV-GACETA-INICIATIVAS
+INI-61-129,DIP-137,,autor,EV-GACETA-INICIATIVAS
+INI-61-130,DIP-131,,autor,EV-GACETA-INICIATIVAS
+INI-61-131,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-132,DIP-134,,autor,EV-GACETA-INICIATIVAS
+INI-61-133,DIP-147,,autor,EV-GACETA-INICIATIVAS
+INI-61-134,DIP-147,,autor,EV-GACETA-INICIATIVAS
+INI-61-135,DIP-144,,autor,EV-GACETA-INICIATIVAS
+INI-61-135,DIP-130,,coautor,EV-GACETA-INICIATIVAS
+INI-61-135,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-136,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-137,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-138,DIP-137,,autor,EV-GACETA-INICIATIVAS
+INI-61-139,DIP-141,,autor,EV-GACETA-INICIATIVAS
+INI-61-140,DIP-144,,autor,EV-GACETA-INICIATIVAS
+INI-61-140,DIP-130,,coautor,EV-GACETA-INICIATIVAS
+INI-61-140,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-141,DIP-132,,autor,EV-GACETA-INICIATIVAS
+INI-61-141,DIP-135,,coautor,EV-GACETA-INICIATIVAS
+INI-61-142,,Tribunal de Justicia Administrativa del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-143,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-144,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-144,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-145,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-146,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-147,DIP-149,,autor,EV-GACETA-INICIATIVAS
+INI-61-148,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-149,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-150,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-151,DIP-137,,autor,EV-GACETA-INICIATIVAS
+INI-61-152,DIP-131,,autor,EV-GACETA-INICIATIVAS
+INI-61-153,DIP-147,,autor,EV-GACETA-INICIATIVAS
+INI-61-154,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-155,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-156,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-157,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-158,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-159,DIP-141,,autor,EV-GACETA-INICIATIVAS
+INI-61-160,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-161,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-162,DIP-135,,autor,EV-GACETA-INICIATIVAS
+INI-61-162,DIP-132,,coautor,EV-GACETA-INICIATIVAS
+INI-61-163,,Grupo Parlamentario de PRI (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-164,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-165,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-166,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-167,DIP-148,,autor,EV-GACETA-INICIATIVAS
+INI-61-168,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-169,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-169,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-170,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-171,DIP-128,,autor,EV-GACETA-INICIATIVAS
+INI-61-172,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-173,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-174,DIP-132,,autor,EV-GACETA-INICIATIVAS
+INI-61-174,DIP-135,,coautor,EV-GACETA-INICIATIVAS
+INI-61-175,DIP-130,,autor,EV-GACETA-INICIATIVAS
+INI-61-175,DIP-144,,coautor,EV-GACETA-INICIATIVAS
+INI-61-175,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-176,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-177,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-178,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-179,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-180,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-181,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-182,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-183,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-184,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-185,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-186,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-187,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-188,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-189,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-190,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-191,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-192,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-193,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-194,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-195,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-196,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-197,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-198,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-199,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-200,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-201,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-202,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-203,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-204,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-205,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-206,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-207,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-208,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-209,,"Comisión de Hacienda, Fiscalizacion Y Cuenta Publica (integrantes no nombrados)",autor,EV-GACETA-INICIATIVAS
+INI-61-209,,Comisión de Desarrollo Municipal (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-210,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-211,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-212,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-213,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-214,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-215,DIP-144,,autor,EV-GACETA-INICIATIVAS
+INI-61-215,DIP-130,,coautor,EV-GACETA-INICIATIVAS
+INI-61-216,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-216,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-217,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-218,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-219,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-220,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-221,,Fiscalía General del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-222,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-223,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-225,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-226,DIP-148,,autor,EV-GACETA-INICIATIVAS
+INI-61-227,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-228,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-229,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-229,DIP-128,,coautor,EV-GACETA-INICIATIVAS
+INI-61-229,DIP-129,,coautor,EV-GACETA-INICIATIVAS
+INI-61-229,DIP-139,,coautor,EV-GACETA-INICIATIVAS
+INI-61-229,DIP-147,,coautor,EV-GACETA-INICIATIVAS
+INI-61-229,DIP-145,,coautor,EV-GACETA-INICIATIVAS
+INI-61-229,DIP-135,,coautor,EV-GACETA-INICIATIVAS
+INI-61-229,DIP-149,,coautor,EV-GACETA-INICIATIVAS
+INI-61-230,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-231,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-232,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-233,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-234,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-234,,Grupo Parlamentario de PVEM (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-234,,Grupo Parlamentario de Nueva Alianza (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-235,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-236,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-237,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-238,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-239,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-240,DIP-129,,autor,EV-GACETA-INICIATIVAS
+INI-61-240,DIP-135,,coautor,EV-GACETA-INICIATIVAS
+INI-61-241,DIP-149,,autor,EV-GACETA-INICIATIVAS
+INI-61-241,DIP-146,,coautor,EV-GACETA-INICIATIVAS
+INI-61-242,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-243,DIP-147,,autor,EV-GACETA-INICIATIVAS
+INI-61-244,DIP-131,,autor,EV-GACETA-INICIATIVAS
+INI-61-245,DIP-145,,autor,EV-GACETA-INICIATIVAS
+INI-61-246,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-247,DIP-144,,autor,EV-GACETA-INICIATIVAS
+INI-61-247,DIP-130,,coautor,EV-GACETA-INICIATIVAS
+INI-61-247,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-248,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-248,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-249,DIP-126,,autor,EV-GACETA-INICIATIVAS
+INI-61-249,DIP-129,,coautor,EV-GACETA-INICIATIVAS
+INI-61-250,DIP-128,,autor,EV-GACETA-INICIATIVAS
+INI-61-251,DIP-128,,autor,EV-GACETA-INICIATIVAS
+INI-61-252,,Fiscalía General del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-253,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-254,DIP-130,,autor,EV-GACETA-INICIATIVAS
+INI-61-254,DIP-144,,coautor,EV-GACETA-INICIATIVAS
+INI-61-254,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-255,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-255,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-256,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-257,,Cámara de Diputados del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-258,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-258,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-259,DIP-129,,autor,EV-GACETA-INICIATIVAS
+INI-61-260,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-261,DIP-136,,autor,EV-GACETA-INICIATIVAS
+INI-61-262,DIP-148,,autor,EV-GACETA-INICIATIVAS
+INI-61-263,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-264,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-265,DIP-128,,autor,EV-GACETA-INICIATIVAS
+INI-61-266,DIP-139,,autor,EV-GACETA-INICIATIVAS
+INI-61-266,DIP-140,,coautor,EV-GACETA-INICIATIVAS
+INI-61-266,DIP-134,,coautor,EV-GACETA-INICIATIVAS
+INI-61-267,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-267,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-268,,Cámara de Diputados del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-269,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-270,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-271,DIP-129,,autor,EV-GACETA-INICIATIVAS
+INI-61-272,DIP-128,,autor,EV-GACETA-INICIATIVAS
+INI-61-273,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-274,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-275,,Cámara de Diputados del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-276,DIP-132,,autor,EV-GACETA-INICIATIVAS
+INI-61-276,DIP-135,,coautor,EV-GACETA-INICIATIVAS
+INI-61-277,DIP-145,,autor,EV-GACETA-INICIATIVAS
+INI-61-278,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-279,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-280,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-281,DIP-137,,autor,EV-GACETA-INICIATIVAS
+INI-61-282,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-282,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-283,,Cámara de Diputados del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-284,DIP-131,,autor,EV-GACETA-INICIATIVAS
+INI-61-285,DIP-131,,autor,EV-GACETA-INICIATIVAS
+INI-61-286,DIP-137,,autor,EV-GACETA-INICIATIVAS
+INI-61-287,DIP-148,,autor,EV-GACETA-INICIATIVAS
+INI-61-288,DIP-149,,autor,EV-GACETA-INICIATIVAS
+INI-61-289,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-290,,H. Ayuntamiento de Ixtlahuacán,autor,EV-GACETA-INICIATIVAS
+INI-61-291,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-292,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-293,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-293,,Grupo Parlamentario de PT (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-293,,Grupo Parlamentario de PVEM (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-293,,Grupo Parlamentario de Nueva Alianza (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-294,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-295,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-296,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-297,DIP-149,,autor,EV-GACETA-INICIATIVAS
+INI-61-298,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-298,,Grupo Parlamentario de PRI (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-298,,Grupo Parlamentario de PAN (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-298,,Grupo Parlamentario de PT (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-298,,Grupo Parlamentario de PVEM (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-298,,Grupo Parlamentario de Movimiento Ciudadano (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-298,,Grupo Parlamentario de Nueva Alianza (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-299,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-299,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-300,DIP-140,,autor,EV-GACETA-INICIATIVAS
+INI-61-300,DIP-139,,coautor,EV-GACETA-INICIATIVAS
+INI-61-300,DIP-134,,coautor,EV-GACETA-INICIATIVAS
+INI-61-301,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-302,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-303,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-304,,Cámara de Diputados del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-305,,Cámara de Diputados del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-306,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-307,,Fiscalía General del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-308,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-309,DIP-149,,autor,EV-GACETA-INICIATIVAS
+INI-61-310,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-311,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-312,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-312,,Grupo Parlamentario de PT (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-312,,Grupo Parlamentario de PVEM (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-312,,Grupo Parlamentario de Nueva Alianza (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-313,DIP-135,,autor,EV-GACETA-INICIATIVAS
+INI-61-313,DIP-132,,coautor,EV-GACETA-INICIATIVAS
+INI-61-314,DIP-141,,autor,EV-GACETA-INICIATIVAS
+INI-61-315,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-316,,Instituto Electoral del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-317,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-318,DIP-137,,autor,EV-GACETA-INICIATIVAS
+INI-61-319,DIP-137,,autor,EV-GACETA-INICIATIVAS
+INI-61-320,,H. Ayuntamiento de Comala,autor,EV-GACETA-INICIATIVAS
+INI-61-321,,Comisión de Agua Potable y Alcantarillado del Municipio de Tecomán (COMAPAT),autor,EV-GACETA-INICIATIVAS
+INI-61-322,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-323,DIP-132,,autor,EV-GACETA-INICIATIVAS
+INI-61-323,DIP-135,,coautor,EV-GACETA-INICIATIVAS
+INI-61-324,DIP-137,,autor,EV-GACETA-INICIATIVAS
+INI-61-325,DIP-148,,autor,EV-GACETA-INICIATIVAS
+INI-61-326,DIP-144,,autor,EV-GACETA-INICIATIVAS
+INI-61-326,DIP-130,,coautor,EV-GACETA-INICIATIVAS
+INI-61-326,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-327,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-328,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-329,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-330,DIP-130,,autor,EV-GACETA-INICIATIVAS
+INI-61-330,DIP-144,,coautor,EV-GACETA-INICIATIVAS
+INI-61-330,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-331,,Poder Judicial del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-332,DIP-136,,autor,EV-GACETA-INICIATIVAS
+INI-61-333,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-333,,Grupo Parlamentario de PT (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-333,,Grupo Parlamentario de Nueva Alianza (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-334,,H. Ayuntamiento de Cuauhtémoc,autor,EV-GACETA-INICIATIVAS
+INI-61-335,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-336,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-337,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-338,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-338,,Grupo Parlamentario de Nueva Alianza (integrantes no nombrados),coautor,EV-GACETA-INICIATIVAS
+INI-61-339,DIP-145,,autor,EV-GACETA-INICIATIVAS
+INI-61-340,DIP-144,,autor,EV-GACETA-INICIATIVAS
+INI-61-340,DIP-130,,coautor,EV-GACETA-INICIATIVAS
+INI-61-340,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-341,DIP-141,,autor,EV-GACETA-INICIATIVAS
+INI-61-342,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-343,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-344,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-345,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-346,DIP-147,,autor,EV-GACETA-INICIATIVAS
+INI-61-347,DIP-130,,autor,EV-GACETA-INICIATIVAS
+INI-61-347,DIP-144,,coautor,EV-GACETA-INICIATIVAS
+INI-61-347,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-348,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-348,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-349,DIP-131,,autor,EV-GACETA-INICIATIVAS
+INI-61-349,DIP-141,,coautor,EV-GACETA-INICIATIVAS
+INI-61-350,,Diputadas y diputados de la LXI Legislatura (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-351,DIP-141,,autor,EV-GACETA-INICIATIVAS
+INI-61-352,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-353,,H. Ayuntamiento de Minatitlán,autor,EV-GACETA-INICIATIVAS
+INI-61-354,,Fiscalía General del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-355,,H. Ayuntamiento de Tecomán,autor,EV-GACETA-INICIATIVAS
+INI-61-356,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-357,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-358,DIP-144,,autor,EV-GACETA-INICIATIVAS
+INI-61-358,DIP-130,,coautor,EV-GACETA-INICIATIVAS
+INI-61-358,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-359,DIP-144,,autor,EV-GACETA-INICIATIVAS
+INI-61-359,DIP-130,,coautor,EV-GACETA-INICIATIVAS
+INI-61-359,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-360,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-361,,H. Ayuntamiento de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-362,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-363,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-364,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-365,,Grupo Parlamentario de Morena (integrantes no nombrados),autor,EV-GACETA-INICIATIVAS
+INI-61-366,,H. Ayuntamiento de Armería,autor,EV-GACETA-INICIATIVAS
+INI-61-367,DIP-138,,autor,EV-GACETA-INICIATIVAS
+INI-61-368,,H. Ayuntamiento de Coquimatlán,autor,EV-GACETA-INICIATIVAS
+INI-61-369,,Cámara de Senadores del H. Congreso de la Unión,autor,EV-GACETA-INICIATIVAS
+INI-61-370,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-371,DIP-146,,autor,EV-GACETA-INICIATIVAS
+INI-61-371,DIP-142,,coautor,EV-GACETA-INICIATIVAS
+INI-61-372,DIP-139,,autor,EV-GACETA-INICIATIVAS
+INI-61-373,DIP-147,,autor,EV-GACETA-INICIATIVAS
+INI-61-374,DIP-130,,autor,EV-GACETA-INICIATIVAS
+INI-61-374,DIP-144,,coautor,EV-GACETA-INICIATIVAS
+INI-61-374,DIP-143,,coautor,EV-GACETA-INICIATIVAS
+INI-61-375,,H. Ayuntamiento de Villa de Álvarez,autor,EV-GACETA-INICIATIVAS
+INI-61-376,,Poder Ejecutivo del Estado de Colima,autor,EV-GACETA-INICIATIVAS
+INI-61-377,,H. Ayuntamiento de Manzanillo,autor,EV-GACETA-INICIATIVAS
+INI-61-378,DIP-137,,autor,EV-GACETA-INICIATIVAS

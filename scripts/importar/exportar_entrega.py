@@ -1,8 +1,8 @@
 """
 Prepara la entrega de datos en CSV, numerados en orden, a partir de public/datos/oficial/.
 
-Uso:  python scripts/importar/exportar_entrega.py
-Salida: entrega/asistencias/ (y un .zip con lo mismo)
+Uso:  python scripts/importar/exportar_entrega.py [asistencias|iniciativas|todo]
+Salida: entrega/<bloque>/ (y un .zip por bloque)
 
 Los CSV se escriben en UTF-8 con BOM para que Excel muestre bien los acentos.
 El resumen usa la misma fórmula que el observatorio:
@@ -14,12 +14,13 @@ from __future__ import annotations
 
 import csv
 import shutil
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
 ORIGEN = RAIZ / "public" / "datos" / "oficial"
-DESTINO = RAIZ / "entrega" / "asistencias"
+DESTINO = RAIZ / "entrega" / "asistencias"  # se reasigna por bloque
 
 ANIO = {"1": "Primer año (2024-2025)", "2": "Segundo año (2025-2026)", "3": "Tercer año (2026-2027)"}
 PERIODO = {"primer_ordinario": "Primer periodo ordinario", "segundo_ordinario": "Segundo periodo ordinario", "primer_receso": "Primer periodo de receso",
@@ -55,7 +56,9 @@ def en_funciones(d: dict, fecha: str) -> bool:
     return True
 
 
-def main() -> None:
+def bloque_asistencias() -> None:
+    global DESTINO
+    DESTINO = RAIZ / "entrega" / "asistencias"
     if DESTINO.exists():
         shutil.rmtree(DESTINO)
     DESTINO.mkdir(parents=True)
@@ -159,5 +162,127 @@ NOTAS
   Las fechas de toma de protesta de las suplencias están pendientes de confirmar.
 """
 
+ESTADO_ASUNTO = {"presentado": "Presentada", "turnado": "Turnada a comisión", "dictaminado": "Dictaminada", "aprobado": "Aprobada", "rechazado": "Rechazada o desechada",
+                 "retirado": "Retirada", "publicado": "Aprobada y publicada", "pendiente": "Pendiente", "no_localizado": "Información no localizada", "no_verificado": "Estado no verificado"}
+
+
+def bloque_iniciativas() -> None:
+    global DESTINO
+    DESTINO = RAIZ / "entrega" / "iniciativas"
+    if DESTINO.exists():
+        shutil.rmtree(DESTINO)
+    DESTINO.mkdir(parents=True)
+    dips = {d["id_diputado"]: d for d in leer("diputados")}
+    partidos = {p["id_partido"]: p for p in leer("partidos")}
+    coms = {c["id_comision"]: c for c in leer("comisiones")}
+    asuntos = leer("asuntos")
+    prom = defaultdict(list)
+    for p in leer("asunto_promoventes"):
+        prom[p["id_asunto"]].append(p)
+    turnos = defaultdict(list)
+    for t in leer("asunto_comisiones"):
+        turnos[t["id_asunto"]].append(t)
+    anio = lambda a: a.get("anio_legislativo") or next((str(n) for n, i, f in [(1, "2024-10-01", "2025-09-30"), (2, "2025-10-01", "2026-09-30"), (3, "2026-10-01", "2027-09-30")] if a["fecha_presentacion"] and i <= a["fecha_presentacion"] <= f), "")
+    inis = [a for a in asuntos if a["id_asunto"].startswith("INI-")]
+
+    def nombre_prom(p):
+        if p["id_diputado"]:
+            d = dips.get(p["id_diputado"], {})
+            return f"{d.get('nombre_completo', p['id_diputado'])} ({partidos.get(d.get('id_partido', ''), {}).get('siglas', '')})"
+        return p["promovente_externo"]
+
+    detalle = []
+    for a in inis:
+        ps = [p for p in prom[a["id_asunto"]] if p["rol"] in ("autor", "coautor")]
+        detalle.append({
+            "numero_iniciativa": int(a["id_asunto"][-3:]), "id_asunto": a["id_asunto"], "tipo": "Minuta" if a["tipo"] == "otro" else "Iniciativa",
+            "fecha_presentacion": a["fecha_presentacion"], "anio_legislativo": anio(a), "anio_legislativo_texto": ANIO.get(anio(a), ""),
+            "descripcion": a["descripcion"], "promoventes": "; ".join(nombre_prom(p) for p in ps),
+            "tipo_promovente": "Diputación" if any(p["id_diputado"] for p in ps) else ("Externo" if ps else "Sin identificar"),
+            "autoria": "Compartida" if len(ps) > 1 else ("Individual" if ps else ""),
+            "comisiones": "; ".join(coms.get(t["id_comision"], {}).get("nombre", t["id_comision"]) for t in turnos[a["id_asunto"]]),
+            "estado": a["estado_procesal"], "estado_texto": ESTADO_ASUNTO.get(a["estado_procesal"], a["estado_procesal"]), "resolucion": a["numero_decreto_acuerdo"],
+            "fecha_aprobacion": a["fecha_aprobacion"], "fecha_publicacion": a["fecha_publicacion"], "url_documento": a["url_documento"],
+            "verificacion": a["estado_verificacion"], "notas": a["notas"],
+        })
+    detalle.sort(key=lambda x: x["numero_iniciativa"])
+    escribir("01_iniciativas_detalle.csv", detalle, list(detalle[0].keys()))
+
+    # resumen por persona (solo iniciativas, no minutas), por año y total
+    resumen = []
+    for id_d, d in sorted(dips.items(), key=lambda x: (x[1]["tipo_representacion"], int(x[1]["distrito"] or 99), x[1]["nombre_completo"])):
+        for clave in ("1", "2", "3", "Total"):
+            suyas = [a for a in inis if a["tipo"] == "iniciativa" and any(p["id_diputado"] == id_d and p["rol"] in ("autor", "coautor") for p in prom[a["id_asunto"]])
+                     and (clave == "Total" or anio(a) == clave)]
+            comp = [a for a in suyas if len([p for p in prom[a["id_asunto"]] if p["rol"] in ("autor", "coautor")]) > 1]
+            aprob = [a for a in suyas if a["estado_procesal"] in ("aprobado", "publicado")]
+            resumen.append({"id_diputado": id_d, "nombre": d["nombre_completo"], "partido": partidos.get(d["id_partido"], {}).get("siglas", ""), "representacion": REP.get(d["tipo_representacion"], ""),
+                            "distrito": d["distrito"], "periodo": ANIO.get(clave, "Toda la Legislatura (a la fecha de corte)"),
+                            "presentadas": len(suyas), "individuales": len(suyas) - len(comp), "compartidas": len(comp), "aprobadas": len(aprob),
+                            "aprobadas_individuales": len([a for a in aprob if a not in comp]), "aprobadas_compartidas": len([a for a in aprob if a in comp]),
+                            "en_tramite": len([a for a in suyas if a["estado_procesal"] in ("presentado", "turnado", "dictaminado", "pendiente")]),
+                            "rechazadas_o_retiradas": len([a for a in suyas if a["estado_procesal"] in ("rechazado", "retirado")]),
+                            "con_autoria_por_verificar": len([a for a in suyas if a["estado_verificacion"] != "verificado"])})
+    escribir("02_iniciativas_resumen_por_diputado.csv", resumen, list(resumen[0].keys()))
+
+    filas_prom = [{"id_asunto": p["id_asunto"], "numero_iniciativa": int(p["id_asunto"][-3:]), "id_diputado": p["id_diputado"], "promovente": nombre_prom(p), "rol": p["rol"],
+                   "partido": partidos.get(dips.get(p["id_diputado"], {}).get("id_partido", ""), {}).get("siglas", "") if p["id_diputado"] else ""}
+                  for a in inis for p in prom[a["id_asunto"]]]
+    escribir("03_iniciativas_promoventes.csv", filas_prom, list(filas_prom[0].keys()))
+    filas_t = [{"id_asunto": t["id_asunto"], "numero_iniciativa": int(t["id_asunto"][-3:]), "id_comision": t["id_comision"], "comision": coms.get(t["id_comision"], {}).get("nombre", "")}
+               for a in inis for t in turnos[a["id_asunto"]]]
+    escribir("04_iniciativas_comisiones.csv", filas_t, list(filas_t[0].keys()))
+    decretos = [{"numero_decreto": int(a["id_asunto"][-3:]), "id_asunto": a["id_asunto"], "descripcion": a["descripcion"], "fecha_aprobacion": a["fecha_aprobacion"],
+                 "fecha_publicacion": a["fecha_publicacion"], "estado": ESTADO_ASUNTO.get(a["estado_procesal"], ""), "iniciativa_origen": a["id_asunto_origen"], "url_documento": a["url_documento"], "notas": a["notas"]}
+                for a in asuntos if a["tipo"] == "decreto"]
+    escribir("05_decretos.csv", decretos, list(decretos[0].keys()))
+    for i, nombre in enumerate(["asuntos", "asunto_promoventes", "asunto_comisiones", "comisiones", "comision_integrantes", "diputados", "partidos"], start=6):
+        filas = leer(nombre)
+        escribir(f"{i:02d}_{nombre}.csv", filas, list(filas[0].keys()) if filas else [])
+    (DESTINO / "00_LEEME.txt").write_text(LEEME_INI, encoding="utf-8")
+    zip_ = shutil.make_archive(str(DESTINO.parent / "iniciativas_LXI_legislatura"), "zip", DESTINO)
+    print("Listo:", Path(zip_).relative_to(RAIZ))
+
+
+LEEME_INI = """INICIATIVAS Y DECRETOS — LXI LEGISLATURA DEL H. CONGRESO DEL ESTADO DE COLIMA
+Fuentes: Gaceta Parlamentaria (listas de iniciativas, decretos y acuerdos; síntesis de comunicaciones y actas de sesión)
+y página oficial de comisiones.
+
+ARCHIVOS (en orden)
+01_iniciativas_detalle.csv              Una fila por iniciativa (378), con promoventes, partido, comisiones, estado, decreto y fechas.
+02_iniciativas_resumen_por_diputado.csv  Por persona y año legislativo: presentadas, individuales, compartidas, aprobadas, en trámite.
+03_iniciativas_promoventes.csv          Una fila por iniciativa y promovente (formato largo, ideal para tablas dinámicas).
+04_iniciativas_comisiones.csv           Una fila por iniciativa y comisión a la que se turnó.
+05_decretos.csv                         Decretos de la LXI con fechas de aprobación y de publicación en el Periódico Oficial.
+06–12                                   Tablas normalizadas que usa el observatorio (asuntos, promoventes, turnos, comisiones,
+                                        integrantes de comisiones, diputados, partidos).
+
+REGLAS
+- Cada iniciativa aparece una sola vez, aunque tenga varios promoventes o comisiones.
+- Individual = un solo promovente; compartida = dos o más. En el resumen por persona una iniciativa compartida cuenta
+  para cada promovente; por eso la suma por persona es mayor que el total de iniciativas.
+- Las minutas (reformas a la Constitución federal enviadas por el Congreso de la Unión) se marcan como "Minuta" y no
+  cuentan como iniciativas de las diputaciones.
+- Promoventes: solo se atribuye a las personas nombradas en la Gaceta. Si dice "y demás integrantes del grupo
+  parlamentario", se registra al grupo como promovente colectivo (integrantes no nombrados) y la verificación queda pendiente.
+- El autor que la Gaceta registra solo como «Estatal» se asume como Poder Ejecutivo del Estado (verificación pendiente).
+
+FECHA DE PRESENTACIÓN
+La lista oficial no trae fecha. Se tomó de la sesión en que se dio cuenta de la iniciativa (síntesis de comunicaciones o
+acta), comparando textos. Solo se aceptan coincidencias claras y coherentes con la numeración consecutiva.
+- Confirmada: la columna notas cita el documento de origen.
+- Inferida: las iniciativas anterior y posterior se presentaron el mismo día (verificación pendiente).
+- Solo año legislativo: la numeración la ubica entre dos fechas del mismo año; fecha_presentacion queda vacía.
+
+ESTADOS
+Turnada a comisión, Aprobada (por decreto o acuerdo), Aprobada y publicada (con fecha en el Periódico Oficial),
+Rechazada o desechada, Retirada, Pendiente, Estado no verificado (p. ej. "archivada").
+"""
+
+
 if __name__ == "__main__":
-    main()
+    bloque = sys.argv[1] if len(sys.argv) > 1 else "todo"
+    if bloque in ("asistencias", "todo"):
+        bloque_asistencias()
+    if bloque in ("iniciativas", "todo"):
+        bloque_iniciativas()
