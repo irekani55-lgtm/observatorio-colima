@@ -40,6 +40,9 @@ export interface Partido {
   siglas: string;
   /** Posición de color (0–7): color_serie − 1 si se indica; si no, el orden en el catálogo. */
   orden: number;
+  /** Color institucional opcional (hexadecimal) para modo claro y oscuro. */
+  color_claro: string;
+  color_oscuro: string;
 }
 
 export interface Diputado {
@@ -302,6 +305,8 @@ export function construirBase(c: ConjuntoCargado): Base {
     nombre: s(f, 'nombre'),
     siglas: s(f, 'siglas') || s(f, 'id_partido'),
     orden: /^[1-8]$/.test(s(f, 'color_serie')) ? Number(s(f, 'color_serie')) - 1 : i,
+    color_claro: /^#[0-9a-f]{6}$/i.test(s(f, 'color_claro')) ? s(f, 'color_claro') : '',
+    color_oscuro: /^#[0-9a-f]{6}$/i.test(s(f, 'color_oscuro')) ? s(f, 'color_oscuro') : /^#[0-9a-f]{6}$/i.test(s(f, 'color_claro')) ? s(f, 'color_claro') : '',
   }));
 
   const diputados: Diputado[] = t.diputados.map((f) => ({

@@ -4,6 +4,7 @@ import { FUENTES_INSTITUCIONALES, LEGISLATURA } from '../config/legislatura';
 import { useDatos } from '../estado/DatosContext';
 import { fechaCorta } from '../indicadores/filtro';
 import { EnlaceExterno } from './Fuente';
+import { cssPartidos } from './colores';
 import { IcoCongreso, IcoLuna, IcoMenu, IcoSol, IcoX } from './Iconos';
 
 export const NAV_PRINCIPAL = [
@@ -90,6 +91,7 @@ export function Disposicion() {
 
   return (
     <>
+      <style>{cssPartidos(base)}</style>
       <a className="saltar" href="#contenido">
         Saltar al contenido
       </a>

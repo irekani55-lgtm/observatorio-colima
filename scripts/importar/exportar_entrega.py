@@ -533,7 +533,7 @@ CÓMO SE OBTUVO
 - Las votaciones económicas de puntos de acuerdo no tienen registro individual.
 
 CALIDAD
-- En 387 de 439 votaciones nominales la lista leída cuadra exactamente con los totales oficiales del acta.
+- En 389 de 439 votaciones nominales la lista leída cuadra exactamente con los totales oficiales del acta.
   En las demás (columna lista_cuadra_con_total = No) la diferencia suele estar en la propia acta: renglones omitidos,
   nombres repetidos o votos rectificados. Revise el acta enlazada.
 - «Votos distintos al resultado» describe cuántas veces la persona votó distinto del resultado general; no es una

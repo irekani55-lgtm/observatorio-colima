@@ -124,6 +124,8 @@ export const ESQUEMA: Record<NombreTabla, TablaDef> = {
       { nombre: 'nombre', descripcion: 'Nombre completo.', requerido: true },
       { nombre: 'siglas', descripcion: 'Siglas a mostrar.', requerido: true },
       { nombre: 'color_serie', descripcion: 'Opcional: posición 1–8 de la paleta categórica validada que usará el partido en las gráficas.', tipo: 'entero' },
+      { nombre: 'color_claro', descripcion: 'Opcional: color institucional del partido para el modo claro (hexadecimal, p. ej. #d0202a). Tiene prioridad sobre color_serie.' },
+      { nombre: 'color_oscuro', descripcion: 'Opcional: versión del color para el modo oscuro (hexadecimal). Si falta, se usa color_claro.' },
       notas,
     ],
   },

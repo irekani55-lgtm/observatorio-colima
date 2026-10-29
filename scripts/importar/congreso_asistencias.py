@@ -101,14 +101,14 @@ def evidencia(id_: str, tipo: str, titulo: str, url: str, institucion: str = "H.
 # ----------------------------------------------------------------- catálogo
 ROMANOS = {r: i for i, r in enumerate("I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI".split(), start=1)}
 PARTIDOS = {
-    # clave del logo del directorio → (id, nombre, siglas, color_serie)
-    "PAN": ("PAN", "Partido Acción Nacional", "PAN", 1),
-    "movimiento": ("MC", "Movimiento Ciudadano", "MC", 2),
-    "NuevaAlianza": ("PANAL", "Nueva Alianza Colima", "NA", 3),
-    "PT": ("PT", "Partido del Trabajo", "PT", 4),
-    "Verde": ("PVEM", "Partido Verde Ecologista de México", "PVEM", 6),
-    "PRI": ("PRI", "Partido Revolucionario Institucional", "PRI", 7),
-    "morena": ("MORENA", "Morena", "Morena", 8),
+    # clave del logo del directorio → (id, nombre, siglas, color_serie, color institucional claro, oscuro)
+    "PAN": ("PAN", "Partido Acción Nacional", "PAN", 1, "#0659a8", "#4f95e0"),
+    "movimiento": ("MC", "Movimiento Ciudadano", "MC", 2, "#f07c00", "#ff9a2e"),
+    "NuevaAlianza": ("PANAL", "Nueva Alianza Colima", "NA", 3, "#00a19a", "#2cc5bd"),
+    "PT": ("PT", "Partido del Trabajo", "PT", 4, "#d9a400", "#e8bb2e"),
+    "Verde": ("PVEM", "Partido Verde Ecologista de México", "PVEM", 6, "#3a9c3a", "#5cc25c"),
+    "PRI": ("PRI", "Partido Revolucionario Institucional", "PRI", 7, "#d0202a", "#ef5350"),
+    "morena": ("MORENA", "Morena", "Morena", 8, "#9b1d45", "#c9496f"),  # vino / tinto
 }
 PARTIDO_POR_TEXTO = {"pan": "PAN", "movimiento ciudadano": "MC", "nueva alianza": "PANAL", "pt": "PT", "partido verde": "PVEM", "pri": "PRI", "morena": "MORENA"}
 
@@ -455,7 +455,8 @@ def main() -> None:
     usados = {d["id_partido"] for d in todos if d["id_partido"]}
     partidos = sorted((v for v in PARTIDOS.values() if v[0] in usados), key=lambda v: v[3])
     print("Escribiendo CSV en", SALIDA.relative_to(RAIZ))
-    escribir_csv("partidos", ["id_partido", "nombre", "siglas", "color_serie", "notas"], [{"id_partido": a, "nombre": b, "siglas": c, "color_serie": e} for a, b, c, e in partidos])
+    escribir_csv("partidos", ["id_partido", "nombre", "siglas", "color_serie", "color_claro", "color_oscuro", "notas"],
+                 [{"id_partido": a, "nombre": b, "siglas": c, "color_serie": e, "color_claro": cl, "color_oscuro": co, "notas": "Color institucional aproximado para gráficas"} for a, b, c, e, cl, co in partidos])
     escribir_csv("diputados", ["id_diputado", "nombre_completo", "id_partido", "criterio_adscripcion", "tipo_representacion", "distrito", "calidad", "id_titular", "fecha_inicio", "fecha_fin", "licencias", "url_ficha_oficial", "url_foto", "archivo_foto", "id_fuente", "estado_verificacion", "notas"], todos)
     escribir_csv("distritos", ["distrito", "cabecera", "municipios", "id_fuente", "notas"], dist)
     escribir_csv("sesiones", ["id_sesion", "fecha", "anio_legislativo", "periodo", "tipo_sesion", "numero_sesion", "cuenta_para_asistencia", "id_fuente", "notas"], ses)

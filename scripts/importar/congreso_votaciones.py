@@ -40,7 +40,8 @@ ITEM = re.compile(r"(?i)\bdip(?:utad[oa])?\.?\s+((?:(?!\bdip(?:utad[oa])?\.?\s)[
 def votos_de_lista(lista: str, rec: Reconocedor) -> tuple[list[tuple[str, str]], list[str]]:
     votos, no_reconocidos = [], []
     # Se corta la lista en cada sentido del voto; el nombre es lo que hay entre ese sentido y el anterior.
-    partes = re.split(r"(?i)\b(a favor|en contra|abstenci[óo]n|se abstiene|abstuvo)\b", lista)
+    # «por la negativa» = en contra; «por la afirmativa» = a favor (fórmulas usadas en algunas actas)
+    partes = re.split(r"(?i)\b(a favor|en contra|por la negativa|por la afirmativa|abstenci[óo]n|se abstiene|abstuvo)\b", lista)
     for antes, sentido in zip(partes[0::2], partes[1::2]):
         # último fragmento con texto («Nombre; a favor» deja vacío el fragmento final)
         nombre = next((x for x in reversed(re.split(r"[;:]", antes)) if len(re.sub(r"[^A-Za-zÁÉÍÓÚÑáéíóúñ]", "", x)) >= 5), "")
@@ -48,7 +49,7 @@ def votos_de_lista(lista: str, rec: Reconocedor) -> tuple[list[tuple[str, str]],
         if len(nombre) < 5 or len(nombre) > 70:
             continue
         sentido = sentido.lower()
-        sentido = "favor" if sentido == "a favor" else ("contra" if "contra" in sentido else "abstencion")
+        sentido = "favor" if sentido in ("a favor", "por la afirmativa") else ("contra" if ("contra" in sentido or "negativa" in sentido) else "abstencion")
         quien = rec.buscar(nombre)
         if quien:
             votos.append((quien[0]["id_diputado"], sentido))

@@ -1,8 +1,8 @@
-id_partido,nombre,siglas,color_serie,notas
-PAN,Partido Acción Nacional,PAN,1,
-MC,Movimiento Ciudadano,MC,2,
-PANAL,Nueva Alianza Colima,NA,3,
-PT,Partido del Trabajo,PT,4,
-PVEM,Partido Verde Ecologista de México,PVEM,6,
-PRI,Partido Revolucionario Institucional,PRI,7,
-MORENA,Morena,Morena,8,
+id_partido,nombre,siglas,color_serie,color_claro,color_oscuro,notas
+PAN,Partido Acción Nacional,PAN,1,#0659a8,#4f95e0,Color institucional aproximado para gráficas
+MC,Movimiento Ciudadano,MC,2,#f07c00,#ff9a2e,Color institucional aproximado para gráficas
+PANAL,Nueva Alianza Colima,NA,3,#00a19a,#2cc5bd,Color institucional aproximado para gráficas
+PT,Partido del Trabajo,PT,4,#d9a400,#e8bb2e,Color institucional aproximado para gráficas
+PVEM,Partido Verde Ecologista de México,PVEM,6,#3a9c3a,#5cc25c,Color institucional aproximado para gráficas
+PRI,Partido Revolucionario Institucional,PRI,7,#d0202a,#ef5350,Color institucional aproximado para gráficas
+MORENA,Morena,Morena,8,#9b1d45,#c9496f,Color institucional aproximado para gráficas
