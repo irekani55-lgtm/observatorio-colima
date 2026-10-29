@@ -249,7 +249,7 @@ p {
   background: var(--superficie);
   border-bottom: 1px solid var(--borde);
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 30;
 }
 .cabecera__barra {
