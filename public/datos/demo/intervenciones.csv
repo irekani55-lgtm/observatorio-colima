@@ -1,0 +1,642 @@
+id_intervencion,id_sesion,id_diputado,id_asunto,asunto_texto,tema,tipo_intervencion,url_documento,pagina,id_fuente,estado_verificacion
+INT-0001,S-A1-ORD-074,DIP-18,INI-2025-0067,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a1-ord-074,17,EV-DEMO-01212,verificado
+INT-0002,S-A2-ORD-042,DIP-13,ACU-2025-0508,,Gobierno interior,posicionamiento,https://example.org/demo/diario/s-a2-ord-042,62,EV-DEMO-01213,verificado
+INT-0003,S-A2-ORD-043,DIP-26,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a2-ord-043,44,EV-DEMO-01214,verificado
+INT-0004,S-A2-ORD-055,DIP-11,DIC-2025-0168,,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a2-ord-055,41,EV-DEMO-01215,verificado
+INT-0005,S-A2-ORD-025,DIP-17,EXH-2026-0376,,Medio ambiente,en_contra,https://example.org/demo/diario/s-a2-ord-025,6,EV-DEMO-01216,verificado
+INT-0006,S-A2-ORD-050,DIP-09,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a2-ord-050,13,EV-DEMO-01217,verificado
+INT-0007,S-A1-ORD-022,DIP-12,,Asuntos generales,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ord-022,78,EV-DEMO-01218,verificado
+INT-0008,S-A2-ORD-071,DIP-23,INI-2025-0145,,Turismo,a_favor,https://example.org/demo/diario/s-a2-ord-071,36,EV-DEMO-01219,verificado
+INT-0009,S-A2-ORD-015,DIP-11,,Asuntos generales,Turismo,mocion,https://example.org/demo/diario/s-a2-ord-015,71,EV-DEMO-01220,verificado
+INT-0010,S-A1-ORD-066,DIP-16,INI-2025-0022,,Educación,en_contra,https://example.org/demo/diario/s-a1-ord-066,34,EV-DEMO-01221,verificado
+INT-0011,S-A1-ORD-010,DIP-21,DIC-2025-0142,,Cultura,en_contra,https://example.org/demo/diario/s-a1-ord-010,79,EV-DEMO-01222,verificado
+INT-0012,S-A2-ORD-066,DIP-24,DIC-2025-0140,,Cultura,a_favor,https://example.org/demo/diario/s-a2-ord-066,48,EV-DEMO-01223,verificado
+INT-0013,S-A2-ORD-060,DIP-03,INI-2026-0126,,Igualdad de género,en_contra,https://example.org/demo/diario/s-a2-ord-060,57,EV-DEMO-01224,verificado
+INT-0014,S-A2-ORD-005,DIP-04,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-005,60,EV-DEMO-01225,verificado
+INT-0015,S-A1-ORD-068,DIP-09,,Asuntos generales,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a1-ord-068,7,EV-DEMO-01226,verificado
+INT-0016,S-A1-ORD-010,DIP-06,INI-2024-0327,,Medio ambiente,en_contra,https://example.org/demo/diario/s-a1-ord-010,77,EV-DEMO-01227,verificado
+INT-0017,S-A2-ORD-019,DIP-23,EXH-2024-0450,,Agua,en_contra,https://example.org/demo/diario/s-a2-ord-019,4,EV-DEMO-01228,verificado
+INT-0018,S-A1-ORD-031,DIP-02,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a1-ord-031,30,EV-DEMO-01229,verificado
+INT-0019,S-A1-ORD-035,DIP-20,,Asuntos generales,Agua,posicionamiento,https://example.org/demo/diario/s-a1-ord-035,32,EV-DEMO-01230,verificado
+INT-0020,S-A3-ORD-002,DIP-24,INI-2025-0224,,Medio ambiente,en_contra,https://example.org/demo/diario/s-a3-ord-002,34,EV-DEMO-01231,verificado
+INT-0021,S-A1-ORD-006,DIP-02,,Asuntos generales,Movilidad,mocion,https://example.org/demo/diario/s-a1-ord-006,75,EV-DEMO-01232,verificado
+INT-0022,S-A1-ORD-073,DIP-12,EXH-2025-0370,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a1-ord-073,50,EV-DEMO-01233,verificado
+INT-0023,S-A1-ORD-068,DIP-25,,Asuntos generales,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a1-ord-068,33,EV-DEMO-01234,verificado
+INT-0024,S-A1-ORD-067,DIP-06,DIC-2026-0111,,Educación,a_favor,https://example.org/demo/diario/s-a1-ord-067,37,EV-DEMO-01235,verificado
+INT-0025,S-A2-ORD-042,DIP-09,INI-2024-0177,,Igualdad de género,en_contra,https://example.org/demo/diario/s-a2-ord-042,18,EV-DEMO-01236,verificado
+INT-0026,S-A2-ORD-050,DIP-09,,Asuntos generales,Movilidad,mocion,https://example.org/demo/diario/s-a2-ord-050,22,EV-DEMO-01237,verificado
+INT-0027,S-A1-ORD-038,DIP-07,DIC-2026-0164,,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a1-ord-038,21,EV-DEMO-01238,verificado
+INT-0028,S-A1-ORD-004,DIP-06,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a1-ord-004,75,EV-DEMO-01239,verificado
+INT-0029,S-A1-ORD-036,DIP-06,DIC-2026-0408,,Movilidad,posicionamiento,https://example.org/demo/diario/s-a1-ord-036,57,EV-DEMO-01240,verificado
+INT-0030,S-A1-ORD-061,DIP-09,INI-2025-0049,,Educación,presentacion,https://example.org/demo/diario/s-a1-ord-061,3,EV-DEMO-01241,pendiente
+INT-0031,S-A1-ORD-026,DIP-12,EXH-2026-0426,,Educación,a_favor,https://example.org/demo/diario/s-a1-ord-026,39,EV-DEMO-01242,verificado
+INT-0032,S-A2-ORD-034,DIP-01,PDA-2025-0473,,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a2-ord-034,54,EV-DEMO-01243,verificado
+INT-0033,S-A2-ORD-069,DIP-12,,Asuntos generales,Transparencia,asuntos_generales,https://example.org/demo/diario/s-a2-ord-069,36,EV-DEMO-01244,verificado
+INT-0034,S-A2-ORD-046,DIP-10,EXH-2025-0345,,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a2-ord-046,26,EV-DEMO-01245,pendiente
+INT-0035,S-A2-ORD-052,DIP-23,PDA-2024-0480,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-052,31,EV-DEMO-01246,verificado
+INT-0036,S-A1-ORD-048,DIP-22,,Asuntos generales,Seguridad pública,mocion,https://example.org/demo/diario/s-a1-ord-048,24,EV-DEMO-01247,verificado
+INT-0037,S-A2-ORD-050,DIP-20,INI-2026-0151,,Transparencia,a_favor,https://example.org/demo/diario/s-a2-ord-050,34,EV-DEMO-01248,verificado
+INT-0038,S-A1-ORD-042,DIP-02,PDA-2026-0484,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a1-ord-042,55,EV-DEMO-01249,verificado
+INT-0039,S-A1-ORD-075,DIP-06,EXH-2024-0412,,Cultura,a_favor,https://example.org/demo/diario/s-a1-ord-075,73,EV-DEMO-01250,verificado
+INT-0040,S-A2-ORD-022,DIP-18,EXH-2026-0367,,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a2-ord-022,48,EV-DEMO-01251,pendiente
+INT-0041,S-A3-ORD-002,DIP-15,DIC-2025-0479,,Hacienda pública,en_contra,https://example.org/demo/diario/s-a3-ord-002,15,EV-DEMO-01252,pendiente
+INT-0042,S-A1-ORD-049,DIP-12,INI-2026-0190,,Agua,posicionamiento,https://example.org/demo/diario/s-a1-ord-049,72,EV-DEMO-01253,verificado
+INT-0043,S-A2-ORD-009,DIP-08,DIC-2025-0195,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-009,77,EV-DEMO-01254,pendiente
+INT-0044,S-A1-ORD-029,DIP-18,INI-2025-0120,,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a1-ord-029,70,EV-DEMO-01255,verificado
+INT-0045,S-A2-ORD-029,DIP-18,DIC-2025-0245,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a2-ord-029,76,EV-DEMO-01256,pendiente
+INT-0046,S-A1-ORD-072,DIP-22,,Asuntos generales,Turismo,asuntos_generales,https://example.org/demo/diario/s-a1-ord-072,41,EV-DEMO-01257,verificado
+INT-0047,S-A2-ORD-040,DIP-12,,Asuntos generales,Hacienda pública,asuntos_generales,https://example.org/demo/diario/s-a2-ord-040,74,EV-DEMO-01258,verificado
+INT-0048,S-A2-ORD-053,DIP-09,EXH-2026-0453,,Movilidad,en_contra,https://example.org/demo/diario/s-a2-ord-053,32,EV-DEMO-01259,verificado
+INT-0049,S-A1-ORD-004,DIP-16,,Asuntos generales,Agua,mocion,https://example.org/demo/diario/s-a1-ord-004,18,EV-DEMO-01260,verificado
+INT-0050,S-A2-ORD-023,DIP-26,DIC-2026-0096,,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-023,39,EV-DEMO-01261,verificado
+INT-0051,S-A2-ORD-051,DIP-24,,Asuntos generales,Movilidad,posicionamiento,https://example.org/demo/diario/s-a2-ord-051,74,EV-DEMO-01262,verificado
+INT-0052,S-A1-ORD-013,DIP-22,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a1-ord-013,3,EV-DEMO-01263,verificado
+INT-0053,S-A3-ORD-002,DIP-06,DIC-2025-0352,,Cultura,posicionamiento,https://example.org/demo/diario/s-a3-ord-002,73,EV-DEMO-01264,verificado
+INT-0054,S-A2-ORD-058,DIP-02,PDA-2025-0503,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a2-ord-058,58,EV-DEMO-01265,verificado
+INT-0055,S-A2-ORD-004,DIP-11,INI-2026-0183,,Salud,posicionamiento,https://example.org/demo/diario/s-a2-ord-004,22,EV-DEMO-01266,verificado
+INT-0056,S-A2-ORD-075,DIP-12,INI-2025-0273,,Cultura,presentacion,https://example.org/demo/diario/s-a2-ord-075,18,EV-DEMO-01267,verificado
+INT-0057,S-A1-ORD-020,DIP-16,DIC-2025-0451,,Agua,a_favor,https://example.org/demo/diario/s-a1-ord-020,44,EV-DEMO-01268,verificado
+INT-0058,S-A2-ORD-072,DIP-25,DIC-2025-0221,,Cultura,en_contra,https://example.org/demo/diario/s-a2-ord-072,77,EV-DEMO-01269,verificado
+INT-0059,S-A1-ORD-041,DIP-06,EXH-2025-0452,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a1-ord-041,61,EV-DEMO-01270,verificado
+INT-0060,S-A2-ORD-058,DIP-11,INI-2025-0022,,Educación,posicionamiento,https://example.org/demo/diario/s-a2-ord-058,60,EV-DEMO-01271,verificado
+INT-0061,S-A2-ORD-030,DIP-19,INI-2026-0117,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a2-ord-030,63,EV-DEMO-01272,verificado
+INT-0062,S-A1-ORD-060,DIP-22,,Asuntos generales,Cultura,mocion,https://example.org/demo/diario/s-a1-ord-060,32,EV-DEMO-01273,verificado
+INT-0063,S-A2-ORD-054,DIP-21,,Asuntos generales,Transparencia,asuntos_generales,https://example.org/demo/diario/s-a2-ord-054,34,EV-DEMO-01274,verificado
+INT-0064,S-A1-ORD-053,DIP-18,,Asuntos generales,Medio ambiente,asuntos_generales,https://example.org/demo/diario/s-a1-ord-053,25,EV-DEMO-01275,verificado
+INT-0065,S-A2-ORD-009,DIP-12,PDA-2025-0465,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a2-ord-009,23,EV-DEMO-01276,verificado
+INT-0066,S-A2-ORD-040,DIP-16,DIC-2025-0073,,Cultura,a_favor,https://example.org/demo/diario/s-a2-ord-040,51,EV-DEMO-01277,verificado
+INT-0067,S-A2-ORD-027,DIP-25,EXH-2024-0371,,Seguridad pública,en_contra,https://example.org/demo/diario/s-a2-ord-027,70,EV-DEMO-01278,pendiente
+INT-0068,S-A2-ORD-066,DIP-21,INI-2026-0117,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a2-ord-066,62,EV-DEMO-01279,verificado
+INT-0069,S-A2-ORD-030,DIP-12,,Asuntos generales,Medio ambiente,mocion,https://example.org/demo/diario/s-a2-ord-030,61,EV-DEMO-01280,verificado
+INT-0070,S-A2-ORD-061,DIP-19,DIC-2026-0334,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a2-ord-061,26,EV-DEMO-01281,verificado
+INT-0071,S-A2-ORD-035,DIP-17,EXH-2026-0374,,Salud,a_favor,https://example.org/demo/diario/s-a2-ord-035,75,EV-DEMO-01282,verificado
+INT-0072,S-A2-ORD-010,DIP-04,,Asuntos generales,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a2-ord-010,74,EV-DEMO-01283,verificado
+INT-0073,S-A1-ORD-006,DIP-17,,Asuntos generales,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a1-ord-006,26,EV-DEMO-01284,pendiente
+INT-0074,S-A1-ORD-071,DIP-02,DIC-2026-0164,,Medio ambiente,en_contra,https://example.org/demo/diario/s-a1-ord-071,7,EV-DEMO-01285,verificado
+INT-0075,S-A2-ORD-009,DIP-02,DIC-2026-0295,,Educación,posicionamiento,https://example.org/demo/diario/s-a2-ord-009,47,EV-DEMO-01286,verificado
+INT-0076,S-A2-ORD-022,DIP-09,,Asuntos generales,Turismo,posicionamiento,https://example.org/demo/diario/s-a2-ord-022,65,EV-DEMO-01287,verificado
+INT-0077,S-A1-ORD-038,DIP-03,,Asuntos generales,Turismo,mocion,https://example.org/demo/diario/s-a1-ord-038,42,EV-DEMO-01288,verificado
+INT-0078,S-A2-ORD-045,DIP-18,INI-2025-0313,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a2-ord-045,50,EV-DEMO-01289,verificado
+INT-0079,S-A1-ORD-018,DIP-12,,Asuntos generales,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a1-ord-018,10,EV-DEMO-01290,verificado
+INT-0080,S-A2-ORD-020,DIP-04,INI-2024-0316,,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-020,80,EV-DEMO-01291,verificado
+INT-0081,S-A2-EXT-076,DIP-11,INI-2026-0057,,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a2-ext-076,5,EV-DEMO-01292,verificado
+INT-0082,S-A1-ORD-042,DIP-14,EXH-2024-0364,,Hacienda pública,en_contra,https://example.org/demo/diario/s-a1-ord-042,9,EV-DEMO-01293,verificado
+INT-0083,S-A1-EXT-077,DIP-01,PDA-2025-0457,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a1-ext-077,64,EV-DEMO-01294,verificado
+INT-0084,S-A2-ORD-059,DIP-09,PDA-2026-0497,,Transparencia,posicionamiento,https://example.org/demo/diario/s-a2-ord-059,29,EV-DEMO-01295,verificado
+INT-0085,S-A2-ORD-070,DIP-06,,Asuntos generales,Cultura,mocion,https://example.org/demo/diario/s-a2-ord-070,80,EV-DEMO-01296,verificado
+INT-0086,S-A2-ORD-045,DIP-26,INI-2025-0285,,Agua,posicionamiento,https://example.org/demo/diario/s-a2-ord-045,67,EV-DEMO-01297,verificado
+INT-0087,S-A2-ORD-027,DIP-06,DIC-2025-0185,,Seguridad pública,en_contra,https://example.org/demo/diario/s-a2-ord-027,64,EV-DEMO-01298,verificado
+INT-0088,S-A1-ORD-028,DIP-25,PDA-2026-0491,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a1-ord-028,71,EV-DEMO-01299,verificado
+INT-0089,S-A2-ORD-024,DIP-22,EXH-2026-0453,,Movilidad,posicionamiento,https://example.org/demo/diario/s-a2-ord-024,56,EV-DEMO-01300,verificado
+INT-0090,S-A2-ORD-014,DIP-04,INI-2025-0329,,Desarrollo económico,presentacion,https://example.org/demo/diario/s-a2-ord-014,80,EV-DEMO-01301,verificado
+INT-0091,S-A2-ORD-060,DIP-12,EXH-2026-0385,,Transparencia,a_favor,https://example.org/demo/diario/s-a2-ord-060,41,EV-DEMO-01302,verificado
+INT-0092,S-A1-ORD-059,DIP-19,INI-2025-0303,,Educación,a_favor,https://example.org/demo/diario/s-a1-ord-059,16,EV-DEMO-01303,verificado
+INT-0093,S-A1-ORD-005,DIP-11,PDA-2026-0460,,Igualdad de género,en_contra,https://example.org/demo/diario/s-a1-ord-005,35,EV-DEMO-01304,verificado
+INT-0094,S-A2-ORD-062,DIP-14,EXH-2026-0357,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a2-ord-062,41,EV-DEMO-01305,verificado
+INT-0095,S-A2-ORD-073,DIP-10,INI-2024-0107,,Movilidad,presentacion,https://example.org/demo/diario/s-a2-ord-073,58,EV-DEMO-01306,verificado
+INT-0096,S-A1-ORD-029,DIP-12,INI-2026-0064,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a1-ord-029,43,EV-DEMO-01307,verificado
+INT-0097,S-A2-ORD-057,DIP-11,EXH-2024-0362,,Transparencia,presentacion,https://example.org/demo/diario/s-a2-ord-057,14,EV-DEMO-01308,verificado
+INT-0098,S-A2-ORD-008,DIP-23,DIC-2025-0451,,Agua,presentacion,https://example.org/demo/diario/s-a2-ord-008,61,EV-DEMO-01309,verificado
+INT-0099,S-A1-ORD-025,DIP-21,,Asuntos generales,Agua,asuntos_generales,https://example.org/demo/diario/s-a1-ord-025,24,EV-DEMO-01310,verificado
+INT-0100,S-A1-ORD-071,DIP-08,,Asuntos generales,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-071,38,EV-DEMO-01311,verificado
+INT-0101,S-A2-ORD-068,DIP-09,,Asuntos generales,Derechos humanos,asuntos_generales,https://example.org/demo/diario/s-a2-ord-068,62,EV-DEMO-01312,verificado
+INT-0102,S-A1-ORD-029,DIP-01,INI-2025-0044,,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a1-ord-029,50,EV-DEMO-01313,verificado
+INT-0103,S-A1-ORD-044,DIP-03,INI-2026-0007,,Movilidad,a_favor,https://example.org/demo/diario/s-a1-ord-044,73,EV-DEMO-01314,verificado
+INT-0104,S-A2-ORD-030,DIP-14,INI-2026-0183,,Salud,a_favor,https://example.org/demo/diario/s-a2-ord-030,73,EV-DEMO-01315,verificado
+INT-0105,S-A1-ORD-068,DIP-26,INI-2026-0260,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a1-ord-068,44,EV-DEMO-01316,verificado
+INT-0106,S-A2-ORD-065,DIP-16,INI-2024-0112,,Salud,a_favor,https://example.org/demo/diario/s-a2-ord-065,67,EV-DEMO-01317,verificado
+INT-0107,S-A2-ORD-064,DIP-18,,Asuntos generales,Derechos humanos,mocion,https://example.org/demo/diario/s-a2-ord-064,50,EV-DEMO-01318,verificado
+INT-0108,S-A1-ORD-060,DIP-08,,Asuntos generales,Movilidad,posicionamiento,https://example.org/demo/diario/s-a1-ord-060,28,EV-DEMO-01319,verificado
+INT-0109,S-A2-ORD-073,DIP-09,INI-2025-0244,,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a2-ord-073,54,EV-DEMO-01320,verificado
+INT-0110,S-A1-ORD-065,DIP-10,EXH-2024-0432,,Desarrollo rural,presentacion,https://example.org/demo/diario/s-a1-ord-065,28,EV-DEMO-01321,verificado
+INT-0111,S-A2-ORD-023,DIP-17,PDA-2025-0487,,Educación,en_contra,https://example.org/demo/diario/s-a2-ord-023,74,EV-DEMO-01322,verificado
+INT-0112,S-A3-SOL-001,DIP-04,INI-2025-0145,,Turismo,a_favor,https://example.org/demo/diario/s-a3-sol-001,3,EV-DEMO-01323,verificado
+INT-0113,S-A2-ORD-005,DIP-09,,Asuntos generales,Seguridad pública,asuntos_generales,https://example.org/demo/diario/s-a2-ord-005,80,EV-DEMO-01324,pendiente
+INT-0114,S-A2-ORD-046,DIP-23,INI-2026-0110,,Educación,presentacion,https://example.org/demo/diario/s-a2-ord-046,29,EV-DEMO-01325,verificado
+INT-0115,S-A2-ORD-072,DIP-09,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a2-ord-072,80,EV-DEMO-01326,verificado
+INT-0116,S-A1-ORD-016,DIP-10,DIC-2025-0089,,Salud,a_favor,https://example.org/demo/diario/s-a1-ord-016,29,EV-DEMO-01327,verificado
+INT-0117,S-A1-ORD-064,DIP-24,INI-2025-0184,,Seguridad pública,presentacion,https://example.org/demo/diario/s-a1-ord-064,43,EV-DEMO-01328,pendiente
+INT-0118,S-A2-ORD-015,DIP-11,EXH-2025-0363,,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a2-ord-015,57,EV-DEMO-01329,verificado
+INT-0119,S-A1-ORD-007,DIP-07,EXH-2024-0436,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a1-ord-007,42,EV-DEMO-01330,verificado
+INT-0120,S-A1-ORD-026,DIP-22,INI-2026-0093,,Turismo,posicionamiento,https://example.org/demo/diario/s-a1-ord-026,17,EV-DEMO-01331,verificado
+INT-0121,S-A1-ORD-021,DIP-06,EXH-2026-0347,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a1-ord-021,21,EV-DEMO-01332,verificado
+INT-0122,S-A2-ORD-069,DIP-18,,Asuntos generales,Hacienda pública,asuntos_generales,https://example.org/demo/diario/s-a2-ord-069,55,EV-DEMO-01333,verificado
+INT-0123,S-A2-ORD-013,DIP-14,INI-2026-0003,,Seguridad pública,en_contra,https://example.org/demo/diario/s-a2-ord-013,16,EV-DEMO-01334,verificado
+INT-0124,S-A1-ORD-068,DIP-16,DIC-2025-0133,,Cultura,en_contra,https://example.org/demo/diario/s-a1-ord-068,40,EV-DEMO-01335,verificado
+INT-0125,S-A2-ORD-072,DIP-11,INI-2024-0271,,Turismo,a_favor,https://example.org/demo/diario/s-a2-ord-072,66,EV-DEMO-01336,verificado
+INT-0126,S-A2-ORD-064,DIP-16,INI-2026-0004,,Desarrollo económico,en_contra,https://example.org/demo/diario/s-a2-ord-064,22,EV-DEMO-01337,verificado
+INT-0127,S-A2-ORD-022,DIP-19,INI-2026-0246,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a2-ord-022,59,EV-DEMO-01338,verificado
+INT-0128,S-A1-ORD-029,DIP-18,EXH-2025-0417,,Turismo,a_favor,https://example.org/demo/diario/s-a1-ord-029,67,EV-DEMO-01339,verificado
+INT-0129,S-A2-ORD-072,DIP-06,ACU-2026-0507,,Gobierno interior,en_contra,https://example.org/demo/diario/s-a2-ord-072,50,EV-DEMO-01340,verificado
+INT-0130,S-A2-ORD-017,DIP-24,,Asuntos generales,Cultura,mocion,https://example.org/demo/diario/s-a2-ord-017,47,EV-DEMO-01341,verificado
+INT-0131,S-A2-ORD-041,DIP-16,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a2-ord-041,7,EV-DEMO-01342,verificado
+INT-0132,S-A2-ORD-032,DIP-24,,Asuntos generales,Hacienda pública,mocion,https://example.org/demo/diario/s-a2-ord-032,50,EV-DEMO-01343,verificado
+INT-0133,S-A1-ORD-047,DIP-18,INI-2025-0238,,Cultura,en_contra,https://example.org/demo/diario/s-a1-ord-047,43,EV-DEMO-01344,verificado
+INT-0134,S-A2-ORD-059,DIP-22,,Asuntos generales,Agua,posicionamiento,https://example.org/demo/diario/s-a2-ord-059,25,EV-DEMO-01345,verificado
+INT-0135,S-A3-ORD-002,DIP-01,DIC-2025-0021,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a3-ord-002,17,EV-DEMO-01346,pendiente
+INT-0136,S-A1-ORD-025,DIP-20,DIC-2025-0144,,Derechos humanos,presentacion,https://example.org/demo/diario/s-a1-ord-025,67,EV-DEMO-01347,verificado
+INT-0137,S-A2-ORD-012,DIP-13,,Asuntos generales,Igualdad de género,mocion,https://example.org/demo/diario/s-a2-ord-012,15,EV-DEMO-01348,verificado
+INT-0138,S-A1-ORD-024,DIP-19,INI-2026-0004,,Desarrollo económico,en_contra,https://example.org/demo/diario/s-a1-ord-024,39,EV-DEMO-01349,verificado
+INT-0139,S-A1-ORD-042,DIP-18,INI-2026-0037,,Salud,a_favor,https://example.org/demo/diario/s-a1-ord-042,26,EV-DEMO-01350,verificado
+INT-0140,S-A1-ORD-024,DIP-21,EXH-2025-0340,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a1-ord-024,6,EV-DEMO-01351,verificado
+INT-0141,S-A1-ORD-011,DIP-23,,Asuntos generales,Medio ambiente,asuntos_generales,https://example.org/demo/diario/s-a1-ord-011,69,EV-DEMO-01352,verificado
+INT-0142,S-A1-ORD-019,DIP-11,PDA-2024-0480,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-019,5,EV-DEMO-01353,verificado
+INT-0143,S-A2-ORD-068,DIP-16,INI-2025-0224,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a2-ord-068,58,EV-DEMO-01354,verificado
+INT-0144,S-A2-ORD-057,DIP-25,DIC-2026-0203,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-057,57,EV-DEMO-01355,pendiente
+INT-0145,S-A2-ORD-057,DIP-11,INI-2025-0044,,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a2-ord-057,34,EV-DEMO-01356,verificado
+INT-0146,S-A1-ORD-050,DIP-12,DCR-DEC-DEMO-002,,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ord-050,24,EV-DEMO-01357,verificado
+INT-0147,S-A2-ORD-047,DIP-11,,Asuntos generales,Desarrollo rural,asuntos_generales,https://example.org/demo/diario/s-a2-ord-047,24,EV-DEMO-01358,verificado
+INT-0148,S-A2-ORD-051,DIP-21,INI-2025-0337,,Agua,en_contra,https://example.org/demo/diario/s-a2-ord-051,34,EV-DEMO-01359,verificado
+INT-0149,S-A2-ORD-019,DIP-20,INI-2025-0211,,Medio ambiente,en_contra,https://example.org/demo/diario/s-a2-ord-019,79,EV-DEMO-01360,verificado
+INT-0150,S-A1-ORD-050,DIP-05,DIC-2025-0102,,Educación,presentacion,https://example.org/demo/diario/s-a1-ord-050,52,EV-DEMO-01361,verificado
+INT-0151,S-A2-ORD-020,DIP-09,INI-2025-0012,,Seguridad pública,posicionamiento,https://example.org/demo/diario/s-a2-ord-020,26,EV-DEMO-01362,verificado
+INT-0152,S-A1-ORD-037,DIP-18,,Asuntos generales,Medio ambiente,asuntos_generales,https://example.org/demo/diario/s-a1-ord-037,24,EV-DEMO-01363,verificado
+INT-0153,S-A2-ORD-002,DIP-24,INI-2026-0114,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a2-ord-002,47,EV-DEMO-01364,verificado
+INT-0154,S-A1-ORD-055,DIP-15,,Asuntos generales,Turismo,posicionamiento,https://example.org/demo/diario/s-a1-ord-055,43,EV-DEMO-01365,verificado
+INT-0155,S-A2-ORD-003,DIP-24,INI-2026-0201,,Turismo,en_contra,https://example.org/demo/diario/s-a2-ord-003,5,EV-DEMO-01366,verificado
+INT-0156,S-A2-ORD-050,DIP-10,,Asuntos generales,Agua,posicionamiento,https://example.org/demo/diario/s-a2-ord-050,26,EV-DEMO-01367,pendiente
+INT-0157,S-A2-ORD-004,DIP-21,,Asuntos generales,Cultura,mocion,https://example.org/demo/diario/s-a2-ord-004,46,EV-DEMO-01368,verificado
+INT-0158,S-A2-ORD-015,DIP-15,INI-2024-0132,,Cultura,en_contra,https://example.org/demo/diario/s-a2-ord-015,59,EV-DEMO-01369,verificado
+INT-0159,S-A2-ORD-065,DIP-24,,Asuntos generales,Desarrollo rural,asuntos_generales,https://example.org/demo/diario/s-a2-ord-065,20,EV-DEMO-01370,verificado
+INT-0160,S-A1-ORD-061,DIP-11,INI-2024-0225,,Transparencia,a_favor,https://example.org/demo/diario/s-a1-ord-061,14,EV-DEMO-01371,verificado
+INT-0161,S-A2-ORD-072,DIP-20,,Asuntos generales,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a2-ord-072,28,EV-DEMO-01372,verificado
+INT-0162,S-A2-ORD-069,DIP-13,,Asuntos generales,Movilidad,posicionamiento,https://example.org/demo/diario/s-a2-ord-069,26,EV-DEMO-01373,verificado
+INT-0163,S-A1-ORD-053,DIP-20,EXH-2026-0358,,Derechos humanos,presentacion,https://example.org/demo/diario/s-a1-ord-053,64,EV-DEMO-01374,verificado
+INT-0164,S-A2-ORD-033,DIP-08,EXH-2024-0364,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-033,65,EV-DEMO-01375,verificado
+INT-0165,S-A2-ORD-017,DIP-08,INI-2026-0027,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a2-ord-017,74,EV-DEMO-01376,verificado
+INT-0166,S-A1-ORD-034,DIP-20,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a1-ord-034,69,EV-DEMO-01377,verificado
+INT-0167,S-A1-ORD-055,DIP-25,EXH-2024-0364,,Hacienda pública,en_contra,https://example.org/demo/diario/s-a1-ord-055,58,EV-DEMO-01378,verificado
+INT-0168,S-A1-ORD-072,DIP-19,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a1-ord-072,22,EV-DEMO-01379,verificado
+INT-0169,S-A1-ORD-066,DIP-04,EXH-2025-0452,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a1-ord-066,43,EV-DEMO-01380,verificado
+INT-0170,S-A1-ORD-071,DIP-09,,Asuntos generales,Transparencia,mocion,https://example.org/demo/diario/s-a1-ord-071,73,EV-DEMO-01381,verificado
+INT-0171,S-A1-ORD-069,DIP-24,INI-2026-0151,,Transparencia,en_contra,https://example.org/demo/diario/s-a1-ord-069,59,EV-DEMO-01382,verificado
+INT-0172,S-A1-ORD-053,DIP-18,,Asuntos generales,Agua,posicionamiento,https://example.org/demo/diario/s-a1-ord-053,41,EV-DEMO-01383,verificado
+INT-0173,S-A2-ORD-058,DIP-08,INI-2026-0280,,Turismo,en_contra,https://example.org/demo/diario/s-a2-ord-058,36,EV-DEMO-01384,verificado
+INT-0174,S-A2-ORD-013,DIP-20,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-013,69,EV-DEMO-01385,verificado
+INT-0175,S-A1-ORD-005,DIP-10,INI-2025-0318,,Agua,en_contra,https://example.org/demo/diario/s-a1-ord-005,33,EV-DEMO-01386,verificado
+INT-0176,S-A1-EXT-079,DIP-04,INI-2025-0145,,Turismo,presentacion,https://example.org/demo/diario/s-a1-ext-079,22,EV-DEMO-01387,pendiente
+INT-0177,S-A1-ORD-053,DIP-04,INI-2025-0272,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a1-ord-053,76,EV-DEMO-01388,verificado
+INT-0178,S-A2-ORD-067,DIP-12,INI-2025-0297,,Movilidad,posicionamiento,https://example.org/demo/diario/s-a2-ord-067,69,EV-DEMO-01389,verificado
+INT-0179,S-A1-ORD-039,DIP-07,,Asuntos generales,Movilidad,mocion,https://example.org/demo/diario/s-a1-ord-039,56,EV-DEMO-01390,verificado
+INT-0180,S-A2-ORD-058,DIP-17,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-058,30,EV-DEMO-01391,pendiente
+INT-0181,S-A1-ORD-075,DIP-25,EXH-2026-0338,,Derechos humanos,presentacion,https://example.org/demo/diario/s-a1-ord-075,21,EV-DEMO-01392,pendiente
+INT-0182,S-A2-ORD-047,DIP-16,DIC-2026-0164,,Medio ambiente,en_contra,https://example.org/demo/diario/s-a2-ord-047,16,EV-DEMO-01393,verificado
+INT-0183,S-A2-ORD-016,DIP-17,,Asuntos generales,Hacienda pública,mocion,https://example.org/demo/diario/s-a2-ord-016,46,EV-DEMO-01394,verificado
+INT-0184,S-A1-ORD-060,DIP-18,EXH-2024-0403,,Movilidad,en_contra,https://example.org/demo/diario/s-a1-ord-060,12,EV-DEMO-01395,verificado
+INT-0185,S-A1-ORD-073,DIP-13,DIC-2026-0152,,Transparencia,a_favor,https://example.org/demo/diario/s-a1-ord-073,49,EV-DEMO-01396,verificado
+INT-0186,S-A2-ORD-043,DIP-05,INI-2025-0143,,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a2-ord-043,60,EV-DEMO-01397,verificado
+INT-0187,S-A2-ORD-057,DIP-16,PDA-2025-0501,,Seguridad pública,posicionamiento,https://example.org/demo/diario/s-a2-ord-057,16,EV-DEMO-01398,verificado
+INT-0188,S-A1-ORD-055,DIP-04,,Asuntos generales,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a1-ord-055,18,EV-DEMO-01399,verificado
+INT-0189,S-A1-ORD-041,DIP-06,,Asuntos generales,Turismo,posicionamiento,https://example.org/demo/diario/s-a1-ord-041,7,EV-DEMO-01400,verificado
+INT-0190,S-A2-ORD-038,DIP-16,DIC-2026-0138,,Agua,en_contra,https://example.org/demo/diario/s-a2-ord-038,44,EV-DEMO-01401,verificado
+INT-0191,S-A1-ORD-033,DIP-16,INI-2026-0280,,Turismo,en_contra,https://example.org/demo/diario/s-a1-ord-033,20,EV-DEMO-01402,verificado
+INT-0192,S-A1-ORD-039,DIP-12,,Asuntos generales,Movilidad,posicionamiento,https://example.org/demo/diario/s-a1-ord-039,40,EV-DEMO-01403,verificado
+INT-0193,S-A2-ORD-050,DIP-26,DIC-2025-0369,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a2-ord-050,77,EV-DEMO-01404,verificado
+INT-0194,S-A1-ORD-076,DIP-18,EXH-2024-0443,,Transparencia,en_contra,https://example.org/demo/diario/s-a1-ord-076,74,EV-DEMO-01405,verificado
+INT-0195,S-A1-ORD-040,DIP-07,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a1-ord-040,59,EV-DEMO-01406,verificado
+INT-0196,S-A2-ORD-062,DIP-06,INI-2024-0061,,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-062,48,EV-DEMO-01407,verificado
+INT-0197,S-A1-ORD-033,DIP-22,,Asuntos generales,Seguridad pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-033,67,EV-DEMO-01408,verificado
+INT-0198,S-A2-ORD-014,DIP-08,,Asuntos generales,Transparencia,mocion,https://example.org/demo/diario/s-a2-ord-014,3,EV-DEMO-01409,verificado
+INT-0199,S-A1-ORD-015,DIP-12,DIC-2025-0062,,Cultura,a_favor,https://example.org/demo/diario/s-a1-ord-015,62,EV-DEMO-01410,verificado
+INT-0200,S-A1-ORD-029,DIP-04,DIC-2026-0006,,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ord-029,10,EV-DEMO-01411,verificado
+INT-0201,S-A2-ORD-070,DIP-18,EXH-2025-0350,,Desarrollo rural,presentacion,https://example.org/demo/diario/s-a2-ord-070,80,EV-DEMO-01412,verificado
+INT-0202,S-A1-ORD-017,DIP-09,,Asuntos generales,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ord-017,61,EV-DEMO-01413,verificado
+INT-0203,S-A1-ORD-013,DIP-02,,Asuntos generales,Movilidad,mocion,https://example.org/demo/diario/s-a1-ord-013,52,EV-DEMO-01414,verificado
+INT-0204,S-A1-ORD-008,DIP-24,DIC-2026-0207,,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ord-008,50,EV-DEMO-01415,pendiente
+INT-0205,S-A2-ORD-036,DIP-23,DIC-2026-0162,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a2-ord-036,22,EV-DEMO-01416,verificado
+INT-0206,S-A2-ORD-045,DIP-18,DIC-2026-0341,,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a2-ord-045,39,EV-DEMO-01417,verificado
+INT-0207,S-A1-ORD-023,DIP-01,PDA-2024-0493,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a1-ord-023,45,EV-DEMO-01418,verificado
+INT-0208,S-A2-ORD-042,DIP-04,INI-2024-0107,,Movilidad,a_favor,https://example.org/demo/diario/s-a2-ord-042,74,EV-DEMO-01419,verificado
+INT-0209,S-A1-ORD-042,DIP-16,EXH-2026-0377,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a1-ord-042,44,EV-DEMO-01420,verificado
+INT-0210,S-A1-ORD-065,DIP-19,,Asuntos generales,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a1-ord-065,70,EV-DEMO-01421,verificado
+INT-0211,S-A1-ORD-005,DIP-09,DIC-2026-0019,,Salud,presentacion,https://example.org/demo/diario/s-a1-ord-005,42,EV-DEMO-01422,verificado
+INT-0212,S-A2-ORD-050,DIP-16,PDA-2025-0462,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a2-ord-050,73,EV-DEMO-01423,verificado
+INT-0213,S-A2-ORD-060,DIP-08,INI-2025-0240,,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a2-ord-060,24,EV-DEMO-01424,verificado
+INT-0214,S-A1-EXT-077,DIP-04,EXH-2026-0425,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a1-ext-077,15,EV-DEMO-01425,verificado
+INT-0215,S-A2-ORD-030,DIP-03,EXH-2025-0345,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a2-ord-030,38,EV-DEMO-01426,verificado
+INT-0216,S-A2-ORD-051,DIP-23,DIC-2025-0365,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a2-ord-051,8,EV-DEMO-01427,verificado
+INT-0217,S-A2-ORD-055,DIP-06,,Asuntos generales,Salud,asuntos_generales,https://example.org/demo/diario/s-a2-ord-055,61,EV-DEMO-01428,verificado
+INT-0218,S-A2-ORD-015,DIP-18,INI-2025-0091,,Educación,en_contra,https://example.org/demo/diario/s-a2-ord-015,55,EV-DEMO-01429,verificado
+INT-0219,S-A1-ORD-035,DIP-01,INI-2025-0034,,Hacienda pública,en_contra,https://example.org/demo/diario/s-a1-ord-035,60,EV-DEMO-01430,verificado
+INT-0220,S-A1-ORD-041,DIP-08,EXH-2024-0362,,Transparencia,a_favor,https://example.org/demo/diario/s-a1-ord-041,64,EV-DEMO-01431,verificado
+INT-0221,S-A1-ORD-067,DIP-11,DIC-2025-0102,,Educación,en_contra,https://example.org/demo/diario/s-a1-ord-067,41,EV-DEMO-01432,verificado
+INT-0222,S-A1-ORD-012,DIP-20,DIC-2026-0164,,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a1-ord-012,56,EV-DEMO-01433,verificado
+INT-0223,S-A1-ORD-038,DIP-15,DIC-2025-0401,,Turismo,a_favor,https://example.org/demo/diario/s-a1-ord-038,13,EV-DEMO-01434,verificado
+INT-0224,S-A1-ORD-040,DIP-09,EXH-2025-0370,,Desarrollo rural,presentacion,https://example.org/demo/diario/s-a1-ord-040,80,EV-DEMO-01435,verificado
+INT-0225,S-A2-ORD-068,DIP-08,INI-2026-0305,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-ord-068,41,EV-DEMO-01436,verificado
+INT-0226,S-A1-ORD-022,DIP-22,,Asuntos generales,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ord-022,80,EV-DEMO-01437,verificado
+INT-0227,S-A1-ORD-056,DIP-14,INI-2025-0272,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a1-ord-056,72,EV-DEMO-01438,verificado
+INT-0228,S-A2-SOL-001,DIP-09,INI-2024-0327,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a2-sol-001,56,EV-DEMO-01439,verificado
+INT-0229,S-A2-ORD-045,DIP-11,INI-2024-0311,,Educación,presentacion,https://example.org/demo/diario/s-a2-ord-045,64,EV-DEMO-01440,verificado
+INT-0230,S-A1-ORD-031,DIP-06,ACU-2025-0509,,Gobierno interior,en_contra,https://example.org/demo/diario/s-a1-ord-031,77,EV-DEMO-01441,verificado
+INT-0231,S-A1-ORD-031,DIP-05,INI-2025-0320,,Cultura,a_favor,https://example.org/demo/diario/s-a1-ord-031,28,EV-DEMO-01442,verificado
+INT-0232,S-A2-ORD-047,DIP-26,DIC-2026-0084,,Movilidad,a_favor,https://example.org/demo/diario/s-a2-ord-047,31,EV-DEMO-01443,verificado
+INT-0233,S-A2-ORD-018,DIP-11,EXH-2024-0450,,Agua,a_favor,https://example.org/demo/diario/s-a2-ord-018,72,EV-DEMO-01444,verificado
+INT-0234,S-A2-ORD-050,DIP-09,,Asuntos generales,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a2-ord-050,27,EV-DEMO-01445,verificado
+INT-0235,S-A2-ORD-007,DIP-05,INI-2025-0237,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a2-ord-007,30,EV-DEMO-01446,verificado
+INT-0236,S-A1-ORD-024,DIP-11,EXH-2024-0419,,Transparencia,a_favor,https://example.org/demo/diario/s-a1-ord-024,12,EV-DEMO-01447,verificado
+INT-0237,S-A1-ORD-022,DIP-20,DIC-2026-0026,,Agua,presentacion,https://example.org/demo/diario/s-a1-ord-022,35,EV-DEMO-01448,verificado
+INT-0238,S-A2-ORD-039,DIP-01,INI-2025-0049,,Educación,en_contra,https://example.org/demo/diario/s-a2-ord-039,43,EV-DEMO-01449,verificado
+INT-0239,S-A2-ORD-049,DIP-12,EXH-2025-0340,,Igualdad de género,en_contra,https://example.org/demo/diario/s-a2-ord-049,22,EV-DEMO-01450,verificado
+INT-0240,S-A2-ORD-019,DIP-26,PDA-2024-0480,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a2-ord-019,11,EV-DEMO-01451,verificado
+INT-0241,S-A2-ORD-006,DIP-25,DIC-2026-0125,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a2-ord-006,63,EV-DEMO-01452,verificado
+INT-0242,S-A2-ORD-038,DIP-06,DIC-2026-0295,,Educación,en_contra,https://example.org/demo/diario/s-a2-ord-038,71,EV-DEMO-01453,verificado
+INT-0243,S-A1-ORD-018,DIP-17,INI-2025-0292,,Desarrollo económico,en_contra,https://example.org/demo/diario/s-a1-ord-018,45,EV-DEMO-01454,verificado
+INT-0244,S-A2-ORD-013,DIP-06,DIC-2026-0475,,Salud,en_contra,https://example.org/demo/diario/s-a2-ord-013,57,EV-DEMO-01455,verificado
+INT-0245,S-A1-ORD-019,DIP-22,DIC-2025-0039,,Seguridad pública,a_favor,https://example.org/demo/diario/s-a1-ord-019,65,EV-DEMO-01456,verificado
+INT-0246,S-A1-ORD-021,DIP-16,INI-2026-0258,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a1-ord-021,53,EV-DEMO-01457,verificado
+INT-0247,S-A2-ORD-013,DIP-03,EXH-2025-0414,,Salud,presentacion,https://example.org/demo/diario/s-a2-ord-013,56,EV-DEMO-01458,verificado
+INT-0248,S-A1-ORD-030,DIP-12,,Asuntos generales,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a1-ord-030,41,EV-DEMO-01459,verificado
+INT-0249,S-A1-ORD-063,DIP-12,,Asuntos generales,Igualdad de género,mocion,https://example.org/demo/diario/s-a1-ord-063,47,EV-DEMO-01460,verificado
+INT-0250,S-A2-ORD-046,DIP-20,DIC-2026-0043,,Cultura,presentacion,https://example.org/demo/diario/s-a2-ord-046,51,EV-DEMO-01461,verificado
+INT-0251,S-A1-ORD-072,DIP-03,DIC-2025-0241,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a1-ord-072,77,EV-DEMO-01462,verificado
+INT-0252,S-A1-ORD-053,DIP-22,INI-2025-0300,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a1-ord-053,46,EV-DEMO-01463,verificado
+INT-0253,S-A1-ORD-073,DIP-18,INI-2026-0128,,Cultura,en_contra,https://example.org/demo/diario/s-a1-ord-073,40,EV-DEMO-01464,verificado
+INT-0254,S-A2-EXT-076,DIP-11,INI-2026-0085,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a2-ext-076,77,EV-DEMO-01465,pendiente
+INT-0255,S-A2-ORD-004,DIP-18,INI-2024-0009,,Salud,en_contra,https://example.org/demo/diario/s-a2-ord-004,20,EV-DEMO-01466,verificado
+INT-0256,S-A2-EXT-076,DIP-10,INI-2026-0126,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a2-ext-076,61,EV-DEMO-01467,verificado
+INT-0257,S-A1-ORD-034,DIP-25,PDA-2025-0455,,Educación,a_favor,https://example.org/demo/diario/s-a1-ord-034,24,EV-DEMO-01468,verificado
+INT-0258,S-A1-ORD-066,DIP-12,EXH-2025-0423,,Desarrollo económico,presentacion,https://example.org/demo/diario/s-a1-ord-066,48,EV-DEMO-01469,verificado
+INT-0259,S-A1-ORD-033,DIP-18,PDA-2025-0478,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-033,74,EV-DEMO-01470,verificado
+INT-0260,S-A2-ORD-020,DIP-26,,Asuntos generales,Seguridad pública,posicionamiento,https://example.org/demo/diario/s-a2-ord-020,17,EV-DEMO-01471,verificado
+INT-0261,S-A1-ORD-055,DIP-04,,Asuntos generales,Transparencia,posicionamiento,https://example.org/demo/diario/s-a1-ord-055,15,EV-DEMO-01472,verificado
+INT-0262,S-A1-ORD-002,DIP-09,INI-2026-0294,,Educación,en_contra,https://example.org/demo/diario/s-a1-ord-002,10,EV-DEMO-01473,verificado
+INT-0263,S-A1-ORD-027,DIP-18,DIC-2026-0219,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a1-ord-027,65,EV-DEMO-01474,verificado
+INT-0264,S-A2-ORD-004,DIP-15,INI-2025-0053,,Salud,a_favor,https://example.org/demo/diario/s-a2-ord-004,3,EV-DEMO-01475,verificado
+INT-0265,S-A2-ORD-008,DIP-13,EXH-2025-0368,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a2-ord-008,37,EV-DEMO-01476,verificado
+INT-0266,S-A1-ORD-016,DIP-12,,Asuntos generales,Desarrollo económico,asuntos_generales,https://example.org/demo/diario/s-a1-ord-016,79,EV-DEMO-01477,verificado
+INT-0267,S-A2-ORD-043,DIP-24,EXH-2025-0380,,Cultura,presentacion,https://example.org/demo/diario/s-a2-ord-043,33,EV-DEMO-01478,verificado
+INT-0268,S-A1-ORD-009,DIP-08,DIC-2025-0286,,Agua,posicionamiento,https://example.org/demo/diario/s-a1-ord-009,19,EV-DEMO-01479,verificado
+INT-0269,S-A1-ORD-050,DIP-13,INI-2024-0127,,Turismo,presentacion,https://example.org/demo/diario/s-a1-ord-050,75,EV-DEMO-01480,verificado
+INT-0270,S-A1-ORD-009,DIP-04,INI-2024-0068,,Cultura,a_favor,https://example.org/demo/diario/s-a1-ord-009,33,EV-DEMO-01481,verificado
+INT-0271,S-A2-ORD-012,DIP-24,EXH-2026-0379,,Agua,en_contra,https://example.org/demo/diario/s-a2-ord-012,66,EV-DEMO-01482,verificado
+INT-0272,S-A1-ORD-022,DIP-09,PDA-2026-0485,,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ord-022,14,EV-DEMO-01483,verificado
+INT-0273,S-A2-ORD-009,DIP-13,INI-2026-0301,,Educación,presentacion,https://example.org/demo/diario/s-a2-ord-009,32,EV-DEMO-01484,pendiente
+INT-0274,S-A1-ORD-022,DIP-25,,Asuntos generales,Desarrollo rural,mocion,https://example.org/demo/diario/s-a1-ord-022,74,EV-DEMO-01485,verificado
+INT-0275,S-A1-ORD-060,DIP-24,INI-2024-0166,,Salud,posicionamiento,https://example.org/demo/diario/s-a1-ord-060,67,EV-DEMO-01486,verificado
+INT-0276,S-A1-ORD-032,DIP-02,DIC-2026-0289,,Agua,a_favor,https://example.org/demo/diario/s-a1-ord-032,72,EV-DEMO-01487,verificado
+INT-0277,S-A2-ORD-060,DIP-01,,Asuntos generales,Cultura,asuntos_generales,https://example.org/demo/diario/s-a2-ord-060,19,EV-DEMO-01488,verificado
+INT-0278,S-A1-ORD-053,DIP-17,INI-2025-0131,,Cultura,en_contra,https://example.org/demo/diario/s-a1-ord-053,24,EV-DEMO-01489,verificado
+INT-0279,S-A2-ORD-050,DIP-04,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-050,7,EV-DEMO-01490,verificado
+INT-0280,S-A2-ORD-069,DIP-20,,Asuntos generales,Medio ambiente,mocion,https://example.org/demo/diario/s-a2-ord-069,54,EV-DEMO-01491,verificado
+INT-0281,S-A1-ORD-006,DIP-16,EXH-2024-0364,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-006,47,EV-DEMO-01492,verificado
+INT-0282,S-A1-ORD-009,DIP-11,INI-2026-0119,,Educación,en_contra,https://example.org/demo/diario/s-a1-ord-009,40,EV-DEMO-01493,verificado
+INT-0283,S-A1-ORD-038,DIP-03,,Asuntos generales,Desarrollo económico,asuntos_generales,https://example.org/demo/diario/s-a1-ord-038,28,EV-DEMO-01494,verificado
+INT-0284,S-A1-ORD-007,DIP-12,DIC-2025-0232,,Cultura,presentacion,https://example.org/demo/diario/s-a1-ord-007,14,EV-DEMO-01495,verificado
+INT-0285,S-A2-ORD-029,DIP-10,DIC-2026-0277,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a2-ord-029,34,EV-DEMO-01496,verificado
+INT-0286,S-A2-ORD-004,DIP-06,,Asuntos generales,Salud,asuntos_generales,https://example.org/demo/diario/s-a2-ord-004,30,EV-DEMO-01497,verificado
+INT-0287,S-A2-ORD-067,DIP-25,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-067,24,EV-DEMO-01498,verificado
+INT-0288,S-A2-ORD-026,DIP-13,INI-2025-0051,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-ord-026,58,EV-DEMO-01499,verificado
+INT-0289,S-A1-ORD-068,DIP-19,,Asuntos generales,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a1-ord-068,3,EV-DEMO-01500,verificado
+INT-0290,S-A2-ORD-007,DIP-13,INI-2025-0290,,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a2-ord-007,48,EV-DEMO-01501,verificado
+INT-0291,S-A2-ORD-055,DIP-21,INI-2026-0007,,Movilidad,en_contra,https://example.org/demo/diario/s-a2-ord-055,29,EV-DEMO-01502,verificado
+INT-0292,S-A2-ORD-015,DIP-11,,Asuntos generales,Igualdad de género,mocion,https://example.org/demo/diario/s-a2-ord-015,46,EV-DEMO-01503,verificado
+INT-0293,S-A1-ORD-010,DIP-03,EXH-2026-0360,,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a1-ord-010,28,EV-DEMO-01504,verificado
+INT-0294,S-A2-ORD-031,DIP-09,,Asuntos generales,Turismo,asuntos_generales,https://example.org/demo/diario/s-a2-ord-031,5,EV-DEMO-01505,verificado
+INT-0295,S-A1-ORD-060,DIP-16,PDA-2025-0501,,Seguridad pública,presentacion,https://example.org/demo/diario/s-a1-ord-060,17,EV-DEMO-01506,verificado
+INT-0296,S-A2-ORD-021,DIP-12,INI-2025-0109,,Derechos humanos,en_contra,https://example.org/demo/diario/s-a2-ord-021,13,EV-DEMO-01507,verificado
+INT-0297,S-A2-ORD-036,DIP-05,INI-2025-0290,,Igualdad de género,en_contra,https://example.org/demo/diario/s-a2-ord-036,55,EV-DEMO-01508,verificado
+INT-0298,S-A1-ORD-030,DIP-04,EXH-2025-0351,,Cultura,posicionamiento,https://example.org/demo/diario/s-a1-ord-030,59,EV-DEMO-01509,verificado
+INT-0299,S-A1-ORD-020,DIP-11,DIC-2025-0232,,Cultura,posicionamiento,https://example.org/demo/diario/s-a1-ord-020,57,EV-DEMO-01510,verificado
+INT-0300,S-A2-ORD-025,DIP-20,,Asuntos generales,Derechos humanos,mocion,https://example.org/demo/diario/s-a2-ord-025,53,EV-DEMO-01511,pendiente
+INT-0301,S-A2-ORD-051,DIP-26,DIC-2025-0089,,Salud,a_favor,https://example.org/demo/diario/s-a2-ord-051,14,EV-DEMO-01512,verificado
+INT-0302,S-A2-ORD-036,DIP-17,,Asuntos generales,Derechos humanos,mocion,https://example.org/demo/diario/s-a2-ord-036,56,EV-DEMO-01513,verificado
+INT-0303,S-A3-SOL-001,DIP-11,INI-2024-0061,,Cultura,a_favor,https://example.org/demo/diario/s-a3-sol-001,64,EV-DEMO-01514,verificado
+INT-0304,S-A2-ORD-026,DIP-10,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-026,59,EV-DEMO-01515,verificado
+INT-0305,S-A1-ORD-023,DIP-07,DIC-2026-0096,,Cultura,posicionamiento,https://example.org/demo/diario/s-a1-ord-023,41,EV-DEMO-01516,verificado
+INT-0306,S-A1-ORD-069,DIP-09,INI-2026-0117,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-069,68,EV-DEMO-01517,verificado
+INT-0307,S-A2-ORD-048,DIP-11,DIC-2025-0045,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a2-ord-048,12,EV-DEMO-01518,verificado
+INT-0308,S-A3-SOL-001,DIP-24,EXH-2025-0386,,Cultura,a_favor,https://example.org/demo/diario/s-a3-sol-001,68,EV-DEMO-01519,verificado
+INT-0309,S-A1-ORD-064,DIP-09,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a1-ord-064,39,EV-DEMO-01520,verificado
+INT-0310,S-A1-ORD-007,DIP-21,,Asuntos generales,Seguridad pública,mocion,https://example.org/demo/diario/s-a1-ord-007,63,EV-DEMO-01521,verificado
+INT-0311,S-A1-ORD-060,DIP-18,,Asuntos generales,Agua,asuntos_generales,https://example.org/demo/diario/s-a1-ord-060,57,EV-DEMO-01522,verificado
+INT-0312,S-A2-ORD-011,DIP-12,,Asuntos generales,Transparencia,posicionamiento,https://example.org/demo/diario/s-a2-ord-011,48,EV-DEMO-01523,verificado
+INT-0313,S-A2-ORD-018,DIP-24,EXH-2024-0418,,Movilidad,en_contra,https://example.org/demo/diario/s-a2-ord-018,74,EV-DEMO-01524,verificado
+INT-0314,S-A2-ORD-007,DIP-20,INI-2025-0193,,Desarrollo económico,en_contra,https://example.org/demo/diario/s-a2-ord-007,32,EV-DEMO-01525,verificado
+INT-0315,S-A2-ORD-005,DIP-15,INI-2025-0115,,Agua,presentacion,https://example.org/demo/diario/s-a2-ord-005,57,EV-DEMO-01526,verificado
+INT-0316,S-A3-ORD-002,DIP-22,DIC-2026-0135,,Turismo,posicionamiento,https://example.org/demo/diario/s-a3-ord-002,45,EV-DEMO-01527,verificado
+INT-0317,S-A2-ORD-036,DIP-16,,Asuntos generales,Agua,asuntos_generales,https://example.org/demo/diario/s-a2-ord-036,69,EV-DEMO-01528,verificado
+INT-0318,S-A1-ORD-035,DIP-24,PDA-2025-0465,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a1-ord-035,70,EV-DEMO-01529,verificado
+INT-0319,S-A2-ORD-054,DIP-20,INI-2025-0101,,Educación,a_favor,https://example.org/demo/diario/s-a2-ord-054,43,EV-DEMO-01530,verificado
+INT-0320,S-A1-ORD-061,DIP-06,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a1-ord-061,67,EV-DEMO-01531,verificado
+INT-0321,S-A2-ORD-024,DIP-10,,Asuntos generales,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a2-ord-024,22,EV-DEMO-01532,verificado
+INT-0322,S-A1-ORD-033,DIP-11,INI-2025-0208,,Igualdad de género,en_contra,https://example.org/demo/diario/s-a1-ord-033,30,EV-DEMO-01533,verificado
+INT-0323,S-A1-ORD-034,DIP-24,INI-2024-0278,,Desarrollo económico,en_contra,https://example.org/demo/diario/s-a1-ord-034,46,EV-DEMO-01534,verificado
+INT-0324,S-A1-ORD-044,DIP-18,EXH-2024-0410,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a1-ord-044,76,EV-DEMO-01535,verificado
+INT-0325,S-A1-ORD-045,DIP-18,,Asuntos generales,Seguridad pública,asuntos_generales,https://example.org/demo/diario/s-a1-ord-045,48,EV-DEMO-01536,verificado
+INT-0326,S-A1-ORD-056,DIP-04,EXH-2025-0348,,Cultura,presentacion,https://example.org/demo/diario/s-a1-ord-056,61,EV-DEMO-01537,verificado
+INT-0327,S-A2-ORD-039,DIP-16,INI-2026-0114,,Derechos humanos,presentacion,https://example.org/demo/diario/s-a2-ord-039,42,EV-DEMO-01538,verificado
+INT-0328,S-A1-ORD-037,DIP-24,EXH-2026-0453,,Movilidad,a_favor,https://example.org/demo/diario/s-a1-ord-037,71,EV-DEMO-01539,verificado
+INT-0329,S-A2-ORD-026,DIP-02,DIC-2025-0052,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-ord-026,19,EV-DEMO-01540,verificado
+INT-0330,S-A1-SOL-001,DIP-05,DIC-2026-0315,,Transparencia,en_contra,https://example.org/demo/diario/s-a1-sol-001,19,EV-DEMO-01541,verificado
+INT-0331,S-A2-ORD-056,DIP-12,EXH-2026-0449,,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-056,80,EV-DEMO-01542,verificado
+INT-0332,S-A2-ORD-051,DIP-21,DIC-2025-0451,,Agua,a_favor,https://example.org/demo/diario/s-a2-ord-051,20,EV-DEMO-01543,verificado
+INT-0333,S-A1-ORD-012,DIP-10,EXH-2025-0439,,Derechos humanos,presentacion,https://example.org/demo/diario/s-a1-ord-012,19,EV-DEMO-01544,verificado
+INT-0334,S-A1-ORD-044,DIP-22,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a1-ord-044,22,EV-DEMO-01545,verificado
+INT-0335,S-A1-ORD-009,DIP-01,ACU-2025-0510,,Gobierno interior,presentacion,https://example.org/demo/diario/s-a1-ord-009,74,EV-DEMO-01546,verificado
+INT-0336,S-A2-ORD-005,DIP-20,,Asuntos generales,Turismo,posicionamiento,https://example.org/demo/diario/s-a2-ord-005,9,EV-DEMO-01547,verificado
+INT-0337,S-A1-ORD-023,DIP-18,INI-2026-0317,,Transparencia,a_favor,https://example.org/demo/diario/s-a1-ord-023,54,EV-DEMO-01548,verificado
+INT-0338,S-A1-ORD-050,DIP-25,EXH-2025-0339,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-050,78,EV-DEMO-01549,verificado
+INT-0339,S-A2-ORD-018,DIP-10,,Asuntos generales,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a2-ord-018,16,EV-DEMO-01550,verificado
+INT-0340,S-A1-ORD-058,DIP-11,,Asuntos generales,Turismo,posicionamiento,https://example.org/demo/diario/s-a1-ord-058,74,EV-DEMO-01551,verificado
+INT-0341,S-A2-ORD-055,DIP-19,,Asuntos generales,Igualdad de género,asuntos_generales,https://example.org/demo/diario/s-a2-ord-055,41,EV-DEMO-01552,verificado
+INT-0342,S-A1-ORD-030,DIP-22,INI-2025-0099,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a1-ord-030,19,EV-DEMO-01553,pendiente
+INT-0343,S-A2-ORD-016,DIP-10,EXH-2025-0351,,Cultura,presentacion,https://example.org/demo/diario/s-a2-ord-016,53,EV-DEMO-01554,verificado
+INT-0344,S-A2-ORD-011,DIP-25,,Asuntos generales,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a2-ord-011,42,EV-DEMO-01555,pendiente
+INT-0345,S-A2-ORD-002,DIP-12,,Asuntos generales,Turismo,posicionamiento,https://example.org/demo/diario/s-a2-ord-002,59,EV-DEMO-01556,verificado
+INT-0346,S-A2-ORD-015,DIP-11,DIC-2025-0250,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-015,10,EV-DEMO-01557,verificado
+INT-0347,S-A1-ORD-009,DIP-11,,Asuntos generales,Medio ambiente,mocion,https://example.org/demo/diario/s-a1-ord-009,40,EV-DEMO-01558,verificado
+INT-0348,S-A2-ORD-058,DIP-06,DIC-2025-0168,,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a2-ord-058,69,EV-DEMO-01559,verificado
+INT-0349,S-A1-ORD-032,DIP-16,ACU-2025-0510,,Gobierno interior,posicionamiento,https://example.org/demo/diario/s-a1-ord-032,52,EV-DEMO-01560,verificado
+INT-0350,S-A2-ORD-056,DIP-16,DIC-2026-0118,,Hacienda pública,en_contra,https://example.org/demo/diario/s-a2-ord-056,71,EV-DEMO-01561,verificado
+INT-0351,S-A2-ORD-033,DIP-23,EXH-2024-0443,,Transparencia,presentacion,https://example.org/demo/diario/s-a2-ord-033,76,EV-DEMO-01562,verificado
+INT-0352,S-A1-ORD-021,DIP-21,INI-2026-0095,,Cultura,a_favor,https://example.org/demo/diario/s-a1-ord-021,27,EV-DEMO-01563,verificado
+INT-0353,S-A2-ORD-018,DIP-04,,Asuntos generales,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a2-ord-018,3,EV-DEMO-01564,verificado
+INT-0354,S-A1-ORD-071,DIP-08,,Asuntos generales,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a1-ord-071,42,EV-DEMO-01565,verificado
+INT-0355,S-A1-ORD-002,DIP-11,DIC-2025-0062,,Cultura,a_favor,https://example.org/demo/diario/s-a1-ord-002,3,EV-DEMO-01566,verificado
+INT-0356,S-A1-ORD-045,DIP-22,,Asuntos generales,Salud,asuntos_generales,https://example.org/demo/diario/s-a1-ord-045,48,EV-DEMO-01567,verificado
+INT-0357,S-A1-ORD-029,DIP-11,EXH-2025-0368,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a1-ord-029,12,EV-DEMO-01568,verificado
+INT-0358,S-A1-ORD-058,DIP-25,INI-2025-0143,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a1-ord-058,64,EV-DEMO-01569,verificado
+INT-0359,S-A2-ORD-007,DIP-20,,Asuntos generales,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a2-ord-007,71,EV-DEMO-01570,verificado
+INT-0360,S-A2-ORD-059,DIP-24,PDA-2025-0476,,Turismo,presentacion,https://example.org/demo/diario/s-a2-ord-059,48,EV-DEMO-01571,pendiente
+INT-0361,S-A1-ORD-075,DIP-16,INI-2025-0067,,Desarrollo rural,presentacion,https://example.org/demo/diario/s-a1-ord-075,13,EV-DEMO-01572,verificado
+INT-0362,S-A1-ORD-022,DIP-22,,Asuntos generales,Salud,asuntos_generales,https://example.org/demo/diario/s-a1-ord-022,79,EV-DEMO-01573,verificado
+INT-0363,S-A1-ORD-050,DIP-17,,Asuntos generales,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a1-ord-050,6,EV-DEMO-01574,verificado
+INT-0364,S-A2-ORD-008,DIP-09,DIC-2025-0346,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-ord-008,32,EV-DEMO-01575,verificado
+INT-0365,S-A2-ORD-047,DIP-10,DIC-2025-0228,,Educación,a_favor,https://example.org/demo/diario/s-a2-ord-047,67,EV-DEMO-01576,verificado
+INT-0366,S-A1-ORD-068,DIP-15,DIC-2025-0066,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a1-ord-068,14,EV-DEMO-01577,verificado
+INT-0367,S-A2-ORD-014,DIP-12,DIC-2025-0401,,Turismo,a_favor,https://example.org/demo/diario/s-a2-ord-014,60,EV-DEMO-01578,verificado
+INT-0368,S-A1-ORD-025,DIP-09,DIC-2026-0170,,Seguridad pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-025,19,EV-DEMO-01579,verificado
+INT-0369,S-A1-ORD-010,DIP-16,,Asuntos generales,Seguridad pública,mocion,https://example.org/demo/diario/s-a1-ord-010,75,EV-DEMO-01580,verificado
+INT-0370,S-A1-ORD-004,DIP-25,,Asuntos generales,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a1-ord-004,76,EV-DEMO-01581,verificado
+INT-0371,S-A1-ORD-075,DIP-25,INI-2025-0324,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a1-ord-075,15,EV-DEMO-01582,verificado
+INT-0372,S-A2-ORD-058,DIP-10,EXH-2025-0381,,Salud,presentacion,https://example.org/demo/diario/s-a2-ord-058,40,EV-DEMO-01583,verificado
+INT-0373,S-A2-ORD-075,DIP-09,,Asuntos generales,Igualdad de género,mocion,https://example.org/demo/diario/s-a2-ord-075,55,EV-DEMO-01584,verificado
+INT-0374,S-A2-ORD-073,DIP-22,INI-2026-0191,,Agua,en_contra,https://example.org/demo/diario/s-a2-ord-073,64,EV-DEMO-01585,verificado
+INT-0375,S-A1-ORD-058,DIP-17,DCR-DEC-DEMO-003,,Agua,a_favor,https://example.org/demo/diario/s-a1-ord-058,16,EV-DEMO-01586,verificado
+INT-0376,S-A2-ORD-032,DIP-09,,Asuntos generales,Igualdad de género,asuntos_generales,https://example.org/demo/diario/s-a2-ord-032,19,EV-DEMO-01587,verificado
+INT-0377,S-A2-ORD-044,DIP-08,,Asuntos generales,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a2-ord-044,28,EV-DEMO-01588,verificado
+INT-0378,S-A1-ORD-058,DIP-22,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a1-ord-058,16,EV-DEMO-01589,verificado
+INT-0379,S-A2-ORD-071,DIP-09,,Asuntos generales,Transparencia,mocion,https://example.org/demo/diario/s-a2-ord-071,75,EV-DEMO-01590,verificado
+INT-0380,S-A1-ORD-058,DIP-04,DIC-2026-0291,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a1-ord-058,33,EV-DEMO-01591,verificado
+INT-0381,S-A2-SOL-001,DIP-19,INI-2026-0064,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-sol-001,13,EV-DEMO-01592,verificado
+INT-0382,S-A2-ORD-031,DIP-09,,Asuntos generales,Salud,posicionamiento,https://example.org/demo/diario/s-a2-ord-031,43,EV-DEMO-01593,verificado
+INT-0383,S-A1-ORD-007,DIP-18,INI-2025-0078,,Hacienda pública,en_contra,https://example.org/demo/diario/s-a1-ord-007,30,EV-DEMO-01594,pendiente
+INT-0384,S-A1-ORD-039,DIP-22,,Asuntos generales,Desarrollo económico,asuntos_generales,https://example.org/demo/diario/s-a1-ord-039,22,EV-DEMO-01595,verificado
+INT-0385,S-A2-ORD-039,DIP-11,INI-2026-0301,,Educación,en_contra,https://example.org/demo/diario/s-a2-ord-039,51,EV-DEMO-01596,pendiente
+INT-0386,S-A2-ORD-019,DIP-18,INI-2026-0259,,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a2-ord-019,19,EV-DEMO-01597,verificado
+INT-0387,S-A2-ORD-031,DIP-08,INI-2025-0047,,Seguridad pública,a_favor,https://example.org/demo/diario/s-a2-ord-031,10,EV-DEMO-01598,verificado
+INT-0388,S-A2-ORD-018,DIP-23,DCR-DEC-DEMO-001,,Movilidad,a_favor,https://example.org/demo/diario/s-a2-ord-018,50,EV-DEMO-01599,verificado
+INT-0389,S-A1-ORD-064,DIP-09,,Asuntos generales,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a1-ord-064,76,EV-DEMO-01600,verificado
+INT-0390,S-A2-ORD-047,DIP-12,,Asuntos generales,Movilidad,asuntos_generales,https://example.org/demo/diario/s-a2-ord-047,3,EV-DEMO-01601,pendiente
+INT-0391,S-A1-ORD-044,DIP-10,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a1-ord-044,57,EV-DEMO-01602,verificado
+INT-0392,S-A2-ORD-019,DIP-25,DIC-2025-0228,,Educación,a_favor,https://example.org/demo/diario/s-a2-ord-019,51,EV-DEMO-01603,verificado
+INT-0393,S-A2-ORD-067,DIP-20,DIC-2026-0180,,Movilidad,en_contra,https://example.org/demo/diario/s-a2-ord-067,49,EV-DEMO-01604,verificado
+INT-0394,S-A2-ORD-022,DIP-17,PDA-2026-0485,,Educación,en_contra,https://example.org/demo/diario/s-a2-ord-022,50,EV-DEMO-01605,verificado
+INT-0395,S-A2-ORD-007,DIP-16,DIC-2026-0026,,Agua,en_contra,https://example.org/demo/diario/s-a2-ord-007,28,EV-DEMO-01606,verificado
+INT-0396,S-A1-EXT-077,DIP-02,INI-2025-0005,,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ext-077,60,EV-DEMO-01607,verificado
+INT-0397,S-A2-ORD-034,DIP-23,DIC-2025-0279,,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a2-ord-034,26,EV-DEMO-01608,verificado
+INT-0398,S-A1-ORD-042,DIP-17,INI-2024-0271,,Turismo,a_favor,https://example.org/demo/diario/s-a1-ord-042,5,EV-DEMO-01609,verificado
+INT-0399,S-A2-ORD-055,DIP-25,EXH-2026-0357,,Desarrollo rural,presentacion,https://example.org/demo/diario/s-a2-ord-055,77,EV-DEMO-01610,verificado
+INT-0400,S-A2-ORD-005,DIP-17,EXH-2025-0409,,Seguridad pública,presentacion,https://example.org/demo/diario/s-a2-ord-005,71,EV-DEMO-01611,verificado
+INT-0401,S-A2-ORD-029,DIP-17,INI-2025-0143,,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a2-ord-029,53,EV-DEMO-01612,pendiente
+INT-0402,S-A2-ORD-008,DIP-08,,Asuntos generales,Derechos humanos,asuntos_generales,https://example.org/demo/diario/s-a2-ord-008,46,EV-DEMO-01613,verificado
+INT-0403,S-A2-ORD-023,DIP-11,EXH-2026-0360,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a2-ord-023,72,EV-DEMO-01614,pendiente
+INT-0404,S-A2-ORD-043,DIP-01,INI-2024-0316,,Cultura,presentacion,https://example.org/demo/diario/s-a2-ord-043,56,EV-DEMO-01615,verificado
+INT-0405,S-A2-ORD-028,DIP-11,INI-2026-0187,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a2-ord-028,76,EV-DEMO-01616,verificado
+INT-0406,S-A1-ORD-027,DIP-19,PDA-2025-0463,,Salud,posicionamiento,https://example.org/demo/diario/s-a1-ord-027,43,EV-DEMO-01617,verificado
+INT-0407,S-A2-ORD-023,DIP-02,DIC-2025-0148,,Cultura,a_favor,https://example.org/demo/diario/s-a2-ord-023,56,EV-DEMO-01618,verificado
+INT-0408,S-A1-ORD-070,DIP-17,DIC-2024-0268,,Turismo,a_favor,https://example.org/demo/diario/s-a1-ord-070,11,EV-DEMO-01619,verificado
+INT-0409,S-A2-ORD-015,DIP-23,,Asuntos generales,Agua,posicionamiento,https://example.org/demo/diario/s-a2-ord-015,58,EV-DEMO-01620,verificado
+INT-0410,S-A1-ORD-008,DIP-06,INI-2024-0177,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a1-ord-008,80,EV-DEMO-01621,verificado
+INT-0411,S-A1-ORD-023,DIP-18,ACU-2025-0508,,Gobierno interior,posicionamiento,https://example.org/demo/diario/s-a1-ord-023,53,EV-DEMO-01622,pendiente
+INT-0412,S-A2-ORD-030,DIP-20,DIC-2025-0321,,Cultura,presentacion,https://example.org/demo/diario/s-a2-ord-030,56,EV-DEMO-01623,verificado
+INT-0413,S-A2-ORD-021,DIP-11,,Asuntos generales,Hacienda pública,asuntos_generales,https://example.org/demo/diario/s-a2-ord-021,33,EV-DEMO-01624,verificado
+INT-0414,S-A1-ORD-046,DIP-03,DIC-2026-0470,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a1-ord-046,74,EV-DEMO-01625,verificado
+INT-0415,S-A2-ORD-005,DIP-10,INI-2025-0011,,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a2-ord-005,39,EV-DEMO-01626,verificado
+INT-0416,S-A2-ORD-053,DIP-14,DIC-2025-0250,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-053,65,EV-DEMO-01627,verificado
+INT-0417,S-A1-ORD-056,DIP-16,INI-2024-0309,,Cultura,presentacion,https://example.org/demo/diario/s-a1-ord-056,45,EV-DEMO-01628,verificado
+INT-0418,S-A2-ORD-034,DIP-20,DIC-2025-0477,,Turismo,en_contra,https://example.org/demo/diario/s-a2-ord-034,41,EV-DEMO-01629,verificado
+INT-0419,S-A2-ORD-064,DIP-02,INI-2024-0013,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-064,46,EV-DEMO-01630,verificado
+INT-0420,S-A2-EXT-076,DIP-16,INI-2026-0027,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ext-076,29,EV-DEMO-01631,verificado
+INT-0421,S-A2-ORD-031,DIP-02,PDA-2025-0488,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a2-ord-031,50,EV-DEMO-01632,verificado
+INT-0422,S-A1-ORD-075,DIP-24,INI-2024-0103,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a1-ord-075,45,EV-DEMO-01633,verificado
+INT-0423,S-A1-ORD-031,DIP-20,,Asuntos generales,Agua,mocion,https://example.org/demo/diario/s-a1-ord-031,44,EV-DEMO-01634,verificado
+INT-0424,S-A1-ORD-068,DIP-12,EXH-2025-0340,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a1-ord-068,73,EV-DEMO-01635,verificado
+INT-0425,S-A2-ORD-060,DIP-20,INI-2024-0159,,Educación,posicionamiento,https://example.org/demo/diario/s-a2-ord-060,38,EV-DEMO-01636,verificado
+INT-0426,S-A2-ORD-055,DIP-25,INI-2024-0068,,Cultura,en_contra,https://example.org/demo/diario/s-a2-ord-055,12,EV-DEMO-01637,verificado
+INT-0427,S-A1-ORD-059,DIP-11,DIC-2026-0170,,Seguridad pública,en_contra,https://example.org/demo/diario/s-a1-ord-059,15,EV-DEMO-01638,verificado
+INT-0428,S-A2-ORD-057,DIP-13,,Asuntos generales,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a2-ord-057,44,EV-DEMO-01639,verificado
+INT-0429,S-A1-ORD-050,DIP-11,PDA-2026-0469,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a1-ord-050,68,EV-DEMO-01640,verificado
+INT-0430,S-A1-ORD-058,DIP-15,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a1-ord-058,49,EV-DEMO-01641,verificado
+INT-0431,S-A2-ORD-065,DIP-08,INI-2025-0034,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a2-ord-065,21,EV-DEMO-01642,verificado
+INT-0432,S-A1-ORD-060,DIP-06,INI-2026-0246,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a1-ord-060,76,EV-DEMO-01643,verificado
+INT-0433,S-A2-ORD-031,DIP-21,EXH-2026-0375,,Agua,a_favor,https://example.org/demo/diario/s-a2-ord-031,46,EV-DEMO-01644,verificado
+INT-0434,S-A1-ORD-042,DIP-23,DIC-2026-0174,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a1-ord-042,23,EV-DEMO-01645,verificado
+INT-0435,S-A2-ORD-074,DIP-25,ACU-2025-0505,,Gobierno interior,presentacion,https://example.org/demo/diario/s-a2-ord-074,46,EV-DEMO-01646,verificado
+INT-0436,S-A1-ORD-046,DIP-01,INI-2026-0301,,Educación,en_contra,https://example.org/demo/diario/s-a1-ord-046,29,EV-DEMO-01647,verificado
+INT-0437,S-A2-ORD-037,DIP-17,EXH-2026-0375,,Agua,presentacion,https://example.org/demo/diario/s-a2-ord-037,31,EV-DEMO-01648,verificado
+INT-0438,S-A3-ORD-002,DIP-23,INI-2026-0258,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a3-ord-002,37,EV-DEMO-01649,verificado
+INT-0439,S-A2-ORD-019,DIP-17,INI-2026-0036,,Desarrollo económico,presentacion,https://example.org/demo/diario/s-a2-ord-019,77,EV-DEMO-01650,verificado
+INT-0440,S-A2-ORD-063,DIP-16,EXH-2025-0351,,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-063,75,EV-DEMO-01651,verificado
+INT-0441,S-A1-ORD-026,DIP-19,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a1-ord-026,58,EV-DEMO-01652,pendiente
+INT-0442,S-A1-ORD-016,DIP-23,EXH-2025-0339,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a1-ord-016,24,EV-DEMO-01653,verificado
+INT-0443,S-A2-ORD-051,DIP-06,INI-2024-0013,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a2-ord-051,70,EV-DEMO-01654,verificado
+INT-0444,S-A1-EXT-079,DIP-04,EXH-2026-0449,,Cultura,en_contra,https://example.org/demo/diario/s-a1-ext-079,44,EV-DEMO-01655,verificado
+INT-0445,S-A1-ORD-055,DIP-12,INI-2026-0288,,Agua,en_contra,https://example.org/demo/diario/s-a1-ord-055,39,EV-DEMO-01656,verificado
+INT-0446,S-A1-ORD-043,DIP-04,INI-2024-0016,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a1-ord-043,44,EV-DEMO-01657,verificado
+INT-0447,S-A1-ORD-007,DIP-15,INI-2025-0167,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a1-ord-007,37,EV-DEMO-01658,verificado
+INT-0448,S-A2-ORD-041,DIP-11,INI-2025-0320,,Cultura,a_favor,https://example.org/demo/diario/s-a2-ord-041,28,EV-DEMO-01659,verificado
+INT-0449,S-A2-ORD-004,DIP-18,PDA-2026-0502,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a2-ord-004,50,EV-DEMO-01660,verificado
+INT-0450,S-A2-ORD-060,DIP-04,INI-2025-0188,,Educación,presentacion,https://example.org/demo/diario/s-a2-ord-060,66,EV-DEMO-01661,verificado
+INT-0451,S-A1-ORD-070,DIP-19,INI-2025-0014,,Agua,posicionamiento,https://example.org/demo/diario/s-a1-ord-070,62,EV-DEMO-01662,verificado
+INT-0452,S-A1-ORD-076,DIP-01,,Asuntos generales,Movilidad,asuntos_generales,https://example.org/demo/diario/s-a1-ord-076,68,EV-DEMO-01663,verificado
+INT-0453,S-A2-ORD-058,DIP-02,DIC-2026-0189,,Educación,posicionamiento,https://example.org/demo/diario/s-a2-ord-058,65,EV-DEMO-01664,verificado
+INT-0454,S-A1-ORD-050,DIP-15,INI-2025-0223,,Derechos humanos,presentacion,https://example.org/demo/diario/s-a1-ord-050,39,EV-DEMO-01665,verificado
+INT-0455,S-A2-EXT-076,DIP-23,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ext-076,7,EV-DEMO-01666,verificado
+INT-0456,S-A2-ORD-020,DIP-16,DIC-2026-0498,,Transparencia,presentacion,https://example.org/demo/diario/s-a2-ord-020,80,EV-DEMO-01667,verificado
+INT-0457,S-A2-ORD-045,DIP-21,,Asuntos generales,Medio ambiente,asuntos_generales,https://example.org/demo/diario/s-a2-ord-045,60,EV-DEMO-01668,verificado
+INT-0458,S-A2-ORD-040,DIP-09,DIC-2025-0346,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-ord-040,42,EV-DEMO-01669,verificado
+INT-0459,S-A2-ORD-067,DIP-17,EXH-2026-0379,,Agua,a_favor,https://example.org/demo/diario/s-a2-ord-067,6,EV-DEMO-01670,verificado
+INT-0460,S-A2-ORD-006,DIP-05,,Asuntos generales,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a2-ord-006,75,EV-DEMO-01671,verificado
+INT-0461,S-A2-ORD-024,DIP-16,INI-2025-0120,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a2-ord-024,77,EV-DEMO-01672,verificado
+INT-0462,S-A2-ORD-016,DIP-05,DIC-2026-0130,,Turismo,posicionamiento,https://example.org/demo/diario/s-a2-ord-016,60,EV-DEMO-01673,verificado
+INT-0463,S-A1-ORD-064,DIP-10,DIC-2026-0334,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a1-ord-064,49,EV-DEMO-01674,verificado
+INT-0464,S-A1-ORD-034,DIP-15,INI-2026-0027,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-034,77,EV-DEMO-01675,verificado
+INT-0465,S-A1-ORD-058,DIP-16,INI-2025-0237,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a1-ord-058,68,EV-DEMO-01676,verificado
+INT-0466,S-A1-ORD-072,DIP-13,,Asuntos generales,Seguridad pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-072,12,EV-DEMO-01677,verificado
+INT-0467,S-A2-ORD-003,DIP-10,INI-2026-0105,,Agua,en_contra,https://example.org/demo/diario/s-a2-ord-003,74,EV-DEMO-01678,verificado
+INT-0468,S-A1-ORD-029,DIP-12,EXH-2026-0374,,Salud,presentacion,https://example.org/demo/diario/s-a1-ord-029,39,EV-DEMO-01679,verificado
+INT-0469,S-A2-ORD-035,DIP-08,DIC-2025-0148,,Cultura,presentacion,https://example.org/demo/diario/s-a2-ord-035,18,EV-DEMO-01680,verificado
+INT-0470,S-A2-ORD-068,DIP-12,DIC-2026-0468,,Desarrollo económico,en_contra,https://example.org/demo/diario/s-a2-ord-068,44,EV-DEMO-01681,verificado
+INT-0471,S-A1-ORD-065,DIP-22,EXH-2026-0393,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a1-ord-065,41,EV-DEMO-01682,verificado
+INT-0472,S-A1-ORD-014,DIP-20,INI-2025-0074,,Agua,presentacion,https://example.org/demo/diario/s-a1-ord-014,70,EV-DEMO-01683,verificado
+INT-0473,S-A3-SOL-001,DIP-09,DIC-2025-0236,,Desarrollo económico,presentacion,https://example.org/demo/diario/s-a3-sol-001,64,EV-DEMO-01684,verificado
+INT-0474,S-A1-SOL-001,DIP-01,,Asuntos generales,Salud,asuntos_generales,https://example.org/demo/diario/s-a1-sol-001,47,EV-DEMO-01685,verificado
+INT-0475,S-A1-ORD-041,DIP-14,INI-2025-0251,,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a1-ord-041,55,EV-DEMO-01686,verificado
+INT-0476,S-A1-ORD-011,DIP-11,EXH-2026-0428,,Educación,presentacion,https://example.org/demo/diario/s-a1-ord-011,11,EV-DEMO-01687,verificado
+INT-0477,S-A1-ORD-076,DIP-25,DIC-2025-0021,,Derechos humanos,en_contra,https://example.org/demo/diario/s-a1-ord-076,4,EV-DEMO-01688,verificado
+INT-0478,S-A2-ORD-037,DIP-08,EXH-2024-0436,,Hacienda pública,a_favor,https://example.org/demo/diario/s-a2-ord-037,58,EV-DEMO-01689,pendiente
+INT-0479,S-A2-ORD-036,DIP-23,,Asuntos generales,Seguridad pública,asuntos_generales,https://example.org/demo/diario/s-a2-ord-036,8,EV-DEMO-01690,verificado
+INT-0480,S-A2-ORD-058,DIP-11,DIC-2026-0030,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a2-ord-058,76,EV-DEMO-01691,verificado
+INT-0481,S-A2-ORD-019,DIP-06,,Asuntos generales,Turismo,mocion,https://example.org/demo/diario/s-a2-ord-019,11,EV-DEMO-01692,verificado
+INT-0482,S-A1-ORD-063,DIP-24,INI-2026-0206,,Educación,a_favor,https://example.org/demo/diario/s-a1-ord-063,77,EV-DEMO-01693,verificado
+INT-0483,S-A2-ORD-063,DIP-01,DIC-2025-0236,,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a2-ord-063,50,EV-DEMO-01694,verificado
+INT-0484,S-A1-ORD-037,DIP-12,INI-2025-0211,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a1-ord-037,67,EV-DEMO-01695,verificado
+INT-0485,S-A1-ORD-076,DIP-03,INI-2025-0171,,Agua,a_favor,https://example.org/demo/diario/s-a1-ord-076,25,EV-DEMO-01696,verificado
+INT-0486,S-A1-ORD-044,DIP-21,EXH-2025-0345,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a1-ord-044,44,EV-DEMO-01697,verificado
+INT-0487,S-A2-ORD-049,DIP-10,,Asuntos generales,Seguridad pública,mocion,https://example.org/demo/diario/s-a2-ord-049,15,EV-DEMO-01698,verificado
+INT-0488,S-A2-ORD-058,DIP-21,DIC-2025-0504,,Desarrollo económico,presentacion,https://example.org/demo/diario/s-a2-ord-058,26,EV-DEMO-01699,verificado
+INT-0489,S-A1-ORD-006,DIP-06,EXH-2026-0393,,Medio ambiente,en_contra,https://example.org/demo/diario/s-a1-ord-006,27,EV-DEMO-01700,verificado
+INT-0490,S-A1-ORD-036,DIP-18,EXH-2026-0393,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a1-ord-036,74,EV-DEMO-01701,verificado
+INT-0491,S-A2-ORD-068,DIP-09,,Asuntos generales,Transparencia,posicionamiento,https://example.org/demo/diario/s-a2-ord-068,18,EV-DEMO-01702,verificado
+INT-0492,S-A1-ORD-015,DIP-09,INI-2025-0087,,Agua,posicionamiento,https://example.org/demo/diario/s-a1-ord-015,57,EV-DEMO-01703,verificado
+INT-0493,S-A2-ORD-030,DIP-02,INI-2026-0093,,Turismo,posicionamiento,https://example.org/demo/diario/s-a2-ord-030,12,EV-DEMO-01704,pendiente
+INT-0494,S-A2-ORD-066,DIP-15,DIC-2025-0010,,Salud,presentacion,https://example.org/demo/diario/s-a2-ord-066,72,EV-DEMO-01705,verificado
+INT-0495,S-A2-ORD-031,DIP-21,EXH-2025-0445,,Movilidad,presentacion,https://example.org/demo/diario/s-a2-ord-031,47,EV-DEMO-01706,verificado
+INT-0496,S-A2-ORD-072,DIP-19,,Asuntos generales,Derechos humanos,asuntos_generales,https://example.org/demo/diario/s-a2-ord-072,77,EV-DEMO-01707,verificado
+INT-0497,S-A2-ORD-026,DIP-11,DIC-2025-0185,,Seguridad pública,a_favor,https://example.org/demo/diario/s-a2-ord-026,59,EV-DEMO-01708,verificado
+INT-0498,S-A2-ORD-061,DIP-21,,Asuntos generales,Turismo,posicionamiento,https://example.org/demo/diario/s-a2-ord-061,3,EV-DEMO-01709,verificado
+INT-0499,S-A2-ORD-017,DIP-09,EXH-2025-0452,,Desarrollo económico,presentacion,https://example.org/demo/diario/s-a2-ord-017,62,EV-DEMO-01710,verificado
+INT-0500,S-A2-ORD-041,DIP-25,,Asuntos generales,Agua,posicionamiento,https://example.org/demo/diario/s-a2-ord-041,25,EV-DEMO-01711,verificado
+INT-0501,S-A1-EXT-077,DIP-06,,Asuntos generales,Medio ambiente,mocion,https://example.org/demo/diario/s-a1-ext-077,75,EV-DEMO-01712,verificado
+INT-0502,S-A2-ORD-008,DIP-18,DIC-2026-0002,,Movilidad,en_contra,https://example.org/demo/diario/s-a2-ord-008,19,EV-DEMO-01713,verificado
+INT-0503,S-A2-ORD-064,DIP-18,PDA-2024-0493,,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a2-ord-064,39,EV-DEMO-01714,verificado
+INT-0504,S-A1-ORD-002,DIP-10,DIC-2025-0433,,Desarrollo rural,presentacion,https://example.org/demo/diario/s-a1-ord-002,46,EV-DEMO-01715,verificado
+INT-0505,S-A2-ORD-059,DIP-10,EXH-2026-0428,,Educación,posicionamiento,https://example.org/demo/diario/s-a2-ord-059,77,EV-DEMO-01716,pendiente
+INT-0506,S-A2-ORD-044,DIP-23,EXH-2026-0374,,Salud,en_contra,https://example.org/demo/diario/s-a2-ord-044,53,EV-DEMO-01717,verificado
+INT-0507,S-A1-ORD-068,DIP-03,INI-2024-0127,,Turismo,a_favor,https://example.org/demo/diario/s-a1-ord-068,69,EV-DEMO-01718,verificado
+INT-0508,S-A1-ORD-067,DIP-23,,Asuntos generales,Salud,asuntos_generales,https://example.org/demo/diario/s-a1-ord-067,76,EV-DEMO-01719,verificado
+INT-0509,S-A1-ORD-027,DIP-20,EXH-2024-0364,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-027,13,EV-DEMO-01720,verificado
+INT-0510,S-A1-ORD-073,DIP-06,INI-2025-0234,,Derechos humanos,presentacion,https://example.org/demo/diario/s-a1-ord-073,24,EV-DEMO-01721,verificado
+INT-0511,S-A1-ORD-054,DIP-20,ACU-2025-0506,,Gobierno interior,a_favor,https://example.org/demo/diario/s-a1-ord-054,34,EV-DEMO-01722,verificado
+INT-0512,S-A2-ORD-065,DIP-18,DIC-2025-0323,,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a2-ord-065,22,EV-DEMO-01723,verificado
+INT-0513,S-A3-ORD-002,DIP-11,EXH-2025-0417,,Turismo,presentacion,https://example.org/demo/diario/s-a3-ord-002,26,EV-DEMO-01724,verificado
+INT-0514,S-A1-ORD-048,DIP-20,DIC-2026-0118,,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-048,36,EV-DEMO-01725,verificado
+INT-0515,S-A2-ORD-053,DIP-01,INI-2026-0246,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a2-ord-053,66,EV-DEMO-01726,verificado
+INT-0516,S-A1-ORD-049,DIP-21,INI-2026-0155,,Seguridad pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-049,27,EV-DEMO-01727,verificado
+INT-0517,S-A2-ORD-045,DIP-16,DIC-2026-0468,,Desarrollo económico,en_contra,https://example.org/demo/diario/s-a2-ord-045,61,EV-DEMO-01728,pendiente
+INT-0518,S-A2-ORD-003,DIP-11,,Asuntos generales,Hacienda pública,mocion,https://example.org/demo/diario/s-a2-ord-003,40,EV-DEMO-01729,verificado
+INT-0519,S-A2-ORD-060,DIP-15,DIC-2025-0250,,Hacienda pública,en_contra,https://example.org/demo/diario/s-a2-ord-060,36,EV-DEMO-01730,verificado
+INT-0520,S-A1-ORD-075,DIP-18,EXH-2025-0445,,Movilidad,posicionamiento,https://example.org/demo/diario/s-a1-ord-075,40,EV-DEMO-01731,verificado
+INT-0521,S-A2-ORD-066,DIP-05,INI-2026-0181,,Turismo,en_contra,https://example.org/demo/diario/s-a2-ord-066,5,EV-DEMO-01732,verificado
+INT-0522,S-A2-ORD-059,DIP-22,,Asuntos generales,Derechos humanos,mocion,https://example.org/demo/diario/s-a2-ord-059,70,EV-DEMO-01733,verificado
+INT-0523,S-A2-ORD-023,DIP-24,DIC-2025-0214,,Turismo,posicionamiento,https://example.org/demo/diario/s-a2-ord-023,45,EV-DEMO-01734,pendiente
+INT-0524,S-A1-ORD-034,DIP-05,PDA-2025-0465,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a1-ord-034,49,EV-DEMO-01735,verificado
+INT-0525,S-A1-ORD-014,DIP-05,,Asuntos generales,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a1-ord-014,74,EV-DEMO-01736,verificado
+INT-0526,S-A1-ORD-045,DIP-16,,Asuntos generales,Medio ambiente,mocion,https://example.org/demo/diario/s-a1-ord-045,49,EV-DEMO-01737,verificado
+INT-0527,S-A2-ORD-053,DIP-16,DIC-2026-0079,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-053,72,EV-DEMO-01738,verificado
+INT-0528,S-A2-ORD-031,DIP-25,INI-2025-0290,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a2-ord-031,73,EV-DEMO-01739,verificado
+INT-0529,S-A2-ORD-070,DIP-17,DIC-2025-0241,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-ord-070,79,EV-DEMO-01740,verificado
+INT-0530,S-A2-ORD-008,DIP-03,DIC-2026-0043,,Cultura,en_contra,https://example.org/demo/diario/s-a2-ord-008,68,EV-DEMO-01741,verificado
+INT-0531,S-A1-ORD-065,DIP-16,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a1-ord-065,61,EV-DEMO-01742,verificado
+INT-0532,S-A2-ORD-017,DIP-09,INI-2025-0161,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a2-ord-017,30,EV-DEMO-01743,verificado
+INT-0533,S-A2-ORD-056,DIP-03,DIC-2025-0050,,Educación,presentacion,https://example.org/demo/diario/s-a2-ord-056,39,EV-DEMO-01744,verificado
+INT-0534,S-A1-ORD-061,DIP-04,,Asuntos generales,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-061,10,EV-DEMO-01745,verificado
+INT-0535,S-A2-ORD-052,DIP-04,INI-2026-0296,,Educación,a_favor,https://example.org/demo/diario/s-a2-ord-052,67,EV-DEMO-01746,verificado
+INT-0536,S-A1-ORD-013,DIP-03,,Asuntos generales,Hacienda pública,asuntos_generales,https://example.org/demo/diario/s-a1-ord-013,66,EV-DEMO-01747,verificado
+INT-0537,S-A2-ORD-068,DIP-19,INI-2025-0298,,Cultura,en_contra,https://example.org/demo/diario/s-a2-ord-068,46,EV-DEMO-01748,verificado
+INT-0538,S-A1-ORD-067,DIP-13,EXH-2026-0449,,Cultura,a_favor,https://example.org/demo/diario/s-a1-ord-067,28,EV-DEMO-01749,verificado
+INT-0539,S-A2-ORD-062,DIP-19,PDA-2026-0485,,Educación,posicionamiento,https://example.org/demo/diario/s-a2-ord-062,72,EV-DEMO-01750,verificado
+INT-0540,S-A3-SOL-001,DIP-10,,Asuntos generales,Educación,asuntos_generales,https://example.org/demo/diario/s-a3-sol-001,79,EV-DEMO-01751,verificado
+INT-0541,S-A2-ORD-044,DIP-13,DIC-2025-0010,,Salud,posicionamiento,https://example.org/demo/diario/s-a2-ord-044,26,EV-DEMO-01752,verificado
+INT-0542,S-A2-ORD-040,DIP-25,INI-2026-0017,,Movilidad,presentacion,https://example.org/demo/diario/s-a2-ord-040,69,EV-DEMO-01753,verificado
+INT-0543,S-A2-ORD-026,DIP-06,DIC-2025-0048,,Seguridad pública,a_favor,https://example.org/demo/diario/s-a2-ord-026,54,EV-DEMO-01754,verificado
+INT-0544,S-A2-ORD-030,DIP-12,EXH-2025-0391,,Seguridad pública,en_contra,https://example.org/demo/diario/s-a2-ord-030,72,EV-DEMO-01755,verificado
+INT-0545,S-A1-ORD-004,DIP-18,INI-2025-0005,,Educación,presentacion,https://example.org/demo/diario/s-a1-ord-004,55,EV-DEMO-01756,verificado
+INT-0546,S-A1-ORD-009,DIP-20,INI-2025-0235,,Desarrollo económico,presentacion,https://example.org/demo/diario/s-a1-ord-009,47,EV-DEMO-01757,verificado
+INT-0547,S-A1-ORD-058,DIP-01,INI-2025-0091,,Educación,en_contra,https://example.org/demo/diario/s-a1-ord-058,54,EV-DEMO-01758,verificado
+INT-0548,S-A3-ORD-002,DIP-26,EXH-2025-0398,,Transparencia,posicionamiento,https://example.org/demo/diario/s-a3-ord-002,30,EV-DEMO-01759,verificado
+INT-0549,S-A2-ORD-010,DIP-09,INI-2026-0085,,Derechos humanos,en_contra,https://example.org/demo/diario/s-a2-ord-010,20,EV-DEMO-01760,verificado
+INT-0550,S-A2-ORD-066,DIP-23,INI-2025-0184,,Seguridad pública,presentacion,https://example.org/demo/diario/s-a2-ord-066,21,EV-DEMO-01761,verificado
+INT-0551,S-A2-ORD-030,DIP-08,DIC-2026-0135,,Turismo,presentacion,https://example.org/demo/diario/s-a2-ord-030,14,EV-DEMO-01762,verificado
+INT-0552,S-A2-ORD-049,DIP-02,,Asuntos generales,Igualdad de género,asuntos_generales,https://example.org/demo/diario/s-a2-ord-049,16,EV-DEMO-01763,verificado
+INT-0553,S-A1-ORD-043,DIP-24,EXH-2026-0347,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a1-ord-043,71,EV-DEMO-01764,verificado
+INT-0554,S-A1-ORD-037,DIP-14,INI-2026-0058,,Educación,a_favor,https://example.org/demo/diario/s-a1-ord-037,58,EV-DEMO-01765,verificado
+INT-0555,S-A2-ORD-035,DIP-18,INI-2025-0329,,Desarrollo económico,posicionamiento,https://example.org/demo/diario/s-a2-ord-035,64,EV-DEMO-01766,verificado
+INT-0556,S-A2-ORD-007,DIP-24,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a2-ord-007,4,EV-DEMO-01767,verificado
+INT-0557,S-A2-ORD-008,DIP-16,PDA-2025-0473,,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a2-ord-008,42,EV-DEMO-01768,verificado
+INT-0558,S-A2-ORD-028,DIP-06,EXH-2026-0353,,Agua,presentacion,https://example.org/demo/diario/s-a2-ord-028,65,EV-DEMO-01769,verificado
+INT-0559,S-A1-ORD-029,DIP-10,DIC-2025-0168,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a1-ord-029,46,EV-DEMO-01770,verificado
+INT-0560,S-A1-ORD-076,DIP-03,INI-2025-0143,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a1-ord-076,11,EV-DEMO-01771,verificado
+INT-0561,S-A1-ORD-049,DIP-12,INI-2024-0107,,Movilidad,a_favor,https://example.org/demo/diario/s-a1-ord-049,32,EV-DEMO-01772,verificado
+INT-0562,S-A1-ORD-010,DIP-15,DIC-2024-0268,,Turismo,a_favor,https://example.org/demo/diario/s-a1-ord-010,48,EV-DEMO-01773,verificado
+INT-0563,S-A2-ORD-036,DIP-20,EXH-2025-0350,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a2-ord-036,49,EV-DEMO-01774,verificado
+INT-0564,S-A1-ORD-069,DIP-26,INI-2024-0194,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a1-ord-069,44,EV-DEMO-01775,verificado
+INT-0565,S-A2-ORD-053,DIP-23,EXH-2026-0407,,Movilidad,presentacion,https://example.org/demo/diario/s-a2-ord-053,60,EV-DEMO-01776,verificado
+INT-0566,S-A1-ORD-011,DIP-04,INI-2025-0014,,Agua,a_favor,https://example.org/demo/diario/s-a1-ord-011,35,EV-DEMO-01777,verificado
+INT-0567,S-A2-ORD-030,DIP-13,,Asuntos generales,Salud,mocion,https://example.org/demo/diario/s-a2-ord-030,76,EV-DEMO-01778,pendiente
+INT-0568,S-A2-ORD-026,DIP-02,INI-2026-0246,,Igualdad de género,a_favor,https://example.org/demo/diario/s-a2-ord-026,79,EV-DEMO-01779,verificado
+INT-0569,S-A2-ORD-022,DIP-12,INI-2025-0012,,Seguridad pública,a_favor,https://example.org/demo/diario/s-a2-ord-022,25,EV-DEMO-01780,verificado
+INT-0570,S-A1-ORD-071,DIP-15,DIC-2025-0245,,Desarrollo económico,presentacion,https://example.org/demo/diario/s-a1-ord-071,71,EV-DEMO-01781,verificado
+INT-0571,S-A1-ORD-004,DIP-10,,Asuntos generales,Turismo,posicionamiento,https://example.org/demo/diario/s-a1-ord-004,22,EV-DEMO-01782,verificado
+INT-0572,S-A2-ORD-059,DIP-09,,Asuntos generales,Turismo,mocion,https://example.org/demo/diario/s-a2-ord-059,24,EV-DEMO-01783,pendiente
+INT-0573,S-A1-EXT-077,DIP-17,INI-2026-0314,,Transparencia,posicionamiento,https://example.org/demo/diario/s-a1-ext-077,65,EV-DEMO-01784,verificado
+INT-0574,S-A2-ORD-028,DIP-19,,Asuntos generales,Cultura,mocion,https://example.org/demo/diario/s-a2-ord-028,24,EV-DEMO-01785,verificado
+INT-0575,S-A1-ORD-025,DIP-18,,Asuntos generales,Desarrollo económico,asuntos_generales,https://example.org/demo/diario/s-a1-ord-025,26,EV-DEMO-01786,verificado
+INT-0576,S-A2-ORD-066,DIP-23,,Asuntos generales,Hacienda pública,asuntos_generales,https://example.org/demo/diario/s-a2-ord-066,68,EV-DEMO-01787,verificado
+INT-0577,S-A1-ORD-010,DIP-13,DIC-2025-0304,,Educación,posicionamiento,https://example.org/demo/diario/s-a1-ord-010,5,EV-DEMO-01788,verificado
+INT-0578,S-A1-ORD-076,DIP-09,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a1-ord-076,68,EV-DEMO-01789,verificado
+INT-0579,S-A1-ORD-004,DIP-07,EXH-2026-0428,,Educación,presentacion,https://example.org/demo/diario/s-a1-ord-004,75,EV-DEMO-01790,verificado
+INT-0580,S-A2-ORD-061,DIP-04,,Asuntos generales,Hacienda pública,asuntos_generales,https://example.org/demo/diario/s-a2-ord-061,15,EV-DEMO-01791,verificado
+INT-0581,S-A1-ORD-056,DIP-11,,Asuntos generales,Medio ambiente,posicionamiento,https://example.org/demo/diario/s-a1-ord-056,34,EV-DEMO-01792,pendiente
+INT-0582,S-A2-ORD-028,DIP-14,INI-2026-0305,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-ord-028,53,EV-DEMO-01793,verificado
+INT-0583,S-A1-ORD-028,DIP-21,INI-2026-0218,,Desarrollo rural,presentacion,https://example.org/demo/diario/s-a1-ord-028,20,EV-DEMO-01794,verificado
+INT-0584,S-A2-ORD-028,DIP-24,INI-2026-0105,,Agua,posicionamiento,https://example.org/demo/diario/s-a2-ord-028,33,EV-DEMO-01795,verificado
+INT-0585,S-A2-ORD-020,DIP-26,DIC-2025-0158,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a2-ord-020,42,EV-DEMO-01796,verificado
+INT-0586,S-A2-ORD-045,DIP-15,INI-2026-0155,,Seguridad pública,en_contra,https://example.org/demo/diario/s-a2-ord-045,9,EV-DEMO-01797,verificado
+INT-0587,S-A1-ORD-048,DIP-07,,Asuntos generales,Educación,asuntos_generales,https://example.org/demo/diario/s-a1-ord-048,30,EV-DEMO-01798,verificado
+INT-0588,S-A1-EXT-079,DIP-24,INI-2024-0009,,Salud,a_favor,https://example.org/demo/diario/s-a1-ext-079,56,EV-DEMO-01799,verificado
+INT-0589,S-A2-ORD-072,DIP-21,DIC-2025-0052,,Medio ambiente,presentacion,https://example.org/demo/diario/s-a2-ord-072,35,EV-DEMO-01800,verificado
+INT-0590,S-A2-ORD-065,DIP-04,DIC-2025-0352,,Cultura,a_favor,https://example.org/demo/diario/s-a2-ord-065,47,EV-DEMO-01801,verificado
+INT-0591,S-A1-ORD-023,DIP-04,EXH-2026-0449,,Cultura,a_favor,https://example.org/demo/diario/s-a1-ord-023,64,EV-DEMO-01802,verificado
+INT-0592,S-A1-ORD-073,DIP-24,,Asuntos generales,Desarrollo rural,mocion,https://example.org/demo/diario/s-a1-ord-073,10,EV-DEMO-01803,verificado
+INT-0593,S-A2-ORD-025,DIP-11,,Asuntos generales,Igualdad de género,mocion,https://example.org/demo/diario/s-a2-ord-025,31,EV-DEMO-01804,verificado
+INT-0594,S-A2-ORD-046,DIP-15,,Asuntos generales,Desarrollo rural,asuntos_generales,https://example.org/demo/diario/s-a2-ord-046,24,EV-DEMO-01805,verificado
+INT-0595,S-A1-ORD-066,DIP-18,EXH-2026-0416,,Educación,presentacion,https://example.org/demo/diario/s-a1-ord-066,27,EV-DEMO-01806,verificado
+INT-0596,S-A1-ORD-043,DIP-01,,Asuntos generales,Agua,asuntos_generales,https://example.org/demo/diario/s-a1-ord-043,20,EV-DEMO-01807,verificado
+INT-0597,S-A1-ORD-005,DIP-16,,Asuntos generales,Agua,asuntos_generales,https://example.org/demo/diario/s-a1-ord-005,75,EV-DEMO-01808,verificado
+INT-0598,S-A2-ORD-029,DIP-10,,Asuntos generales,Derechos humanos,posicionamiento,https://example.org/demo/diario/s-a2-ord-029,35,EV-DEMO-01809,verificado
+INT-0599,S-A1-ORD-061,DIP-10,DIC-2026-0482,,Turismo,presentacion,https://example.org/demo/diario/s-a1-ord-061,13,EV-DEMO-01810,verificado
+INT-0600,S-A1-ORD-033,DIP-20,DIC-2026-0277,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a1-ord-033,73,EV-DEMO-01811,verificado
+INT-0601,S-A2-ORD-055,DIP-12,,Asuntos generales,Desarrollo económico,mocion,https://example.org/demo/diario/s-a2-ord-055,63,EV-DEMO-01812,verificado
+INT-0602,S-A1-EXT-077,DIP-11,EXH-2026-0377,,Desarrollo rural,presentacion,https://example.org/demo/diario/s-a1-ext-077,17,EV-DEMO-01813,verificado
+INT-0603,S-A2-ORD-017,DIP-21,DIC-2025-0411,,Desarrollo rural,a_favor,https://example.org/demo/diario/s-a2-ord-017,21,EV-DEMO-01814,verificado
+INT-0604,S-A2-ORD-067,DIP-22,DIC-2025-0382,,Salud,a_favor,https://example.org/demo/diario/s-a2-ord-067,60,EV-DEMO-01815,verificado
+INT-0605,S-A1-ORD-023,DIP-14,INI-2026-0218,,Desarrollo rural,posicionamiento,https://example.org/demo/diario/s-a1-ord-023,21,EV-DEMO-01816,verificado
+INT-0606,S-A2-ORD-065,DIP-25,,Asuntos generales,Educación,posicionamiento,https://example.org/demo/diario/s-a2-ord-065,72,EV-DEMO-01817,verificado
+INT-0607,S-A1-ORD-070,DIP-19,INI-2025-0020,,Derechos humanos,en_contra,https://example.org/demo/diario/s-a1-ord-070,54,EV-DEMO-01818,verificado
+INT-0608,S-A1-ORD-015,DIP-07,INI-2025-0065,,Medio ambiente,a_favor,https://example.org/demo/diario/s-a1-ord-015,39,EV-DEMO-01819,verificado
+INT-0609,S-A1-ORD-024,DIP-19,,Asuntos generales,Transparencia,mocion,https://example.org/demo/diario/s-a1-ord-024,33,EV-DEMO-01820,verificado
+INT-0610,S-A2-ORD-003,DIP-16,INI-2025-0090,,Igualdad de género,presentacion,https://example.org/demo/diario/s-a2-ord-003,39,EV-DEMO-01821,verificado
+INT-0611,S-A2-ORD-039,DIP-01,DIC-2026-0354,,Agua,presentacion,https://example.org/demo/diario/s-a2-ord-039,3,EV-DEMO-01822,verificado
+INT-0612,S-A1-ORD-046,DIP-22,,Asuntos generales,Seguridad pública,asuntos_generales,https://example.org/demo/diario/s-a1-ord-046,3,EV-DEMO-01823,verificado
+INT-0613,S-A2-ORD-026,DIP-11,,Asuntos generales,Derechos humanos,asuntos_generales,https://example.org/demo/diario/s-a2-ord-026,66,EV-DEMO-01824,pendiente
+INT-0614,S-A1-ORD-015,DIP-11,INI-2026-0276,,Derechos humanos,en_contra,https://example.org/demo/diario/s-a1-ord-015,42,EV-DEMO-01825,verificado
+INT-0615,S-A1-ORD-013,DIP-17,,Asuntos generales,Cultura,asuntos_generales,https://example.org/demo/diario/s-a1-ord-013,56,EV-DEMO-01826,verificado
+INT-0616,S-A2-ORD-070,DIP-12,EXH-2025-0381,,Salud,en_contra,https://example.org/demo/diario/s-a2-ord-070,37,EV-DEMO-01827,verificado
+INT-0617,S-A1-ORD-003,DIP-21,,Asuntos generales,Derechos humanos,mocion,https://example.org/demo/diario/s-a1-ord-003,36,EV-DEMO-01828,verificado
+INT-0618,S-A1-ORD-044,DIP-12,,Asuntos generales,Seguridad pública,asuntos_generales,https://example.org/demo/diario/s-a1-ord-044,51,EV-DEMO-01829,verificado
+INT-0619,S-A1-SOL-001,DIP-21,DIC-2025-0352,,Cultura,a_favor,https://example.org/demo/diario/s-a1-sol-001,75,EV-DEMO-01830,verificado
+INT-0620,S-A1-ORD-013,DIP-09,,Asuntos generales,Educación,asuntos_generales,https://example.org/demo/diario/s-a1-ord-013,8,EV-DEMO-01831,verificado
+INT-0621,S-A2-EXT-076,DIP-18,INI-2024-0061,,Cultura,a_favor,https://example.org/demo/diario/s-a2-ext-076,52,EV-DEMO-01832,verificado
+INT-0622,S-A1-ORD-057,DIP-05,INI-2026-0126,,Igualdad de género,posicionamiento,https://example.org/demo/diario/s-a1-ord-057,64,EV-DEMO-01833,verificado
+INT-0623,S-A1-ORD-045,DIP-13,PDA-2026-0471,,Desarrollo económico,a_favor,https://example.org/demo/diario/s-a1-ord-045,32,EV-DEMO-01834,verificado
+INT-0624,S-A1-ORD-053,DIP-06,EXH-2024-0364,,Hacienda pública,presentacion,https://example.org/demo/diario/s-a1-ord-053,48,EV-DEMO-01835,verificado
+INT-0625,S-A2-SOL-001,DIP-17,EXH-2025-0417,,Turismo,en_contra,https://example.org/demo/diario/s-a2-sol-001,12,EV-DEMO-01836,verificado
+INT-0626,S-A1-ORD-049,DIP-25,INI-2026-0274,,Agua,presentacion,https://example.org/demo/diario/s-a1-ord-049,55,EV-DEMO-01837,verificado
+INT-0627,S-A2-ORD-025,DIP-11,,Asuntos generales,Agua,mocion,https://example.org/demo/diario/s-a2-ord-025,41,EV-DEMO-01838,verificado
+INT-0628,S-A2-ORD-024,DIP-17,INI-2026-0085,,Derechos humanos,a_favor,https://example.org/demo/diario/s-a2-ord-024,58,EV-DEMO-01839,pendiente
+INT-0629,S-A1-ORD-041,DIP-25,,Asuntos generales,Derechos humanos,asuntos_generales,https://example.org/demo/diario/s-a1-ord-041,39,EV-DEMO-01840,verificado
+INT-0630,S-A1-ORD-046,DIP-09,DIC-2025-0256,,Agua,en_contra,https://example.org/demo/diario/s-a1-ord-046,71,EV-DEMO-01841,verificado
+INT-0631,S-A2-ORD-069,DIP-19,EXH-2025-0350,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a2-ord-069,15,EV-DEMO-01842,verificado
+INT-0632,S-A1-ORD-017,DIP-02,INI-2026-0083,,Movilidad,a_favor,https://example.org/demo/diario/s-a1-ord-017,23,EV-DEMO-01843,verificado
+INT-0633,S-A2-ORD-065,DIP-18,,Asuntos generales,Cultura,posicionamiento,https://example.org/demo/diario/s-a2-ord-065,29,EV-DEMO-01844,verificado
+INT-0634,S-A1-ORD-046,DIP-18,EXH-2024-0402,,Educación,a_favor,https://example.org/demo/diario/s-a1-ord-046,40,EV-DEMO-01845,verificado
+INT-0635,S-A1-ORD-051,DIP-09,,Asuntos generales,Hacienda pública,asuntos_generales,https://example.org/demo/diario/s-a1-ord-051,43,EV-DEMO-01846,verificado
+INT-0636,S-A1-ORD-052,DIP-12,,Asuntos generales,Movilidad,mocion,https://example.org/demo/diario/s-a1-ord-052,65,EV-DEMO-01847,verificado
+INT-0637,S-A2-ORD-051,DIP-25,EXH-2025-0417,,Turismo,a_favor,https://example.org/demo/diario/s-a2-ord-051,14,EV-DEMO-01848,pendiente
+INT-0638,S-A1-ORD-068,DIP-18,EXH-2026-0453,,Movilidad,a_favor,https://example.org/demo/diario/s-a1-ord-068,5,EV-DEMO-01849,verificado
+INT-0639,S-A2-ORD-055,DIP-22,EXH-2026-0425,,Medio ambiente,en_contra,https://example.org/demo/diario/s-a2-ord-055,22,EV-DEMO-01850,verificado
+INT-0640,S-A1-ORD-031,DIP-05,,Asuntos generales,Hacienda pública,posicionamiento,https://example.org/demo/diario/s-a1-ord-031,21,EV-DEMO-01851,verificado
+INT-SINFUENTE,S-A1-ORD-074,DIP-18,INI-2025-0067,,Desarrollo rural,en_contra,https://example.org/demo/diario/s-a1-ord-074,17,,no_verificado

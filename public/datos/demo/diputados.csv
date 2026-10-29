@@ -1,0 +1,27 @@
+id_diputado,nombre_completo,id_partido,criterio_adscripcion,tipo_representacion,distrito,calidad,id_titular,fecha_inicio,fecha_fin,url_ficha_oficial,url_foto,archivo_foto,id_fuente,estado_verificacion,notas
+DIP-01,Persona Legisladora Demo 01,PDA,Grupo parlamentario al corte (demostración),MR,1,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-02,Persona Legisladora Demo 02,PDA,Grupo parlamentario al corte (demostración),MR,2,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-03,Persona Legisladora Demo 03,PDA,Grupo parlamentario al corte (demostración),MR,3,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-04,Persona Legisladora Demo 04,PDA,Grupo parlamentario al corte (demostración),MR,4,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-05,Persona Legisladora Demo 05,PDA,Grupo parlamentario al corte (demostración),MR,5,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-06,Persona Legisladora Demo 06,PDA,Grupo parlamentario al corte (demostración),MR,6,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-07,Persona Legisladora Demo 07,PDB,Grupo parlamentario al corte (demostración),MR,7,propietario,,2024-10-01,2025-05-31,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-08,Persona Legisladora Demo 08,PDB,Grupo parlamentario al corte (demostración),MR,8,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-09,Persona Legisladora Demo 09,PDB,Grupo parlamentario al corte (demostración),MR,9,propietario,,2024-10-01,,,https://example.invalid/foto-inexistente.jpg,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-10,Persona Legisladora Demo 10,PDC,Grupo parlamentario al corte (demostración),MR,10,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-11,Persona Legisladora Demo 11,PDC,Grupo parlamentario al corte (demostración),MR,11,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-12,Persona Legisladora Demo 12,PDD,Grupo parlamentario al corte (demostración),MR,12,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-13,Persona Legisladora Demo 13,PDD,Grupo parlamentario al corte (demostración),MR,13,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-14,Persona Legisladora Demo 14,PDE,Grupo parlamentario al corte (demostración),MR,14,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-15,Persona Legisladora Demo 15,PDA,Grupo parlamentario al corte (demostración),MR,15,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-16,Persona Legisladora Demo 16,PDB,Grupo parlamentario al corte (demostración),MR,16,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-17,Persona Legisladora Demo 17,PDB,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-18,Persona Legisladora Demo 18,PDC,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,https://example.invalid/foto-inexistente.jpg,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-19,Persona Legisladora Demo 19,PDC,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-20,Persona Legisladora Demo 20,PDD,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-21,Persona Legisladora Demo 21,PDE,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-22,Persona Legisladora Demo 22,PDE,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-23,Persona Legisladora Demo 23,PDF,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-24,Persona Legisladora Demo 24,PDF,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-25,Persona Legisladora Demo 25,PDA,Grupo parlamentario al corte (demostración),RP,,propietario,,2024-10-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.
+DIP-26,Persona Legisladora Demo 26 (suplente),PDB,Grupo parlamentario al corte (demostración),MR,7,suplente,DIP-07,2025-06-01,,,,,EV-DEMO-00001,verificado,Persona ficticia de demostración.

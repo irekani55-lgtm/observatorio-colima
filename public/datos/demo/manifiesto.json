@@ -1,0 +1,7 @@
+{
+  "id": "demo",
+  "nombre": "Datos de demostración (ficticios)",
+  "es_demo": true,
+  "fecha_corte": "2026-10-15",
+  "descripcion": "Conjunto generado automáticamente para mostrar el funcionamiento del tablero. Ninguna persona, partido, cifra ni documento es real."
+}

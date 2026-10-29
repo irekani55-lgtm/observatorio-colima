@@ -1,0 +1,13 @@
+id_comision,nombre,tipo,url,id_fuente
+COM-01,Comisión Demo de Salud,permanente,,EV-DEMO-00319
+COM-02,Comisión Demo de Educación,permanente,,EV-DEMO-00319
+COM-03,Comisión Demo de Seguridad,permanente,,EV-DEMO-00319
+COM-04,Comisión Demo de Medio Ambiente,permanente,,EV-DEMO-00319
+COM-05,Comisión Demo de Economía,permanente,,EV-DEMO-00319
+COM-06,Comisión Demo de Derechos Humanos,permanente,,EV-DEMO-00319
+COM-07,Comisión Demo de Igualdad,permanente,,EV-DEMO-00319
+COM-08,Comisión Demo de Transparencia,permanente,,EV-DEMO-00319
+COM-09,Comisión Demo de Movilidad,permanente,,EV-DEMO-00319
+COM-10,Comisión Demo de Hacienda,permanente,,EV-DEMO-00319
+COM-11,Comisión Demo de Desarrollo Rural,permanente,,EV-DEMO-00319
+COM-12,Comisión Demo de Estudios Legislativos,permanente,,EV-DEMO-00319
