@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { Aviso } from '../componentes/Aviso';
-import { SERIES } from '../componentes/colores';
+import { colorPartido, SERIES } from '../componentes/colores';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { BarraFiltros, FiltroParam } from '../componentes/Filtros';
 import { EnlaceFuente } from '../componentes/Fuente';
-import { GraficaBarras, PanelGrafica } from '../componentes/Graficas';
+import { GraficaBarras, Leyenda, PanelGrafica } from '../componentes/Graficas';
 import { Tabla } from '../componentes/Tabla';
 import { TablaAsistencias } from '../componentes/TablasRegistros';
 import { fmt, fmtPct, Tarjeta } from '../componentes/Tarjeta';
@@ -32,7 +32,9 @@ export default function Asistencias() {
       dips
         .map((d) => {
           const r = asistenciaDeDiputado(base, d, filtro);
-          return { nombre: d.nombre_completo, id: d.id_diputado, porcentaje: r.porcentaje == null ? null : Math.round(r.porcentaje * 10) / 10, evaluables: r.denominador, sinVerificar: r.pendientes + r.noVerificadas + r.sinRegistro };
+          const siglas = base.idx.partido.get(d.id_partido)?.siglas ?? d.id_partido;
+          const corto = d.nombre_completo.length > 24 ? `${d.nombre_completo.slice(0, 23)}…` : d.nombre_completo;
+          return { nombre: d.nombre_completo, partido: siglas, id_partido: d.id_partido, etiqueta: `${corto} (${siglas})`, id: d.id_diputado, porcentaje: r.porcentaje == null ? null : Math.round(r.porcentaje * 10) / 10, evaluables: r.denominador, sinVerificar: r.pendientes + r.noVerificadas + r.sinRegistro };
         })
         .sort((a, b) => a.nombre.localeCompare(b.nombre)),
     [base, dips, filtro],
@@ -93,12 +95,21 @@ export default function Asistencias() {
       <section className="seccion">
         <PanelGrafica
           titulo="Asistencia por persona"
-          nota="Orden alfabético. Las barras omiten a quien no tiene registros evaluables. La comparación debe considerar los registros pendientes de cada persona (ver tabla)."
+          nota="Orden alfabético; cada barra lleva el color y las siglas del partido de la persona. Las barras omiten a quien no tiene registros evaluables. La comparación debe considerar los registros pendientes de cada persona (ver tabla)."
           datos={porPersona}
-          columnas={[{ clave: 'nombre', etiqueta: 'Persona' }, { clave: 'porcentaje', etiqueta: 'Asistencia (%)' }, { clave: 'evaluables', etiqueta: 'Registros evaluables' }, { clave: 'sinVerificar', etiqueta: 'Sin verificar' }]}
+          columnas={[{ clave: 'nombre', etiqueta: 'Persona' }, { clave: 'partido', etiqueta: 'Partido' }, { clave: 'porcentaje', etiqueta: 'Asistencia (%)' }, { clave: 'evaluables', etiqueta: 'Registros evaluables' }, { clave: 'sinVerificar', etiqueta: 'Sin verificar' }]}
           vacio={porPersona.every((p) => p.porcentaje == null)}
         >
-          <GraficaBarras datos={porPersona.filter((p) => p.porcentaje != null)} claveX="nombre" series={[{ clave: 'porcentaje', etiqueta: 'Asistencia (%)', color: SERIES[0] }]} horizontal anchoEtiqueta={200} etiquetaEje={(v) => (v.length > 28 ? `${v.slice(0, 27)}…` : v)} />
+          <p className="muy-pequeno texto-3" style={{ margin: 0 }}>Partido:</p>
+          <Leyenda series={[...new Set(porPersona.map((p) => p.id_partido))].map((id) => ({ clave: id, etiqueta: base.idx.partido.get(id)?.siglas ?? id, color: colorPartido(base, id) }))} />
+          <GraficaBarras
+            datos={porPersona.filter((p) => p.porcentaje != null)}
+            claveX="etiqueta"
+            series={[{ clave: 'porcentaje', etiqueta: 'Asistencia (%)', color: SERIES[0] }]}
+            colorFila={(f) => colorPartido(base, String(f.id_partido))}
+            horizontal
+            anchoEtiqueta={230}
+          />
         </PanelGrafica>
       </section>
 
