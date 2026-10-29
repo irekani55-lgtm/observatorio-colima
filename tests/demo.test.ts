@@ -13,8 +13,11 @@ describe('conjuntos de datos incluidos', () => {
     const b = construirBase(await cargarConjunto(leer, 'demo'));
     expect(b.manifiesto.es_demo).toBe(true);
     expect(b.diputados.length).toBeGreaterThan(20);
-    const errores = validarTodo(b).filter((p) => p.severidad === 'error');
-    expect(errores.map((e) => e.registro).sort()).toEqual(['EXH-ESTADO-0001', 'INI-FECHA-0001', 'INI-FECHA-0001 / DIP-99', 'VOT-0001'].sort());
+    const problemas = validarTodo(b);
+    const errores = problemas.filter((p) => p.severidad === 'error');
+    expect(errores.map((e) => e.registro).sort()).toEqual(['EXH-ESTADO-0001', 'INI-FECHA-0001', 'INI-FECHA-0001 / DIP-99'].sort());
+    // La diferencia entre total oficial y votos capturados es advertencia (suele estar en la propia acta).
+    expect(problemas.some((p) => p.registro === 'VOT-0001' && p.severidad === 'advertencia' && p.categoria === 'inconsistencia')).toBe(true);
     expect(autoverificar(b)).toEqual([]);
     for (const anio of [1, 2, 3] as const) expect(autoverificar(b, { anio })).toEqual([]);
   });
