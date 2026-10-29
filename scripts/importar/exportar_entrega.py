@@ -35,7 +35,28 @@ def leer(nombre: str) -> list[dict]:
         return list(csv.DictReader(f))
 
 
+_NOMBRES: dict[str, str] = {}
+
+
+def nombre_de(id_d: str) -> str:
+    if not _NOMBRES:
+        _NOMBRES.update({d["id_diputado"]: d["nombre_completo"] for d in leer("diputados")})
+    return _NOMBRES.get(id_d, "")
+
+
 def escribir(nombre: str, filas: list[dict], columnas: list[str]) -> None:
+    # Junto a cada columna de ID de persona se agrega el nombre correspondiente (id_diputado → nombre_diputado,
+    # id_titular → nombre_titular), para leer los archivos sin cruzar tablas.
+    columnas = list(columnas)
+    for col_id, col_nombre in (("id_diputado", "nombre_diputado"), ("id_titular", "nombre_titular")):
+        if col_id in columnas and col_nombre not in columnas and not (col_id == "id_diputado" and "nombre_completo" in columnas):
+            i = columnas.index(col_id)
+            if i + 1 < len(columnas) and columnas[i + 1] == "nombre":  # ya había una columna «nombre»: se renombra
+                columnas[i + 1] = col_nombre
+                filas = [{**{k: v for k, v in f.items() if k != "nombre"}, col_nombre: f.get("nombre", "")} for f in filas]
+            else:
+                columnas.insert(i + 1, col_nombre)
+                filas = [{**f, col_nombre: nombre_de(f.get(col_id, ""))} for f in filas]
     with open(DESTINO / nombre, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=columnas, extrasaction="ignore")
         w.writeheader()
@@ -617,8 +638,88 @@ IMPORTANTE
 """
 
 
+def bloque_comisiones() -> None:
+    global DESTINO
+    DESTINO = RAIZ / "entrega" / "comisiones"
+    if DESTINO.exists():
+        shutil.rmtree(DESTINO)
+    DESTINO.mkdir(parents=True)
+    import json as _json
+    dips = {d["id_diputado"]: d for d in leer("diputados")}
+    partidos = {p["id_partido"]: p for p in leer("partidos")}
+    coms = leer("comisiones")
+    integ = leer("comision_integrantes")
+    asuntos = {a["id_asunto"]: a for a in leer("asuntos")}
+    turnos = leer("asunto_comisiones")
+    docs_p = RAIZ / "datos_crudos" / "congreso" / "comision_documentos.json"
+    docs = _json.loads(docs_p.read_text(encoding="utf-8")) if docs_p.exists() else []
+    aux = RAIZ / "datos_crudos" / "congreso" / "dictamen_comisiones.csv"
+    dic_de = defaultdict(set)
+    if aux.exists():
+        with open(aux, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                dic_de[r["id_comision"]].add(r["id_asunto"])
+    CARGO = {"presidencia": "Presidencia", "secretaria": "Secretaría", "vocal": "Vocal"}
+    resumen = []
+    for c in sorted(coms, key=lambda x: x["nombre"]):
+        mios = [t for t in turnos if t["id_comision"] == c["id_comision"]]
+        ids = {t["id_asunto"] for t in mios}
+        ini = [asuntos[i] for i in ids if i in asuntos]
+        dics = [asuntos[i] for i in dic_de[c["id_comision"]] if i in asuntos]
+        pres = [dips.get(i["id_diputado"], {}).get("nombre_completo", "") for i in integ if i["id_comision"] == c["id_comision"] and i["cargo"] == "presidencia"]
+        inf = [d for d in docs if d["id_comision"] == c["id_comision"] and "Informe" in d["documento"]]
+        resumen.append({"id_comision": c["id_comision"], "comision": c["nombre"], "presidencia": "; ".join(pres),
+                        "integrantes": len([i for i in integ if i["id_comision"] == c["id_comision"]]),
+                        "iniciativas_turnadas": len(ini), "iniciativas_dictaminadas": len([a for a in ini if a["fecha_dictamen"] or a["estado_procesal"] in ("dictaminado", "aprobado", "publicado", "rechazado")]),
+                        "iniciativas_pendientes": len([a for a in ini if a["estado_procesal"] in ("presentado", "turnado", "pendiente")]),
+                        "dictamenes_elaborados": len(dics), "dictamenes_aprobados_pleno": len([a for a in dics if a["estado_procesal"] in ("aprobado", "publicado")]),
+                        "reuniones_reportadas_pagina_comisiones": c.get("reuniones_reportadas", ""),
+                        "reuniones_declaradas_en_informes": "; ".join(f"{d['documento']}: {d['reuniones_declaradas']}" for d in inf if d["reuniones_declaradas"] is not None),
+                        "informes_publicados": len(inf), "programas_publicados": len([d for d in docs if d["id_comision"] == c["id_comision"] and "Programa" in d["documento"]])})
+    escribir("01_comisiones_resumen.csv", resumen, list(resumen[0].keys()))
+    filas_i = [{"id_comision": i["id_comision"], "comision": next((c["nombre"] for c in coms if c["id_comision"] == i["id_comision"]), ""), "id_diputado": i["id_diputado"],
+                "partido": partidos.get(dips.get(i["id_diputado"], {}).get("id_partido", ""), {}).get("siglas", ""), "cargo": CARGO.get(i["cargo"], i["cargo"])} for i in integ]
+    escribir("02_integrantes.csv", filas_i, ["id_comision", "comision", "id_diputado", "partido", "cargo"])
+    filas_d = [{"comision": d["comision"], "documento": d["documento"], "paginas": d["paginas"], "texto_obtenido_por_ocr": "Sí" if d.get("texto_por_ocr") else "No",
+                "reuniones_declaradas": "" if d["reuniones_declaradas"] is None else d["reuniones_declaradas"], "cita_del_informe": d["frase"], "url": d["url"]} for d in docs]
+    escribir("03_programas_e_informes.csv", filas_d, ["comision", "documento", "paginas", "texto_obtenido_por_ocr", "reuniones_declaradas", "cita_del_informe", "url"])
+    filas_t = [{"id_comision": t["id_comision"], "comision": next((c["nombre"] for c in coms if c["id_comision"] == t["id_comision"]), ""), "id_asunto": t["id_asunto"],
+                "asunto": asuntos.get(t["id_asunto"], {}).get("titulo", "")[:250], "estado": ESTADO_ASUNTO.get(asuntos.get(t["id_asunto"], {}).get("estado_procesal", ""), ""),
+                "fecha_presentacion": asuntos.get(t["id_asunto"], {}).get("fecha_presentacion", ""), "fecha_dictamen": t["fecha_dictamen"]} for t in turnos]
+    escribir("04_asuntos_turnados.csv", filas_t, list(filas_t[0].keys()))
+    (DESTINO / "00_LEEME.txt").write_text(LEEME_COM, encoding="utf-8")
+    zip_ = shutil.make_archive(str(DESTINO.parent / "comisiones_LXI_legislatura"), "zip", DESTINO)
+    print("Listo:", Path(zip_).relative_to(RAIZ))
+
+
+LEEME_COM = """COMISIONES — LXI LEGISLATURA DEL H. CONGRESO DEL ESTADO DE COLIMA
+Fuentes: página oficial de comisiones (integración, reuniones reportadas, programas e informes), Gaceta
+Parlamentaria (turnos de iniciativas y dictámenes).
+
+ARCHIVOS (en orden)
+01_comisiones_resumen.csv     Por comisión: presidencia, integrantes, iniciativas turnadas, dictaminadas y pendientes,
+                              dictámenes elaborados y aprobados por el Pleno, reuniones reportadas y documentos publicados.
+02_integrantes.csv            Integrantes de cada comisión con su cargo y partido.
+03_programas_e_informes.csv   Programas de trabajo e informes publicados, con el total de reuniones que declara cada
+                              informe y la cita textual de donde se tomó.
+04_asuntos_turnados.csv       Iniciativas turnadas a cada comisión, con su estado y fecha de dictamen.
+
+IMPORTANTE
+- El Congreso no publica el registro de cada reunión de comisión (fecha, asistencia, acta). Solo hay totales: el que
+  muestra la página de comisiones y el que declara cada comisión en sus informes. Pueden no coincidir (por ejemplo,
+  Hacienda: 47 en la página; 56 y 67 en sus informes del primer y segundo año). Ninguno se corrige: se muestran ambos.
+- 19 de 23 informes son escaneos; su texto se obtuvo con reconocimiento óptico de caracteres (OCR). El total de reuniones
+  se extrajo automáticamente: verifique la cita en el documento. Se descartaron frases sobre reuniones programadas.
+- No haber localizado un dato de reuniones no significa que la comisión no se haya reunido.
+- Las cargas de trabajo y competencias de las comisiones son distintas: compare con cautela.
+- Un asunto turnado a varias comisiones aparece en cada una (en el total general cuenta una sola vez).
+"""
+
+
 if __name__ == "__main__":
     bloque = sys.argv[1] if len(sys.argv) > 1 else "todo"
+    if bloque in ("comisiones", "todo"):
+        bloque_comisiones()
     if bloque in ("intervenciones", "todo"):
         bloque_intervenciones()
     if bloque in ("votaciones", "todo"):
