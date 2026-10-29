@@ -321,6 +321,7 @@ export const ESQUEMA: Record<NombreTabla, TablaDef> = {
       { nombre: 'nombre', descripcion: 'Nombre oficial.', requerido: true },
       { nombre: 'tipo', descripcion: 'permanente | especial | otra' },
       { nombre: 'url', descripcion: 'Micrositio oficial.', tipo: 'url' },
+      { nombre: 'reuniones_reportadas', descripcion: 'Total de reuniones de trabajo que reporta el Congreso para la comisión (sin detalle por reunión).', tipo: 'entero' },
       fuente(false),
       notas,
     ],

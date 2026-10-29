@@ -6,6 +6,8 @@ import { FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
 import { BarraFiltros } from '../componentes/Filtros';
 import { IcoReiniciar } from '../componentes/Iconos';
 import { LEGISLATURA } from '../config/legislatura';
+import { CONFIG_MAPA } from '../config/mapa';
+import { EnlaceExterno } from '../componentes/Fuente';
 import type { Base, Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { useFiltro } from '../estado/useFiltro';
@@ -16,6 +18,19 @@ export function personasDelDistrito(b: Base, distrito: number): Diputado[] {
   return b.diputados
     .filter((d) => d.tipo_representacion === 'MR' && d.distrito === distrito)
     .sort((a, c) => Number(Boolean(a.fecha_fin)) - Number(Boolean(c.fecha_fin)) || c.fecha_inicio.localeCompare(a.fecha_inicio));
+}
+
+/** Demarcación del distrito (IEE) y enlace a su mapa oficial. */
+function InfoDistrito({ n }: { n: number }) {
+  const { base } = useDatos();
+  const d = base.distritos.find((x) => x.distrito === n);
+  return (
+    <p className="pequeno texto-2" style={{ marginTop: '-0.25rem' }}>
+      {d?.cabecera && <>Demarcación: <strong>{d.cabecera}</strong>. </>}
+      {d?.municipios.length ? <>Municipio{d.municipios.length > 1 ? 's' : ''}: {d.municipios.join(', ')}. </> : null}
+      <EnlaceExterno url={CONFIG_MAPA.urlMapaOficial(n)}>Mapa oficial del distrito (IEE, PDF)</EnlaceExterno>
+    </p>
+  );
 }
 
 export default function PaginaMapa() {
@@ -95,6 +110,7 @@ export default function PaginaMapa() {
           ) : !persona ? (
             <>
               <h2 style={{ fontSize: '1.1rem' }}>Distrito {sel}</h2>
+              <InfoDistrito n={sel} />
               <Aviso tipo="alerta" titulo="Información pendiente de integración">
                 No hay una diputación de mayoría relativa registrada para este distrito en el catálogo de diputados.
               </Aviso>
@@ -102,6 +118,7 @@ export default function PaginaMapa() {
           ) : (
             <>
               <h2 style={{ fontSize: '1.1rem' }}>Distrito electoral local {sel}</h2>
+              <InfoDistrito n={sel} />
               {personas.length > 1 && (
                 <div className="fila-flex pequeno" style={{ marginBottom: '0.75rem' }}>
                   <span className="texto-2">Personas que han ocupado esta curul:</span>

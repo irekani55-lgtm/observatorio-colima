@@ -169,6 +169,9 @@ export interface Comision {
   nombre: string;
   tipo: string;
   url: string;
+  /** Total reportado por el Congreso cuando no hay registro de cada reunión. */
+  reuniones_reportadas: number | null;
+  notas: string;
 }
 
 export interface Integrante {
@@ -459,6 +462,8 @@ export function construirBase(c: ConjuntoCargado): Base {
     nombre: s(f, 'nombre'),
     tipo: minus(s(f, 'tipo')),
     url: s(f, 'url'),
+    reuniones_reportadas: entero(s(f, 'reuniones_reportadas')),
+    notas: s(f, 'notas'),
   }));
 
   const integrantes: Integrante[] = t.comision_integrantes.map((f) => ({

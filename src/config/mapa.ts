@@ -22,12 +22,14 @@ export const CONFIG_MAPA = {
    * recortan del encuadre para que el continente sea legible.
    */
   encuadre: [-104.75, 18.62, -103.45, 19.56] as [number, number, number, number],
+  /** Mapa oficial de cada distrito publicado por el IEE (PDF), redistritación 2022. */
+  urlMapaOficial: (n: number) => `https://ieecolima.org.mx/distritos%202024/Distrito%20${n}.pdf`,
   /** Metadatos que se muestran como fuente del mapa. Completar al integrar el archivo. */
   fuente: {
     nombre: 'Cartografía de distritos electorales locales',
     institucion: 'Instituto Electoral del Estado de Colima / Instituto Nacional Electoral',
     url: 'https://ieecolima.org.mx/distritos.html',
-    distritacion: 'Distritación local aplicable al Proceso Electoral 2023–2024 (por confirmar)',
+    distritacion: 'Redistritación local 2022, aplicada en el Proceso Electoral 2023–2024',
     verificado: false,
   },
 };

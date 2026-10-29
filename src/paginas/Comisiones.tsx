@@ -37,7 +37,16 @@ export default function Comisiones() {
       <div className="rejilla rejilla--tarjetas">
         <Tarjeta titulo="Comisiones" valor={base.comisiones.length ? fmt(base.comisiones.length) : null} />
         <Tarjeta titulo="Asuntos únicos turnados" valor={base.comisiones.length ? fmt(unicos) : null} detalle={`${fmt(sumaTurnos)} turnos en total`} explica="Un asunto turnado a varias comisiones cuenta una vez en este total." />
-        <Tarjeta titulo="Reuniones documentadas" valor={base.comisiones.length ? fmt(ind.reduce((s, i) => s + i.reuniones, 0)) : null} detalle={`${fmt(ind.reduce((s, i) => s + i.reunionesConActa, 0))} con acta localizada`} />
+        {base.reuniones.length ? (
+          <Tarjeta titulo="Reuniones documentadas" valor={fmt(ind.reduce((s, i) => s + i.reuniones, 0))} detalle={`${fmt(ind.reduce((s, i) => s + i.reunionesConActa, 0))} con acta localizada`} />
+        ) : (
+          <Tarjeta
+            titulo="Reuniones reportadas por el Congreso"
+            valor={base.comisiones.some((c) => c.reuniones_reportadas != null) ? fmt(base.comisiones.reduce((s, c) => s + (c.reuniones_reportadas ?? 0), 0)) : null}
+            detalle="Suma de los totales que publica la página de comisiones"
+            explica="El Congreso no publica la fecha ni la asistencia de cada reunión; las reuniones conjuntas pueden contarse en más de una comisión."
+          />
+        )}
       </div>
       <section className="seccion">
         <PanelGrafica titulo="Asuntos turnados por comisión" nota="Cada barra suma los turnos de la comisión, por eso el total de barras supera el de asuntos únicos." datos={datos} columnas={[{ clave: 'nombre', etiqueta: 'Comisión' }, { clave: 'dictaminados', etiqueta: 'Dictaminados' }, { clave: 'pendientes', etiqueta: 'Pendientes' }]}>
@@ -58,7 +67,13 @@ export default function Comisiones() {
             { id: 'd', titulo: 'Dictaminados', numerica: true, valor: (i) => i.dictaminados },
             { id: 'p', titulo: 'Pendientes', numerica: true, valor: (i) => i.pendientes },
             { id: 'pl', titulo: 'Llegaron al Pleno', numerica: true, valor: (i) => i.llegaronAlPleno },
-            { id: 'r', titulo: 'Reuniones', numerica: true, valor: (i) => i.reuniones, render: (i) => `${i.reuniones} (${i.reunionesConActa} con acta)` },
+            {
+              id: 'r',
+              titulo: 'Reuniones',
+              numerica: true,
+              valor: (i) => (i.reuniones || i.comision.reuniones_reportadas) ?? 0,
+              render: (i) => (i.reuniones ? `${i.reuniones} (${i.reunionesConActa} con acta)` : i.comision.reuniones_reportadas != null ? `${i.comision.reuniones_reportadas} reportadas` : '—'),
+            },
             { id: 'a', titulo: 'Asistencia integrantes', numerica: true, valor: (i) => i.asistencia.porcentaje, render: (i) => (i.asistencia.porcentaje == null ? <span className="texto-3">Sin listas verificables</span> : `${fmtPct(i.asistencia.porcentaje)} (${i.asistencia.asistencias}/${i.asistencia.evaluables})`) },
             { id: 'm', titulo: 'Mediana turno → dictamen', numerica: true, valor: (i) => i.diasTurnoDictamen.mediana, render: (i) => (i.diasTurnoDictamen.mediana == null ? '—' : `${fmt(i.diasTurnoDictamen.mediana)} días (n=${i.diasTurnoDictamen.casos})`) },
           ]}

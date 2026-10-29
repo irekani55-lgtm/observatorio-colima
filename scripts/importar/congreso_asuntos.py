@@ -207,6 +207,7 @@ def comisiones(dips: list[dict], refrescar: bool) -> tuple[list[dict], list[dict
         if not i["id_diputado"]:
             print(f"  AVISO: integrante de comisión no reconocido: {i['_nombre']}", file=sys.stderr)
     for c in coms:
+        c["reuniones_reportadas"] = c.get("_reuniones", "")
         c["notas"] = f"Reuniones de trabajo reportadas por el Congreso: {c.get('_reuniones', 'sin dato')}." + (" Documentos: " + "; ".join(f"{t}: {url_abs(u)}" for t, u in c.get("_docs", [])) if c.get("_docs") else "")
     return coms, [i for i in integrantes if i["id_diputado"]]
 
@@ -454,7 +455,7 @@ def main() -> None:
     escribir("asuntos", cols_asunto, asuntos)
     escribir("asunto_promoventes", ["id_asunto", "id_diputado", "promovente_externo", "rol", "id_fuente"], promoventes)
     escribir("asunto_comisiones", ["id_asunto", "id_comision", "rol", "fecha_turno", "fecha_dictamen", "id_fuente"], turnos)
-    escribir("comisiones", ["id_comision", "nombre", "tipo", "url", "id_fuente", "notas"], coms + list(comisiones_extra.values()))
+    escribir("comisiones", ["id_comision", "nombre", "tipo", "url", "reuniones_reportadas", "id_fuente", "notas"], coms + list(comisiones_extra.values()))
     escribir("comision_integrantes", ["id_comision", "id_diputado", "cargo", "fecha_inicio", "fecha_fin", "id_fuente"], integrantes)
     existentes = {e["id_fuente"]: e for e in leer_csv("evidencias")}
     existentes.update({k: v for k, v in EVID.items() if k not in existentes})
