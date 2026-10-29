@@ -280,8 +280,88 @@ Rechazada o desechada, Retirada, Pendiente, Estado no verificado (p. ej. "archiv
 """
 
 
+def bloque_dictamenes() -> None:
+    global DESTINO
+    DESTINO = RAIZ / "entrega" / "dictamenes"
+    if DESTINO.exists():
+        shutil.rmtree(DESTINO)
+    DESTINO.mkdir(parents=True)
+    coms = {c["id_comision"]: c for c in leer("comisiones")}
+    asuntos = leer("asuntos")
+    por_id = {a["id_asunto"]: a for a in asuntos}
+    aux = RAIZ / "datos_crudos" / "congreso" / "dictamen_comisiones.csv"
+    dc = defaultdict(list)
+    if aux.exists():
+        with open(aux, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                dc[r["id_asunto"]].append(r["id_comision"])
+    dic = [a for a in asuntos if a["tipo"] == "dictamen"]
+    detalle = []
+    for a in sorted(dic, key=lambda x: x["fecha_dictamen"]):
+        o = por_id.get(a["id_asunto_origen"], {})
+        anio = next((str(n) for n, i, f in [(1, "2024-10-01", "2025-09-30"), (2, "2025-10-01", "2026-09-30"), (3, "2026-10-01", "2027-09-30")] if i <= a["fecha_dictamen"] <= f), "")
+        detalle.append({
+            "id_asunto": a["id_asunto"], "numero_dictamen": a["expediente"].split(" (")[0].replace("Dictamen ", ""), "fecha_dictamen": a["fecha_dictamen"],
+            "anio_legislativo": anio, "anio_legislativo_texto": ANIO.get(anio, ""), "comisiones_dictaminadoras": "; ".join(coms.get(c, {}).get("nombre", c) for c in dc[a["id_asunto"]]),
+            "numero_comisiones": len(dc[a["id_asunto"]]), "descripcion": a["descripcion"], "estado": a["estado_procesal"], "estado_texto": ESTADO_ASUNTO.get(a["estado_procesal"], a["estado_procesal"]),
+            "fecha_votacion_pleno": a["fecha_votacion"], "resultado_votacion": a["resultado_votacion"], "decreto": a["numero_decreto_acuerdo"], "fecha_publicacion": a["fecha_publicacion"],
+            "iniciativa_origen": a["id_asunto_origen"], "iniciativa_origen_descripcion": o.get("descripcion", "")[:300],
+            "dias_presentacion_a_dictamen": (lambda x, y: (__import__("datetime").date.fromisoformat(y) - __import__("datetime").date.fromisoformat(x)).days if x and y else "")(o.get("fecha_presentacion", ""), a["fecha_dictamen"]),
+            "url_documento": a["url_documento"], "notas": a["notas"],
+        })
+    escribir("01_dictamenes_detalle.csv", detalle, list(detalle[0].keys()))
+    resumen = []
+    for c in sorted(coms.values(), key=lambda x: x["nombre"]):
+        suyos = [d for d in detalle if c["nombre"] in d["comisiones_dictaminadoras"].split("; ")]
+        for clave in ("1", "2", "3", "Total"):
+            sel = [d for d in suyos if clave == "Total" or d["anio_legislativo"] == clave]
+            dias_ = sorted(d["dias_presentacion_a_dictamen"] for d in sel if d["dias_presentacion_a_dictamen"] != "")
+            med = (dias_[len(dias_) // 2] if len(dias_) % 2 else (dias_[len(dias_) // 2 - 1] + dias_[len(dias_) // 2]) / 2) if dias_ else ""
+            resumen.append({"id_comision": c["id_comision"], "comision": c["nombre"], "periodo": ANIO.get(clave, "Toda la Legislatura (a la fecha de corte)"), "dictamenes": len(sel),
+                            "individuales": len([d for d in sel if d["numero_comisiones"] == 1]), "conjuntos": len([d for d in sel if d["numero_comisiones"] > 1]),
+                            "aprobados_pleno": len([d for d in sel if d["estado"] in ("aprobado", "publicado")]), "sin_votacion_localizada": len([d for d in sel if d["estado"] == "pendiente"]),
+                            "mediana_dias_presentacion_a_dictamen": med, "casos_con_fechas": len(dias_)})
+    escribir("02_dictamenes_resumen_por_comision.csv", resumen, list(resumen[0].keys()))
+    filas = [{"id_asunto": k, "id_comision": c, "comision": coms.get(c, {}).get("nombre", "")} for k, v in dc.items() for c in v]
+    escribir("03_dictamen_comisiones.csv", filas, ["id_asunto", "id_comision", "comision"])
+    (DESTINO / "00_LEEME.txt").write_text(LEEME_DIC, encoding="utf-8")
+    zip_ = shutil.make_archive(str(DESTINO.parent / "dictamenes_LXI_legislatura"), "zip", DESTINO)
+    print("Listo:", Path(zip_).relative_to(RAIZ))
+
+
+LEEME_DIC = """DICTÁMENES — LXI LEGISLATURA DEL H. CONGRESO DEL ESTADO DE COLIMA
+Fuentes: Gaceta Parlamentaria (lista de dictámenes, decretos e iniciativas) y actas de sesión (votaciones).
+
+ARCHIVOS (en orden)
+01_dictamenes_detalle.csv             Un dictamen por fila (250): comisiones, fecha, estado, votación en el Pleno, decreto
+                                      e iniciativa que resuelve; días entre la presentación de la iniciativa y el dictamen.
+02_dictamenes_resumen_por_comision.csv  Por comisión y año: dictámenes, individuales y conjuntos, aprobados por el Pleno
+                                      y mediana de días de la presentación al dictamen (con el número de casos medibles).
+03_dictamen_comisiones.csv            Una fila por dictamen y comisión dictaminadora.
+
+CÓMO SE RELACIONÓ
+- Comisiones: columna «Comisión dictaminadora» de la Gaceta (se toleran erratas del original).
+- Votación: segmento del acta donde se dio lectura al dictamen con el mismo número, de alguna de sus comisiones, en
+  los 150 días siguientes. Se toman el resultado y los totales oficiales que declara el acta.
+- Decreto e iniciativa: comparación de los textos oficiales, solo cuando la coincidencia es clara y las fechas son
+  coherentes (el decreto se aprueba el mismo día que se vota el dictamen; la iniciativa se presenta antes).
+- La numeración de dictámenes es propia de cada comisión: un «Dictamen 1» puede existir en varias comisiones.
+
+ESTADOS
+Aprobada y publicada / Aprobada: votación aprobatoria en el acta o decreto relacionado.
+Pendiente: no se localizó su votación en las actas ni un decreto relacionado (no significa que no se haya votado).
+
+LIMITACIONES
+- Un dictamen sin iniciativa relacionada puede resolver otro tipo de asunto (licencias, preseas, cuentas públicas).
+- Cuando el Pleno conoció una iniciativa en la misma sesión en que votó su dictamen (trámite abreviado), la fecha
+  exacta de recepción no se publica y la iniciativa conserva solo su año legislativo.
+"""
+
+
 if __name__ == "__main__":
     bloque = sys.argv[1] if len(sys.argv) > 1 else "todo"
+    if bloque in ("dictamenes", "todo"):
+        bloque_dictamenes()
     if bloque in ("asistencias", "todo"):
         bloque_asistencias()
     if bloque in ("iniciativas", "todo"):
