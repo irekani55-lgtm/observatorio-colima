@@ -17,6 +17,23 @@ import { coberturaEvidencia } from '../indicadores/evidencia';
 import { diputadosFiltrados, fechaCorta, fechaEnPeriodo } from '../indicadores/filtro';
 
 const recortar = (v: string) => (v.length > 26 ? `${v.slice(0, 25)}…` : v);
+
+/** Nombre corto de una comisión para etiquetas de gráfica («Hacienda, Fiscalización y Cuenta Pública» → «Hacienda»). */
+export function nombreCorto(nombre: string): string {
+  const especiales: Record<string, string> = {
+    'Estudios Legislativos y Puntos Constitucionales': 'Estudios Legislativos',
+    'Vigilancia del Órgano Superior de Auditoria y Fiscalización Gubernamental del Estado': 'Vigilancia del OSAFIG',
+    'Anticorrupción y Transparencia Gubernamental': 'Anticorrupción',
+    'Peticiones y Participación Ciudadana': 'Peticiones',
+    'Protección y Derecho al Agua': 'Derecho al Agua',
+    'Seguridad Pública y Protección Civil': 'Seguridad Pública',
+    'Presupuesto y Disciplina Financiera': 'Presupuesto',
+  };
+  const limpio = nombre.replace(/\s+/g, ' ').replace(/^Comisi[oó]n(es)? de /i, '').trim();
+  if (especiales[limpio]) return especiales[limpio];
+  const corte = limpio.split(',')[0].trim();
+  return corte.length > 28 ? `${corte.slice(0, 27)}…` : corte;
+}
 const TIPOS_GRAFICA = ['iniciativa', 'exhorto', 'punto_acuerdo', 'dictamen'] as const;
 
 export default function Inicio() {
@@ -45,10 +62,12 @@ export default function Inicio() {
     .map((k) => ({ estado: etiquetaDe(ESTADOS_PROCESALES, k), total: res.porEstado[k] ?? 0 }))
     .filter((x) => x.total > 0);
 
-  // --- Iniciativas por tema
+  // --- Iniciativas por tema: las 10 comisiones con más iniciativas y el resto agrupado, con nombres cortos.
   const temas = new Map<string, number>();
   for (const a of asuntos) if (a.tipo === 'iniciativa') temas.set(a.tema || 'Sin tema', (temas.get(a.tema || 'Sin tema') ?? 0) + 1);
-  const porTema = [...temas.entries()].map(([tema, total]) => ({ tema, total })).sort((a, b) => b.total - a.total);
+  const ordenTemas = [...temas.entries()].sort((a, b) => b[1] - a[1]);
+  const porTema = ordenTemas.slice(0, 10).map(([tema, total]) => ({ tema: nombreCorto(tema), nombre: tema, total }));
+  if (ordenTemas.length > 10) porTema.push({ tema: 'Otras comisiones', nombre: ordenTemas.slice(10).map(([t]) => t).join('; '), total: ordenTemas.slice(10).reduce((s_, [, n]) => s_ + n, 0) });
 
   // --- Actividad por diputado o partido (asuntos únicos por grupo)
   const actividad = useMemo(() => {
@@ -170,8 +189,13 @@ export default function Inicio() {
             <GraficaBarras datos={porEstado} claveX="estado" series={[{ clave: 'total', etiqueta: 'Asuntos', color: SERIES[0] }]} horizontal anchoEtiqueta={170} />
           </PanelGrafica>
 
-          <PanelGrafica titulo="Iniciativas por tema" nota="Tema principal asignado en la captura; una iniciativa tiene un solo tema." datos={porTema} columnas={[{ clave: 'tema', etiqueta: 'Tema' }, { clave: 'total', etiqueta: 'Iniciativas' }]}>
-            <GraficaBarras datos={porTema} claveX="tema" series={[{ clave: 'total', etiqueta: 'Iniciativas', color: SERIES[0] }]} horizontal anchoEtiqueta={150} />
+          <PanelGrafica
+            titulo="Iniciativas por tema"
+            nota="El tema es la comisión principal a la que se turnó cada iniciativa. Se muestran las 10 con más iniciativas; el resto se agrupa en «Otras comisiones». El nombre completo aparece al pasar el cursor y en la tabla."
+            datos={porTema}
+            columnas={[{ clave: 'nombre', etiqueta: 'Comisión' }, { clave: 'total', etiqueta: 'Iniciativas' }]}
+          >
+            <GraficaBarras datos={porTema} claveX="tema" series={[{ clave: 'total', etiqueta: 'Iniciativas', color: SERIES[0] }]} horizontal anchoEtiqueta={160} alto={porTema.length * 34 + 50} etiquetaX={(v) => porTema.find((x) => x.tema === v)?.nombre ?? v} etiquetaEje={(v) => v} />
           </PanelGrafica>
 
           <PanelGrafica titulo="Evolución de los asuntos legislativos" nota="Iniciativas, exhortos y puntos de acuerdo presentados y aprobados por mes (los dictámenes no se suman para no contar dos veces el mismo asunto)." datos={evolucion} columnas={[{ clave: 'mes', etiqueta: 'Mes' }, { clave: 'presentados', etiqueta: 'Presentados' }, { clave: 'aprobados', etiqueta: 'Aprobados' }]}>

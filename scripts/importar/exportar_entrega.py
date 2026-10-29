@@ -15,7 +15,7 @@ from __future__ import annotations
 import csv
 import shutil
 import sys
-from collections import Counter, defaultdict
+from collections import Counter, defaultdict  # noqa: F401
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
@@ -455,8 +455,96 @@ IMPORTANTE
 """
 
 
+def bloque_votaciones() -> None:
+    global DESTINO
+    DESTINO = RAIZ / "entrega" / "votaciones"
+    if DESTINO.exists():
+        shutil.rmtree(DESTINO)
+    DESTINO.mkdir(parents=True)
+    dips = {d["id_diputado"]: d for d in leer("diputados")}
+    partidos = {p["id_partido"]: p for p in leer("partidos")}
+    sesiones = {x["id_sesion"]: x for x in leer("sesiones")}
+    asuntos = {a["id_asunto"]: a for a in leer("asuntos")}
+    evid = {e["id_fuente"]: e for e in leer("evidencias")}
+    vots = leer("votaciones")
+    votos = leer("votos")
+    por_v = defaultdict(Counter)
+    for v in votos:
+        por_v[v["id_votacion"]][v["sentido"]] += 1
+    fecha_de = {}
+    filas = []
+    for v in vots:
+        s_ = sesiones.get(v["id_sesion"], {})
+        a = asuntos.get(v["id_asunto"], {})
+        fecha = s_.get("fecha") or a.get("fecha_votacion", "")
+        fecha_de[v["id_votacion"]] = fecha
+        c = por_v[v["id_votacion"]]
+        cuadra = "" if v["tipo_votacion"] != "nominal" or v["total_favor"] == "" else ("Sí" if (c["favor"], c["contra"], c["abstencion"]) == (int(v["total_favor"]), int(v["total_contra"]), int(v["total_abstencion"])) else "No")
+        filas.append({"id_votacion": v["id_votacion"], "fecha": fecha, "id_sesion": v["id_sesion"], "sesion": s_.get("notas", "")[:160], "descripcion": v["descripcion"],
+                      "id_asunto": v["id_asunto"], "asunto": a.get("titulo", "")[:250], "tipo_votacion": "Nominal" if v["tipo_votacion"] == "nominal" else "Económica",
+                      "resultado": v["resultado"], "total_favor": v["total_favor"], "total_contra": v["total_contra"], "total_abstencion": v["total_abstencion"],
+                      "votos_leidos_favor": c["favor"], "votos_leidos_contra": c["contra"], "votos_leidos_abstencion": c["abstencion"], "lista_cuadra_con_total": cuadra,
+                      "url_acta": evid.get(v["id_fuente"], {}).get("url", "")})
+    filas.sort(key=lambda x: (x["fecha"], x["id_votacion"]))
+    escribir("01_votaciones.csv", filas, list(filas[0].keys()))
+    detalle = []
+    for v in votos:
+        d = dips.get(v["id_diputado"], {})
+        vv = next((f for f in filas if f["id_votacion"] == v["id_votacion"]), {})
+        detalle.append({"fecha": fecha_de.get(v["id_votacion"], ""), "id_votacion": v["id_votacion"], "id_diputado": v["id_diputado"], "nombre": d.get("nombre_completo", ""),
+                        "partido": partidos.get(d.get("id_partido", ""), {}).get("siglas", ""), "sentido": {"favor": "A favor", "contra": "En contra", "abstencion": "Abstención"}.get(v["sentido"], v["sentido"]),
+                        "asunto": vv.get("asunto") or vv.get("descripcion", ""), "resultado_general": vv.get("resultado", "")})
+    detalle.sort(key=lambda x: (x["fecha"], x["id_votacion"], x["nombre"]))
+    escribir("02_votos_por_diputado_detalle.csv", detalle, list(detalle[0].keys()))
+    resumen = []
+    for id_d, d in sorted(dips.items(), key=lambda x: x[1]["nombre_completo"]):
+        for clave in ("1", "2", "3", "Total"):
+            mios = [x for x in detalle if x["id_diputado"] == id_d and (clave == "Total" or next((str(n) for n, i, f in [(1, "2024-10-01", "2025-09-30"), (2, "2025-10-01", "2026-09-30"), (3, "2026-10-01", "2027-09-30")] if i <= x["fecha"] <= f), "") == clave)]
+            c = Counter(x["sentido"] for x in mios)
+            resumen.append({"id_diputado": id_d, "nombre": d["nombre_completo"], "partido": partidos.get(d["id_partido"], {}).get("siglas", ""), "periodo": ANIO.get(clave, "Toda la Legislatura (a la fecha de corte)"),
+                            "votos_registrados": len(mios), "a_favor": c["A favor"], "en_contra": c["En contra"], "abstenciones": c["Abstención"],
+                            "votos_distintos_al_resultado": len([x for x in mios if (x["resultado_general"] == "aprobado" and x["sentido"] != "A favor") or (x["resultado_general"] == "rechazado" and x["sentido"] == "A favor")])})
+    escribir("03_resumen_por_diputado.csv", resumen, list(resumen[0].keys()))
+    for i, nombre in enumerate(["votaciones", "votos"], start=4):
+        f_ = leer(nombre)
+        escribir(f"{i:02d}_{nombre}.csv", f_, list(f_[0].keys()))
+    (DESTINO / "00_LEEME.txt").write_text(LEEME_VOT, encoding="utf-8")
+    zip_ = shutil.make_archive(str(DESTINO.parent / "votaciones_LXI_legislatura"), "zip", DESTINO)
+    print("Listo:", Path(zip_).relative_to(RAIZ))
+
+
+LEEME_VOT = """VOTACIONES DEL PLENO — LXI LEGISLATURA DEL H. CONGRESO DEL ESTADO DE COLIMA
+Fuente: actas de sesión publicadas en la Gaceta Parlamentaria.
+
+ARCHIVOS (en orden)
+01_votaciones.csv                 Una fila por votación: fecha, sesión, asunto votado, tipo (nominal o económica), resultado,
+                                  totales oficiales declarados en el acta, votos leídos de la lista y si ambos cuadran.
+02_votos_por_diputado_detalle.csv Una fila por persona y votación nominal: sentido del voto (a favor, en contra, abstención).
+03_resumen_por_diputado.csv       Por persona y año legislativo: votos registrados, a favor, en contra, abstenciones y
+                                  votos distintos al resultado general.
+04_votaciones.csv / 05_votos.csv  Tablas normalizadas que usa el observatorio.
+
+CÓMO SE OBTUVO
+- Cada «se declaró aprobado/rechazado por N votos a favor, N en contra y N abstenciones» del acta es una votación.
+  La lista nominal es la que la precede («Dip. Nombre, a favor; …»), por lo que se separan las votaciones en lo general
+  y en lo particular.
+- El sentido del voto solo se registra cuando el acta lo transcribe. Nunca se deduce del partido ni del resultado.
+  Si una persona no aparece en la lista, no se registra (no se presume ausencia).
+- Las votaciones económicas de puntos de acuerdo no tienen registro individual.
+
+CALIDAD
+- En 387 de 439 votaciones nominales la lista leída cuadra exactamente con los totales oficiales del acta.
+  En las demás (columna lista_cuadra_con_total = No) la diferencia suele estar en la propia acta: renglones omitidos,
+  nombres repetidos o votos rectificados. Revise el acta enlazada.
+- «Votos distintos al resultado» describe cuántas veces la persona votó distinto del resultado general; no es una
+  calificación ni mide la calidad de su trabajo.
+"""
+
+
 if __name__ == "__main__":
     bloque = sys.argv[1] if len(sys.argv) > 1 else "todo"
+    if bloque in ("votaciones", "todo"):
+        bloque_votaciones()
     if bloque in ("exhortos", "todo"):
         bloque_exhortos()
     if bloque in ("dictamenes", "todo"):

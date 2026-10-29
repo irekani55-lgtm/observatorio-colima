@@ -280,7 +280,8 @@ export function validarReglas(b: Base): Problema[] {
       [v.total_abstencion, c.abstencion ?? 0, 'abstenciones'],
     ];
     for (const [oficial, capturado, etq] of pares) {
-      if (oficial != null && oficial !== capturado) p.push({ severidad: 'error', categoria: 'inconsistencia', tabla: 'votos', registro: v.id_votacion, mensaje: `Total oficial ${etq} (${oficial}) distinto de los votos individuales capturados (${capturado}).` });
+      // Advertencia y no error: en datos oficiales la diferencia suele estar en la propia acta (renglones omitidos o repetidos).
+      if (oficial != null && oficial !== capturado) p.push({ severidad: 'advertencia', categoria: 'inconsistencia', tabla: 'votos', registro: v.id_votacion, mensaje: `Total oficial ${etq} (${oficial}) distinto de los votos individuales capturados (${capturado}). Revise la lista nominal en el acta.` });
     }
     if (v.total_favor != null && v.total_contra != null && v.resultado !== 'no_localizado') {
       const esperado = v.total_favor > v.total_contra ? 'aprobado' : 'rechazado';
