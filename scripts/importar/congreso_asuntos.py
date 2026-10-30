@@ -367,12 +367,20 @@ def main() -> None:
 
     asuntos, promoventes, turnos = [], [], []
     comisiones_extra: dict[str, dict] = {}
+    # Autoría tomada del propio documento cuando la Gaceta deja vacío el campo «Autor».
+    AUTORIA_DOCUMENTO = {
+        224: ("Andrea Naranjo Alcaraz, Isamar Ramírez Rodríguez, Alma Yesenia Ventura Ochoa, Andrea Carolina Heredia Torres y Héctor Gustavo Larios Uribe",
+              "La Gaceta deja vacío el autor; la autoría se tomó del documento de la iniciativa, que firman estas cinco diputaciones a partir de la "
+              "propuesta del Ayuntamiento de Manzanillo (sello de recibido del 04 dic 2025)."),
+    }
     for x in sorted(lista, key=lambda y: y["numero"]):
         id_ = f"INI-61-{x['numero']:03d}"
+        if not x["autor"].strip() and x["numero"] in AUTORIA_DOCUMENTO:
+            x = {**x, "autor": AUTORIA_DOCUMENTO[x["numero"]][0]}
         texto_autoria = f"{x['autor']} || {x['descripcion']}"
         es_minuta = bool(re.match(r"(?i)\s*(la\s+)?minuta|por el que se aprueba la minuta", x["descripcion"])) or bool(re.search(r"(?i)senadores|c[aá]mara de diputados", x["autor"]))
         estado, resol, num = estado_iniciativa(x["status"], bool(x["comisiones"]))
-        notas = []
+        notas = [AUTORIA_DOCUMENTO[x["numero"]][1]] if x["numero"] in AUTORIA_DOCUMENTO else []
         if x["status"].lower().startswith("archivad"):
             notas.append("La Gaceta la reporta como «archivada».")
         if x["status"].lower().startswith("minuta enviada"):

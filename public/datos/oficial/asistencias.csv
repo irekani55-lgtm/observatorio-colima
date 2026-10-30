@@ -40,7 +40,7 @@ S-A1-PO1-ORD-001,DIP-137,asistencia,,EV-ASIS-S-A1-PO1-ORD-001,
 S-A1-PO1-ORD-001,DIP-138,asistencia,,EV-ASIS-S-A1-PO1-ORD-001,
 S-A1-PO1-ORD-001,DIP-139,asistencia,,EV-ASIS-S-A1-PO1-ORD-001,
 S-A1-PO1-ORD-001,DIP-140,asistencia,,EV-ASIS-S-A1-PO1-ORD-001,
-S-A1-PO1-ORD-001,DIP-148,no_verificado,Justificada según la lista oficial (sin motivo publicado),EV-ASIS-S-A1-PO1-ORD-001,Día de cambio entre titular y suplencia: no puede asegurarse quién ocupaba la curul en esta sesión.
+S-A1-PO1-ORD-001,DIP-RP-JCLT,justificada,Justificada según el acta de la sesión,EV-ASIS-S-A1-PO1-ORD-001,Acta de la Sesión Ordinaria 01 (2 oct 2024): «faltando con justificación el Diputado Julio César León Trujillo».
 S-A1-PO1-ORD-001,DIP-147,asistencia,,EV-ASIS-S-A1-PO1-ORD-001,
 S-A1-PO1-ORD-001,DIP-146,asistencia,,EV-ASIS-S-A1-PO1-ORD-001,
 S-A1-PO1-ORD-001,DIP-145,asistencia,,EV-ASIS-S-A1-PO1-ORD-001,
@@ -65,7 +65,7 @@ S-A1-PO1-ORD-002,DIP-137,asistencia,,EV-ASIS-S-A1-PO1-ORD-002,
 S-A1-PO1-ORD-002,DIP-138,asistencia,,EV-ASIS-S-A1-PO1-ORD-002,
 S-A1-PO1-ORD-002,DIP-139,asistencia,,EV-ASIS-S-A1-PO1-ORD-002,
 S-A1-PO1-ORD-002,DIP-140,asistencia,,EV-ASIS-S-A1-PO1-ORD-002,
-S-A1-PO1-ORD-002,DIP-148,no_verificado,Justificada según la lista oficial (sin motivo publicado),EV-ASIS-S-A1-PO1-ORD-002,Día de cambio entre titular y suplencia: no puede asegurarse quién ocupaba la curul en esta sesión.
+S-A1-PO1-ORD-002,DIP-148,asistencia,,EV-ASIS-S-A1-PO1-ORD-002,Acta de la Sesión Ordinaria 02 (2 oct 2024): rinde protesta Alfredo Álvarez Ramírez y el pase de lista posterior verifica 25 presentes.
 S-A1-PO1-ORD-002,DIP-147,asistencia,,EV-ASIS-S-A1-PO1-ORD-002,
 S-A1-PO1-ORD-002,DIP-146,asistencia,,EV-ASIS-S-A1-PO1-ORD-002,
 S-A1-PO1-ORD-002,DIP-145,asistencia,,EV-ASIS-S-A1-PO1-ORD-002,
@@ -3512,7 +3512,7 @@ S-A3-PO1-ORD-002,DIP-129,asistencia,,EV-ASIS-S-A3-PO1-ORD-002,
 S-A3-PO1-ORD-002,DIP-130,asistencia,,EV-ASIS-S-A3-PO1-ORD-002,
 S-A3-PO1-ORD-002,DIP-131,asistencia,,EV-ASIS-S-A3-PO1-ORD-002,
 S-A3-PO1-ORD-002,DIP-132,asistencia,,EV-ASIS-S-A3-PO1-ORD-002,
-S-A3-PO1-ORD-002,DIP-133,no_verificado,,EV-ASIS-S-A3-PO1-ORD-002,Día de cambio entre titular y suplencia: no puede asegurarse quién ocupaba la curul en esta sesión.
+S-A3-PO1-ORD-002,DIP-S09,asistencia,,EV-ASIS-S-A3-PO1-ORD-002,"La lista oficial muestra la curul con el nombre de la persona titular actual; en esta fecha ejercía el cargo la suplencia según los acuerdos 17, 67."
 S-A3-PO1-ORD-002,DIP-134,justificada,Justificada según la lista oficial (sin motivo publicado),EV-ASIS-S-A3-PO1-ORD-002,
 S-A3-PO1-ORD-002,DIP-135,justificada,Justificada según la lista oficial (sin motivo publicado),EV-ASIS-S-A3-PO1-ORD-002,
 S-A3-PO1-ORD-002,DIP-136,asistencia,,EV-ASIS-S-A3-PO1-ORD-002,

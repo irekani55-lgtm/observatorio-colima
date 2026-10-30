@@ -165,21 +165,32 @@ def catalogo(refrescar: bool) -> list[dict]:
 
 
 # ----------------------------------------------------------------- licencias y suplencias
-ACUERDO_PDF = BASE + "/web/Sistema/uploads/Acuerdos/Acuerdo_{n}_61.pdf"
+# Nombres de archivo tal como los publica la lista de acuerdos de la Gaceta (no siguen un solo patrón).
+ACUERDO_ARCHIVO = {4: "Acuerdo_04_61.pdf", 6: "Acuerdo_06_61.pdf", 17: "Acuerdo_17_61.pdf", 29: "ACUERDO_29_61.pdf", 67: "Acuerdo_67_61.pdf"}
+
+
+def acuerdo_pdf(n: int) -> str:
+    return BASE + "/web/Sistema/uploads/Acuerdos/" + ACUERDO_ARCHIVO.get(n, f"Acuerdo_{n}_61.pdf")
 # Tomado de los acuerdos de la LXI Legislatura (lista "Acuerdos" de la Gaceta). Cada periodo indica el
-# acuerdo que lo respalda. "hasta" vacío = licencia vigente. Las suplencias se toman de la integración
-# publicada por el IEE; la fecha exacta de toma de protesta de cada suplente está pendiente de verificar.
+# acuerdo que lo respalda. "hasta" vacío = licencia vigente. Las tres licencias se concedieron por el
+# art. 24, fracción II, de la Ley Orgánica del Poder Legislativo (desempeñar una comisión o empleo público).
 LICENCIAS = [
-    {"titular": "DIP-133", "desde": "2025-01-16", "hasta": "2026-10-13", "acuerdos": [17, 67],
+    {"titular": "DIP-133", "desde": "2025-01-16", "hasta": "2026-10-15", "acuerdos": [17, 67],
      "suplente": {"id": "DIP-S09", "nombre": "Alma Yesenia Ventura Ochoa"},
-     "ambiguo": ["2026-10-14"],  # el Pleno aprobó la reincorporación en la propia sesión
-     "nota": "Licencia por tiempo indefinido a partir del 16 ene 2025 (Acuerdo 17); reincorporación aprobada el 14 oct 2026 (Acuerdo 67)."},
+     "ambiguo": [],  # el Acuerdo 67 fija la reincorporación a partir del 16 oct 2026
+     "nota": "Licencia por tiempo indefinido a partir del 16 ene 2025 para desempeñar un cargo de carácter estatal (art. 24, fr. II, Ley Orgánica; Acuerdo 17). La suplente Alma Yesenia Ventura Ochoa rindió protesta el 16 ene 2025. Reincorporación a partir del 16 oct 2026 por haber concluido el encargo (Acuerdo 67)."},
     {"titular": "DIP-137", "desde": "2024-10-16", "hasta": "2025-04-15", "acuerdos": [6, 29],
      "suplente": {"id": "DIP-S13", "nombre": "Sharon Monserrat Díaz García"}, "ambiguo": [],
-     "nota": "Licencia por tiempo indefinido a partir del 16 oct 2024 (Acuerdo 6); reincorporación a partir del 16 abr 2025 (Acuerdo 29)."},
+     "nota": "Licencia a partir del 16 oct 2024 para desempeñar una comisión o empleo público (art. 24, fr. II, Ley Orgánica; Acuerdo 6). La solicitud la pide por tiempo indefinido, aunque el título y el resolutivo del Acuerdo 6 dicen «por tiempo definido». La suplente Sharon Monserrat Díaz García rindió protesta el 17 oct 2024. Reincorporación a partir del 16 abr 2025 por haber concluido el encargo (Acuerdo 29)."},
     {"titular": "DIP-RP-JCLT", "desde": "2024-10-02", "hasta": "", "acuerdos": [4],
-     "suplente": {"id": "DIP-148", "nombre": None}, "ambiguo": ["2024-10-02"],
-     "nota": "Licencia por tiempo indefinido aprobada el 2 oct 2024 (Acuerdo 4)."},
+     "suplente": {"id": "DIP-148", "nombre": None}, "ambiguo": [],
+     # Día del cambio, resuelto con las actas: en la Ordinaria 01 el titular falta con justificación y se aprueba
+     # su licencia; en la Ordinaria 02 Alfredo Álvarez Ramírez rinde protesta y el pase de lista posterior cuenta 25 presentes.
+     "por_sesion": {
+         "S-A1-PO1-ORD-001": ("DIP-RP-JCLT", "justificada", "Acta de la Sesión Ordinaria 01 (2 oct 2024): «faltando con justificación el Diputado Julio César León Trujillo»."),
+         "S-A1-PO1-ORD-002": ("DIP-148", "asistencia", "Acta de la Sesión Ordinaria 02 (2 oct 2024): rinde protesta Alfredo Álvarez Ramírez y el pase de lista posterior verifica 25 presentes."),
+     },
+     "nota": "Licencia por tiempo indefinido, a partir de su aprobación por el Pleno el 2 oct 2024, para desempeñar una comisión o empleo público (art. 24, fr. II, Ley Orgánica; Acuerdo 4). Por ser de representación proporcional no tiene suplente: se llamó a Alfredo Álvarez Ramírez, siguiente en la lista de MORENA (IEE/CG/A097/2024), quien rindió protesta el 2 oct 2024 en la Sesión Ordinaria 02."},
 ]
 
 
@@ -187,7 +198,7 @@ def aplicar_licencias(diputados: list[dict]) -> None:
     por_id = {d["id_diputado"]: d for d in diputados}
     # Titular de representación proporcional que ya no aparece en el directorio actual.
     if "DIP-RP-JCLT" not in por_id:
-        ev = evidencia("EV-ACUERDO-4", "acta", "Acuerdo 4: licencia del Dip. Julio César León Trujillo", ACUERDO_PDF.format(n=4), fecha="2024-10-02")
+        ev = evidencia("EV-ACUERDO-4", "acta", "Acuerdo 4: licencia del Dip. Julio César León Trujillo", acuerdo_pdf(4), fecha="2024-10-02")
         d = {"id_diputado": "DIP-RP-JCLT", "nombre_completo": "Julio César León Trujillo", "id_partido": "MORENA", "criterio_adscripcion": "Lista de representación proporcional de MORENA (IEE)",
              "tipo_representacion": "RP", "distrito": "", "calidad": "propietario", "fecha_inicio": "2024-10-01", "fecha_fin": "", "url_ficha_oficial": "", "url_foto": "",
              "id_fuente": "EV-IEE-DIPUTACIONES-2024", "estado_verificacion": "verificado", "notas": "", "_fotos": set()}
@@ -195,19 +206,19 @@ def aplicar_licencias(diputados: list[dict]) -> None:
         por_id[d["id_diputado"]] = d
     for lic in LICENCIAS:
         t = por_id[lic["titular"]]
-        evs = [evidencia(f"EV-ACUERDO-{n}", "acta", f"Acuerdo {n} de la LXI Legislatura (licencia / reincorporación)", ACUERDO_PDF.format(n=n)) for n in lic["acuerdos"]]
+        evs = [evidencia(f"EV-ACUERDO-{n}", "acta", f"Acuerdo {n} de la LXI Legislatura (licencia / reincorporación)", acuerdo_pdf(n)) for n in lic["acuerdos"]]
         t["licencias"] = f"{lic['desde']}/{lic['hasta']}"
         t["notas"] = (t.get("notas", "") + " " + lic["nota"]).strip()
         sup = lic["suplente"]
         if sup["nombre"] is None:  # la suplente/el suplente ya está en el directorio (sigue en funciones)
             s_ = por_id[sup["id"]]
-            s_.update({"calidad": "suplente", "id_titular": t["id_diputado"], "fecha_inicio": lic["desde"], "estado_verificacion": "pendiente",
-                       "notas": f"Suplente en funciones de {t['nombre_completo']}. {lic['nota']} Fecha de toma de protesta por verificar."})
+            s_.update({"calidad": "suplente", "id_titular": t["id_diputado"], "fecha_inicio": lic["desde"], "estado_verificacion": "verificado",
+                       "notas": f"Suplente en funciones de {t['nombre_completo']}. {lic['nota']}"})
         else:
             diputados.append({"id_diputado": sup["id"], "nombre_completo": sup["nombre"], "id_partido": t["id_partido"], "criterio_adscripcion": "Partido de la persona titular (verificar)",
                               "tipo_representacion": t["tipo_representacion"], "distrito": t["distrito"], "calidad": "suplente", "id_titular": t["id_diputado"],
                               "fecha_inicio": lic["desde"], "fecha_fin": lic["hasta"], "url_ficha_oficial": "", "url_foto": "", "id_fuente": "EV-IEE-DIPUTACIONES-2024",
-                              "estado_verificacion": "pendiente", "notas": f"Suplente electa según el IEE. {lic['nota']} Fecha de toma de protesta por verificar.", "_fotos": set()})
+                              "estado_verificacion": "verificado", "notas": f"Suplente electa según el IEE. {lic['nota']}", "_fotos": set()})
         lic["_evs"] = evs
 
 
@@ -220,6 +231,12 @@ def reatribuir_por_licencia(registros: list[dict], sesiones_por_id: dict[str, di
             if r["id_diputado"] not in (lic["titular"], lic["suplente"]["id"]):
                 continue
             fecha = sesiones_por_id[r["id_sesion"]]["fecha"]
+            if r["id_sesion"] in lic.get("por_sesion", {}):
+                destino, estado, nota = lic["por_sesion"][r["id_sesion"]]
+                r.update({"id_diputado": destino, "estado": estado, "notas": nota,
+                          "justificacion": "Justificada según el acta de la sesión" if estado == "justificada" else ""})
+                cambios += 1
+                continue
             if fecha in lic["ambiguo"]:
                 r["estado"] = "no_verificado"
                 r["notas"] = "Día de cambio entre titular y suplencia: no puede asegurarse quién ocupaba la curul en esta sesión."

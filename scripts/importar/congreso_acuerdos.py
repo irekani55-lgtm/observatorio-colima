@@ -32,10 +32,11 @@ from congreso_asuntos import EVID, GRUPOS, Reconocedor, colectivos, ev, escribir
 
 PARTIDO_DE_GRUPO = {"MORENA": "MORENA", "PRI": "PRI", "PAN": "PAN", "PT": "PT", "PVEM": "PVEM", "Movimiento Ciudadano": "MC", "Nueva Alianza": "PANAL"}
 
-PRESENTA = re.compile(r"(?i)(present[óo]|propus[oi]|propone|dio lectura|expuso|someti[óo]).{0,120}(punto de acuerdo|exhort)")
+# El verbo y «punto de acuerdo» deben estar en la misma oración: en una comparecencia, «expuso el subsecretario… Exhortó a…» no es un punto de acuerdo.
+PRESENTA = re.compile(r"(?i)(present[óo]|propus[oi]|propone|dio lectura|expuso|someti[óo])[^.]{0,120}(punto de acuerdo|exhort)")
 # Solo fórmulas con que el acta declara el resultado; se evitan verbos en futuro del debate («aprobarán»).
 RESULTADO = re.compile(r"(?i)(se aprueba|se aprob[óo]|fue aprobad[oa]|es aprobad[oa]|result[óo] aprobad[oa]|se declar[óo] aprobad[oa]|aprobad[oa] por (?:unanimidad|mayor[ií]a)"
-                       r"|desechad[oa]|se desech[óo]|no alcanz[óo] la votaci[óo]n|se turn[óo] a (?:la |las )?comisi|se turna a (?:la |las )?comisi|turnad[oa] a (?:la |las )?comisi|regres[ao] a comisi)")
+                       r"|desechad[oa]|se desech[óoa]|no alcanz[óo] la votaci[óo]n|no (?:haber )?alcanza(?:r|do) la votaci[óo]n|se turn[óo] a (?:la |las )?comisi|se turna a (?:la |las )?comisi|turnad[oa] a (?:la |las )?comisi|regres[ao] a comisi)")
 SIGUIENTE = re.compile(r"(?i)^(en el siguiente punto|en el subsecuente punto|de conformidad con el siguiente punto|no habiendo m[aá]s|en desahogo del siguiente)"
                        r"|(present[óo]|dio lectura a)\s+(en tribuna\s+)?(una|la|el|al)\s+(iniciativa|dictamen)")
 DESTINO = re.compile(r"(?i)(?:exhort\w*|invitaci[óo]n|solicit\w*)\s+(?:respetuosa\w*\s+|atenta\w*\s+|de manera respetuosa\s+)*(?:y atentamente\s+)?(?:a|al|a la|a las|a los)\s+(.+?)(?=,\s*(?:para|a fin|en el [áa]mbito|con el|a efecto)|\s+(?:para que|a fin de|a efecto de|con el objeto|con la finalidad|en el [áa]mbito de)|[.;]|$)")

@@ -33,6 +33,9 @@ export default function Votaciones() {
       <Aviso>
         El sentido del voto solo se registra cuando la fuente oficial lo acredita. <strong>Nunca se deduce del partido ni del resultado general</strong>; si la fuente no lo permite, aparece como «voto no localizado». Las votaciones económicas normalmente no dejan registro individual.
       </Aviso>
+      <Aviso titulo="Asistencia no es lo mismo que votar">
+        Una persona puede tener asistencia en la sesión y no aparecer en una votación: según el área de taquigrafía parlamentaria del Congreso, ocurre cuando sale del salón para atender otros asuntos y no regresa a tiempo para votar. En esos casos el acta no le asigna voto y aquí tampoco se le cuenta como abstención.
+      </Aviso>
       <BarraFiltros campos={['anio', 'fechas', 'partido']} extraLimpiar={['diputado', 'sentido']}>
         <FiltroParam id="diputado" etiqueta="Diputada o diputado" ancho opciones={base.diputados.map((d) => ({ valor: d.id_diputado, etiqueta: d.nombre_completo }))} />
         <FiltroParam id="sentido" etiqueta="Sentido del voto" opciones={Object.entries(SENTIDOS_VOTO).map(([k, v]) => ({ valor: k, etiqueta: v.etiqueta }))} />
