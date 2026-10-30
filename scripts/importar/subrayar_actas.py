@@ -11,6 +11,7 @@ import html
 import csv
 import re
 import shutil
+import subprocess
 import sys
 import unicodedata
 import zipfile
@@ -240,7 +241,7 @@ def main():
         f.write("ACTAS CON LAS DUDAS SUBRAYADAS\n\n")
         f.write("Copias de las actas oficiales (Gaceta Parlamentaria del H. Congreso del Estado de Colima).\n")
         f.write("Cada duda está resaltada en amarillo y subrayada, con un comentario al margen que explica la pregunta.\n")
-        f.write("Abra el archivo en Word y use Revisar > Comentarios para recorrerlas una por una.\n")
+        f.write("En los PDF la pregunta aparece impresa al margen derecho; en Word, use Revisar > Comentarios.\n")
         f.write("El texto de las actas no se modificó; solo se agregaron resaltado y comentarios.\n\n")
         for n, h in resumen:
             f.write(f"{n}: {h}\n")
@@ -249,6 +250,19 @@ def main():
         for p in sorted(SALIDA.iterdir()):
             z.write(p, p.name)
     print(zip_path)
+
+    # PDF con el resaltado y los comentarios impresos al margen (se ven en cualquier celular)
+    pdf = SALIDA.parent / "actas_subrayadas_pdf"
+    if pdf.exists():
+        shutil.rmtree(pdf)
+    pdf.mkdir()
+    filtro = 'pdf:writer_pdf_Export:{"ExportNotesInMargin":{"type":"boolean","value":"true"}}'
+    subprocess.run(["soffice", "--headless", "--convert-to", filtro, "--outdir", str(pdf), *map(str, sorted(SALIDA.glob("*.docx")))],
+                   capture_output=True, timeout=900)
+    shutil.copy(SALIDA / "00_LEEME.txt", pdf / "00_LEEME.txt")
+    with zipfile.ZipFile(SALIDA.parent / "actas_subrayadas_pdf.zip", "w", zipfile.ZIP_DEFLATED) as z:
+        for q in sorted(pdf.iterdir()):
+            z.write(q, q.name)
 
 
 if __name__ == "__main__":
