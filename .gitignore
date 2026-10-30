@@ -5,3 +5,4 @@ dist
 public/datos/*/reporte-validacion.json
 datos_crudos/
 entrega/
+__pycache__/
