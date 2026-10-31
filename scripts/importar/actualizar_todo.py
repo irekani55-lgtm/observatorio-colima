@@ -6,7 +6,7 @@ Uso (desde la carpeta del proyecto):
   python scripts/importar/actualizar_todo.py --refrescar  # vuelve a descargar las listas de la Gaceta
 
 Pasos: asistencias y catálogo → actas y síntesis → iniciativas, decretos y comisiones →
-dictámenes → validación → entregas CSV (carpeta entrega/).
+dictámenes → votaciones → bitácora de observaciones → pruebas de regresión → validación → entregas CSV.
 """
 import subprocess
 import sys
@@ -25,6 +25,8 @@ pasos = [
     ("Acuerdos, puntos de acuerdo y exhortos", [sys.executable, str(AQUI / "congreso_acuerdos.py"), *extra]),
     ("Votaciones", [sys.executable, str(AQUI / "congreso_votaciones.py")]),
     ("Intervenciones en tribuna", [sys.executable, str(AQUI / "congreso_intervenciones.py"), *extra]),
+    ("Bitácora de observaciones y cuadre de votaciones", [sys.executable, str(AQUI / "observaciones.py")]),
+    ("Pruebas de regresión", [sys.executable, str(AQUI / "pruebas_regresion.py")]),
     ("Validación", ["npx", "tsx", "scripts/validar-datos.ts", "oficial"]),
     ("Entregas CSV", [sys.executable, str(AQUI / "exportar_entrega.py"), "todo"]),
 ]

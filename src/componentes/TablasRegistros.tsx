@@ -108,6 +108,7 @@ export function TablaAsistencias({ registros, titulo, archivo, conDiputado = tru
     ...(conDiputado ? [{ id: 'dip', titulo: 'Diputada/o', valor: (r: RegistroAsistencia) => nombreDip(base, r.id_diputado), render: (r: RegistroAsistencia) => <EnlaceDip id={r.id_diputado} /> }] : []),
     { id: 'estado', titulo: 'Estado', valor: (r) => (r.estado === 'sin_registro' ? SIN_REGISTRO.etiqueta : etiquetaDe(ESTADOS_ASISTENCIA, r.estado)), render: (r) => (r.estado === 'sin_registro' ? <Insignia entrada={SIN_REGISTRO} /> : <InsigniaCatalogo catalogo={ESTADOS_ASISTENCIA} valor={r.estado} />) },
     { id: 'just', titulo: 'Justificación pública', valor: (r) => r.justificacion || '', render: (r) => r.justificacion || <span className="texto-3">—</span> },
+    { id: 'obs', titulo: 'Observación del Observatorio', valor: (r) => r.observaciones || '', render: (r) => (r.observaciones ? <span className="muy-pequeno">{r.observaciones}</span> : <span className="texto-3">—</span>) },
     { id: 'fuente', titulo: 'Fuente', sinBusqueda: true, valor: (r) => r.id_fuente, render: (r) => <EnlaceFuente id={r.id_fuente || r.sesion.id_fuente} corto /> },
   ];
   return <Tabla titulo={titulo} columnas={columnas} filas={registros} clave={(r) => `${r.sesion.id_sesion}|${r.id_diputado}`} archivo={archivo} ordenInicial={{ id: 'fecha', desc: true }} />;

@@ -28,4 +28,15 @@ describe('conjuntos de datos incluidos', () => {
     expect(validarTodo(b).filter((p) => p.severidad === 'error')).toEqual([]);
     expect(autoverificar(b)).toEqual([]);
   });
+
+  it('los votos deducidos por el Observatorio nunca se mezclan con los votos del acta', async () => {
+    const b = construirBase(await cargarConjunto(leer, 'oficial'));
+    const delActa = new Set(b.votos.map((v) => `${v.id_votacion}|${v.id_diputado}`));
+    expect(b.votosInferidos.length).toBeGreaterThan(0);
+    expect(b.votosInferidos.every((v) => !delActa.has(`${v.id_votacion}|${v.id_diputado}`))).toBe(true);
+    // Toda votación que no cuadra está explicada en la bitácora.
+    const noCuadran = b.votaciones.filter((v) => v.cuadre && v.cuadre !== 'coincide');
+    expect(noCuadran.every((v) => b.idx.observacion.has(v.id_observacion))).toBe(true);
+    expect(b.observaciones.some((o) => o.estado === 'resuelta')).toBe(true);
+  });
 });

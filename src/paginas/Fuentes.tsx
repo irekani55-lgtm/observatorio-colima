@@ -2,17 +2,18 @@ import { useMemo, useState } from 'react';
 import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { EnlaceExterno } from '../componentes/Fuente';
-import { Insignia } from '../componentes/Insignia';
+import { Insignia, InsigniaCatalogo } from '../componentes/Insignia';
 import { Tabla } from '../componentes/Tabla';
 import { fmt, fmtPct, Tarjeta } from '../componentes/Tarjeta';
-import { TIPOS_FUENTE, etiquetaDe } from '../config/catalogos';
+import { CONFIANZA_OBSERVACION, ESTADOS_OBSERVACION, TIPOS_FUENTE, etiquetaDe } from '../config/catalogos';
 import { FUENTES_INSTITUCIONALES } from '../config/legislatura';
 import { CONFIG_MAPA } from '../config/mapa';
-import type { Evidencia } from '../datos/modelo';
+import type { Evidencia, Observacion } from '../datos/modelo';
 import { CATEGORIAS_PROBLEMA, resumenProblemas, type Problema, type Severidad } from '../datos/validar';
 import { useDatos } from '../estado/DatosContext';
 import { coberturaEvidencia } from '../indicadores/evidencia';
 import { fechaCorta } from '../indicadores/filtro';
+import { EnlaceFuente } from '../componentes/Fuente';
 
 const SEVERIDAD: Record<Severidad, { etiqueta: string; descripcion: string; tono: 'negativo' | 'alerta' | 'info' }> = {
   error: { etiqueta: 'Error', descripcion: 'Impide un cálculo correcto o contradice otra información.', tono: 'negativo' },
@@ -26,6 +27,10 @@ export default function Fuentes() {
   const r = resumenProblemas(problemas);
   const cob = useMemo(() => coberturaEvidencia(base), [base]);
   const lista = problemas.filter((p) => !sev || p.severidad === sev);
+  const [estadoObs, setEstadoObs] = useState<'' | 'abierta' | 'resuelta'>('');
+  const [verVotaciones, setVerVotaciones] = useState(false);
+  const obs = base.observaciones.filter((o) => (!estadoObs || o.estado === estadoObs) && (verVotaciones || o.tabla !== 'votaciones'));
+  const nObs = { abierta: base.observaciones.filter((o) => o.estado === 'abierta').length, resuelta: base.observaciones.filter((o) => o.estado === 'resuelta').length };
 
   return (
     <>
@@ -89,6 +94,49 @@ export default function Fuentes() {
             { id: 'e', titulo: 'Con evidencia', numerica: true, valor: (t) => t.conEvidencia },
             { id: 'o', titulo: 'Con fuente oficial', numerica: true, valor: (t) => t.oficial },
             { id: 'p', titulo: '%', numerica: true, valor: (t) => (t.total ? (t.conEvidencia / t.total) * 100 : null), render: (t) => (t.total ? fmtPct((t.conEvidencia / t.total) * 100) : 'Sin registros') },
+          ]}
+        />
+      </section>
+
+      <section className="seccion" id="bitacora">
+        <h2>Bitácora de observaciones</h2>
+        <p className="seccion__intro">
+          Lo que el Observatorio encontró al revisar los documentos oficiales: diferencias entre documentos, datos faltantes, errores de captura en la fuente y las correcciones hechas a esta base. <strong>El registro oficial nunca se modifica en silencio</strong>: cada corrección queda aquí con la fuente que la respalda. Las observaciones del cuadre de votaciones también aparecen en la página de Votaciones.
+        </p>
+        <div className="rejilla rejilla--tarjetas" style={{ marginBottom: '1rem' }}>
+          <Tarjeta titulo="Abiertas" valor={fmt(nObs.abierta)} explica="Sin resolver: requieren otra fuente o una aclaración del Congreso." />
+          <Tarjeta titulo="Resueltas" valor={fmt(nObs.resuelta)} explica="Resueltas con documentos oficiales o aclaraciones del Congreso." />
+        </div>
+        <form className="filtros" aria-label="Filtros de la bitácora" onSubmit={(e) => e.preventDefault()}>
+          <div className="campo">
+            <label htmlFor="obs-estado">Estado</label>
+            <select id="obs-estado" value={estadoObs} onChange={(e) => setEstadoObs(e.target.value as typeof estadoObs)}>
+              <option value="">Todas</option>
+              <option value="abierta">Abiertas</option>
+              <option value="resuelta">Resueltas</option>
+            </select>
+          </div>
+          <div className="campo campo--ancho">
+            <label htmlFor="obs-vot">Cuadre de cada votación</label>
+            <select id="obs-vot" value={verVotaciones ? 'si' : 'no'} onChange={(e) => setVerVotaciones(e.target.value === 'si')}>
+              <option value="no">Ocultar (se ven en Votaciones)</option>
+              <option value="si">Mostrar también</option>
+            </select>
+          </div>
+        </form>
+        <Tabla<Observacion>
+          titulo="Bitácora de observaciones"
+          filas={obs}
+          clave={(o) => o.id_observacion}
+          archivo="observaciones"
+          ordenInicial={{ id: 'id', desc: false }}
+          columnas={[
+            { id: 'id', titulo: 'ID', valor: (o) => o.id_observacion, render: (o) => <span className="muy-pequeno num">{o.id_observacion}</span> },
+            { id: 'e', titulo: 'Estado', valor: (o) => o.estado, render: (o) => <InsigniaCatalogo catalogo={ESTADOS_OBSERVACION} valor={o.estado} /> },
+            { id: 't', titulo: 'Registro', valor: (o) => `${o.tabla} ${o.id_registro}`, render: (o) => <span className="muy-pequeno">{o.tabla}<div className="texto-3">{o.id_registro}</div></span> },
+            { id: 'd', titulo: 'Qué se encontró', valor: (o) => o.descripcion, render: (o) => <span className="pequeno">{o.descripcion}{o.confianza && <div><InsigniaCatalogo catalogo={CONFIANZA_OBSERVACION} valor={o.confianza} /></div>}</span> },
+            { id: 'r', titulo: 'Resolución', valor: (o) => o.resolucion, render: (o) => (o.resolucion ? <span className="pequeno">{o.resolucion}</span> : <span className="texto-3">—</span>) },
+            { id: 'f', titulo: 'Fuente', sinBusqueda: true, valor: (o) => o.id_fuente_resolucion || o.id_fuente, render: (o) => (o.id_fuente_resolucion || o.id_fuente ? <EnlaceFuente id={o.id_fuente_resolucion || o.id_fuente} corto /> : <span className="texto-3">—</span>) },
           ]}
         />
       </section>

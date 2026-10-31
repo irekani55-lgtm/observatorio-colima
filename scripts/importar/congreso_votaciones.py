@@ -39,6 +39,8 @@ ITEM = re.compile(r"(?i)\bdip(?:utad[oa])?\.?\s+((?:(?!\bdip(?:utad[oa])?\.?\s)[
 
 def votos_de_lista(lista: str, rec: Reconocedor) -> tuple[list[tuple[str, str]], list[str]]:
     votos, no_reconocidos = [], []
+    # Algunas actas omiten la «a»: «Dip. Nombre, favor;» equivale a «a favor».
+    lista = re.sub(r"(?i),\s*favor\b", ", a favor", lista)
     # Se corta la lista en cada sentido del voto; el nombre es lo que hay entre ese sentido y el anterior.
     # «por la negativa» = en contra; «por la afirmativa» = a favor (fórmulas usadas en algunas actas)
     partes = re.split(r"(?i)\b(a favor|en contra|por la negativa|por la afirmativa|abstenci[óo]n|se abstiene|abstuvo)\b", lista)

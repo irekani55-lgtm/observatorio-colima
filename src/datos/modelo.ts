@@ -90,6 +90,7 @@ export interface Asistencia {
   estado: EstadoAsistencia;
   justificacion: string;
   id_fuente: string;
+  observaciones: string;
 }
 
 export interface Promovente {
@@ -208,6 +209,11 @@ export interface Votacion {
   total_favor: number | null;
   total_contra: number | null;
   total_abstencion: number | null;
+  votos_en_lista: number | null;
+  votos_sin_nombre: number | null;
+  cuadre: '' | 'coincide' | 'faltan_nombres' | 'sobran_nombres' | 'distinto_reparto';
+  observaciones: string;
+  id_observacion: string;
   id_fuente: string;
   estado_verificacion: EstadoVerificacion;
 }
@@ -216,6 +222,30 @@ export interface Voto {
   id_votacion: string;
   id_diputado: string;
   sentido: SentidoVoto;
+}
+
+/** Voto que el acta no escribe pero se deduce con confianza alta. Nunca se suma a los votos registrados. */
+export interface VotoInferido {
+  id_votacion: string;
+  id_diputado: string;
+  sentido: 'favor' | 'contra' | 'abstencion';
+  fundamento: string;
+  id_observacion: string;
+}
+
+export interface Observacion {
+  id_observacion: string;
+  tabla: string;
+  id_registro: string;
+  tipo: string;
+  descripcion: string;
+  confianza: '' | 'alta' | 'media' | 'baja';
+  estado: 'abierta' | 'resuelta';
+  resolucion: string;
+  id_fuente: string;
+  id_fuente_resolucion: string;
+  fecha_registro: string;
+  fecha_resolucion: string;
 }
 
 export interface Compromiso {
@@ -260,6 +290,8 @@ export interface Base {
   asistenciaComision: AsistenciaComision[];
   votaciones: Votacion[];
   votos: Voto[];
+  votosInferidos: VotoInferido[];
+  observaciones: Observacion[];
   compromisos: Compromiso[];
   idx: {
     evidencia: Map<string, Evidencia>;
@@ -270,6 +302,7 @@ export interface Base {
     comision: Map<string, Comision>;
     votacion: Map<string, Votacion>;
     exhortoPorAsunto: Map<string, Exhorto>;
+    observacion: Map<string, Observacion>;
   };
 }
 
@@ -368,6 +401,7 @@ export function construirBase(c: ConjuntoCargado): Base {
     estado: (minus(s(f, 'estado')) || 'pendiente') as EstadoAsistencia,
     justificacion: s(f, 'justificacion'),
     id_fuente: s(f, 'id_fuente'),
+    observaciones: s(f, 'observaciones'),
   }));
 
   const promoventesPorAsunto = new Map<string, Promovente[]>();
@@ -500,6 +534,11 @@ export function construirBase(c: ConjuntoCargado): Base {
     total_favor: entero(s(f, 'total_favor')),
     total_contra: entero(s(f, 'total_contra')),
     total_abstencion: entero(s(f, 'total_abstencion')),
+    votos_en_lista: entero(s(f, 'votos_en_lista')),
+    votos_sin_nombre: entero(s(f, 'votos_sin_nombre')),
+    cuadre: minus(s(f, 'cuadre')) as Votacion['cuadre'],
+    observaciones: s(f, 'observaciones'),
+    id_observacion: s(f, 'id_observacion'),
     id_fuente: s(f, 'id_fuente'),
     estado_verificacion: (minus(s(f, 'estado_verificacion')) || 'no_verificado') as EstadoVerificacion,
   }));
@@ -508,6 +547,31 @@ export function construirBase(c: ConjuntoCargado): Base {
     id_votacion: s(f, 'id_votacion'),
     id_diputado: s(f, 'id_diputado'),
     sentido: (minus(s(f, 'sentido')) || 'no_localizado') as SentidoVoto,
+  }));
+
+  const votosInferidos: VotoInferido[] = t.votos_inferidos
+    .filter((f) => minus(s(f, 'confianza')) === 'alta')
+    .map((f) => ({
+      id_votacion: s(f, 'id_votacion'),
+      id_diputado: s(f, 'id_diputado'),
+      sentido: minus(s(f, 'sentido')) as VotoInferido['sentido'],
+      fundamento: s(f, 'fundamento'),
+      id_observacion: s(f, 'id_observacion'),
+    }));
+
+  const observaciones: Observacion[] = t.observaciones.map((f) => ({
+    id_observacion: s(f, 'id_observacion'),
+    tabla: s(f, 'tabla'),
+    id_registro: s(f, 'id_registro'),
+    tipo: s(f, 'tipo'),
+    descripcion: s(f, 'descripcion'),
+    confianza: minus(s(f, 'confianza')) as Observacion['confianza'],
+    estado: (minus(s(f, 'estado')) === 'resuelta' ? 'resuelta' : 'abierta') as Observacion['estado'],
+    resolucion: s(f, 'resolucion'),
+    id_fuente: s(f, 'id_fuente'),
+    id_fuente_resolucion: s(f, 'id_fuente_resolucion'),
+    fecha_registro: s(f, 'fecha_registro'),
+    fecha_resolucion: s(f, 'fecha_resolucion'),
   }));
 
   const participantes = new Map<string, Compromiso['participantes']>();
@@ -557,6 +621,8 @@ export function construirBase(c: ConjuntoCargado): Base {
     asistenciaComision,
     votaciones,
     votos,
+    votosInferidos,
+    observaciones,
     compromisos,
     idx: {
       evidencia: porId(evidencias, (e) => e.id_fuente),
@@ -567,6 +633,7 @@ export function construirBase(c: ConjuntoCargado): Base {
       comision: porId(comisiones, (x) => x.id_comision),
       votacion: porId(votaciones, (v) => v.id_votacion),
       exhortoPorAsunto: porId(exhortos, (e) => e.id_asunto),
+      observacion: porId(observaciones, (o) => o.id_observacion),
     },
   };
 }

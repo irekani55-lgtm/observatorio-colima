@@ -21,6 +21,8 @@ export interface RegistroAsistencia {
   estado: EstadoAsistencia | 'sin_registro';
   justificacion: string;
   id_fuente: string;
+  /** Observación del Observatorio (no modifica el estado oficial). */
+  observaciones: string;
 }
 
 export interface ResultadoAsistencia {
@@ -90,7 +92,7 @@ export function asistenciaDeDiputado(b: Base, d: Diputado, f: Filtro): Resultado
       case 'no_verificado': r.noVerificadas++; break;
       default: r.sinRegistro++;
     }
-    r.registros.push({ sesion: s, id_diputado: d.id_diputado, estado, justificacion: a?.justificacion ?? '', id_fuente: a?.id_fuente ?? '' });
+    r.registros.push({ sesion: s, id_diputado: d.id_diputado, estado, justificacion: a?.justificacion ?? '', id_fuente: a?.id_fuente ?? '', observaciones: a?.observaciones ?? '' });
   }
   return cerrar(r);
 }

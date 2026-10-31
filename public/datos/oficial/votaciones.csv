@@ -1,479 +1,479 @@
-id_votacion,id_sesion,id_asunto,descripcion,tipo_votacion,resultado,total_favor,total_contra,total_abstencion,id_fuente,estado_verificacion
-VOT-61-20261006-001-01,S-A3-PO1-ORD-001,INI-61-370,Votación en lo general y en lo particular: Dictamen 216,nominal,aprobado,23,0,0,EV-ACTA-2026-10-06-001,verificado
-VOT-61-20261006-001-02,S-A3-PO1-ORD-001,DIC-61-20261005-214,Votación en lo general y en lo particular: Dictamen 214,nominal,aprobado,23,0,0,EV-ACTA-2026-10-06-001,verificado
-VOT-61-20261006-001-03,S-A3-PO1-ORD-001,DIC-61-20261005-215,Votación en lo general y en lo particular: Dictamen 215,nominal,aprobado,23,0,0,EV-ACTA-2026-10-06-001,verificado
-VOT-61-20260930-003-01,S-A2-REC2-EXT-002,DIC-61-20260929-097,Votación en lo general y en lo particular: Dictamen 97,nominal,aprobado,17,7,0,EV-ACTA-2026-09-30-003,verificado
-VOT-61-20260930-003-02,S-A2-REC2-EXT-002,DIC-61-20260929-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,24,0,0,EV-ACTA-2026-09-30-003,verificado
-VOT-61-20260930-003-03,S-A2-REC2-EXT-002,DIC-61-20260929-034,Votación en lo general y en lo particular: Dictamen 34,nominal,aprobado,23,0,0,EV-ACTA-2026-09-30-003,verificado
-VOT-61-20260930-003-04,S-A2-REC2-EXT-002,DIC-61-20260828-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,23,0,0,EV-ACTA-2026-09-30-003,verificado
-VOT-61-20260921-005-01,S-A2-REC2-EXT-001,DIC-61-20260917-095,Votación en lo general y en lo particular: Dictamen 95,nominal,aprobado,21,0,0,EV-ACTA-2026-09-21-005,verificado
-VOT-61-20260921-005-02,S-A2-REC2-EXT-001,DIC-61-20260919-096,Votación en lo general y en lo particular: Dictamen 96,nominal,aprobado,22,0,0,EV-ACTA-2026-09-21-005,verificado
-VOT-61-20260921-005-03,S-A2-REC2-EXT-001,DIC-61-20260917-007,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,22,0,0,EV-ACTA-2026-09-21-005,verificado
-VOT-61-20260921-005-04,S-A2-REC2-EXT-001,DIC-61-20260917-092,Votación en lo general y en lo particular: Dictamen 92,nominal,aprobado,21,0,0,EV-ACTA-2026-09-21-005,verificado
-VOT-61-20260921-005-05,S-A2-REC2-EXT-001,DIC-61-20260917-093,Votación en lo general y en lo particular: Dictamen 93,nominal,aprobado,21,0,0,EV-ACTA-2026-09-21-005,verificado
-VOT-61-20260921-005-06,S-A2-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 94,nominal,aprobado,21,0,0,EV-ACTA-2026-09-21-005,verificado
-VOT-61-20260831-010-01,S-A2-PO2-ORD-022,DIC-61-20260831-213,Votación en lo general y en lo particular: Dictamen 213,nominal,aprobado,23,0,0,EV-ACTA-2026-08-31-010,verificado
-VOT-61-20260831-010-02,S-A2-PO2-ORD-022,DIC-61-20260828-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,23,0,0,EV-ACTA-2026-08-31-010,verificado
-VOT-61-20260831-010-03,S-A2-PO2-ORD-022,DIC-61-20260828-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,23,0,0,EV-ACTA-2026-08-31-010,verificado
-VOT-61-20260826-011-01,S-A2-PO2-ORD-021,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se aprueba el anteproyecto de presupuesto anual de egresos del Poder Legislativo 2027. Una vez concluida la lect,nominal,aprobado,19,0,3,EV-ACTA-2026-08-26-011,verificado
-VOT-61-20260826-011-02,S-A2-PO2-ORD-021,DIC-61-20260825-212,Votación en lo general y en lo particular: Dictamen 212,nominal,aprobado,22,0,0,EV-ACTA-2026-08-26-011,verificado
-VOT-61-20260826-011-03,S-A2-PO2-ORD-021,DIC-61-20260825-210,Votación en lo general y en lo particular: Dictamen 210,nominal,aprobado,22,0,0,EV-ACTA-2026-08-26-011,verificado
-VOT-61-20260826-011-04,S-A2-PO2-ORD-021,DIC-61-20260825-211,Votación en lo general y en lo particular: Dictamen 211,nominal,aprobado,22,0,0,EV-ACTA-2026-08-26-011,verificado
-VOT-61-20260826-011-05,S-A2-PO2-ORD-021,DIC-61-20260825-033,Votación en lo general y en lo particular: Dictamen 33,nominal,aprobado,20,0,0,EV-ACTA-2026-08-26-011,verificado
-VOT-61-20260819-013-01,S-A2-PO2-ORD-020,DIC-61-20260818-090,Votación en lo general y en lo particular: Dictamen 90,nominal,aprobado,16,0,6,EV-ACTA-2026-08-19-013,verificado
-VOT-61-20260819-013-02,S-A2-PO2-ORD-020,DIC-61-20260818-090,Votación en lo general y en lo particular: Dictamen 90,economica,aprobado,16,0,6,EV-ACTA-2026-08-19-013,verificado
-VOT-61-20260819-013-03,S-A2-PO2-ORD-020,DIC-61-20260818-091,Votación en lo general y en lo particular: Dictamen 91,nominal,aprobado,22,0,0,EV-ACTA-2026-08-19-013,verificado
-VOT-61-20260819-013-04,S-A2-PO2-ORD-020,DIC-61-20260812-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,21,0,0,EV-ACTA-2026-08-19-013,verificado
-VOT-61-20260819-013-05,S-A2-PO2-ORD-020,DIC-61-20260818-032,Votación en lo general y en lo particular: Dictamen 32,nominal,aprobado,20,0,0,EV-ACTA-2026-08-19-013,verificado
-VOT-61-20260812-014-01,S-A2-PO2-ORD-019,DIC-61-20260804-087,Votación en lo general y en lo particular: Dictamen 87,nominal,aprobado,18,7,0,EV-ACTA-2026-08-12-014,verificado
-VOT-61-20260812-014-02,S-A2-PO2-ORD-019,DIC-61-20260811-089,Votación en lo general y en lo particular: Dictamen 89,nominal,aprobado,24,0,0,EV-ACTA-2026-08-12-014,verificado
-VOT-61-20260812-014-03,S-A2-PO2-ORD-019,DIC-61-20260812-206,Votación en lo general y en lo particular: Dictamen 206,nominal,aprobado,25,0,0,EV-ACTA-2026-08-12-014,verificado
-VOT-61-20260812-014-04,S-A2-PO2-ORD-019,DIC-61-20260812-207,Votación en lo general y en lo particular: Dictamen 207,nominal,aprobado,23,0,0,EV-ACTA-2026-08-12-014,verificado
-VOT-61-20260812-014-05,S-A2-PO2-ORD-019,DIC-61-20260810-208,Votación en lo general y en lo particular: Dictamen 208,nominal,aprobado,25,0,0,EV-ACTA-2026-08-12-014,verificado
-VOT-61-20260812-014-06,S-A2-PO2-ORD-019,DIC-61-20260812-209,Votación en lo general y en lo particular: Dictamen 209,nominal,aprobado,25,0,0,EV-ACTA-2026-08-12-014,verificado
-VOT-61-20260805-015-01,S-A2-PO2-ORD-018,DIC-61-20260804-088,Votación en lo general y en lo particular: Dictamen 88,nominal,aprobado,20,0,0,EV-ACTA-2026-08-05-015,verificado
-VOT-61-20260715-016-01,S-A2-PO2-ORD-017,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,22,0,0,EV-ACTA-2026-07-15-016,verificado
-VOT-61-20260715-016-02,S-A2-PO2-ORD-017,DIC-61-20260714-086,Votación en lo general y en lo particular: Dictamen 86,nominal,aprobado,21,0,0,EV-ACTA-2026-07-15-016,verificado
-VOT-61-20260715-016-03,S-A2-PO2-ORD-017,DIC-61-20260714-086,Votación en lo general y en lo particular: Dictamen 86,nominal,aprobado,23,0,0,EV-ACTA-2026-07-15-016,verificado
-VOT-61-20260710-018-01,S-A2-PO2-ORD-016,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,EV-ACTA-2026-07-10-018,verificado
-VOT-61-20260710-018-02,S-A2-PO2-ORD-016,DIC-61-20260708-031,Votación en lo general y en lo particular: Dictamen 31,nominal,aprobado,21,0,0,EV-ACTA-2026-07-10-018,verificado
-VOT-61-20260703-019-01,S-A2-PO2-ORD-015,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,24,0,0,EV-ACTA-2026-07-03-019,verificado
-VOT-61-20260703-019-02,S-A2-PO2-ORD-015,DIC-61-20260702-205,Votación en lo general y en lo particular: Dictamen 205,nominal,aprobado,24,0,0,EV-ACTA-2026-07-03-019,verificado
-VOT-61-20260625-020-01,S-A2-PO2-ORD-014,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,17,5,0,EV-ACTA-2026-06-25-020,verificado
-VOT-61-20260625-020-02,S-A2-PO2-ORD-014,DIC-61-20260610-203,Votación en lo general y en lo particular: Dictamen 203,nominal,aprobado,19,0,0,EV-ACTA-2026-06-25-020,verificado
-VOT-61-20260625-020-03,S-A2-PO2-ORD-014,DIC-61-20260624-029,Votación en lo general y en lo particular: Dictamen 29,nominal,aprobado,15,0,0,EV-ACTA-2026-06-25-020,verificado
-VOT-61-20260625-020-04,S-A2-PO2-ORD-014,DIC-61-20260624-030,Votación en lo general y en lo particular: Dictamen 30,nominal,aprobado,15,0,0,EV-ACTA-2026-06-25-020,verificado
-VOT-61-20260625-020-05,S-A2-PO2-ORD-014,DIC-61-20260623-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,22,0,0,EV-ACTA-2026-06-25-020,verificado
-VOT-61-20260617-021-01,S-A2-PO2-ORD-013,,Votación en lo general y en lo particular: Dictamen 83,nominal,aprobado,20,0,0,EV-ACTA-2026-06-17-021,verificado
-VOT-61-20260610-022-01,S-A2-PO2-ORD-012,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,24,0,0,EV-ACTA-2026-06-10-022,verificado
-VOT-61-20260610-022-02,S-A2-PO2-ORD-012,DIC-61-20260609-023,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,24,0,0,EV-ACTA-2026-06-10-022,verificado
-VOT-61-20260610-022-03,S-A2-PO2-ORD-012,DIC-61-20260609-081,Votación en lo general y en lo particular: Dictamen 81,nominal,aprobado,24,0,0,EV-ACTA-2026-06-10-022,verificado
-VOT-61-20260610-022-04,S-A2-PO2-ORD-012,DIC-61-20260609-081,Votación en lo general y en lo particular: Dictamen 81,nominal,aprobado,19,0,5,EV-ACTA-2026-06-10-022,verificado
-VOT-61-20260610-022-05,S-A2-PO2-ORD-012,DIC-61-20260217-060,Votación en lo general y en lo particular: Dictamen 60,nominal,aprobado,22,0,0,EV-ACTA-2026-06-10-022,verificado
-VOT-61-20260610-022-06,S-A2-PO2-ORD-012,,Votación en lo general y en lo particular: Dictamen 201,nominal,aprobado,22,0,0,EV-ACTA-2026-06-10-022,verificado
-VOT-61-20260603-025-01,S-A2-PO2-ORD-011,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,23,0,0,EV-ACTA-2026-06-03-025,verificado
-VOT-61-20260603-025-02,S-A2-PO2-ORD-011,DIC-61-20260602-080,Votación en lo general y en lo particular: Dictamen 80,nominal,aprobado,17,6,0,EV-ACTA-2026-06-03-025,verificado
-VOT-61-20260603-025-03,S-A2-PO2-ORD-011,DIC-61-20260601-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,21,0,0,EV-ACTA-2026-06-03-025,verificado
-VOT-61-20260603-025-04,S-A2-PO2-ORD-011,DIC-61-20260529-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,22,0,0,EV-ACTA-2026-06-03-025,verificado
-VOT-61-20260603-025-05,S-A2-PO2-ORD-011,,Votación en lo general y en lo particular: Dictamen 200,nominal,aprobado,21,0,0,EV-ACTA-2026-06-03-025,verificado
-VOT-61-20260603-025-06,S-A2-PO2-ORD-011,ACU-61-061,Votación en lo general y en lo particular: Dictamen 17,nominal,aprobado,21,0,0,EV-ACTA-2026-06-03-025,verificado
-VOT-61-20260529-026-01,S-A2-PO2-ORD-010,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,14,7,0,EV-ACTA-2026-05-29-026,verificado
-VOT-61-20260529-026-02,S-A2-PO2-ORD-010,DIC-61-20260529-078,Votación en lo general y en lo particular: Dictamen 78,nominal,aprobado,14,7,0,EV-ACTA-2026-05-29-026,verificado
-VOT-61-20260527-027-01,S-A2-PO2-ORD-009,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,20,0,0,EV-ACTA-2026-05-27-027,verificado
-VOT-61-20260527-027-02,S-A2-PO2-ORD-009,DIC-61-20260526-026,Votación en lo general y en lo particular: Dictamen 26,nominal,aprobado,19,0,0,EV-ACTA-2026-05-27-027,verificado
-VOT-61-20260527-027-03,S-A2-PO2-ORD-009,DIC-61-20260526-027,Votación en lo general y en lo particular: Dictamen 27,nominal,aprobado,21,0,0,EV-ACTA-2026-05-27-027,verificado
-VOT-61-20260527-027-04,S-A2-PO2-ORD-009,DIC-61-20260526-028,Votación en lo general y en lo particular: Dictamen 28,nominal,aprobado,21,0,0,EV-ACTA-2026-05-27-027,verificado
-VOT-61-20260527-027-05,S-A2-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 198,nominal,aprobado,21,0,0,EV-ACTA-2026-05-27-027,verificado
-VOT-61-20260527-027-06,S-A2-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 199,nominal,aprobado,21,0,0,EV-ACTA-2026-05-27-027,verificado
-VOT-61-20260520-030-01,S-A2-PO2-ORD-008,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,17,5,0,EV-ACTA-2026-05-20-030,verificado
-VOT-61-20260520-030-02,S-A2-PO2-ORD-008,DIC-61-20260519-076,Votación en lo general y en lo particular: Dictamen 76,nominal,aprobado,16,0,6,EV-ACTA-2026-05-20-030,verificado
-VOT-61-20260520-030-03,S-A2-PO2-ORD-008,DIC-61-20260319-019,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,19,0,0,EV-ACTA-2026-05-20-030,verificado
-VOT-61-20260520-030-04,S-A2-PO2-ORD-008,DIC-61-20260519-016,Votación en lo general y en lo particular: Dictamen 16,nominal,aprobado,18,0,0,EV-ACTA-2026-05-20-030,verificado
-VOT-61-20260520-030-05,S-A2-PO2-ORD-008,,Votación en lo general y en lo particular: Dictamen 196,nominal,aprobado,18,0,0,EV-ACTA-2026-05-20-030,verificado
-VOT-61-20260520-030-06,S-A2-PO2-ORD-008,,Votación en lo general y en lo particular: Dictamen 197,nominal,aprobado,17,0,0,EV-ACTA-2026-05-20-030,verificado
-VOT-61-20260512-031-01,S-A2-PO2-ORD-007,DIC-61-20260511-073,Votación en lo general y en lo particular: Dictamen 73,nominal,aprobado,19,0,0,EV-ACTA-2026-05-12-031,verificado
-VOT-61-20260512-031-02,S-A2-PO2-ORD-007,DIC-61-20260511-015,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,18,0,0,EV-ACTA-2026-05-12-031,verificado
-VOT-61-20260507-033-01,S-A2-PO2-ORD-006,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,23,0,0,EV-ACTA-2026-05-07-033,verificado
-VOT-61-20260507-033-02,S-A2-PO2-ORD-006,DIC-61-20251218-017,Votación en lo general y en lo particular: Dictamen 17,nominal,aprobado,21,0,0,EV-ACTA-2026-05-07-033,verificado
-VOT-61-20260507-033-03,S-A2-PO2-ORD-006,DIC-61-20260506-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,21,0,0,EV-ACTA-2026-05-07-033,verificado
-VOT-61-20260507-033-04,S-A2-PO2-ORD-006,DIC-61-20260506-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,22,0,0,EV-ACTA-2026-05-07-033,verificado
-VOT-61-20260507-033-05,S-A2-PO2-ORD-006,DIC-61-20260227-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,21,0,0,EV-ACTA-2026-05-07-033,verificado
-VOT-61-20260507-033-06,S-A2-PO2-ORD-006,DIC-61-20260227-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,20,0,0,EV-ACTA-2026-05-07-033,verificado
-VOT-61-20260429-034-01,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 160,nominal,aprobado,24,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-02,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 161,nominal,aprobado,24,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-03,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 162,nominal,aprobado,25,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-04,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 163,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-05,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 164,nominal,aprobado,21,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-06,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 165,nominal,aprobado,22,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-07,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 166,nominal,aprobado,20,0,3,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-08,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 167,nominal,aprobado,22,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-09,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 168,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-10,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 169,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-11,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 170,nominal,aprobado,22,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-12,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 171,nominal,aprobado,22,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-13,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 172,nominal,aprobado,18,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-14,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 173,nominal,aprobado,17,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-15,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 174,nominal,aprobado,25,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-16,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 175,nominal,aprobado,20,0,2,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-17,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 176,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-18,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 177,nominal,aprobado,22,0,2,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-19,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 178,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-20,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 179,nominal,aprobado,24,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-21,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 180,nominal,aprobado,20,0,3,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-22,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 181,nominal,aprobado,25,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-23,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 182,nominal,aprobado,24,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-24,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 183,nominal,aprobado,24,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-25,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 184,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-26,S-A2-PO2-ORD-005,DIC-61-20250409-087,Votación en lo general y en lo particular: Dictamen 185,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-27,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 186,nominal,aprobado,22,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-28,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 187,nominal,aprobado,24,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-29,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 188,nominal,aprobado,22,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-30,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 189,nominal,aprobado,22,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-31,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 190,nominal,aprobado,22,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-32,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 191,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-33,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 192,nominal,aprobado,25,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-34,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 193,nominal,aprobado,23,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-35,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 194,nominal,aprobado,25,0,0,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260429-034-36,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 195,nominal,aprobado,20,0,3,EV-ACTA-2026-04-29-034,verificado
-VOT-61-20260422-035-01,S-A2-PO2-ORD-004,DIC-61-20260422-070,Votación en lo general y en lo particular: Dictamen 70,nominal,aprobado,21,0,0,EV-ACTA-2026-04-22-035,verificado
-VOT-61-20260422-035-02,S-A2-PO2-ORD-004,DIC-61-20260422-071,Votación en lo general y en lo particular: Dictamen 71,nominal,aprobado,18,0,0,EV-ACTA-2026-04-22-035,verificado
-VOT-61-20260422-035-03,S-A2-PO2-ORD-004,,Votación en lo general y en lo particular: Dictamen 158,nominal,aprobado,21,0,0,EV-ACTA-2026-04-22-035,verificado
-VOT-61-20260422-035-04,S-A2-PO2-ORD-004,,Votación en lo general y en lo particular: Dictamen 159,nominal,aprobado,18,0,0,EV-ACTA-2026-04-22-035,verificado
-VOT-61-20260416-036-01,S-A2-PO2-ORD-003,DIC-61-20260415-069,Votación en lo general y en lo particular: Dictamen 69,nominal,aprobado,24,0,0,EV-ACTA-2026-04-16-036,verificado
-VOT-61-20260416-036-02,S-A2-PO2-ORD-003,,Votación en lo general y en lo particular: Dictamen 157,nominal,aprobado,23,0,0,EV-ACTA-2026-04-16-036,verificado
-VOT-61-20260409-037-01,S-A2-PO2-ORD-002,DIC-61-20260409-068,Votación en lo general y en lo particular: Dictamen 68,nominal,aprobado,18,4,0,EV-ACTA-2026-04-09-037,verificado
-VOT-61-20260409-037-02,S-A2-PO2-ORD-002,DIC-61-20260408-012,Votación en lo general y en lo particular: Dictamen 12,nominal,aprobado,21,0,0,EV-ACTA-2026-04-09-037,verificado
-VOT-61-20260409-037-03,S-A2-PO2-ORD-002,DIC-61-20260408-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,22,0,0,EV-ACTA-2026-04-09-037,verificado
-VOT-61-20260409-037-04,S-A2-PO2-ORD-002,DIC-61-20260408-024,Votación en lo general y en lo particular: Dictamen 24,nominal,aprobado,22,0,0,EV-ACTA-2026-04-09-037,verificado
-VOT-61-20260401-038-01,S-A2-PO2-ORD-001,,Votación en lo general y en lo particular: Dictamen 67,nominal,aprobado,20,0,0,EV-ACTA-2026-04-01-038,verificado
-VOT-61-20260401-038-02,S-A2-PO2-ORD-001,DIC-61-20260304-016,Votación en lo general y en lo particular: Dictamen 16,nominal,aprobado,20,0,0,EV-ACTA-2026-04-01-038,verificado
-VOT-61-20260401-038-03,S-A2-PO2-ORD-001,,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,20,0,0,EV-ACTA-2026-04-01-038,verificado
-VOT-61-20260327-040-01,S-A2-REC1-EXT-002,DIC-61-20260326-066,Votación en lo general y en lo particular: Dictamen 66,nominal,aprobado,22,0,0,EV-ACTA-2026-03-27-040,verificado
-VOT-61-20260327-040-02,S-A2-REC1-EXT-002,DIC-61-20251128-019,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,22,0,0,EV-ACTA-2026-03-27-040,verificado
-VOT-61-20260327-040-03,S-A2-REC1-EXT-002,,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,22,0,0,EV-ACTA-2026-03-27-040,verificado
-VOT-61-20260327-040-04,S-A2-REC1-EXT-002,DIC-61-20260325-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,22,0,0,EV-ACTA-2026-03-27-040,verificado
-VOT-61-20260327-040-05,S-A2-REC1-EXT-002,DIC-61-20260325-022,Votación en lo general y en lo particular: Dictamen 22,nominal,aprobado,22,0,0,EV-ACTA-2026-03-27-040,verificado
-VOT-61-20260311-043-01,S-A2-REC1-EXT-001,,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,23,0,0,EV-ACTA-2026-03-11-043,verificado
-VOT-61-20260311-043-02,S-A2-REC1-EXT-001,,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,23,0,0,EV-ACTA-2026-03-11-043,verificado
-VOT-61-20260228-048-01,S-A2-PO1-ORD-020,DIC-61-20260227-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,20,0,1,EV-ACTA-2026-02-28-048,verificado
-VOT-61-20260226-049-01,S-A2-PO1-ORD-019,DIC-61-20260225-063,Votación en lo general y en lo particular: Dictamen 63,nominal,aprobado,24,0,0,EV-ACTA-2026-02-26-049,verificado
-VOT-61-20260226-049-02,S-A2-PO1-ORD-019,DIC-61-20260225-063,Votación en lo general y en lo particular: Dictamen 63,nominal,aprobado,24,0,0,EV-ACTA-2026-02-26-049,verificado
-VOT-61-20260226-049-03,S-A2-PO1-ORD-019,DIC-61-20260225-063,Votación en lo general y en lo particular: Dictamen 63,nominal,aprobado,24,0,0,EV-ACTA-2026-02-26-049,verificado
-VOT-61-20260226-049-04,S-A2-PO1-ORD-019,DIC-61-20260225-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,16,6,1,EV-ACTA-2026-02-26-049,verificado
-VOT-61-20260218-050-01,S-A2-PO1-ORD-018,DIC-61-20260217-061,Votación en lo general y en lo particular: Dictamen 61,nominal,aprobado,24,0,0,EV-ACTA-2026-02-18-050,verificado
-VOT-61-20260218-050-02,S-A2-PO1-ORD-018,DIC-61-20260217-062,Votación en lo general y en lo particular: Dictamen 62,nominal,aprobado,21,0,2,EV-ACTA-2026-02-18-050,verificado
-VOT-61-20260210-051-01,S-A2-PO1-ORD-017,DIC-61-20260209-058,Votación en lo general y en lo particular: Dictamen 58,nominal,aprobado,24,0,0,EV-ACTA-2026-02-10-051,verificado
-VOT-61-20260210-051-02,S-A2-PO1-ORD-017,DIC-61-20260209-059,Votación en lo general y en lo particular: Dictamen 59,nominal,aprobado,24,0,0,EV-ACTA-2026-02-10-051,verificado
-VOT-61-20260204-052-01,S-A2-PO1-ORD-016,DIC-61-20260203-057,Votación en lo general y en lo particular: Dictamen 57,nominal,aprobado,22,0,0,EV-ACTA-2026-02-04-052,verificado
-VOT-61-20260204-052-02,S-A2-PO1-ORD-016,,Votación en lo general y en lo particular: Dictamen 156,nominal,aprobado,17,0,5,EV-ACTA-2026-02-04-052,verificado
-VOT-61-20260128-053-01,S-A2-PO1-ORD-015,DIC-61-20260127-056,Votación en lo general y en lo particular: Dictamen 56,nominal,aprobado,23,0,0,EV-ACTA-2026-01-28-053,verificado
-VOT-61-20260128-053-02,S-A2-PO1-ORD-015,,Votación en lo general y en lo particular: Dictamen 155,nominal,aprobado,24,0,0,EV-ACTA-2026-01-28-053,verificado
-VOT-61-20260122-055-01,S-A2-PO1-ORD-014,DIC-61-20260121-055,Votación en lo general y en lo particular: Dictamen 55,nominal,aprobado,24,0,0,EV-ACTA-2026-01-22-055,verificado
-VOT-61-20260114-056-01,S-A2-PO1-ORD-013,DIC-61-20251218-054,Votación en lo general y en lo particular: Dictamen 54,nominal,aprobado,23,0,0,EV-ACTA-2026-01-14-056,verificado
-VOT-61-20251219-057-01,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251219-057-02,S-A2-PO1-ORD-012,DIC-61-20251218-017,Votación en lo general y en lo particular: Dictamen 17,nominal,aprobado,18,0,4,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251219-057-03,S-A2-PO1-ORD-012,INI-61-158,Votación en lo general y en lo particular: Dictamen 153,nominal,aprobado,18,0,4,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251219-057-04,S-A2-PO1-ORD-012,INI-61-158,Votación en lo general y en lo particular: Dictamen 153,nominal,aprobado,18,0,4,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251219-057-05,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Dictamen 146,nominal,aprobado,18,0,4,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251219-057-06,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Dictamen 149,nominal,aprobado,21,0,0,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251219-057-07,S-A2-PO1-ORD-012,INI-61-233,Votación en lo general y en lo particular: Dictamen 150,nominal,aprobado,22,0,0,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251219-057-08,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Dictamen 151,nominal,aprobado,22,0,0,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251219-057-09,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Dictamen 152,nominal,aprobado,22,0,0,EV-ACTA-2025-12-19-057,verificado
-VOT-61-20251218-058-01,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-02,S-A2-PO1-ORD-011,DIC-61-20251217-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,21,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-03,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 140,nominal,aprobado,19,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-04,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 141,nominal,aprobado,21,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-05,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 142,nominal,aprobado,20,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-06,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 143,nominal,aprobado,19,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-07,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 144,nominal,aprobado,20,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-08,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 145,nominal,aprobado,20,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-09,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 147,nominal,aprobado,21,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251218-058-10,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 148,nominal,aprobado,21,0,0,EV-ACTA-2025-12-18-058,verificado
-VOT-61-20251217-059-01,S-A2-PO1-ORD-010,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,EV-ACTA-2025-12-17-059,verificado
-VOT-61-20251217-059-02,S-A2-PO1-ORD-010,DIC-61-20251210-053,Votación en lo general y en lo particular: Dictamen 53,nominal,aprobado,15,0,4,EV-ACTA-2025-12-17-059,verificado
-VOT-61-20251210-060-01,S-A2-PO1-SPE-001,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,EV-ACTA-2025-12-10-060,verificado
-VOT-61-20251210-060-02,S-A2-PO1-SPE-001,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,EV-ACTA-2025-12-10-060,verificado
-VOT-61-20251210-060-03,S-A2-PO1-SPE-001,,Votación en lo general y en lo particular: Dictamen 139,nominal,aprobado,22,0,0,EV-ACTA-2025-12-10-060,verificado
-VOT-61-20251203-061-01,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,20,0,0,EV-ACTA-2025-12-03-061,verificado
-VOT-61-20251203-061-02,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,20,0,0,EV-ACTA-2025-12-03-061,verificado
-VOT-61-20251203-061-03,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,20,0,0,EV-ACTA-2025-12-03-061,verificado
-VOT-61-20251203-061-04,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Dictamen 119,nominal,aprobado,20,0,0,EV-ACTA-2025-12-03-061,verificado
-VOT-61-20251203-061-05,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Dictamen 138,nominal,aprobado,20,0,0,EV-ACTA-2025-12-03-061,verificado
-VOT-61-20251202-063-01,S-A2-PO1-ORD-008,ACU-61-047,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la aprobación de la calendarización para las comparecencias de diversos Secretarios de Estado; en el marco de la,nominal,aprobado,24,0,0,EV-ACTA-2025-12-02-063,verificado
-VOT-61-20251202-063-02,S-A2-PO1-ORD-008,ACU-61-047,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la aprobación de la calendarización para las comparecencias de diversos Secretarios de Estado; en el marco de la,nominal,aprobado,24,0,0,EV-ACTA-2025-12-02-063,verificado
-VOT-61-20251202-063-03,S-A2-PO1-ORD-008,ACU-61-047,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la aprobación de la calendarización para las comparecencias de diversos Secretarios de Estado; en el marco de la,nominal,aprobado,24,0,0,EV-ACTA-2025-12-02-063,verificado
-VOT-61-20251128-064-01,S-A2-PO1-ORD-007,DIC-61-20251124-049,Votación en lo general y en lo particular: Dictamen 49,nominal,aprobado,25,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-02,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 123,nominal,aprobado,25,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-03,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 124,nominal,aprobado,19,6,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-04,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 125,nominal,aprobado,19,6,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-05,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 125,nominal,aprobado,20,0,4,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-06,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 128,nominal,aprobado,24,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-07,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 129,nominal,aprobado,24,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-08,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 130,nominal,aprobado,23,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-09,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 131,nominal,aprobado,24,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-10,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 132,nominal,aprobado,22,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-11,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 133,nominal,aprobado,24,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-12,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 134,nominal,aprobado,24,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-13,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 135,nominal,aprobado,18,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-14,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 136,nominal,aprobado,21,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-15,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 137,nominal,aprobado,19,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-16,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 126,nominal,aprobado,20,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251128-064-17,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 127,nominal,aprobado,20,0,0,EV-ACTA-2025-11-28-064,verificado
-VOT-61-20251120-067-01,S-A2-PO1-ORD-006,ACU-61-045,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la autorización del uso de curules a efecto de que se lleve a cabo el ejercicio académico “Simulador de una Sesi,nominal,aprobado,23,0,0,EV-ACTA-2025-11-20-067,verificado
-VOT-61-20251120-067-02,S-A2-PO1-ORD-006,ACU-61-045,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la autorización del uso de curules a efecto de que se lleve a cabo el ejercicio académico “Simulador de una Sesi,nominal,aprobado,24,0,0,EV-ACTA-2025-11-20-067,verificado
-VOT-61-20251120-067-03,S-A2-PO1-ORD-006,,Votación en lo general y en lo particular: Dictamen 120,nominal,aprobado,24,0,0,EV-ACTA-2025-11-20-067,verificado
-VOT-61-20251120-067-04,S-A2-PO1-ORD-006,,Votación en lo general y en lo particular: Dictamen 121,nominal,aprobado,23,0,0,EV-ACTA-2025-11-20-067,verificado
-VOT-61-20251120-067-05,S-A2-PO1-ORD-006,,Votación en lo general y en lo particular: Dictamen 122,nominal,aprobado,24,0,0,EV-ACTA-2025-11-20-067,verificado
-VOT-61-20251106-068-01,S-A2-PO1-ORD-005,,Votación en lo general y en lo particular: Dictamen 116,nominal,aprobado,24,0,0,EV-ACTA-2025-11-06-068,verificado
-VOT-61-20251106-068-02,S-A2-PO1-ORD-005,,Votación en lo general y en lo particular: Dictamen 117,nominal,aprobado,23,0,0,EV-ACTA-2025-11-06-068,verificado
-VOT-61-20251106-068-03,S-A2-PO1-ORD-005,,Votación en lo general y en lo particular: Dictamen 118,nominal,aprobado,24,0,0,EV-ACTA-2025-11-06-068,verificado
-VOT-61-20251106-068-04,S-A2-PO1-ORD-005,DIC-61-20251105-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,24,0,0,EV-ACTA-2025-11-06-068,verificado
-VOT-61-20251106-068-05,S-A2-PO1-ORD-005,DIC-61-20251105-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,23,0,0,EV-ACTA-2025-11-06-068,verificado
-VOT-61-20251106-068-06,S-A2-PO1-ORD-005,DIC-61-20251105-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,18,7,0,EV-ACTA-2025-11-06-068,verificado
-VOT-61-20251106-068-07,S-A2-PO1-ORD-005,DIC-61-20251105-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,22,0,0,EV-ACTA-2025-11-06-068,verificado
-VOT-61-20251106-068-08,S-A2-PO1-ORD-005,DIC-61-20251104-045,Votación en lo general y en lo particular: Dictamen 45,nominal,aprobado,16,5,0,EV-ACTA-2025-11-06-068,verificado
-VOT-61-20251028-069-01,S-A2-PO1-ORD-004,,Votación en lo general y en lo particular: Dictamen 43,nominal,aprobado,25,0,0,EV-ACTA-2025-10-28-069,verificado
-VOT-61-20251028-069-02,S-A2-PO1-ORD-004,,Votación en lo general y en lo particular: Dictamen 44,nominal,aprobado,24,0,0,EV-ACTA-2025-10-28-069,verificado
-VOT-61-20251028-069-03,S-A2-PO1-ORD-004,,Votación en lo general y en lo particular: Dictamen 115,nominal,aprobado,25,0,0,EV-ACTA-2025-10-28-069,verificado
-VOT-61-20251023-071-01,S-A2-PO1-ORD-003,,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,24,0,0,EV-ACTA-2025-10-23-071,verificado
-VOT-61-20251014-072-01,S-A2-PO1-ORD-002,DIC-61-20250924-042,Votación en lo general y en lo particular: Dictamen 42,nominal,aprobado,23,0,0,EV-ACTA-2025-10-14-072,verificado
-VOT-61-20251006-073-01,S-A2-PO1-ORD-001,ACU-61-042,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario suscrito por la Junta de Gobierno y Coordinación Política del Honorable Congreso del Estado, mediante el cual se propone ap",nominal,aprobado,22,0,0,EV-ACTA-2025-10-06-073,verificado
-VOT-61-20251006-073-02,S-A2-PO1-ORD-001,DIC-61-20251004-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,19,0,3,EV-ACTA-2025-10-06-073,verificado
-VOT-61-20251006-073-03,S-A2-PO1-ORD-001,ACU-61-043,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario suscrito por la Junta de Gobierno y Coordinación Política del Honorable Congreso del Estado, mediante el cual se propone la",nominal,aprobado,22,0,0,EV-ACTA-2025-10-06-073,verificado
-VOT-61-20250929-077-01,S-A1-REC2-EXT-004,ACU-61-041,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política relativo a la aprobación de la propuesta de la persona integrante,nominal,aprobado,23,0,0,EV-ACTA-2025-09-29-077,verificado
-VOT-61-20250924-080-01,S-A1-REC2-EXT-003,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,22,0,0,EV-ACTA-2025-09-24-080,verificado
-VOT-61-20250924-081-01,S-A1-REC2-EXT-002,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,16,7,0,EV-ACTA-2025-09-24-081,verificado
-VOT-61-20250924-081-02,S-A1-REC2-EXT-002,DIC-61-20250924-041,Votación en lo general y en lo particular: Dictamen 41,nominal,aprobado,20,3,0,EV-ACTA-2025-09-24-081,verificado
-VOT-61-20250924-081-03,S-A1-REC2-EXT-002,,Votación en lo general y en lo particular: Dictamen 113,nominal,aprobado,23,0,0,EV-ACTA-2025-09-24-081,verificado
-VOT-61-20250919-083-01,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,22,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250919-083-02,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 40,nominal,aprobado,24,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250919-083-03,S-A1-REC2-EXT-001,DIC-61-20250915-039,Votación en lo general y en lo particular: Dictamen 39,nominal,aprobado,23,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250919-083-04,S-A1-REC2-EXT-001,DIC-61-20250827-038,Votación en lo general y en lo particular: Dictamen 38,nominal,aprobado,23,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250919-083-05,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,23,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250919-083-06,S-A1-REC2-EXT-001,DIC-61-20250918-005,Votación en lo general y en lo particular: Dictamen 05,nominal,aprobado,24,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250919-083-07,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 12,nominal,aprobado,24,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250919-083-08,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 111,nominal,aprobado,23,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250919-083-09,S-A1-REC2-EXT-001,INI-61-158,Votación en lo general y en lo particular: Dictamen 112,nominal,aprobado,24,0,0,EV-ACTA-2025-09-19-083,verificado
-VOT-61-20250831-087-01,S-A1-PO2-ORD-016,,Votación en lo general y en lo particular: Dictamen 110,nominal,aprobado,24,0,0,EV-ACTA-2025-08-31-087,verificado
-VOT-61-20250828-088-01,S-A1-PO2-ORD-015,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se aprueba el anteproyecto de presupuesto anual de egresos del Poder Legislativo 2026. Una vez leído, el Diputa",nominal,aprobado,20,0,2,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-02,S-A1-PO2-ORD-015,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se aprueba el anteproyecto de presupuesto anual de egresos del Poder Legislativo 2026. Una vez leído, el Diputa",nominal,aprobado,22,0,0,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-03,S-A1-PO2-ORD-015,DIC-61-20250827-037,Votación en lo general y en lo particular: Dictamen 37,nominal,aprobado,21,0,0,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-04,S-A1-PO2-ORD-015,DIC-61-20250826-011,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,20,0,0,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-05,S-A1-PO2-ORD-015,DIC-61-20250708-010,Votación en lo general y en lo particular: Dictamen 10,nominal,aprobado,22,0,0,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-06,S-A1-PO2-ORD-015,DIC-61-20250826-011,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,21,0,0,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-07,S-A1-PO2-ORD-015,,Votación en lo general y en lo particular: Dictamen 106,nominal,aprobado,21,0,0,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-08,S-A1-PO2-ORD-015,,Votación en lo general y en lo particular: Dictamen 107,nominal,aprobado,21,0,0,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-09,S-A1-PO2-ORD-015,,Votación en lo general y en lo particular: Dictamen 108,nominal,aprobado,20,0,0,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250828-088-10,S-A1-PO2-ORD-015,,Votación en lo general y en lo particular: Dictamen 109,nominal,aprobado,16,0,5,EV-ACTA-2025-08-28-088,verificado
-VOT-61-20250820-090-01,S-A1-PO2-ORD-014,DIC-61-20250819-035,Votación en lo general y en lo particular: Dictamen 35,nominal,aprobado,23,0,0,EV-ACTA-2025-08-20-090,verificado
-VOT-61-20250820-090-02,S-A1-PO2-ORD-014,DIC-61-20250818-000,"Votación en lo general y en lo particular: dio lectura al Dictamen elaborado por el Comité Técnico instituido por el artículo 10 de la Ley que Crea Premios y Estímulos para los Colimenses, correspondient",nominal,aprobado,22,0,0,EV-ACTA-2025-08-20-090,verificado
-VOT-61-20250814-091-01,S-A1-PO2-ORD-013,DIC-61-20250813-034,Votación en lo general y en lo particular: Dictamen 34,nominal,aprobado,22,0,0,EV-ACTA-2025-08-14-091,verificado
-VOT-61-20250807-092-01,S-A1-PO2-ORD-012,,Votación en lo general y en lo particular: Dictamen 105,nominal,aprobado,24,0,0,EV-ACTA-2025-08-07-092,verificado
-VOT-61-20250716-093-01,S-A1-PO2-ORD-011,DIC-61-20250715-009,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,24,0,0,EV-ACTA-2025-07-16-093,verificado
-VOT-61-20250709-096-01,S-A1-PO2-ORD-010,DIC-61-20250708-031,Votación en lo general y en lo particular: Dictamen 31,nominal,aprobado,17,6,0,EV-ACTA-2025-07-09-096,verificado
-VOT-61-20250709-096-02,S-A1-PO2-ORD-010,DIC-61-20250708-032,Votación en lo general y en lo particular: Dictamen 32,nominal,aprobado,23,0,0,EV-ACTA-2025-07-09-096,verificado
-VOT-61-20250709-096-03,S-A1-PO2-ORD-010,DIC-61-20250708-033,Votación en lo general y en lo particular: Dictamen 33,nominal,aprobado,22,0,0,EV-ACTA-2025-07-09-096,verificado
-VOT-61-20250709-096-04,S-A1-PO2-ORD-010,DIC-61-20250708-010,Votación en lo general y en lo particular: Dictamen 10,nominal,aprobado,22,0,0,EV-ACTA-2025-07-09-096,verificado
-VOT-61-20250709-096-05,S-A1-PO2-ORD-010,,Votación en lo general y en lo particular: Dictamen 104,nominal,aprobado,18,5,0,EV-ACTA-2025-07-09-096,verificado
-VOT-61-20250630-097-01,S-A1-PO2-ORD-009,DIC-61-20250627-009,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,22,0,0,EV-ACTA-2025-06-30-097,verificado
-VOT-61-20250630-097-02,S-A1-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 100,nominal,aprobado,22,0,0,EV-ACTA-2025-06-30-097,verificado
-VOT-61-20250630-097-03,S-A1-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 101,nominal,aprobado,22,0,0,EV-ACTA-2025-06-30-097,verificado
-VOT-61-20250630-097-04,S-A1-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 102,nominal,aprobado,21,0,0,EV-ACTA-2025-06-30-097,verificado
-VOT-61-20250630-097-05,S-A1-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 103,nominal,aprobado,22,0,0,EV-ACTA-2025-06-30-097,verificado
-VOT-61-20250617-098-01,S-A1-PO2-ORD-008,DIC-61-20250616-030,Votación en lo general y en lo particular: Dictamen 30,nominal,aprobado,21,0,0,EV-ACTA-2025-06-17-098,verificado
-VOT-61-20250529-101-01,S-A1-PO2-ORD-007,DIC-61-20250528-008-2,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,23,0,0,EV-ACTA-2025-05-29-101,verificado
-VOT-61-20250529-101-02,S-A1-PO2-ORD-007,DIC-61-20250528-009,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,23,0,0,EV-ACTA-2025-05-29-101,verificado
-VOT-61-20250529-101-03,S-A1-PO2-ORD-007,DIC-61-20250528-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,23,0,0,EV-ACTA-2025-05-29-101,verificado
-VOT-61-20250529-101-04,S-A1-PO2-ORD-007,,Votación en lo general y en lo particular: Dictamen 99,nominal,aprobado,23,0,0,EV-ACTA-2025-05-29-101,verificado
-VOT-61-20250514-104-01,S-A1-PO2-ORD-006,DIC-61-20250505-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,24,0,0,EV-ACTA-2025-05-14-104,verificado
-VOT-61-20250514-104-02,S-A1-PO2-ORD-006,DIC-61-20250506-007,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,24,0,0,EV-ACTA-2025-05-14-104,verificado
-VOT-61-20250514-104-03,S-A1-PO2-ORD-006,DIC-61-20250311-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,24,0,0,EV-ACTA-2025-05-14-104,verificado
-VOT-61-20250514-104-04,S-A1-PO2-ORD-006,DIC-61-20250507-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,24,0,0,EV-ACTA-2025-05-14-104,verificado
-VOT-61-20250514-104-05,S-A1-PO2-ORD-006,DIC-61-20250507-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,23,0,0,EV-ACTA-2025-05-14-104,verificado
-VOT-61-20250507-106-01,S-A1-PO2-ORD-005,DIC-61-20250505-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,24,0,0,EV-ACTA-2025-05-07-106,verificado
-VOT-61-20250507-106-02,S-A1-PO2-ORD-005,DIC-61-20250506-007,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,24,0,0,EV-ACTA-2025-05-07-106,verificado
-VOT-61-20250507-106-03,S-A1-PO2-ORD-005,DIC-61-20250311-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,24,0,0,EV-ACTA-2025-05-07-106,verificado
-VOT-61-20250507-106-04,S-A1-PO2-ORD-005,DIC-61-20250507-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,24,0,0,EV-ACTA-2025-05-07-106,verificado
-VOT-61-20250507-106-05,S-A1-PO2-ORD-005,DIC-61-20250507-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,23,0,0,EV-ACTA-2025-05-07-106,verificado
-VOT-61-20250430-107-01,S-A1-PO2-ORD-004,DIC-61-20250430-096,Votación en lo general y en lo particular: Dictamen 96,nominal,aprobado,23,0,0,EV-ACTA-2025-04-30-107,verificado
-VOT-61-20250430-107-02,S-A1-PO2-ORD-004,DIC-61-20250430-097,Votación en lo general y en lo particular: Dictamen 97,nominal,aprobado,23,0,0,EV-ACTA-2025-04-30-107,verificado
-VOT-61-20250414-109-01,S-A1-PO2-ORD-003,,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,21,0,1,EV-ACTA-2025-04-14-109,verificado
-VOT-61-20250409-110-01,S-A1-PO2-ORD-002,ACU-61-028,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario propuesto por la Junta de Gobierno y Coordinación Política relativo a la autorización del uso de curules para la celebració,nominal,aprobado,24,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-02,S-A1-PO2-ORD-002,DIC-61-20250401-027,Votación en lo general y en lo particular: Dictamen 27,nominal,aprobado,24,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-03,S-A1-PO2-ORD-002,DIC-61-20250408-028,Votación en lo general y en lo particular: Dictamen 28,nominal,aprobado,24,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-04,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-05,S-A1-PO2-ORD-002,DIC-61-20250228-005,Votación en lo general y en lo particular: Dictamen 05,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-06,S-A1-PO2-ORD-002,DIC-61-20250409-052,Votación en lo general y en lo particular: Dictamen 52,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-07,S-A1-PO2-ORD-002,DIC-61-20250409-053,Votación en lo general y en lo particular: Dictamen 53,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-08,S-A1-PO2-ORD-002,DIC-61-20250409-054,Votación en lo general y en lo particular: Dictamen 54,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-09,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 55,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-10,S-A1-PO2-ORD-002,DIC-61-20250409-056,Votación en lo general y en lo particular: Dictamen 56,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-11,S-A1-PO2-ORD-002,DIC-61-20250409-057,Votación en lo general y en lo particular: Dictamen 57,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-12,S-A1-PO2-ORD-002,DIC-61-20250409-058,Votación en lo general y en lo particular: Dictamen 58,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-13,S-A1-PO2-ORD-002,DIC-61-20250409-059,Votación en lo general y en lo particular: Dictamen 59,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-14,S-A1-PO2-ORD-002,DIC-61-20250409-060,Votación en lo general y en lo particular: Dictamen 60,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-15,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 61,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-16,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 62,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-17,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 63,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-18,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 64,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-19,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 65,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-20,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 66,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-21,S-A1-PO2-ORD-002,DIC-61-20250409-067,Votación en lo general y en lo particular: Dictamen 67,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-22,S-A1-PO2-ORD-002,DIC-61-20250409-068,Votación en lo general y en lo particular: Dictamen 68,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-23,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 69,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-24,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 70,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-25,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 71,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-26,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 72,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-27,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 73,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-28,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 74,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-29,S-A1-PO2-ORD-002,DIC-61-20250409-075,Votación en lo general y en lo particular: Dictamen 75,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-30,S-A1-PO2-ORD-002,DIC-61-20250409-076,Votación en lo general y en lo particular: Dictamen 76,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-31,S-A1-PO2-ORD-002,DIC-61-20250409-077,Votación en lo general y en lo particular: Dictamen 77,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-32,S-A1-PO2-ORD-002,DIC-61-20250409-078,Votación en lo general y en lo particular: Dictamen 78,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-33,S-A1-PO2-ORD-002,DIC-61-20250409-079,Votación en lo general y en lo particular: Dictamen 79,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-34,S-A1-PO2-ORD-002,DIC-61-20250409-080,Votación en lo general y en lo particular: Dictamen 80,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-35,S-A1-PO2-ORD-002,DIC-61-20250409-081,Votación en lo general y en lo particular: Dictamen 81,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-36,S-A1-PO2-ORD-002,DIC-61-20250409-082,Votación en lo general y en lo particular: Dictamen 82,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-37,S-A1-PO2-ORD-002,DIC-61-20250409-083,Votación en lo general y en lo particular: Dictamen 83,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-38,S-A1-PO2-ORD-002,DIC-61-20250409-084,Votación en lo general y en lo particular: Dictamen 84,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-39,S-A1-PO2-ORD-002,DIC-61-20250409-085,Votación en lo general y en lo particular: Dictamen 85,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-40,S-A1-PO2-ORD-002,DIC-61-20250409-086,Votación en lo general y en lo particular: Dictamen 86,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-41,S-A1-PO2-ORD-002,DIC-61-20250409-087,Votación en lo general y en lo particular: Dictamen 87,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-42,S-A1-PO2-ORD-002,DIC-61-20250409-088,Votación en lo general y en lo particular: Dictamen 88,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-43,S-A1-PO2-ORD-002,DIC-61-20250409-089,Votación en lo general y en lo particular: Dictamen 89,nominal,aprobado,22,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-44,S-A1-PO2-ORD-002,DIC-61-20250409-090,Votación en lo general y en lo particular: Dictamen 90,nominal,aprobado,20,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-45,S-A1-PO2-ORD-002,DIC-61-20250409-091,Votación en lo general y en lo particular: Dictamen 91,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-46,S-A1-PO2-ORD-002,DIC-61-20250409-092,Votación en lo general y en lo particular: Dictamen 92,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-47,S-A1-PO2-ORD-002,DIC-61-20250409-093,Votación en lo general y en lo particular: Dictamen 93,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-48,S-A1-PO2-ORD-002,DIC-61-20250409-094,Votación en lo general y en lo particular: Dictamen 94,nominal,aprobado,21,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250409-110-49,S-A1-PO2-ORD-002,DIC-61-20250409-095,Votación en lo general y en lo particular: Dictamen 95,nominal,aprobado,23,0,0,EV-ACTA-2025-04-09-110,verificado
-VOT-61-20250401-111-01,S-A1-PO2-ORD-001,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual la Junta de Gobierno y Coordinación Política propone al Pleno la autorización de uso de curules para la re,nominal,aprobado,25,0,0,EV-ACTA-2025-04-01-111,verificado
-VOT-61-20250401-111-02,S-A1-PO2-ORD-001,,Votación en lo general y en lo particular: Dictamen 49,nominal,aprobado,25,0,0,EV-ACTA-2025-04-01-111,verificado
-VOT-61-20250401-111-03,S-A1-PO2-ORD-001,DIC-61-20250401-050,Votación en lo general y en lo particular: Dictamen 50,nominal,aprobado,25,0,0,EV-ACTA-2025-04-01-111,verificado
-VOT-61-20250401-111-04,S-A1-PO2-ORD-001,DIC-61-20250401-051,Votación en lo general y en lo particular: Dictamen 51,nominal,aprobado,25,0,0,EV-ACTA-2025-04-01-111,verificado
-VOT-61-20250325-113-01,S-A1-REC1-EXT-005,DIC-61-20250321-026,Votación en lo general y en lo particular: Dictamen 26,nominal,aprobado,23,0,0,EV-ACTA-2025-03-25-113,verificado
-VOT-61-20250325-113-02,S-A1-REC1-EXT-005,DIC-61-20250324-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,23,0,0,EV-ACTA-2025-03-25-113,verificado
-VOT-61-20250325-113-03,S-A1-REC1-EXT-005,DIC-61-20250324-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,23,0,0,EV-ACTA-2025-03-25-113,verificado
-VOT-61-20250325-113-04,S-A1-REC1-EXT-005,DIC-61-20250324-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,23,0,0,EV-ACTA-2025-03-25-113,verificado
-VOT-61-20250312-115-01,S-A1-REC1-EXT-004,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,EV-ACTA-2025-03-12-115,verificado
-VOT-61-20250312-115-02,S-A1-REC1-EXT-004,,Votación en lo general y en lo particular: dio lectura al Dictamen mediante el cual se aprueba la Minuta con proyecto de Decreto por el que reforma el segundo párrafo del artículo 19 y se adicionan los p,nominal,aprobado,18,3,0,EV-ACTA-2025-03-12-115,verificado
-VOT-61-20250311-117-01,S-A1-REC1-EXT-003,,"Votación en lo general y en lo particular: dio lectura al Dictamen mediante el cual se da cumplimiento a la Sentencia definitiva del Tribunal Electoral del Estado de Colima del expediente JE 01/2025, po",nominal,aprobado,17,1,2,EV-ACTA-2025-03-11-117,verificado
-VOT-61-20250311-117-02,S-A1-REC1-EXT-003,,"Votación en lo general y en lo particular: dio lectura al Dictamen mediante el cual se reforma, adicionan y derogan diversas disposiciones de la Ley que Crea Premios y Estímulos para los Colimenses. Una",nominal,aprobado,20,0,0,EV-ACTA-2025-03-11-117,verificado
-VOT-61-20250310-120-01,S-A1-REC1-EXT-002,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,20,0,2,EV-ACTA-2025-03-10-120,verificado
-VOT-61-20250310-120-02,S-A1-REC1-EXT-002,DIC-61-20250307-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,20,0,2,EV-ACTA-2025-03-10-120,verificado
-VOT-61-20250306-124-01,S-A1-REC1-EXT-001,DIC-61-20250305-022,Votación en lo general y en lo particular: Dictamen 22,nominal,aprobado,23,0,0,EV-ACTA-2025-03-06-124,verificado
-VOT-61-20250306-124-02,S-A1-REC1-EXT-001,DIC-61-20250306-023,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,21,2,0,EV-ACTA-2025-03-06-124,verificado
-VOT-61-20250306-124-03,S-A1-REC1-EXT-001,DIC-61-20250306-023,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,22,0,0,EV-ACTA-2025-03-06-124,verificado
-VOT-61-20250306-124-04,S-A1-REC1-EXT-001,DIC-61-20250306-047,Votación en lo general y en lo particular: Dictamen 48,nominal,aprobado,22,0,0,EV-ACTA-2025-03-06-124,verificado
-VOT-61-20250228-126-01,S-A1-PO1-ORD-026,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual la Junta de Gobierno y Coordinación Política propone al Pleno la integración de la Comisión de Protección,nominal,aprobado,18,7,0,EV-ACTA-2025-02-28-126,verificado
-VOT-61-20250228-126-02,S-A1-PO1-ORD-026,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual la Junta de Gobierno y Coordinación Política propone al Pleno la integración de la Comisión de Protección,nominal,aprobado,19,0,0,EV-ACTA-2025-02-28-126,verificado
-VOT-61-20250228-126-03,S-A1-PO1-ORD-026,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual la Junta de Gobierno y Coordinación Política propone al Pleno la integración de la Comisión de Protección,nominal,aprobado,25,0,0,EV-ACTA-2025-02-28-126,verificado
-VOT-61-20250226-127-01,S-A1-PO1-ORD-025,ACU-61-021,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política, que contiene los listados de personas mejor evaluadas para los c",nominal,aprobado,18,7,0,EV-ACTA-2025-02-26-127,verificado
-VOT-61-20250226-127-02,S-A1-PO1-ORD-025,DIC-61-20250225-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,18,7,0,EV-ACTA-2025-02-26-127,verificado
-VOT-61-20250226-127-03,S-A1-PO1-ORD-025,DIC-61-20250226-046,Votación en lo general y en lo particular: Dictamen 46,nominal,aprobado,23,0,2,EV-ACTA-2025-02-26-127,verificado
-VOT-61-20250220-128-01,S-A1-PO1-ORD-024,DIC-61-20250213-045,Votación en lo general y en lo particular: Dictamen 45,nominal,aprobado,22,0,0,EV-ACTA-2025-02-20-128,verificado
-VOT-61-20250206-129-01,S-A1-PO1-ORD-023,DIC-61-20250204-019,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,24,0,0,EV-ACTA-2025-02-06-129,verificado
-VOT-61-20250206-129-02,S-A1-PO1-ORD-023,DIC-61-20250206-044,Votación en lo general y en lo particular: Dictamen 44,nominal,aprobado,24,0,0,EV-ACTA-2025-02-06-129,verificado
-VOT-61-20250128-130-01,S-A1-PO1-ORD-022,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,17,2,0,EV-ACTA-2025-01-28-130,verificado
-VOT-61-20250123-132-01,S-A1-PO1-ORD-021,ACU-61-018,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política mediante el cual se emite la Convocatoria General Pública para in,nominal,aprobado,24,0,0,EV-ACTA-2025-01-23-132,verificado
-VOT-61-20250123-132-02,S-A1-PO1-ORD-021,ACU-61-018,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política mediante el cual se emite la Convocatoria General Pública para in,nominal,aprobado,24,0,0,EV-ACTA-2025-01-23-132,verificado
-VOT-61-20250123-132-03,S-A1-PO1-ORD-021,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política por el que se integra la Comisión Legislativa de Turismo, y se mo",nominal,aprobado,23,0,0,EV-ACTA-2025-01-23-132,verificado
-VOT-61-20250123-132-04,S-A1-PO1-ORD-021,DIC-61-20250123-043,Votación en lo general y en lo particular: Dictamen 43,nominal,aprobado,24,0,0,EV-ACTA-2025-01-23-132,verificado
-VOT-61-20250114-134-01,S-A1-PO1-ORD-019,DIC-61-20241106-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,23,0,1,EV-ACTA-2025-01-14-134,verificado
-VOT-61-20250114-134-02,S-A1-PO1-ORD-019,DIC-61-20241106-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,23,0,1,EV-ACTA-2025-01-14-134,verificado
-VOT-61-20250109-135-01,S-A1-PO1-ORD-018,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,18,6,0,EV-ACTA-2025-01-09-135,verificado
-VOT-61-20241219-136-01,S-A1-PO1-ORD-017,ACU-61-016,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se propone al Pleno del Congreso del Estado a la Ciudadana Contadora Pública Esthela León Preciado como candidat,nominal,aprobado,25,0,0,EV-ACTA-2024-12-19-136,verificado
-VOT-61-20241219-136-02,S-A1-PO1-ORD-017,ACU-61-016,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se propone al Pleno del Congreso del Estado a la Ciudadana Contadora Pública Esthela León Preciado como candidat,nominal,aprobado,25,0,0,EV-ACTA-2024-12-19-136,verificado
-VOT-61-20241219-136-03,S-A1-PO1-ORD-017,DIC-61-20241219-042,Votación en lo general y en lo particular: Dictamen 42,nominal,aprobado,25,0,0,EV-ACTA-2024-12-19-136,verificado
-VOT-61-20241219-136-04,S-A1-PO1-ORD-017,DIC-61-20241219-042,Votación en lo general y en lo particular: Dictamen 42,nominal,aprobado,25,0,0,EV-ACTA-2024-12-19-136,verificado
-VOT-61-20241217-138-01,S-A1-PO1-ORD-016,DIC-61-20241114-016,Votación en lo general y en lo particular: Dictamen 16,nominal,aprobado,17,1,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-02,S-A1-PO1-ORD-016,DIC-61-20241014-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,17,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-03,S-A1-PO1-ORD-016,DIC-61-20241213-033,Votación en lo general y en lo particular: Dictamen 33,nominal,aprobado,16,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-04,S-A1-PO1-ORD-016,DIC-61-20241217-034,Votación en lo general y en lo particular: Dictamen 34,nominal,aprobado,17,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-05,S-A1-PO1-ORD-016,DIC-61-20241217-035,Votación en lo general y en lo particular: Dictamen 35,nominal,aprobado,18,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-06,S-A1-PO1-ORD-016,DIC-61-20241217-036,Votación en lo general y en lo particular: Dictamen 36,nominal,aprobado,18,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-07,S-A1-PO1-ORD-016,DIC-61-20241217-037,Votación en lo general y en lo particular: Dictamen 37,nominal,aprobado,18,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-08,S-A1-PO1-ORD-016,DIC-61-20241217-038,Votación en lo general y en lo particular: Dictamen 38,nominal,aprobado,17,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-09,S-A1-PO1-ORD-016,DIC-61-20241217-039,Votación en lo general y en lo particular: Dictamen 39,nominal,aprobado,17,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-10,S-A1-PO1-ORD-016,DIC-61-20241217-040,Votación en lo general y en lo particular: Dictamen 40,nominal,aprobado,17,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241217-138-11,S-A1-PO1-ORD-016,DIC-61-20241217-041,Votación en lo general y en lo particular: Dictamen 41,nominal,aprobado,17,0,0,EV-ACTA-2024-12-17-138,verificado
-VOT-61-20241213-139-01,S-A1-PO1-ORD-015,DIC-61-20241031-005,Votación en lo general y en lo particular: Dictamen 05,nominal,aprobado,24,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-02,S-A1-PO1-ORD-015,DIC-61-20241114-015,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,17,2,5,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-03,S-A1-PO1-ORD-015,DIC-61-20241211-022,Votación en lo general y en lo particular: Dictamen 22,nominal,aprobado,23,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-04,S-A1-PO1-ORD-015,DIC-61-20241211-023,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,22,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-05,S-A1-PO1-ORD-015,DIC-61-20241211-024,Votación en lo general y en lo particular: Dictamen 24,nominal,aprobado,22,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-06,S-A1-PO1-ORD-015,DIC-61-20241211-025,Votación en lo general y en lo particular: Dictamen 25,nominal,aprobado,20,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-07,S-A1-PO1-ORD-015,DIC-61-20241211-026,Votación en lo general y en lo particular: Dictamen 26,nominal,aprobado,22,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-08,S-A1-PO1-ORD-015,DIC-61-20241213-027,Votación en lo general y en lo particular: Dictamen 27,nominal,aprobado,22,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-09,S-A1-PO1-ORD-015,DIC-61-20241213-028,Votación en lo general y en lo particular: Dictamen 28,nominal,aprobado,22,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-10,S-A1-PO1-ORD-015,DIC-61-20241213-029,Votación en lo general y en lo particular: Dictamen 29,nominal,aprobado,21,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-11,S-A1-PO1-ORD-015,DIC-61-20241213-030,Votación en lo general y en lo particular: Dictamen 30,nominal,aprobado,21,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-12,S-A1-PO1-ORD-015,DIC-61-20241213-031,Votación en lo general y en lo particular: Dictamen 31,nominal,aprobado,20,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241213-139-13,S-A1-PO1-ORD-015,DIC-61-20241213-032,Votación en lo general y en lo particular: Dictamen 32,nominal,aprobado,21,0,0,EV-ACTA-2024-12-13-139,verificado
-VOT-61-20241204-141-01,S-A1-PO1-SPE-001,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,4,0,EV-ACTA-2024-12-04-141,verificado
-VOT-61-20241204-141-02,S-A1-PO1-SPE-001,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario, emitido por la Junta de Gobierno y Coordinación Política por el que se propone la autorización de las 25 curules para el D",nominal,aprobado,20,0,0,EV-ACTA-2024-12-04-141,verificado
-VOT-61-20241204-141-03,S-A1-PO1-SPE-001,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,20,0,0,EV-ACTA-2024-12-04-141,verificado
-VOT-61-20241129-143-01,S-A1-PO1-ORD-014,DIC-61-20241113-012,Votación en lo general y en lo particular: Dictamen 12,nominal,aprobado,17,6,0,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241129-143-02,S-A1-PO1-ORD-014,DIC-61-20241113-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,18,6,0,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241129-143-03,S-A1-PO1-ORD-014,ACU-61-011,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política correspondiente a la calendarización y los lineamientos para la G,nominal,aprobado,17,0,6,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241129-143-04,S-A1-PO1-ORD-014,DIC-61-20241014-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,22,0,0,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241129-143-05,S-A1-PO1-ORD-014,DIC-61-20241128-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,21,2,1,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241129-143-06,S-A1-PO1-ORD-014,DIC-61-20241128-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,23,0,1,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241129-143-07,S-A1-PO1-ORD-014,,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,21,3,0,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241129-143-08,S-A1-PO1-ORD-014,,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,22,2,0,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241129-143-09,S-A1-PO1-ORD-014,DIC-61-20241128-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,24,0,0,EV-ACTA-2024-11-29-143,verificado
-VOT-61-20241126-144-01,S-A1-PO1-ORD-013,DIC-61-20241002-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,19,0,6,EV-ACTA-2024-11-26-144,verificado
-VOT-61-20241121-147-01,S-A1-PO1-ORD-012,DIC-61-20241121-010,Votación en lo general y en lo particular: Dictamen 10,nominal,aprobado,22,0,0,EV-ACTA-2024-11-21-147,verificado
-VOT-61-20241121-147-02,S-A1-PO1-ORD-012,DIC-61-20241121-011,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,22,0,0,EV-ACTA-2024-11-21-147,verificado
-VOT-61-20241121-148-01,S-A1-PO1-ORD-011,DIC-61-20241029-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,22,0,0,EV-ACTA-2024-11-21-148,verificado
-VOT-61-20241121-148-02,S-A1-PO1-ORD-011,DIC-61-20241029-009,Votación en lo general y en lo particular: Dictamen 9,nominal,aprobado,22,0,0,EV-ACTA-2024-11-21-148,verificado
-VOT-61-20241121-148-03,S-A1-PO1-ORD-011,DIC-61-20241014-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,21,0,0,EV-ACTA-2024-11-21-148,verificado
-VOT-61-20241121-148-04,S-A1-PO1-ORD-011,DIC-61-20241121-017,Votación en lo general y en lo particular: Dictamen 17,nominal,aprobado,21,0,0,EV-ACTA-2024-11-21-148,verificado
-VOT-61-20241114-149-01,S-A1-PO1-ORD-010,DIC-61-20241113-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,18,0,5,EV-ACTA-2024-11-14-149,verificado
-VOT-61-20241114-149-02,S-A1-PO1-ORD-010,DIC-61-20241113-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,23,0,0,EV-ACTA-2024-11-14-149,verificado
-VOT-61-20241114-149-03,S-A1-PO1-ORD-010,DIC-61-20241113-011,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,23,0,0,EV-ACTA-2024-11-14-149,verificado
-VOT-61-20241114-149-04,S-A1-PO1-ORD-010,DIC-61-20241113-012,Votación en lo general y en lo particular: Dictamen 12,nominal,aprobado,23,0,0,EV-ACTA-2024-11-14-149,verificado
-VOT-61-20241114-149-05,S-A1-PO1-ORD-010,DIC-61-20241113-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,23,0,0,EV-ACTA-2024-11-14-149,verificado
-VOT-61-20241114-149-06,S-A1-PO1-ORD-010,DIC-61-20241114-015,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,23,0,0,EV-ACTA-2024-11-14-149,verificado
-VOT-61-20241114-149-07,S-A1-PO1-ORD-010,DIC-61-20241114-016,Votación en lo general y en lo particular: Dictamen 16,nominal,aprobado,22,0,0,EV-ACTA-2024-11-14-149,verificado
-VOT-61-20241114-149-08,S-A1-PO1-ORD-010,DIC-61-20241011-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,22,0,0,EV-ACTA-2024-11-14-149,verificado
-VOT-61-20241106-151-01,S-A1-PO1-ORD-009,DIC-61-20241106-005,Votación en lo general y en lo particular: Dictamen 05,nominal,aprobado,22,0,0,EV-ACTA-2024-11-06-151,verificado
-VOT-61-20241106-151-02,S-A1-PO1-ORD-009,DIC-61-20241106-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,22,0,0,EV-ACTA-2024-11-06-151,verificado
-VOT-61-20241106-151-03,S-A1-PO1-ORD-009,DIC-61-20241106-007,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,22,0,0,EV-ACTA-2024-11-06-151,verificado
-VOT-61-20241106-151-04,S-A1-PO1-ORD-009,DIC-61-20241106-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,21,0,0,EV-ACTA-2024-11-06-151,verificado
-VOT-61-20241106-151-05,S-A1-PO1-ORD-009,DIC-61-20241106-009,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,22,0,0,EV-ACTA-2024-11-06-151,verificado
-VOT-61-20241106-151-06,S-A1-PO1-ORD-009,DIC-61-20241106-010,Votación en lo general y en lo particular: Dictamen 10,nominal,aprobado,22,0,0,EV-ACTA-2024-11-06-151,verificado
-VOT-61-20241106-152-01,S-A1-PO1-ORD-008,DIC-61-20241106-007-2,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,21,0,0,EV-ACTA-2024-11-06-152,verificado
-VOT-61-20241031-153-01,S-A1-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,23,0,0,EV-ACTA-2024-10-31-153,verificado
-VOT-61-20241031-154-01,S-A1-PO1-ORD-006,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,18,5,0,EV-ACTA-2024-10-31-154,verificado
-VOT-61-20241031-154-02,S-A1-PO1-ORD-006,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,23,0,0,EV-ACTA-2024-10-31-154,verificado
-VOT-61-20241031-154-03,S-A1-PO1-ORD-006,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,22,0,0,EV-ACTA-2024-10-31-154,verificado
-VOT-61-20241031-154-04,S-A1-PO1-ORD-006,DIC-61-20241014-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,23,0,0,EV-ACTA-2024-10-31-154,verificado
-VOT-61-20241031-154-05,S-A1-PO1-ORD-006,DIC-61-20241017-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,23,0,0,EV-ACTA-2024-10-31-154,verificado
-VOT-61-20241031-154-06,S-A1-PO1-ORD-006,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,23,0,0,EV-ACTA-2024-10-31-154,verificado
-VOT-61-20241017-156-01,S-A1-PO1-ORD-005,DIC-61-20241017-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,23,0,0,EV-ACTA-2024-10-17-156,verificado
-VOT-61-20241017-156-02,S-A1-PO1-ORD-005,DIC-61-20241017-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,16,7,0,EV-ACTA-2024-10-17-156,verificado
-VOT-61-20241017-156-03,S-A1-PO1-ORD-005,DIC-61-20241017-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,22,0,0,EV-ACTA-2024-10-17-156,verificado
-VOT-61-20241014-157-01,S-A1-PO1-ORD-004,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,24,0,0,EV-ACTA-2024-10-14-157,verificado
-VOT-61-20241014-157-02,S-A1-PO1-ORD-004,DIC-61-20241014-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,23,0,1,EV-ACTA-2024-10-14-157,verificado
-VOT-61-20241009-158-01,S-A1-PO1-ORD-003,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual se propone la modificación parcial de la integración de dos Comisiones Permanentes de la LXI Legislatura,",nominal,aprobado,24,0,0,EV-ACTA-2024-10-09-158,verificado
-VOT-61-20241002-159-01,S-A1-PO1-ORD-002,DIC-61-20241002-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,24,0,0,EV-ACTA-2024-10-02-159,verificado
-VOT-61-20241002-160-01,S-A1-PO1-ORD-001,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario suscrito por la Junta de Gobierno y Coordinación Política del Honorable Congreso del Estado, mediante el cual se propone la",nominal,aprobado,23,0,0,EV-ACTA-2024-10-02-160,verificado
-VOT-PA-61-029,S-A2-PO2-ORD-020,PA-61-029,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-029,verificado
-VOT-PA-61-014,S-A2-PO1-ORD-006,PA-61-014,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-014,verificado
-VOT-PA-61-013,S-A2-PO1-ORD-005,PA-61-013,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-013,verificado
-VOT-PA-61-012,S-A2-PO1-ORD-002,PA-61-012,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-012,verificado
-VOT-PA-61-011,S-A1-PO2-ORD-014,PA-61-011,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-011,verificado
-VOT-PA-61-010,S-A1-PO2-ORD-013,PA-61-010,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-010,verificado
-VOT-PA-61-009,S-A1-PO2-ORD-010,PA-61-009,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-009,verificado
-VOT-PA-61-008,S-A1-PO2-ORD-010,PA-61-008,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-008,verificado
-VOT-PA-61-007,S-A1-PO2-ORD-008,PA-61-007,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-007,verificado
-VOT-PA-61-006,,PA-61-006,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-006,pendiente
-VOT-PA-61-005,,PA-61-005,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-005,pendiente
-VOT-PA-61-004,S-A1-PO1-ORD-025,PA-61-004,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-004,verificado
-VOT-PA-61-003,,PA-61-003,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-003,pendiente
-VOT-PA-61-002,,PA-61-002,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-002,pendiente
-VOT-PA-61-001,,PA-61-001,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-001,pendiente
-VOT-PA-61-A20260812-1,S-A2-PO2-ORD-019,PA-61-A20260812-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20260812-1,verificado
-VOT-PA-61-A20260715-1,,PA-61-A20260715-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20260715-1,pendiente
-VOT-PA-61-A20260715-2,,PA-61-A20260715-2,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20260715-2,pendiente
-VOT-PA-61-A20260603-1,S-A2-PO2-ORD-011,PA-61-A20260603-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20260603-1,verificado
-VOT-PA-61-A20260603-2,S-A2-PO2-ORD-011,PA-61-A20260603-2,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20260603-2,verificado
-VOT-PA-61-A20260527-1,S-A2-PO2-ORD-009,PA-61-A20260527-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20260527-1,verificado
-VOT-PA-61-A20260422-1,S-A2-PO2-ORD-004,PA-61-A20260422-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20260422-1,verificado
-VOT-PA-61-A20260416-1,S-A2-PO2-ORD-003,PA-61-A20260416-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20260416-1,verificado
-VOT-PA-61-A20260226-1,S-A2-PO1-ORD-019,PA-61-A20260226-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20260226-1,verificado
-VOT-PA-61-A20260210-1,S-A2-PO1-ORD-017,PA-61-A20260210-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20260210-1,verificado
-VOT-PA-61-A20260204-1,S-A2-PO1-ORD-016,PA-61-A20260204-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20260204-1,verificado
-VOT-PA-61-A20260128-1,,PA-61-A20260128-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20260128-1,pendiente
-VOT-PA-61-A20260122-1,S-A2-PO1-ORD-014,PA-61-A20260122-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20260122-1,verificado
-VOT-PA-61-A20251218-1,S-A2-PO1-ORD-011,PA-61-A20251218-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20251218-1,verificado
-VOT-PA-61-A20251202-1,S-A2-PO1-ORD-008,PA-61-A20251202-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20251202-1,verificado
-VOT-PA-61-A20251120-1,S-A2-PO1-ORD-006,PA-61-A20251120-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20251120-1,verificado
-VOT-PA-61-A20250814-1,S-A1-PO2-ORD-013,PA-61-A20250814-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20250814-1,verificado
-VOT-PA-61-A20250709-1,S-A1-PO2-ORD-010,PA-61-A20250709-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20250709-1,verificado
-VOT-PA-61-A20250514-1,S-A1-PO2-ORD-006,PA-61-A20250514-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20250514-1,verificado
-VOT-PA-61-A20250514-2,S-A1-PO2-ORD-006,PA-61-A20250514-2,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20250514-2,verificado
-VOT-PA-61-A20250507-1,S-A1-PO2-ORD-005,PA-61-A20250507-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20250507-1,verificado
-VOT-PA-61-A20250507-2,S-A1-PO2-ORD-005,PA-61-A20250507-2,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,EV-PA-61-A20250507-2,verificado
-VOT-PA-61-A20250228-1,S-A1-PO1-ORD-026,PA-61-A20250228-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,EV-PA-61-A20250228-1,verificado
+id_votacion,id_sesion,id_asunto,descripcion,tipo_votacion,resultado,total_favor,total_contra,total_abstencion,votos_en_lista,votos_sin_nombre,cuadre,observaciones,id_observacion,id_fuente,estado_verificacion
+VOT-61-20261006-001-01,S-A3-PO1-ORD-001,INI-61-370,Votación en lo general y en lo particular: Dictamen 216,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-10-06-001,verificado
+VOT-61-20261006-001-02,S-A3-PO1-ORD-001,DIC-61-20261005-214,Votación en lo general y en lo particular: Dictamen 214,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-10-06-001,verificado
+VOT-61-20261006-001-03,S-A3-PO1-ORD-001,DIC-61-20261005-215,Votación en lo general y en lo particular: Dictamen 215,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-10-06-001,verificado
+VOT-61-20260930-003-01,S-A2-REC2-EXT-002,DIC-61-20260929-097,Votación en lo general y en lo particular: Dictamen 97,nominal,aprobado,17,7,0,24,0,coincide,,,EV-ACTA-2026-09-30-003,verificado
+VOT-61-20260930-003-02,S-A2-REC2-EXT-002,DIC-61-20260929-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-09-30-003,verificado
+VOT-61-20260930-003-03,S-A2-REC2-EXT-002,DIC-61-20260929-034,Votación en lo general y en lo particular: Dictamen 34,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-09-30-003,verificado
+VOT-61-20260930-003-04,S-A2-REC2-EXT-002,DIC-61-20260828-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-09-30-003,verificado
+VOT-61-20260921-005-01,S-A2-REC2-EXT-001,DIC-61-20260917-095,Votación en lo general y en lo particular: Dictamen 95,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-09-21-005,verificado
+VOT-61-20260921-005-02,S-A2-REC2-EXT-001,DIC-61-20260919-096,Votación en lo general y en lo particular: Dictamen 96,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-09-21-005,verificado
+VOT-61-20260921-005-03,S-A2-REC2-EXT-001,DIC-61-20260917-007,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-09-21-005,verificado
+VOT-61-20260921-005-04,S-A2-REC2-EXT-001,DIC-61-20260917-092,Votación en lo general y en lo particular: Dictamen 92,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-09-21-005,verificado
+VOT-61-20260921-005-05,S-A2-REC2-EXT-001,DIC-61-20260917-093,Votación en lo general y en lo particular: Dictamen 93,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-09-21-005,verificado
+VOT-61-20260921-005-06,S-A2-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 94,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-09-21-005,verificado
+VOT-61-20260831-010-01,S-A2-PO2-ORD-022,DIC-61-20260831-213,Votación en lo general y en lo particular: Dictamen 213,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-08-31-010,verificado
+VOT-61-20260831-010-02,S-A2-PO2-ORD-022,DIC-61-20260828-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-08-31-010,verificado
+VOT-61-20260831-010-03,S-A2-PO2-ORD-022,DIC-61-20260828-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-08-31-010,verificado
+VOT-61-20260826-011-01,S-A2-PO2-ORD-021,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se aprueba el anteproyecto de presupuesto anual de egresos del Poder Legislativo 2027. Una vez concluida la lect,nominal,aprobado,19,0,3,22,0,coincide,,,EV-ACTA-2026-08-26-011,verificado
+VOT-61-20260826-011-02,S-A2-PO2-ORD-021,DIC-61-20260825-212,Votación en lo general y en lo particular: Dictamen 212,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-08-26-011,verificado
+VOT-61-20260826-011-03,S-A2-PO2-ORD-021,DIC-61-20260825-210,Votación en lo general y en lo particular: Dictamen 210,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-08-26-011,verificado
+VOT-61-20260826-011-04,S-A2-PO2-ORD-021,DIC-61-20260825-211,Votación en lo general y en lo particular: Dictamen 211,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-08-26-011,verificado
+VOT-61-20260826-011-05,S-A2-PO2-ORD-021,DIC-61-20260825-033,Votación en lo general y en lo particular: Dictamen 33,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-08-26-011,verificado
+VOT-61-20260819-013-01,S-A2-PO2-ORD-020,DIC-61-20260818-090,Votación en lo general y en lo particular: Dictamen 90,nominal,aprobado,16,0,6,22,0,coincide,,,EV-ACTA-2026-08-19-013,verificado
+VOT-61-20260819-013-02,S-A2-PO2-ORD-020,DIC-61-20260818-090,Votación en lo general y en lo particular: Dictamen 90,economica,aprobado,16,0,6,,,,,,EV-ACTA-2026-08-19-013,verificado
+VOT-61-20260819-013-03,S-A2-PO2-ORD-020,DIC-61-20260818-091,Votación en lo general y en lo particular: Dictamen 91,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-08-19-013,verificado
+VOT-61-20260819-013-04,S-A2-PO2-ORD-020,DIC-61-20260812-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-08-19-013,verificado
+VOT-61-20260819-013-05,S-A2-PO2-ORD-020,DIC-61-20260818-032,Votación en lo general y en lo particular: Dictamen 32,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-08-19-013,verificado
+VOT-61-20260812-014-01,S-A2-PO2-ORD-019,DIC-61-20260804-087,Votación en lo general y en lo particular: Dictamen 87,nominal,aprobado,18,7,0,25,0,coincide,,,EV-ACTA-2026-08-12-014,verificado
+VOT-61-20260812-014-02,S-A2-PO2-ORD-019,DIC-61-20260811-089,Votación en lo general y en lo particular: Dictamen 89,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-08-12-014,verificado
+VOT-61-20260812-014-03,S-A2-PO2-ORD-019,DIC-61-20260812-206,Votación en lo general y en lo particular: Dictamen 206,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2026-08-12-014,verificado
+VOT-61-20260812-014-04,S-A2-PO2-ORD-019,DIC-61-20260812-207,Votación en lo general y en lo particular: Dictamen 207,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-08-12-014,verificado
+VOT-61-20260812-014-05,S-A2-PO2-ORD-019,DIC-61-20260810-208,Votación en lo general y en lo particular: Dictamen 208,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2026-08-12-014,verificado
+VOT-61-20260812-014-06,S-A2-PO2-ORD-019,DIC-61-20260812-209,Votación en lo general y en lo particular: Dictamen 209,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2026-08-12-014,verificado
+VOT-61-20260805-015-01,S-A2-PO2-ORD-018,DIC-61-20260804-088,Votación en lo general y en lo particular: Dictamen 88,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-08-05-015,verificado
+VOT-61-20260715-016-01,S-A2-PO2-ORD-017,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-07-15-016,verificado
+VOT-61-20260715-016-02,S-A2-PO2-ORD-017,DIC-61-20260714-086,Votación en lo general y en lo particular: Dictamen 86,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-07-15-016,verificado
+VOT-61-20260715-016-03,S-A2-PO2-ORD-017,DIC-61-20260714-086,Votación en lo general y en lo particular: Dictamen 86,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-07-15-016,verificado
+VOT-61-20260710-018-01,S-A2-PO2-ORD-016,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-07-10-018,verificado
+VOT-61-20260710-018-02,S-A2-PO2-ORD-016,DIC-61-20260708-031,Votación en lo general y en lo particular: Dictamen 31,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-07-10-018,verificado
+VOT-61-20260703-019-01,S-A2-PO2-ORD-015,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-07-03-019,verificado
+VOT-61-20260703-019-02,S-A2-PO2-ORD-015,DIC-61-20260702-205,Votación en lo general y en lo particular: Dictamen 205,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-07-03-019,verificado
+VOT-61-20260625-020-01,S-A2-PO2-ORD-014,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,17,5,0,22,0,coincide,,,EV-ACTA-2026-06-25-020,verificado
+VOT-61-20260625-020-02,S-A2-PO2-ORD-014,DIC-61-20260610-203,Votación en lo general y en lo particular: Dictamen 203,nominal,aprobado,19,0,0,19,0,coincide,,,EV-ACTA-2026-06-25-020,verificado
+VOT-61-20260625-020-03,S-A2-PO2-ORD-014,DIC-61-20260624-029,Votación en lo general y en lo particular: Dictamen 29,nominal,aprobado,15,0,0,15,0,coincide,,,EV-ACTA-2026-06-25-020,verificado
+VOT-61-20260625-020-04,S-A2-PO2-ORD-014,DIC-61-20260624-030,Votación en lo general y en lo particular: Dictamen 30,nominal,aprobado,15,0,0,15,0,coincide,,,EV-ACTA-2026-06-25-020,verificado
+VOT-61-20260625-020-05,S-A2-PO2-ORD-014,DIC-61-20260623-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-06-25-020,verificado
+VOT-61-20260617-021-01,S-A2-PO2-ORD-013,,Votación en lo general y en lo particular: Dictamen 83,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-06-17-021,verificado
+VOT-61-20260610-022-01,S-A2-PO2-ORD-012,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-06-10-022,verificado
+VOT-61-20260610-022-02,S-A2-PO2-ORD-012,DIC-61-20260609-023,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-06-10-022,verificado
+VOT-61-20260610-022-03,S-A2-PO2-ORD-012,DIC-61-20260609-081,Votación en lo general y en lo particular: Dictamen 81,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-06-10-022,verificado
+VOT-61-20260610-022-04,S-A2-PO2-ORD-012,DIC-61-20260609-081,Votación en lo general y en lo particular: Dictamen 81,nominal,aprobado,19,0,5,24,0,coincide,,,EV-ACTA-2026-06-10-022,verificado
+VOT-61-20260610-022-05,S-A2-PO2-ORD-012,DIC-61-20260217-060,Votación en lo general y en lo particular: Dictamen 60,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-06-10-022,verificado
+VOT-61-20260610-022-06,S-A2-PO2-ORD-012,,Votación en lo general y en lo particular: Dictamen 201,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-06-10-022,verificado
+VOT-61-20260603-025-01,S-A2-PO2-ORD-011,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-06-03-025,verificado
+VOT-61-20260603-025-02,S-A2-PO2-ORD-011,DIC-61-20260602-080,Votación en lo general y en lo particular: Dictamen 80,nominal,aprobado,17,6,0,23,0,coincide,,,EV-ACTA-2026-06-03-025,verificado
+VOT-61-20260603-025-03,S-A2-PO2-ORD-011,DIC-61-20260601-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-06-03-025,verificado
+VOT-61-20260603-025-04,S-A2-PO2-ORD-011,DIC-61-20260529-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-06-03-025,verificado
+VOT-61-20260603-025-05,S-A2-PO2-ORD-011,,Votación en lo general y en lo particular: Dictamen 200,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-06-03-025,verificado
+VOT-61-20260603-025-06,S-A2-PO2-ORD-011,ACU-61-061,Votación en lo general y en lo particular: Dictamen 17,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-06-03-025,verificado
+VOT-61-20260529-026-01,S-A2-PO2-ORD-010,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,14,7,0,21,0,coincide,,,EV-ACTA-2026-05-29-026,verificado
+VOT-61-20260529-026-02,S-A2-PO2-ORD-010,DIC-61-20260529-078,Votación en lo general y en lo particular: Dictamen 78,nominal,aprobado,14,7,0,21,0,coincide,,,EV-ACTA-2026-05-29-026,verificado
+VOT-61-20260527-027-01,S-A2-PO2-ORD-009,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-05-27-027,verificado
+VOT-61-20260527-027-02,S-A2-PO2-ORD-009,DIC-61-20260526-026,Votación en lo general y en lo particular: Dictamen 26,nominal,aprobado,19,0,0,19,0,coincide,,,EV-ACTA-2026-05-27-027,verificado
+VOT-61-20260527-027-03,S-A2-PO2-ORD-009,DIC-61-20260526-027,Votación en lo general y en lo particular: Dictamen 27,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-05-27-027,verificado
+VOT-61-20260527-027-04,S-A2-PO2-ORD-009,DIC-61-20260526-028,Votación en lo general y en lo particular: Dictamen 28,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-05-27-027,verificado
+VOT-61-20260527-027-05,S-A2-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 198,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-05-27-027,verificado
+VOT-61-20260527-027-06,S-A2-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 199,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-05-27-027,verificado
+VOT-61-20260520-030-01,S-A2-PO2-ORD-008,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,17,5,0,22,0,coincide,,,EV-ACTA-2026-05-20-030,verificado
+VOT-61-20260520-030-02,S-A2-PO2-ORD-008,DIC-61-20260519-076,Votación en lo general y en lo particular: Dictamen 76,nominal,aprobado,16,0,6,21,1,faltan_nombres,El voto en abstención sin nombre coincide con la única persona presente que no aparece en la lista: Evangelina Bustamante Morales. Confianza: alta.,OBS-VOT-20260520-030-02,EV-ACTA-2026-05-20-030,verificado
+VOT-61-20260520-030-03,S-A2-PO2-ORD-008,DIC-61-20260319-019,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,19,0,0,19,0,coincide,,,EV-ACTA-2026-05-20-030,verificado
+VOT-61-20260520-030-04,S-A2-PO2-ORD-008,DIC-61-20260519-016,Votación en lo general y en lo particular: Dictamen 16,nominal,aprobado,18,0,0,18,0,coincide,,,EV-ACTA-2026-05-20-030,verificado
+VOT-61-20260520-030-05,S-A2-PO2-ORD-008,,Votación en lo general y en lo particular: Dictamen 196,nominal,aprobado,18,0,0,18,0,coincide,,,EV-ACTA-2026-05-20-030,verificado
+VOT-61-20260520-030-06,S-A2-PO2-ORD-008,,Votación en lo general y en lo particular: Dictamen 197,nominal,aprobado,17,0,0,17,0,coincide,,,EV-ACTA-2026-05-20-030,verificado
+VOT-61-20260512-031-01,S-A2-PO2-ORD-007,DIC-61-20260511-073,Votación en lo general y en lo particular: Dictamen 73,nominal,aprobado,19,0,0,19,0,coincide,,,EV-ACTA-2026-05-12-031,verificado
+VOT-61-20260512-031-02,S-A2-PO2-ORD-007,DIC-61-20260511-015,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,18,0,0,18,0,coincide,,,EV-ACTA-2026-05-12-031,verificado
+VOT-61-20260507-033-01,S-A2-PO2-ORD-006,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-05-07-033,verificado
+VOT-61-20260507-033-02,S-A2-PO2-ORD-006,DIC-61-20251218-017,Votación en lo general y en lo particular: Dictamen 17,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-05-07-033,verificado
+VOT-61-20260507-033-03,S-A2-PO2-ORD-006,DIC-61-20260506-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-05-07-033,verificado
+VOT-61-20260507-033-04,S-A2-PO2-ORD-006,DIC-61-20260506-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-05-07-033,verificado
+VOT-61-20260507-033-05,S-A2-PO2-ORD-006,DIC-61-20260227-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-05-07-033,verificado
+VOT-61-20260507-033-06,S-A2-PO2-ORD-006,DIC-61-20260227-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-05-07-033,verificado
+VOT-61-20260429-034-01,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 160,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-02,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 161,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-03,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 162,nominal,aprobado,25,0,0,24,1,faltan_nombres,El total declarado (25) es igual al número de diputaciones en funciones: votaron todas. El voto a favor sin nombre es de: Evangelina Bustamante Morales. Confianza: alta.,OBS-VOT-20260429-034-03,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-04,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 163,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-05,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 164,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-06,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 165,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-07,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 166,nominal,aprobado,20,0,3,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-08,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 167,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-09,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 168,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-10,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 169,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-11,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 170,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-12,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 171,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-13,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 172,nominal,aprobado,18,0,0,18,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-14,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 173,nominal,aprobado,17,0,0,17,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-15,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 174,nominal,aprobado,25,0,0,16,9,faltan_nombres,"El total declarado (25) es igual al número de diputaciones en funciones: votaron todas. Los 9 votos a favor sin nombre son de: José Manuel Romero Coello, Karen Judith Jurado Escamilla, Hilda Lizette Moreno Ceballos, Sofía Peralta Ferro, Irma Mirella Martínez Silva, Arnoldo Ochoa González, Jaime Enrique Sotelo García, María Cristina Lupién Ventura, Martha Elia Farías Ríos. Confianza: alta.",OBS-VOT-20260429-034-15,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-16,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 175,nominal,aprobado,20,0,2,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-17,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 176,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-18,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 177,nominal,aprobado,22,0,2,24,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-19,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 178,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-20,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 179,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-21,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 180,nominal,aprobado,20,0,3,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-22,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 181,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-23,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 182,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-24,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 183,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-25,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 184,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-26,S-A2-PO2-ORD-005,DIC-61-20250409-087,Votación en lo general y en lo particular: Dictamen 185,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-27,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 186,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-28,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 187,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-29,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 188,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-30,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 189,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-31,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 190,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-32,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 191,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-33,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 192,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-34,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 193,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-35,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 194,nominal,aprobado,25,0,0,24,1,faltan_nombres,El total declarado (25) es igual al número de diputaciones en funciones: votaron todas. El voto a favor sin nombre es de: Dulce Asucena Huerta Araiza. Confianza: alta.,OBS-VOT-20260429-034-35,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260429-034-36,S-A2-PO2-ORD-005,,Votación en lo general y en lo particular: Dictamen 195,nominal,aprobado,20,0,3,23,0,coincide,,,EV-ACTA-2026-04-29-034,verificado
+VOT-61-20260422-035-01,S-A2-PO2-ORD-004,DIC-61-20260422-070,Votación en lo general y en lo particular: Dictamen 70,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-04-22-035,verificado
+VOT-61-20260422-035-02,S-A2-PO2-ORD-004,DIC-61-20260422-071,Votación en lo general y en lo particular: Dictamen 71,nominal,aprobado,18,0,0,18,0,coincide,,,EV-ACTA-2026-04-22-035,verificado
+VOT-61-20260422-035-03,S-A2-PO2-ORD-004,,Votación en lo general y en lo particular: Dictamen 158,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-04-22-035,verificado
+VOT-61-20260422-035-04,S-A2-PO2-ORD-004,,Votación en lo general y en lo particular: Dictamen 159,nominal,aprobado,18,0,0,18,0,coincide,,,EV-ACTA-2026-04-22-035,verificado
+VOT-61-20260416-036-01,S-A2-PO2-ORD-003,DIC-61-20260415-069,Votación en lo general y en lo particular: Dictamen 69,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-04-16-036,verificado
+VOT-61-20260416-036-02,S-A2-PO2-ORD-003,,Votación en lo general y en lo particular: Dictamen 157,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-04-16-036,verificado
+VOT-61-20260409-037-01,S-A2-PO2-ORD-002,DIC-61-20260409-068,Votación en lo general y en lo particular: Dictamen 68,nominal,aprobado,18,4,0,22,0,coincide,,,EV-ACTA-2026-04-09-037,verificado
+VOT-61-20260409-037-02,S-A2-PO2-ORD-002,DIC-61-20260408-012,Votación en lo general y en lo particular: Dictamen 12,nominal,aprobado,21,0,0,22,0,sobran_nombres,La lista trae más votos de los declarados en algún sentido; no se puede explicar con la asistencia. Requiere cotejo con la grabación o el tablero. Confianza: baja.,OBS-VOT-20260409-037-02,EV-ACTA-2026-04-09-037,verificado
+VOT-61-20260409-037-03,S-A2-PO2-ORD-002,DIC-61-20260408-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-09-037,verificado
+VOT-61-20260409-037-04,S-A2-PO2-ORD-002,DIC-61-20260408-024,Votación en lo general y en lo particular: Dictamen 24,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-04-09-037,verificado
+VOT-61-20260401-038-01,S-A2-PO2-ORD-001,,Votación en lo general y en lo particular: Dictamen 67,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-04-01-038,verificado
+VOT-61-20260401-038-02,S-A2-PO2-ORD-001,DIC-61-20260304-016,Votación en lo general y en lo particular: Dictamen 16,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-04-01-038,verificado
+VOT-61-20260401-038-03,S-A2-PO2-ORD-001,,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2026-04-01-038,verificado
+VOT-61-20260327-040-01,S-A2-REC1-EXT-002,DIC-61-20260326-066,Votación en lo general y en lo particular: Dictamen 66,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-03-27-040,verificado
+VOT-61-20260327-040-02,S-A2-REC1-EXT-002,DIC-61-20251128-019,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-03-27-040,verificado
+VOT-61-20260327-040-03,S-A2-REC1-EXT-002,,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-03-27-040,verificado
+VOT-61-20260327-040-04,S-A2-REC1-EXT-002,DIC-61-20260325-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-03-27-040,verificado
+VOT-61-20260327-040-05,S-A2-REC1-EXT-002,DIC-61-20260325-022,Votación en lo general y en lo particular: Dictamen 22,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-03-27-040,verificado
+VOT-61-20260311-043-01,S-A2-REC1-EXT-001,,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-03-11-043,verificado
+VOT-61-20260311-043-02,S-A2-REC1-EXT-001,,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-03-11-043,verificado
+VOT-61-20260228-048-01,S-A2-PO1-ORD-020,DIC-61-20260227-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,20,0,1,21,0,coincide,,,EV-ACTA-2026-02-28-048,verificado
+VOT-61-20260226-049-01,S-A2-PO1-ORD-019,DIC-61-20260225-063,Votación en lo general y en lo particular: Dictamen 63,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-02-26-049,verificado
+VOT-61-20260226-049-02,S-A2-PO1-ORD-019,DIC-61-20260225-063,Votación en lo general y en lo particular: Dictamen 63,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-02-26-049,verificado
+VOT-61-20260226-049-03,S-A2-PO1-ORD-019,DIC-61-20260225-063,Votación en lo general y en lo particular: Dictamen 63,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-02-26-049,verificado
+VOT-61-20260226-049-04,S-A2-PO1-ORD-019,DIC-61-20260225-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,16,6,1,23,0,coincide,,,EV-ACTA-2026-02-26-049,verificado
+VOT-61-20260218-050-01,S-A2-PO1-ORD-018,DIC-61-20260217-061,Votación en lo general y en lo particular: Dictamen 61,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-02-18-050,verificado
+VOT-61-20260218-050-02,S-A2-PO1-ORD-018,DIC-61-20260217-062,Votación en lo general y en lo particular: Dictamen 62,nominal,aprobado,21,0,2,23,0,coincide,,,EV-ACTA-2026-02-18-050,verificado
+VOT-61-20260210-051-01,S-A2-PO1-ORD-017,DIC-61-20260209-058,Votación en lo general y en lo particular: Dictamen 58,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-02-10-051,verificado
+VOT-61-20260210-051-02,S-A2-PO1-ORD-017,DIC-61-20260209-059,Votación en lo general y en lo particular: Dictamen 59,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2026-02-10-051,verificado
+VOT-61-20260204-052-01,S-A2-PO1-ORD-016,DIC-61-20260203-057,Votación en lo general y en lo particular: Dictamen 57,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-02-04-052,verificado
+VOT-61-20260204-052-02,S-A2-PO1-ORD-016,,Votación en lo general y en lo particular: Dictamen 156,nominal,aprobado,17,0,5,22,0,coincide,,,EV-ACTA-2026-02-04-052,verificado
+VOT-61-20260128-053-01,S-A2-PO1-ORD-015,DIC-61-20260127-056,Votación en lo general y en lo particular: Dictamen 56,nominal,aprobado,23,0,0,22,1,faltan_nombres,"Falta 1 nombre y hay 2 personas presentes que no aparecen en la lista: Priscila García Delgado, Evangelina Bustamante Morales. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20260128-053-01,EV-ACTA-2026-01-28-053,verificado
+VOT-61-20260128-053-02,S-A2-PO1-ORD-015,,Votación en lo general y en lo particular: Dictamen 155,nominal,aprobado,24,0,0,23,1,faltan_nombres,El voto a favor sin nombre coincide con la única persona presente que no aparece en la lista: Priscila García Delgado. Confianza: alta.,OBS-VOT-20260128-053-02,EV-ACTA-2026-01-28-053,verificado
+VOT-61-20260122-055-01,S-A2-PO1-ORD-014,DIC-61-20260121-055,Votación en lo general y en lo particular: Dictamen 55,nominal,aprobado,24,0,0,23,1,faltan_nombres,El voto a favor sin nombre coincide con la única persona presente que no aparece en la lista: Priscila García Delgado. Confianza: alta.,OBS-VOT-20260122-055-01,EV-ACTA-2026-01-22-055,verificado
+VOT-61-20260114-056-01,S-A2-PO1-ORD-013,DIC-61-20251218-054,Votación en lo general y en lo particular: Dictamen 54,nominal,aprobado,23,0,0,22,1,faltan_nombres,El voto a favor sin nombre coincide con la única persona presente que no aparece en la lista: Priscila García Delgado. Confianza: alta.,OBS-VOT-20260114-056-01,EV-ACTA-2026-01-14-056,verificado
+VOT-61-20251219-057-01,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251219-057-02,S-A2-PO1-ORD-012,DIC-61-20251218-017,Votación en lo general y en lo particular: Dictamen 17,nominal,aprobado,18,0,4,22,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251219-057-03,S-A2-PO1-ORD-012,INI-61-158,Votación en lo general y en lo particular: Dictamen 153,nominal,aprobado,18,0,4,22,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251219-057-04,S-A2-PO1-ORD-012,INI-61-158,Votación en lo general y en lo particular: Dictamen 153,nominal,aprobado,18,0,4,22,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251219-057-05,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Dictamen 146,nominal,aprobado,18,0,4,22,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251219-057-06,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Dictamen 149,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251219-057-07,S-A2-PO1-ORD-012,INI-61-233,Votación en lo general y en lo particular: Dictamen 150,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251219-057-08,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Dictamen 151,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251219-057-09,S-A2-PO1-ORD-012,,Votación en lo general y en lo particular: Dictamen 152,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-12-19-057,verificado
+VOT-61-20251218-058-01,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-02,S-A2-PO1-ORD-011,DIC-61-20251217-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-03,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 140,nominal,aprobado,19,0,0,19,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-04,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 141,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-05,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 142,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-06,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 143,nominal,aprobado,19,0,0,19,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-07,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 144,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-08,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 145,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-09,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 147,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251218-058-10,S-A2-PO1-ORD-011,,Votación en lo general y en lo particular: Dictamen 148,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-12-18-058,verificado
+VOT-61-20251217-059-01,S-A2-PO1-ORD-010,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-12-17-059,verificado
+VOT-61-20251217-059-02,S-A2-PO1-ORD-010,DIC-61-20251210-053,Votación en lo general y en lo particular: Dictamen 53,nominal,aprobado,15,0,4,19,0,coincide,,,EV-ACTA-2025-12-17-059,verificado
+VOT-61-20251210-060-01,S-A2-PO1-SPE-001,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,19,2,faltan_nombres,"Faltan 2 nombres y hay 6 personas presentes que no aparecen en la lista: José Manuel Romero Coello, Sofía Peralta Ferro, Juan Carlos Rendón García, Héctor Gustavo Larios Uribe, Andrea Naranjo Alcaraz, José Israel González Mendoza. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20251210-060-01,EV-ACTA-2025-12-10-060,verificado
+VOT-61-20251210-060-02,S-A2-PO1-SPE-001,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,19,2,faltan_nombres,"Faltan 2 nombres y hay 6 personas presentes que no aparecen en la lista: José Manuel Romero Coello, Sofía Peralta Ferro, Juan Carlos Rendón García, Héctor Gustavo Larios Uribe, Andrea Naranjo Alcaraz, José Israel González Mendoza. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20251210-060-02,EV-ACTA-2025-12-10-060,verificado
+VOT-61-20251210-060-03,S-A2-PO1-SPE-001,,Votación en lo general y en lo particular: Dictamen 139,nominal,aprobado,22,0,0,20,2,faltan_nombres,"Faltan 2 nombres y hay 5 personas presentes que no aparecen en la lista: José Manuel Romero Coello, Sofía Peralta Ferro, Juan Carlos Rendón García, Héctor Gustavo Larios Uribe, José Israel González Mendoza. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20251210-060-03,EV-ACTA-2025-12-10-060,verificado
+VOT-61-20251203-061-01,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-12-03-061,verificado
+VOT-61-20251203-061-02,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-12-03-061,verificado
+VOT-61-20251203-061-03,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-12-03-061,verificado
+VOT-61-20251203-061-04,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Dictamen 119,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-12-03-061,verificado
+VOT-61-20251203-061-05,S-A2-PO1-ORD-009,,Votación en lo general y en lo particular: Dictamen 138,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-12-03-061,verificado
+VOT-61-20251202-063-01,S-A2-PO1-ORD-008,ACU-61-047,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la aprobación de la calendarización para las comparecencias de diversos Secretarios de Estado; en el marco de la,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-12-02-063,verificado
+VOT-61-20251202-063-02,S-A2-PO1-ORD-008,ACU-61-047,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la aprobación de la calendarización para las comparecencias de diversos Secretarios de Estado; en el marco de la,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-12-02-063,verificado
+VOT-61-20251202-063-03,S-A2-PO1-ORD-008,ACU-61-047,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la aprobación de la calendarización para las comparecencias de diversos Secretarios de Estado; en el marco de la,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-12-02-063,verificado
+VOT-61-20251128-064-01,S-A2-PO1-ORD-007,DIC-61-20251124-049,Votación en lo general y en lo particular: Dictamen 49,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-02,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 123,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-03,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 124,nominal,aprobado,19,6,0,25,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-04,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 125,nominal,aprobado,19,6,0,25,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-05,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 125,nominal,aprobado,20,0,4,23,1,faltan_nombres,"Falta 1 nombre y hay 2 personas presentes que no aparecen en la lista: Sofía Peralta Ferro, Evangelina Bustamante Morales. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20251128-064-05,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-06,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 128,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-07,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 129,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-08,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 130,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-09,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 131,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-10,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 132,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-11,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 133,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-12,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 134,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-13,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 135,nominal,aprobado,18,0,0,18,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-14,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 136,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-15,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 137,nominal,aprobado,19,0,0,19,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-16,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 126,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251128-064-17,S-A2-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 127,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-11-28-064,verificado
+VOT-61-20251120-067-01,S-A2-PO1-ORD-006,ACU-61-045,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la autorización del uso de curules a efecto de que se lleve a cabo el ejercicio académico “Simulador de una Sesi,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-11-20-067,verificado
+VOT-61-20251120-067-02,S-A2-PO1-ORD-006,ACU-61-045,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario relativo a la autorización del uso de curules a efecto de que se lleve a cabo el ejercicio académico “Simulador de una Sesi,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-20-067,verificado
+VOT-61-20251120-067-03,S-A2-PO1-ORD-006,,Votación en lo general y en lo particular: Dictamen 120,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-20-067,verificado
+VOT-61-20251120-067-04,S-A2-PO1-ORD-006,,Votación en lo general y en lo particular: Dictamen 121,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-11-20-067,verificado
+VOT-61-20251120-067-05,S-A2-PO1-ORD-006,,Votación en lo general y en lo particular: Dictamen 122,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-20-067,verificado
+VOT-61-20251106-068-01,S-A2-PO1-ORD-005,,Votación en lo general y en lo particular: Dictamen 116,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-06-068,verificado
+VOT-61-20251106-068-02,S-A2-PO1-ORD-005,,Votación en lo general y en lo particular: Dictamen 117,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-11-06-068,verificado
+VOT-61-20251106-068-03,S-A2-PO1-ORD-005,,Votación en lo general y en lo particular: Dictamen 118,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-06-068,verificado
+VOT-61-20251106-068-04,S-A2-PO1-ORD-005,DIC-61-20251105-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-11-06-068,verificado
+VOT-61-20251106-068-05,S-A2-PO1-ORD-005,DIC-61-20251105-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-11-06-068,verificado
+VOT-61-20251106-068-06,S-A2-PO1-ORD-005,DIC-61-20251105-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,18,7,0,25,0,coincide,,,EV-ACTA-2025-11-06-068,verificado
+VOT-61-20251106-068-07,S-A2-PO1-ORD-005,DIC-61-20251105-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-11-06-068,verificado
+VOT-61-20251106-068-08,S-A2-PO1-ORD-005,DIC-61-20251104-045,Votación en lo general y en lo particular: Dictamen 45,nominal,aprobado,16,5,0,21,0,coincide,,,EV-ACTA-2025-11-06-068,verificado
+VOT-61-20251028-069-01,S-A2-PO1-ORD-004,,Votación en lo general y en lo particular: Dictamen 43,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-10-28-069,verificado
+VOT-61-20251028-069-02,S-A2-PO1-ORD-004,,Votación en lo general y en lo particular: Dictamen 44,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-10-28-069,verificado
+VOT-61-20251028-069-03,S-A2-PO1-ORD-004,,Votación en lo general y en lo particular: Dictamen 115,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-10-28-069,verificado
+VOT-61-20251023-071-01,S-A2-PO1-ORD-003,,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-10-23-071,verificado
+VOT-61-20251014-072-01,S-A2-PO1-ORD-002,DIC-61-20250924-042,Votación en lo general y en lo particular: Dictamen 42,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-10-14-072,verificado
+VOT-61-20251006-073-01,S-A2-PO1-ORD-001,ACU-61-042,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario suscrito por la Junta de Gobierno y Coordinación Política del Honorable Congreso del Estado, mediante el cual se propone ap",nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-10-06-073,verificado
+VOT-61-20251006-073-02,S-A2-PO1-ORD-001,DIC-61-20251004-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,19,0,3,22,0,coincide,,,EV-ACTA-2025-10-06-073,verificado
+VOT-61-20251006-073-03,S-A2-PO1-ORD-001,ACU-61-043,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario suscrito por la Junta de Gobierno y Coordinación Política del Honorable Congreso del Estado, mediante el cual se propone la",nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-10-06-073,verificado
+VOT-61-20250929-077-01,S-A1-REC2-EXT-004,ACU-61-041,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política relativo a la aprobación de la propuesta de la persona integrante,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-09-29-077,verificado
+VOT-61-20250924-080-01,S-A1-REC2-EXT-003,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,22,0,0,22,0,distinto_reparto,La lista trae más votos de los declarados en algún sentido; no se puede explicar con la asistencia. Requiere cotejo con la grabación o el tablero. Confianza: baja.,OBS-VOT-20250924-080-01,EV-ACTA-2025-09-24-080,verificado
+VOT-61-20250924-081-01,S-A1-REC2-EXT-002,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,16,7,0,23,0,coincide,,,EV-ACTA-2025-09-24-081,verificado
+VOT-61-20250924-081-02,S-A1-REC2-EXT-002,DIC-61-20250924-041,Votación en lo general y en lo particular: Dictamen 41,nominal,aprobado,20,3,0,23,0,coincide,,,EV-ACTA-2025-09-24-081,verificado
+VOT-61-20250924-081-03,S-A1-REC2-EXT-002,,Votación en lo general y en lo particular: Dictamen 113,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-09-24-081,verificado
+VOT-61-20250919-083-01,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250919-083-02,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 40,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250919-083-03,S-A1-REC2-EXT-001,DIC-61-20250915-039,Votación en lo general y en lo particular: Dictamen 39,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250919-083-04,S-A1-REC2-EXT-001,DIC-61-20250827-038,Votación en lo general y en lo particular: Dictamen 38,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250919-083-05,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250919-083-06,S-A1-REC2-EXT-001,DIC-61-20250918-005,Votación en lo general y en lo particular: Dictamen 05,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250919-083-07,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 12,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250919-083-08,S-A1-REC2-EXT-001,,Votación en lo general y en lo particular: Dictamen 111,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250919-083-09,S-A1-REC2-EXT-001,INI-61-158,Votación en lo general y en lo particular: Dictamen 112,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-09-19-083,verificado
+VOT-61-20250831-087-01,S-A1-PO2-ORD-016,,Votación en lo general y en lo particular: Dictamen 110,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-08-31-087,verificado
+VOT-61-20250828-088-01,S-A1-PO2-ORD-015,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se aprueba el anteproyecto de presupuesto anual de egresos del Poder Legislativo 2026. Una vez leído, el Diputa",nominal,aprobado,20,0,2,22,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-02,S-A1-PO2-ORD-015,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se aprueba el anteproyecto de presupuesto anual de egresos del Poder Legislativo 2026. Una vez leído, el Diputa",nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-03,S-A1-PO2-ORD-015,DIC-61-20250827-037,Votación en lo general y en lo particular: Dictamen 37,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-04,S-A1-PO2-ORD-015,DIC-61-20250826-011,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-05,S-A1-PO2-ORD-015,DIC-61-20250708-010,Votación en lo general y en lo particular: Dictamen 10,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-06,S-A1-PO2-ORD-015,DIC-61-20250826-011,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-07,S-A1-PO2-ORD-015,,Votación en lo general y en lo particular: Dictamen 106,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-08,S-A1-PO2-ORD-015,,Votación en lo general y en lo particular: Dictamen 107,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-09,S-A1-PO2-ORD-015,,Votación en lo general y en lo particular: Dictamen 108,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250828-088-10,S-A1-PO2-ORD-015,,Votación en lo general y en lo particular: Dictamen 109,nominal,aprobado,16,0,5,21,0,coincide,,,EV-ACTA-2025-08-28-088,verificado
+VOT-61-20250820-090-01,S-A1-PO2-ORD-014,DIC-61-20250819-035,Votación en lo general y en lo particular: Dictamen 35,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-08-20-090,verificado
+VOT-61-20250820-090-02,S-A1-PO2-ORD-014,DIC-61-20250818-000,"Votación en lo general y en lo particular: dio lectura al Dictamen elaborado por el Comité Técnico instituido por el artículo 10 de la Ley que Crea Premios y Estímulos para los Colimenses, correspondient",nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-08-20-090,verificado
+VOT-61-20250814-091-01,S-A1-PO2-ORD-013,DIC-61-20250813-034,Votación en lo general y en lo particular: Dictamen 34,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-08-14-091,verificado
+VOT-61-20250807-092-01,S-A1-PO2-ORD-012,,Votación en lo general y en lo particular: Dictamen 105,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-08-07-092,verificado
+VOT-61-20250716-093-01,S-A1-PO2-ORD-011,DIC-61-20250715-009,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-07-16-093,verificado
+VOT-61-20250709-096-01,S-A1-PO2-ORD-010,DIC-61-20250708-031,Votación en lo general y en lo particular: Dictamen 31,nominal,aprobado,17,6,0,23,0,coincide,,,EV-ACTA-2025-07-09-096,verificado
+VOT-61-20250709-096-02,S-A1-PO2-ORD-010,DIC-61-20250708-032,Votación en lo general y en lo particular: Dictamen 32,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-07-09-096,verificado
+VOT-61-20250709-096-03,S-A1-PO2-ORD-010,DIC-61-20250708-033,Votación en lo general y en lo particular: Dictamen 33,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-07-09-096,verificado
+VOT-61-20250709-096-04,S-A1-PO2-ORD-010,DIC-61-20250708-010,Votación en lo general y en lo particular: Dictamen 10,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-07-09-096,verificado
+VOT-61-20250709-096-05,S-A1-PO2-ORD-010,,Votación en lo general y en lo particular: Dictamen 104,nominal,aprobado,18,5,0,23,0,coincide,,,EV-ACTA-2025-07-09-096,verificado
+VOT-61-20250630-097-01,S-A1-PO2-ORD-009,DIC-61-20250627-009,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-06-30-097,verificado
+VOT-61-20250630-097-02,S-A1-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 100,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-06-30-097,verificado
+VOT-61-20250630-097-03,S-A1-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 101,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-06-30-097,verificado
+VOT-61-20250630-097-04,S-A1-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 102,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-06-30-097,verificado
+VOT-61-20250630-097-05,S-A1-PO2-ORD-009,,Votación en lo general y en lo particular: Dictamen 103,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-06-30-097,verificado
+VOT-61-20250617-098-01,S-A1-PO2-ORD-008,DIC-61-20250616-030,Votación en lo general y en lo particular: Dictamen 30,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-06-17-098,verificado
+VOT-61-20250529-101-01,S-A1-PO2-ORD-007,DIC-61-20250528-008-2,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-05-29-101,verificado
+VOT-61-20250529-101-02,S-A1-PO2-ORD-007,DIC-61-20250528-009,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-05-29-101,verificado
+VOT-61-20250529-101-03,S-A1-PO2-ORD-007,DIC-61-20250528-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-05-29-101,verificado
+VOT-61-20250529-101-04,S-A1-PO2-ORD-007,,Votación en lo general y en lo particular: Dictamen 99,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-05-29-101,verificado
+VOT-61-20250514-104-01,S-A1-PO2-ORD-006,DIC-61-20250505-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-05-14-104,verificado
+VOT-61-20250514-104-02,S-A1-PO2-ORD-006,DIC-61-20250506-007,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-05-14-104,verificado
+VOT-61-20250514-104-03,S-A1-PO2-ORD-006,DIC-61-20250311-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-05-14-104,verificado
+VOT-61-20250514-104-04,S-A1-PO2-ORD-006,DIC-61-20250507-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-05-14-104,verificado
+VOT-61-20250514-104-05,S-A1-PO2-ORD-006,DIC-61-20250507-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-05-14-104,verificado
+VOT-61-20250507-106-01,S-A1-PO2-ORD-005,DIC-61-20250505-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-05-07-106,verificado
+VOT-61-20250507-106-02,S-A1-PO2-ORD-005,DIC-61-20250506-007,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-05-07-106,verificado
+VOT-61-20250507-106-03,S-A1-PO2-ORD-005,DIC-61-20250311-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-05-07-106,verificado
+VOT-61-20250507-106-04,S-A1-PO2-ORD-005,DIC-61-20250507-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-05-07-106,verificado
+VOT-61-20250507-106-05,S-A1-PO2-ORD-005,DIC-61-20250507-098,Votación en lo general y en lo particular: Dictamen 98,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-05-07-106,verificado
+VOT-61-20250430-107-01,S-A1-PO2-ORD-004,DIC-61-20250430-096,Votación en lo general y en lo particular: Dictamen 96,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-30-107,verificado
+VOT-61-20250430-107-02,S-A1-PO2-ORD-004,DIC-61-20250430-097,Votación en lo general y en lo particular: Dictamen 97,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-30-107,verificado
+VOT-61-20250414-109-01,S-A1-PO2-ORD-003,,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,21,0,1,22,0,coincide,,,EV-ACTA-2025-04-14-109,verificado
+VOT-61-20250409-110-01,S-A1-PO2-ORD-002,ACU-61-028,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario propuesto por la Junta de Gobierno y Coordinación Política relativo a la autorización del uso de curules para la celebració,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-02,S-A1-PO2-ORD-002,DIC-61-20250401-027,Votación en lo general y en lo particular: Dictamen 27,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-03,S-A1-PO2-ORD-002,DIC-61-20250408-028,Votación en lo general y en lo particular: Dictamen 28,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-04,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-05,S-A1-PO2-ORD-002,DIC-61-20250228-005,Votación en lo general y en lo particular: Dictamen 05,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-06,S-A1-PO2-ORD-002,DIC-61-20250409-052,Votación en lo general y en lo particular: Dictamen 52,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-07,S-A1-PO2-ORD-002,DIC-61-20250409-053,Votación en lo general y en lo particular: Dictamen 53,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-08,S-A1-PO2-ORD-002,DIC-61-20250409-054,Votación en lo general y en lo particular: Dictamen 54,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-09,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 55,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-10,S-A1-PO2-ORD-002,DIC-61-20250409-056,Votación en lo general y en lo particular: Dictamen 56,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-11,S-A1-PO2-ORD-002,DIC-61-20250409-057,Votación en lo general y en lo particular: Dictamen 57,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-12,S-A1-PO2-ORD-002,DIC-61-20250409-058,Votación en lo general y en lo particular: Dictamen 58,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-13,S-A1-PO2-ORD-002,DIC-61-20250409-059,Votación en lo general y en lo particular: Dictamen 59,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-14,S-A1-PO2-ORD-002,DIC-61-20250409-060,Votación en lo general y en lo particular: Dictamen 60,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-15,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 61,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-16,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 62,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-17,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 63,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-18,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 64,nominal,aprobado,23,0,0,22,1,faltan_nombres,"Falta 1 nombre y hay 2 personas presentes que no aparecen en la lista: Priscila García Delgado, Sofía Peralta Ferro. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20250409-110-18,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-19,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 65,nominal,aprobado,21,0,0,22,0,sobran_nombres,La lista trae más votos de los declarados en algún sentido; no se puede explicar con la asistencia. Requiere cotejo con la grabación o el tablero. Confianza: baja.,OBS-VOT-20250409-110-19,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-20,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 66,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-21,S-A1-PO2-ORD-002,DIC-61-20250409-067,Votación en lo general y en lo particular: Dictamen 67,nominal,aprobado,21,0,0,20,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-21,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-22,S-A1-PO2-ORD-002,DIC-61-20250409-068,Votación en lo general y en lo particular: Dictamen 68,nominal,aprobado,21,0,0,20,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-22,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-23,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 69,nominal,aprobado,21,0,0,22,0,sobran_nombres,La lista trae más votos de los declarados en algún sentido; no se puede explicar con la asistencia. Requiere cotejo con la grabación o el tablero. Confianza: baja.,OBS-VOT-20250409-110-23,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-24,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 70,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-24,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-25,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 71,nominal,aprobado,22,0,0,19,3,faltan_nombres,"Faltan 3 nombres y hay 5 personas presentes que no aparecen en la lista: Álvaro Lozano González, Sofía Peralta Ferro, Juan Carlos Rendón García, José Israel González Mendoza, Betzaida Luz Alondra Pinzón Carreto. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20250409-110-25,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-26,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 72,nominal,aprobado,23,0,0,22,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-26,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-27,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 73,nominal,aprobado,23,0,0,22,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-27,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-28,S-A1-PO2-ORD-002,,Votación en lo general y en lo particular: Dictamen 74,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-28,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-29,S-A1-PO2-ORD-002,DIC-61-20250409-075,Votación en lo general y en lo particular: Dictamen 75,nominal,aprobado,23,0,0,22,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-29,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-30,S-A1-PO2-ORD-002,DIC-61-20250409-076,Votación en lo general y en lo particular: Dictamen 76,nominal,aprobado,23,0,0,22,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-30,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-31,S-A1-PO2-ORD-002,DIC-61-20250409-077,Votación en lo general y en lo particular: Dictamen 77,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-31,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-32,S-A1-PO2-ORD-002,DIC-61-20250409-078,Votación en lo general y en lo particular: Dictamen 78,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-32,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-33,S-A1-PO2-ORD-002,DIC-61-20250409-079,Votación en lo general y en lo particular: Dictamen 79,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-33,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-34,S-A1-PO2-ORD-002,DIC-61-20250409-080,Votación en lo general y en lo particular: Dictamen 80,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-34,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-35,S-A1-PO2-ORD-002,DIC-61-20250409-081,Votación en lo general y en lo particular: Dictamen 81,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-35,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-36,S-A1-PO2-ORD-002,DIC-61-20250409-082,Votación en lo general y en lo particular: Dictamen 82,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-36,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-37,S-A1-PO2-ORD-002,DIC-61-20250409-083,Votación en lo general y en lo particular: Dictamen 83,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-37,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-38,S-A1-PO2-ORD-002,DIC-61-20250409-084,Votación en lo general y en lo particular: Dictamen 84,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-38,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-39,S-A1-PO2-ORD-002,DIC-61-20250409-085,Votación en lo general y en lo particular: Dictamen 85,nominal,aprobado,21,0,0,20,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-39,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-40,S-A1-PO2-ORD-002,DIC-61-20250409-086,Votación en lo general y en lo particular: Dictamen 86,nominal,aprobado,21,0,0,20,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-40,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-41,S-A1-PO2-ORD-002,DIC-61-20250409-087,Votación en lo general y en lo particular: Dictamen 87,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.,OBS-VOT-20250409-110-41,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-42,S-A1-PO2-ORD-002,DIC-61-20250409-088,Votación en lo general y en lo particular: Dictamen 88,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-43,S-A1-PO2-ORD-002,DIC-61-20250409-089,Votación en lo general y en lo particular: Dictamen 89,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-44,S-A1-PO2-ORD-002,DIC-61-20250409-090,Votación en lo general y en lo particular: Dictamen 90,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-45,S-A1-PO2-ORD-002,DIC-61-20250409-091,Votación en lo general y en lo particular: Dictamen 91,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-46,S-A1-PO2-ORD-002,DIC-61-20250409-092,Votación en lo general y en lo particular: Dictamen 92,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-47,S-A1-PO2-ORD-002,DIC-61-20250409-093,Votación en lo general y en lo particular: Dictamen 93,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-48,S-A1-PO2-ORD-002,DIC-61-20250409-094,Votación en lo general y en lo particular: Dictamen 94,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250409-110-49,S-A1-PO2-ORD-002,DIC-61-20250409-095,Votación en lo general y en lo particular: Dictamen 95,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-04-09-110,verificado
+VOT-61-20250401-111-01,S-A1-PO2-ORD-001,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual la Junta de Gobierno y Coordinación Política propone al Pleno la autorización de uso de curules para la re,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-04-01-111,verificado
+VOT-61-20250401-111-02,S-A1-PO2-ORD-001,,Votación en lo general y en lo particular: Dictamen 49,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-04-01-111,verificado
+VOT-61-20250401-111-03,S-A1-PO2-ORD-001,DIC-61-20250401-050,Votación en lo general y en lo particular: Dictamen 50,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-04-01-111,verificado
+VOT-61-20250401-111-04,S-A1-PO2-ORD-001,DIC-61-20250401-051,Votación en lo general y en lo particular: Dictamen 51,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-04-01-111,verificado
+VOT-61-20250325-113-01,S-A1-REC1-EXT-005,DIC-61-20250321-026,Votación en lo general y en lo particular: Dictamen 26,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-03-25-113,verificado
+VOT-61-20250325-113-02,S-A1-REC1-EXT-005,DIC-61-20250324-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-03-25-113,verificado
+VOT-61-20250325-113-03,S-A1-REC1-EXT-005,DIC-61-20250324-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-03-25-113,verificado
+VOT-61-20250325-113-04,S-A1-REC1-EXT-005,DIC-61-20250324-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-03-25-113,verificado
+VOT-61-20250312-115-01,S-A1-REC1-EXT-004,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2025-03-12-115,verificado
+VOT-61-20250312-115-02,S-A1-REC1-EXT-004,,Votación en lo general y en lo particular: dio lectura al Dictamen mediante el cual se aprueba la Minuta con proyecto de Decreto por el que reforma el segundo párrafo del artículo 19 y se adicionan los p,nominal,aprobado,18,3,0,21,0,coincide,,,EV-ACTA-2025-03-12-115,verificado
+VOT-61-20250311-117-01,S-A1-REC1-EXT-003,,"Votación en lo general y en lo particular: dio lectura al Dictamen mediante el cual se da cumplimiento a la Sentencia definitiva del Tribunal Electoral del Estado de Colima del expediente JE 01/2025, po",nominal,aprobado,17,1,2,20,0,coincide,,,EV-ACTA-2025-03-11-117,verificado
+VOT-61-20250311-117-02,S-A1-REC1-EXT-003,,"Votación en lo general y en lo particular: dio lectura al Dictamen mediante el cual se reforma, adicionan y derogan diversas disposiciones de la Ley que Crea Premios y Estímulos para los Colimenses. Una",nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2025-03-11-117,verificado
+VOT-61-20250310-120-01,S-A1-REC1-EXT-002,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,20,0,2,22,0,coincide,,,EV-ACTA-2025-03-10-120,verificado
+VOT-61-20250310-120-02,S-A1-REC1-EXT-002,DIC-61-20250307-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,20,0,2,22,0,coincide,,,EV-ACTA-2025-03-10-120,verificado
+VOT-61-20250306-124-01,S-A1-REC1-EXT-001,DIC-61-20250305-022,Votación en lo general y en lo particular: Dictamen 22,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-03-06-124,verificado
+VOT-61-20250306-124-02,S-A1-REC1-EXT-001,DIC-61-20250306-023,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,21,2,0,22,1,faltan_nombres,"Falta 1 nombre; de las 3 personas en funciones que no aparecen en la lista, ninguna estaba presente en ningún pase de lista; la diferencia no se explica con la asistencia. Confianza: baja.",OBS-VOT-20250306-124-02,EV-ACTA-2025-03-06-124,verificado
+VOT-61-20250306-124-03,S-A1-REC1-EXT-001,DIC-61-20250306-023,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-03-06-124,verificado
+VOT-61-20250306-124-04,S-A1-REC1-EXT-001,DIC-61-20250306-047,Votación en lo general y en lo particular: Dictamen 48,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-03-06-124,verificado
+VOT-61-20250228-126-01,S-A1-PO1-ORD-026,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual la Junta de Gobierno y Coordinación Política propone al Pleno la integración de la Comisión de Protección,nominal,aprobado,18,7,0,25,0,coincide,,,EV-ACTA-2025-02-28-126,verificado
+VOT-61-20250228-126-02,S-A1-PO1-ORD-026,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual la Junta de Gobierno y Coordinación Política propone al Pleno la integración de la Comisión de Protección,nominal,aprobado,19,0,0,19,0,coincide,,,EV-ACTA-2025-02-28-126,verificado
+VOT-61-20250228-126-03,S-A1-PO1-ORD-026,,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual la Junta de Gobierno y Coordinación Política propone al Pleno la integración de la Comisión de Protección,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2025-02-28-126,verificado
+VOT-61-20250226-127-01,S-A1-PO1-ORD-025,ACU-61-021,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política, que contiene los listados de personas mejor evaluadas para los c",nominal,aprobado,18,7,0,25,0,coincide,,,EV-ACTA-2025-02-26-127,verificado
+VOT-61-20250226-127-02,S-A1-PO1-ORD-025,DIC-61-20250225-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,18,7,0,25,0,coincide,,,EV-ACTA-2025-02-26-127,verificado
+VOT-61-20250226-127-03,S-A1-PO1-ORD-025,DIC-61-20250226-046,Votación en lo general y en lo particular: Dictamen 46,nominal,aprobado,23,0,2,25,0,coincide,,,EV-ACTA-2025-02-26-127,verificado
+VOT-61-20250220-128-01,S-A1-PO1-ORD-024,DIC-61-20250213-045,Votación en lo general y en lo particular: Dictamen 45,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2025-02-20-128,verificado
+VOT-61-20250206-129-01,S-A1-PO1-ORD-023,DIC-61-20250204-019,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-02-06-129,verificado
+VOT-61-20250206-129-02,S-A1-PO1-ORD-023,DIC-61-20250206-044,Votación en lo general y en lo particular: Dictamen 44,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-02-06-129,verificado
+VOT-61-20250128-130-01,S-A1-PO1-ORD-022,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,17,2,0,19,0,coincide,,,EV-ACTA-2025-01-28-130,verificado
+VOT-61-20250123-132-01,S-A1-PO1-ORD-021,ACU-61-018,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política mediante el cual se emite la Convocatoria General Pública para in,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-01-23-132,verificado
+VOT-61-20250123-132-02,S-A1-PO1-ORD-021,ACU-61-018,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política mediante el cual se emite la Convocatoria General Pública para in,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-01-23-132,verificado
+VOT-61-20250123-132-03,S-A1-PO1-ORD-021,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política por el que se integra la Comisión Legislativa de Turismo, y se mo",nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2025-01-23-132,verificado
+VOT-61-20250123-132-04,S-A1-PO1-ORD-021,DIC-61-20250123-043,Votación en lo general y en lo particular: Dictamen 43,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2025-01-23-132,verificado
+VOT-61-20250114-134-01,S-A1-PO1-ORD-019,DIC-61-20241106-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,23,0,1,24,0,coincide,,,EV-ACTA-2025-01-14-134,verificado
+VOT-61-20250114-134-02,S-A1-PO1-ORD-019,DIC-61-20241106-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,23,0,1,24,0,coincide,,,EV-ACTA-2025-01-14-134,verificado
+VOT-61-20250109-135-01,S-A1-PO1-ORD-018,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,18,6,0,22,2,faltan_nombres,"Los 2 votos a favor sin nombre corresponden a quien está escrito en la lista sin sentido de voto: Álvaro Lozano González, Karen Judith Jurado Escamilla. Confianza: alta.",OBS-VOT-20250109-135-01,EV-ACTA-2025-01-09-135,verificado
+VOT-61-20241219-136-01,S-A1-PO1-ORD-017,ACU-61-016,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se propone al Pleno del Congreso del Estado a la Ciudadana Contadora Pública Esthela León Preciado como candidat,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2024-12-19-136,verificado
+VOT-61-20241219-136-02,S-A1-PO1-ORD-017,ACU-61-016,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario por el que se propone al Pleno del Congreso del Estado a la Ciudadana Contadora Pública Esthela León Preciado como candidat,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2024-12-19-136,verificado
+VOT-61-20241219-136-03,S-A1-PO1-ORD-017,DIC-61-20241219-042,Votación en lo general y en lo particular: Dictamen 42,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2024-12-19-136,verificado
+VOT-61-20241219-136-04,S-A1-PO1-ORD-017,DIC-61-20241219-042,Votación en lo general y en lo particular: Dictamen 42,nominal,aprobado,25,0,0,25,0,coincide,,,EV-ACTA-2024-12-19-136,verificado
+VOT-61-20241217-138-01,S-A1-PO1-ORD-016,DIC-61-20241114-016,Votación en lo general y en lo particular: Dictamen 16,nominal,aprobado,17,1,0,18,0,coincide,,,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-02,S-A1-PO1-ORD-016,DIC-61-20241014-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,17,0,0,17,0,coincide,,,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-03,S-A1-PO1-ORD-016,DIC-61-20241213-033,Votación en lo general y en lo particular: Dictamen 33,nominal,aprobado,16,0,0,16,0,coincide,,,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-04,S-A1-PO1-ORD-016,DIC-61-20241217-034,Votación en lo general y en lo particular: Dictamen 34,nominal,aprobado,17,0,0,17,0,coincide,,,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-05,S-A1-PO1-ORD-016,DIC-61-20241217-035,Votación en lo general y en lo particular: Dictamen 35,nominal,aprobado,18,0,0,17,1,faltan_nombres,"Falta 1 nombre y hay 7 personas presentes que no aparecen en la lista: Sofía Peralta Ferro, Juan Carlos Rendón García, Jesús Alberto Partida Valencia, José Israel González Mendoza, Arnoldo Ochoa González, Betzaida Luz Alondra Pinzón Carreto, María Cristina Lupién Ventura. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20241217-138-05,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-06,S-A1-PO1-ORD-016,DIC-61-20241217-036,Votación en lo general y en lo particular: Dictamen 36,nominal,aprobado,18,0,0,17,1,faltan_nombres,"Falta 1 nombre y hay 7 personas presentes que no aparecen en la lista: Sofía Peralta Ferro, Juan Carlos Rendón García, Jesús Alberto Partida Valencia, José Israel González Mendoza, Arnoldo Ochoa González, Betzaida Luz Alondra Pinzón Carreto, María Cristina Lupién Ventura. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20241217-138-06,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-07,S-A1-PO1-ORD-016,DIC-61-20241217-037,Votación en lo general y en lo particular: Dictamen 37,nominal,aprobado,18,0,0,17,1,faltan_nombres,"Falta 1 nombre y hay 7 personas presentes que no aparecen en la lista: Sofía Peralta Ferro, Juan Carlos Rendón García, Jesús Alberto Partida Valencia, José Israel González Mendoza, Arnoldo Ochoa González, Betzaida Luz Alondra Pinzón Carreto, María Cristina Lupién Ventura. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20241217-138-07,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-08,S-A1-PO1-ORD-016,DIC-61-20241217-038,Votación en lo general y en lo particular: Dictamen 38,nominal,aprobado,17,0,0,16,1,faltan_nombres,"Falta 1 nombre y hay 8 personas presentes que no aparecen en la lista: Priscila García Delgado, Sofía Peralta Ferro, Juan Carlos Rendón García, Jesús Alberto Partida Valencia, José Israel González Mendoza, Arnoldo Ochoa González, Betzaida Luz Alondra Pinzón Carreto, María Cristina Lupién Ventura. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20241217-138-08,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-09,S-A1-PO1-ORD-016,DIC-61-20241217-039,Votación en lo general y en lo particular: Dictamen 39,nominal,aprobado,17,0,0,17,0,coincide,,,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-10,S-A1-PO1-ORD-016,DIC-61-20241217-040,Votación en lo general y en lo particular: Dictamen 40,nominal,aprobado,17,0,0,17,0,coincide,,,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241217-138-11,S-A1-PO1-ORD-016,DIC-61-20241217-041,Votación en lo general y en lo particular: Dictamen 41,nominal,aprobado,17,0,0,17,0,coincide,,,EV-ACTA-2024-12-17-138,verificado
+VOT-61-20241213-139-01,S-A1-PO1-ORD-015,DIC-61-20241031-005,Votación en lo general y en lo particular: Dictamen 05,nominal,aprobado,24,0,0,23,1,faltan_nombres,El voto a favor sin nombre corresponde a quien está escrito en la lista sin sentido de voto: Dulce Asucena Huerta Araiza. Confianza: alta.,OBS-VOT-20241213-139-01,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-02,S-A1-PO1-ORD-015,DIC-61-20241114-015,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,17,2,5,24,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-03,S-A1-PO1-ORD-015,DIC-61-20241211-022,Votación en lo general y en lo particular: Dictamen 22,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-04,S-A1-PO1-ORD-015,DIC-61-20241211-023,Votación en lo general y en lo particular: Dictamen 23,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-05,S-A1-PO1-ORD-015,DIC-61-20241211-024,Votación en lo general y en lo particular: Dictamen 24,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-06,S-A1-PO1-ORD-015,DIC-61-20241211-025,Votación en lo general y en lo particular: Dictamen 25,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-07,S-A1-PO1-ORD-015,DIC-61-20241211-026,Votación en lo general y en lo particular: Dictamen 26,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-08,S-A1-PO1-ORD-015,DIC-61-20241213-027,Votación en lo general y en lo particular: Dictamen 27,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-09,S-A1-PO1-ORD-015,DIC-61-20241213-028,Votación en lo general y en lo particular: Dictamen 28,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-10,S-A1-PO1-ORD-015,DIC-61-20241213-029,Votación en lo general y en lo particular: Dictamen 29,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-11,S-A1-PO1-ORD-015,DIC-61-20241213-030,Votación en lo general y en lo particular: Dictamen 30,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-12,S-A1-PO1-ORD-015,DIC-61-20241213-031,Votación en lo general y en lo particular: Dictamen 31,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241213-139-13,S-A1-PO1-ORD-015,DIC-61-20241213-032,Votación en lo general y en lo particular: Dictamen 32,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2024-12-13-139,verificado
+VOT-61-20241204-141-01,S-A1-PO1-SPE-001,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,21,4,0,21,4,faltan_nombres,"El total declarado (25) es igual al número de diputaciones en funciones, pero el pase de lista registra con falta a: Hilda Lizette Moreno Ceballos, José Israel González Mendoza. Los documentos se contradicen: puede ser un error en el total declarado o llegadas después del pase de lista. No se asigna voto. Confianza: baja.",OBS-VOT-20241204-141-01,EV-ACTA-2024-12-04-141,verificado
+VOT-61-20241204-141-02,S-A1-PO1-SPE-001,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario, emitido por la Junta de Gobierno y Coordinación Política por el que se propone la autorización de las 25 curules para el D",nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2024-12-04-141,verificado
+VOT-61-20241204-141-03,S-A1-PO1-SPE-001,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,20,0,0,20,0,coincide,,,EV-ACTA-2024-12-04-141,verificado
+VOT-61-20241129-143-01,S-A1-PO1-ORD-014,DIC-61-20241113-012,Votación en lo general y en lo particular: Dictamen 12,nominal,aprobado,17,6,0,23,0,coincide,,,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241129-143-02,S-A1-PO1-ORD-014,DIC-61-20241113-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,18,6,0,24,0,coincide,,,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241129-143-03,S-A1-PO1-ORD-014,ACU-61-011,Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario aprobado por la Junta de Gobierno y Coordinación Política correspondiente a la calendarización y los lineamientos para la G,nominal,aprobado,17,0,6,23,0,coincide,,,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241129-143-04,S-A1-PO1-ORD-014,DIC-61-20241014-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,22,0,0,21,1,faltan_nombres,"Falta 1 nombre y hay 3 personas presentes que no aparecen en la lista: Andrea Naranjo Alcaraz, Jesús Alberto Partida Valencia, Jaime Enrique Sotelo García. Alguna pudo salir del salón; no se puede saber quién votó. Confianza: baja.",OBS-VOT-20241129-143-04,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241129-143-05,S-A1-PO1-ORD-014,DIC-61-20241128-020,Votación en lo general y en lo particular: Dictamen 20,nominal,aprobado,21,2,1,24,0,coincide,,,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241129-143-06,S-A1-PO1-ORD-014,DIC-61-20241128-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,23,0,1,23,1,faltan_nombres,El voto a favor sin nombre coincide con la única persona presente que no aparece en la lista: Priscila García Delgado. Confianza: alta.,OBS-VOT-20241129-143-06,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241129-143-07,S-A1-PO1-ORD-014,,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,21,3,0,24,0,coincide,,,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241129-143-08,S-A1-PO1-ORD-014,,Votación en lo general y en lo particular: Dictamen 19,nominal,aprobado,22,2,0,22,2,faltan_nombres,"Los 2 votos a favor sin nombre coinciden con las únicas personas presentes que no aparecen en la lista: Hilda Lizette Moreno Ceballos, Betzaida Luz Alondra Pinzón Carreto. Confianza: alta.",OBS-VOT-20241129-143-08,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241129-143-09,S-A1-PO1-ORD-014,DIC-61-20241128-018,Votación en lo general y en lo particular: Dictamen 18,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2024-11-29-143,verificado
+VOT-61-20241126-144-01,S-A1-PO1-ORD-013,DIC-61-20241002-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,19,0,6,25,0,coincide,,,EV-ACTA-2024-11-26-144,verificado
+VOT-61-20241121-147-01,S-A1-PO1-ORD-012,DIC-61-20241121-010,Votación en lo general y en lo particular: Dictamen 10,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-21-147,verificado
+VOT-61-20241121-147-02,S-A1-PO1-ORD-012,DIC-61-20241121-011,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,22,0,0,21,1,faltan_nombres,El voto a favor sin nombre coincide con quien aparece presente en un pase de lista anterior del acta pero no en el de confirmación: Yommira Jockimber Carrillo Barreto. Pudo salir antes de la votación. No se asigna voto. Confianza: media.,OBS-VOT-20241121-147-02,EV-ACTA-2024-11-21-147,verificado
+VOT-61-20241121-148-01,S-A1-PO1-ORD-011,DIC-61-20241029-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-21-148,verificado
+VOT-61-20241121-148-02,S-A1-PO1-ORD-011,DIC-61-20241029-009,Votación en lo general y en lo particular: Dictamen 9,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-21-148,verificado
+VOT-61-20241121-148-03,S-A1-PO1-ORD-011,DIC-61-20241014-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2024-11-21-148,verificado
+VOT-61-20241121-148-04,S-A1-PO1-ORD-011,DIC-61-20241121-017,Votación en lo general y en lo particular: Dictamen 17,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2024-11-21-148,verificado
+VOT-61-20241114-149-01,S-A1-PO1-ORD-010,DIC-61-20241113-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,18,0,5,23,0,coincide,,,EV-ACTA-2024-11-14-149,verificado
+VOT-61-20241114-149-02,S-A1-PO1-ORD-010,DIC-61-20241113-014,Votación en lo general y en lo particular: Dictamen 14,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-11-14-149,verificado
+VOT-61-20241114-149-03,S-A1-PO1-ORD-010,DIC-61-20241113-011,Votación en lo general y en lo particular: Dictamen 11,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-11-14-149,verificado
+VOT-61-20241114-149-04,S-A1-PO1-ORD-010,DIC-61-20241113-012,Votación en lo general y en lo particular: Dictamen 12,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-11-14-149,verificado
+VOT-61-20241114-149-05,S-A1-PO1-ORD-010,DIC-61-20241113-013,Votación en lo general y en lo particular: Dictamen 13,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-11-14-149,verificado
+VOT-61-20241114-149-06,S-A1-PO1-ORD-010,DIC-61-20241114-015,Votación en lo general y en lo particular: Dictamen 15,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-11-14-149,verificado
+VOT-61-20241114-149-07,S-A1-PO1-ORD-010,DIC-61-20241114-016,Votación en lo general y en lo particular: Dictamen 16,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-14-149,verificado
+VOT-61-20241114-149-08,S-A1-PO1-ORD-010,DIC-61-20241011-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-14-149,verificado
+VOT-61-20241106-151-01,S-A1-PO1-ORD-009,DIC-61-20241106-005,Votación en lo general y en lo particular: Dictamen 05,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-06-151,verificado
+VOT-61-20241106-151-02,S-A1-PO1-ORD-009,DIC-61-20241106-006,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-06-151,verificado
+VOT-61-20241106-151-03,S-A1-PO1-ORD-009,DIC-61-20241106-007,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-06-151,verificado
+VOT-61-20241106-151-04,S-A1-PO1-ORD-009,DIC-61-20241106-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2024-11-06-151,verificado
+VOT-61-20241106-151-05,S-A1-PO1-ORD-009,DIC-61-20241106-009,Votación en lo general y en lo particular: Dictamen 09,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-06-151,verificado
+VOT-61-20241106-151-06,S-A1-PO1-ORD-009,DIC-61-20241106-010,Votación en lo general y en lo particular: Dictamen 10,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-11-06-151,verificado
+VOT-61-20241106-152-01,S-A1-PO1-ORD-008,DIC-61-20241106-007-2,Votación en lo general y en lo particular: Dictamen 07,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2024-11-06-152,verificado
+VOT-61-20241031-153-01,S-A1-PO1-ORD-007,,Votación en lo general y en lo particular: Dictamen 06,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-10-31-153,verificado
+VOT-61-20241031-154-01,S-A1-PO1-ORD-006,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,18,5,0,23,0,coincide,,,EV-ACTA-2024-10-31-154,verificado
+VOT-61-20241031-154-02,S-A1-PO1-ORD-006,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-10-31-154,verificado
+VOT-61-20241031-154-03,S-A1-PO1-ORD-006,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-10-31-154,verificado
+VOT-61-20241031-154-04,S-A1-PO1-ORD-006,DIC-61-20241014-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-10-31-154,verificado
+VOT-61-20241031-154-05,S-A1-PO1-ORD-006,DIC-61-20241017-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-10-31-154,verificado
+VOT-61-20241031-154-06,S-A1-PO1-ORD-006,DIC-61-20241031-004,Votación en lo general y en lo particular: Dictamen 04,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-10-31-154,verificado
+VOT-61-20241017-156-01,S-A1-PO1-ORD-005,DIC-61-20241017-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-10-17-156,verificado
+VOT-61-20241017-156-02,S-A1-PO1-ORD-005,DIC-61-20241017-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,16,7,0,23,0,coincide,,,EV-ACTA-2024-10-17-156,verificado
+VOT-61-20241017-156-03,S-A1-PO1-ORD-005,DIC-61-20241017-003,Votación en lo general y en lo particular: Dictamen 03,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2024-10-17-156,verificado
+VOT-61-20241014-157-01,S-A1-PO1-ORD-004,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2024-10-14-157,verificado
+VOT-61-20241014-157-02,S-A1-PO1-ORD-004,DIC-61-20241014-002,Votación en lo general y en lo particular: Dictamen 02,nominal,aprobado,23,0,1,24,0,coincide,,,EV-ACTA-2024-10-14-157,verificado
+VOT-61-20241009-158-01,S-A1-PO1-ORD-003,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario mediante el cual se propone la modificación parcial de la integración de dos Comisiones Permanentes de la LXI Legislatura,",nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2024-10-09-158,verificado
+VOT-61-20241002-159-01,S-A1-PO1-ORD-002,DIC-61-20241002-001,Votación en lo general y en lo particular: Dictamen 01,nominal,aprobado,24,0,0,24,0,coincide,,,EV-ACTA-2024-10-02-159,verificado
+VOT-61-20241002-160-01,S-A1-PO1-ORD-001,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario suscrito por la Junta de Gobierno y Coordinación Política del Honorable Congreso del Estado, mediante el cual se propone la",nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2024-10-02-160,verificado
+VOT-PA-61-029,S-A2-PO2-ORD-020,PA-61-029,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-029,verificado
+VOT-PA-61-014,S-A2-PO1-ORD-006,PA-61-014,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-014,verificado
+VOT-PA-61-013,S-A2-PO1-ORD-005,PA-61-013,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-013,verificado
+VOT-PA-61-012,S-A2-PO1-ORD-002,PA-61-012,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-012,verificado
+VOT-PA-61-011,S-A1-PO2-ORD-014,PA-61-011,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-011,verificado
+VOT-PA-61-010,S-A1-PO2-ORD-013,PA-61-010,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-010,verificado
+VOT-PA-61-009,S-A1-PO2-ORD-010,PA-61-009,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-009,verificado
+VOT-PA-61-008,S-A1-PO2-ORD-010,PA-61-008,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-008,verificado
+VOT-PA-61-007,S-A1-PO2-ORD-008,PA-61-007,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-007,verificado
+VOT-PA-61-006,,PA-61-006,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-006,pendiente
+VOT-PA-61-005,,PA-61-005,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-005,pendiente
+VOT-PA-61-004,S-A1-PO1-ORD-025,PA-61-004,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-004,verificado
+VOT-PA-61-003,,PA-61-003,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-003,pendiente
+VOT-PA-61-002,,PA-61-002,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-002,pendiente
+VOT-PA-61-001,,PA-61-001,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-001,pendiente
+VOT-PA-61-A20260812-1,S-A2-PO2-ORD-019,PA-61-A20260812-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260812-1,verificado
+VOT-PA-61-A20260715-1,,PA-61-A20260715-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260715-1,pendiente
+VOT-PA-61-A20260715-2,,PA-61-A20260715-2,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20260715-2,pendiente
+VOT-PA-61-A20260603-1,S-A2-PO2-ORD-011,PA-61-A20260603-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260603-1,verificado
+VOT-PA-61-A20260603-2,S-A2-PO2-ORD-011,PA-61-A20260603-2,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260603-2,verificado
+VOT-PA-61-A20260527-1,S-A2-PO2-ORD-009,PA-61-A20260527-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260527-1,verificado
+VOT-PA-61-A20260422-1,S-A2-PO2-ORD-004,PA-61-A20260422-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20260422-1,verificado
+VOT-PA-61-A20260416-1,S-A2-PO2-ORD-003,PA-61-A20260416-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20260416-1,verificado
+VOT-PA-61-A20260226-1,S-A2-PO1-ORD-019,PA-61-A20260226-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20260226-1,verificado
+VOT-PA-61-A20260210-1,S-A2-PO1-ORD-017,PA-61-A20260210-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260210-1,verificado
+VOT-PA-61-A20260204-1,S-A2-PO1-ORD-016,PA-61-A20260204-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260204-1,verificado
+VOT-PA-61-A20260128-1,,PA-61-A20260128-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20260128-1,pendiente
+VOT-PA-61-A20260122-1,S-A2-PO1-ORD-014,PA-61-A20260122-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20260122-1,verificado
+VOT-PA-61-A20251218-1,S-A2-PO1-ORD-011,PA-61-A20251218-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20251218-1,verificado
+VOT-PA-61-A20251202-1,S-A2-PO1-ORD-008,PA-61-A20251202-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20251202-1,verificado
+VOT-PA-61-A20251120-1,S-A2-PO1-ORD-006,PA-61-A20251120-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20251120-1,verificado
+VOT-PA-61-A20250814-1,S-A1-PO2-ORD-013,PA-61-A20250814-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20250814-1,verificado
+VOT-PA-61-A20250709-1,S-A1-PO2-ORD-010,PA-61-A20250709-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20250709-1,verificado
+VOT-PA-61-A20250514-1,S-A1-PO2-ORD-006,PA-61-A20250514-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20250514-1,verificado
+VOT-PA-61-A20250514-2,S-A1-PO2-ORD-006,PA-61-A20250514-2,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20250514-2,verificado
+VOT-PA-61-A20250507-1,S-A1-PO2-ORD-005,PA-61-A20250507-1,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20250507-1,verificado
+VOT-PA-61-A20250507-2,S-A1-PO2-ORD-005,PA-61-A20250507-2,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20250507-2,verificado
+VOT-PA-61-A20250228-1,S-A1-PO1-ORD-026,PA-61-A20250228-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20250228-1,verificado

@@ -100,7 +100,7 @@ def bloque_asistencias() -> None:
             "id_diputado": a["id_diputado"], "nombre": d.get("nombre_completo", ""), "partido": partidos.get(d.get("id_partido", ""), {}).get("siglas", d.get("id_partido", "")),
             "representacion": REP.get(d.get("tipo_representacion", ""), ""), "distrito": d.get("distrito", ""),
             "estado": a["estado"], "estado_texto": ESTADO.get(a["estado"], a["estado"]), "justificacion": a["justificacion"],
-            "url_fuente": evid.get(a["id_fuente"] or s["id_fuente"], {}).get("url", ""), "notas": a["notas"],
+            "url_fuente": evid.get(a["id_fuente"] or s["id_fuente"], {}).get("url", ""), "notas": a["notas"], "observaciones": a.get("observaciones", ""),
         })
     detalle.sort(key=lambda x: (x["fecha"], x["id_sesion"], x["nombre"]))
     escribir("01_asistencias_detalle.csv", detalle, list(detalle[0].keys()))
@@ -505,7 +505,8 @@ def bloque_votaciones() -> None:
                       "id_asunto": v["id_asunto"], "asunto": a.get("titulo", "")[:250], "tipo_votacion": "Nominal" if v["tipo_votacion"] == "nominal" else "Económica",
                       "resultado": v["resultado"], "total_favor": v["total_favor"], "total_contra": v["total_contra"], "total_abstencion": v["total_abstencion"],
                       "votos_leidos_favor": c["favor"], "votos_leidos_contra": c["contra"], "votos_leidos_abstencion": c["abstencion"], "lista_cuadra_con_total": cuadra,
-                      "url_acta": evid.get(v["id_fuente"], {}).get("url", "")})
+                      "votos_sin_nombre_en_acta": v.get("votos_sin_nombre", ""), "cuadre": v.get("cuadre", ""), "observaciones": v.get("observaciones", ""),
+                      "id_observacion": v.get("id_observacion", ""), "url_acta": evid.get(v["id_fuente"], {}).get("url", "")})
     filas.sort(key=lambda x: (x["fecha"], x["id_votacion"]))
     escribir("01_votaciones.csv", filas, list(filas[0].keys()))
     detalle = []
@@ -529,7 +530,16 @@ def bloque_votaciones() -> None:
     for i, nombre in enumerate(["votaciones", "votos"], start=4):
         f_ = leer(nombre)
         escribir(f"{i:02d}_{nombre}.csv", f_, list(f_[0].keys()))
-    (DESTINO / "00_LEEME.txt").write_text(LEEME_VOT, encoding="utf-8")
+    inferidos = []
+    for x in leer("votos_inferidos"):
+        d = dips.get(x["id_diputado"], {})
+        inferidos.append({"fecha": fecha_de.get(x["id_votacion"], ""), **x, "nombre": d.get("nombre_completo", ""), "partido": partidos.get(d.get("id_partido", ""), {}).get("siglas", "")})
+    escribir("06_votos_probables_inferidos.csv", inferidos, ["fecha", "id_votacion", "id_diputado", "nombre", "partido", "sentido", "confianza", "fundamento", "id_observacion", "id_fuente"])
+    nominales = [v for v in vots if v["tipo_votacion"] == "nominal" and v["total_favor"] != ""]
+    cuadre = Counter(v.get("cuadre", "") for v in nominales)
+    conf = Counter(o["confianza"] for o in leer("observaciones") if o["tabla"] == "votaciones" and o["confianza"])
+    (DESTINO / "00_LEEME.txt").write_text(LEEME_VOT.format(nominales=len(nominales), coincide=cuadre["coincide"], distintas=len(nominales) - cuadre["coincide"],
+                                                         alta=conf["alta"], media=conf["media"], baja=conf["baja"], inferidos=len(inferidos)), encoding="utf-8")
     zip_ = shutil.make_archive(str(DESTINO.parent / "votaciones_LXI_legislatura"), "zip", DESTINO)
     print("Listo:", Path(zip_).relative_to(RAIZ))
 
@@ -539,24 +549,34 @@ Fuente: actas de sesión publicadas en la Gaceta Parlamentaria.
 
 ARCHIVOS (en orden)
 01_votaciones.csv                 Una fila por votación: fecha, sesión, asunto votado, tipo (nominal o económica), resultado,
-                                  totales oficiales declarados en el acta, votos leídos de la lista y si ambos cuadran.
-02_votos_por_diputado_detalle.csv Una fila por persona y votación nominal: sentido del voto (a favor, en contra, abstención).
+                                  totales oficiales declarados en el acta, votos leídos de la lista, si ambos cuadran,
+                                  votos sin nombre en el acta y la observación del Observatorio.
+02_votos_por_diputado_detalle.csv Una fila por persona y votación nominal: sentido del voto TAL COMO LO ESCRIBE EL ACTA.
 03_resumen_por_diputado.csv       Por persona y año legislativo: votos registrados, a favor, en contra, abstenciones y
-                                  votos distintos al resultado general.
+                                  votos distintos al resultado general (solo votos escritos en el acta).
 04_votaciones.csv / 05_votos.csv  Tablas normalizadas que usa el observatorio.
+06_votos_probables_inferidos.csv  Votos que el acta no escribe pero que se deducen con confianza alta (ver abajo).
+                                  NO se suman a los archivos 02 y 03.
 
 CÓMO SE OBTUVO
 - Cada «se declaró aprobado/rechazado por N votos a favor, N en contra y N abstenciones» del acta es una votación.
   La lista nominal es la que la precede («Dip. Nombre, a favor; …»), por lo que se separan las votaciones en lo general
   y en lo particular.
 - El sentido del voto solo se registra cuando el acta lo transcribe. Nunca se deduce del partido ni del resultado.
-  Si una persona no aparece en la lista, no se registra (no se presume ausencia).
 - Las votaciones económicas de puntos de acuerdo no tienen registro individual.
 
-CALIDAD
-- En 389 de 439 votaciones nominales la lista leída cuadra exactamente con los totales oficiales del acta.
-  En las demás (columna lista_cuadra_con_total = No) la diferencia suele estar en la propia acta: renglones omitidos,
-  nombres repetidos o votos rectificados. Revise el acta enlazada.
+CUADRE ENTRE LA LISTA Y EL TOTAL (votaciones nominales: {nominales})
+- El resultado oficial es el que declara la Presidencia. La lista nominal es la evidencia de quién votó.
+- En {coincide} votaciones la lista suma exactamente el total declarado. Que alguien con asistencia no aparezca en la lista
+  es normal: salió del salón y no votó (aclaración del área de taquigrafía parlamentaria).
+- En {distintas} votaciones no suman lo mismo. La diferencia se registra como «votos sin nombre en el acta» y se clasifica:
+    alta  ({alta}): el voto sin nombre corresponde, en un solo sentido, a quien está escrito sin sentido de voto, a la única
+                persona presente que no aparece, o el total es igual a todas las diputaciones en funciones y todas estuvieron
+                presentes en algún pase de lista. Se registra como voto probable en el archivo 06 ({inferidos} votos).
+    media ({media}): la única candidata solo aparece en un pase de lista anterior (pudo salir). No se asigna voto.
+    baja  ({baja}): hay más candidatos que votos faltantes, los documentos se contradicen o la lista trae votos de más.
+                No se asigna voto.
+- Nada de esto modifica el acta ni el resultado oficial. Cada caso está en la bitácora (bloque «observaciones»).
 - «Votos distintos al resultado» describe cuántas veces la persona votó distinto del resultado general; no es una
   calificación ni mide la calidad de su trabajo.
 """
@@ -716,8 +736,48 @@ IMPORTANTE
 """
 
 
+def bloque_observaciones() -> None:
+    global DESTINO
+    DESTINO = RAIZ / "entrega" / "observaciones"
+    if DESTINO.exists():
+        shutil.rmtree(DESTINO)
+    DESTINO.mkdir(parents=True)
+    evid = {e["id_fuente"]: e for e in leer("evidencias")}
+    obs = leer("observaciones")
+    filas = [{**o, "url_fuente": evid.get(o["id_fuente"], {}).get("url", ""), "url_fuente_resolucion": evid.get(o["id_fuente_resolucion"], {}).get("url", "")} for o in obs]
+    filas.sort(key=lambda o: (o["estado"] != "abierta", o["tabla"], o["id_observacion"]))
+    escribir("01_bitacora_observaciones.csv", filas, list(filas[0].keys()))
+    c = Counter(o["estado"] for o in obs)
+    (DESTINO / "00_LEEME.txt").write_text(LEEME_OBS.format(total=len(obs), abiertas=c["abierta"], resueltas=c["resuelta"]), encoding="utf-8")
+    zip_ = shutil.make_archive(str(DESTINO.parent / "observaciones_LXI_legislatura"), "zip", DESTINO)
+    print("Listo:", Path(zip_).relative_to(RAIZ))
+
+
+LEEME_OBS = """BITÁCORA DE OBSERVACIONES — OBSERVATORIO LEGISLATIVO COLIMA, LXI LEGISLATURA
+{total} observaciones: {abiertas} abiertas y {resueltas} resueltas.
+
+Registra lo que el Observatorio encontró al revisar los documentos oficiales: diferencias entre documentos, datos
+faltantes, errores de captura en la fuente y correcciones que se hicieron a la propia base. El registro oficial nunca se
+modifica en silencio: cada corrección queda aquí con su evidencia.
+
+COLUMNAS
+id_observacion        Identificador (OBS-…). Las tablas de datos lo citan en su columna id_observacion u observaciones.
+tabla / id_registro   Registro al que se refiere.
+tipo                  votos_sin_nombre, lista_no_cuadra, licencia, clasificacion_erronea, resultado_no_leido, autoria,
+                      dato_faltante, inconsistencia_documental, errata_fuente, fuente_ambigua, criterio, …
+descripcion           Qué se encontró.
+confianza             Solo en el cuadre de votaciones: alta, media o baja (ver LEEME del bloque de votaciones).
+estado                abierta (sin resolver) o resuelta.
+resolucion            Cómo se resolvió y con qué fuente.
+url_fuente            Documento donde se observa.
+url_fuente_resolucion Documento con que se resolvió.
+"""
+
+
 if __name__ == "__main__":
     bloque = sys.argv[1] if len(sys.argv) > 1 else "todo"
+    if bloque in ("observaciones", "todo"):
+        bloque_observaciones()
     if bloque in ("comisiones", "todo"):
         bloque_comisiones()
     if bloque in ("intervenciones", "todo"):

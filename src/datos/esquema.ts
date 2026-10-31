@@ -68,6 +68,8 @@ export const NOMBRES_TABLAS = [
   'asistencia_comision',
   'votaciones',
   'votos',
+  'votos_inferidos',
+  'observaciones',
   'compromisos',
   'compromiso_participantes',
 ] as const;
@@ -94,6 +96,8 @@ const diputado = (requerido = true): ColumnaDef => ({
   ref: { tabla: 'diputados', columna: 'id_diputado' },
 });
 const notas: ColumnaDef = { nombre: 'notas', descripcion: 'Observaciones de captura o revisión.' };
+const observaciones: ColumnaDef = { nombre: 'observaciones', descripcion: 'Observación del Observatorio sobre el registro (no modifica el dato oficial). Ver la bitácora de observaciones.' };
+const idObservacion: ColumnaDef = { nombre: 'id_observacion', descripcion: 'Observación de la bitácora que explica el registro.', ref: { tabla: 'observaciones', columna: 'id_observacion' } };
 
 export const ESQUEMA: Record<NombreTabla, TablaDef> = {
   evidencias: {
@@ -196,6 +200,7 @@ export const ESQUEMA: Record<NombreTabla, TablaDef> = {
       { nombre: 'justificacion', descripcion: 'Texto de la justificación pública, si existe.' },
       fuente(),
       notas,
+      observaciones,
     ],
   },
   agenda: {
@@ -381,6 +386,11 @@ export const ESQUEMA: Record<NombreTabla, TablaDef> = {
       { nombre: 'total_favor', descripcion: 'Total oficial a favor (para cotejo).', tipo: 'entero' },
       { nombre: 'total_contra', descripcion: 'Total oficial en contra.', tipo: 'entero' },
       { nombre: 'total_abstencion', descripcion: 'Total oficial de abstenciones.', tipo: 'entero' },
+      { nombre: 'votos_en_lista', descripcion: 'Votos escritos en la lista nominal del acta.', tipo: 'entero' },
+      { nombre: 'votos_sin_nombre', descripcion: 'Votos del total oficial que el acta no atribuye a nadie.', tipo: 'entero' },
+      { nombre: 'cuadre', descripcion: 'coincide | faltan_nombres | sobran_nombres | distinto_reparto', tipo: 'catalogo', valores: ['coincide', 'faltan_nombres', 'sobran_nombres', 'distinto_reparto'] },
+      observaciones,
+      idObservacion,
       fuente(),
       verificacion,
     ],
@@ -395,6 +405,41 @@ export const ESQUEMA: Record<NombreTabla, TablaDef> = {
       diputado(),
       { nombre: 'sentido', descripcion: 'favor | contra | abstencion | ausente | no_localizado', tipo: 'catalogo', valores: k(SENTIDOS_VOTO), requerido: true },
       fuente(false),
+    ],
+  },
+  votos_inferidos: {
+    nombre: 'votos_inferidos',
+    titulo: 'Votos probables (inferidos)',
+    descripcion: 'Votos que el acta no escribe pero que se deducen con confianza alta al cuadrar la lista con el total oficial. No se suman a los votos registrados.',
+    clave: ['id_votacion', 'id_diputado'],
+    columnas: [
+      { nombre: 'id_votacion', descripcion: 'Votación.', requerido: true, ref: { tabla: 'votaciones', columna: 'id_votacion' } },
+      diputado(),
+      { nombre: 'sentido', descripcion: 'favor | contra | abstencion', tipo: 'catalogo', valores: ['favor', 'contra', 'abstencion'], requerido: true },
+      { nombre: 'confianza', descripcion: 'alta (solo se registran estos).', tipo: 'catalogo', valores: ['alta'], requerido: true },
+      { nombre: 'fundamento', descripcion: 'Razonamiento con que se deduce.', requerido: true },
+      { ...idObservacion, requerido: true },
+      fuente(),
+    ],
+  },
+  observaciones: {
+    nombre: 'observaciones',
+    titulo: 'Bitácora de observaciones',
+    descripcion: 'Lo que el Observatorio encontró al revisar los documentos oficiales y las correcciones hechas a la base. Nada se corrige en silencio.',
+    clave: ['id_observacion'],
+    columnas: [
+      { nombre: 'id_observacion', descripcion: 'ID único (OBS-…).', requerido: true },
+      { nombre: 'tabla', descripcion: 'Tabla a la que se refiere.', requerido: true },
+      { nombre: 'id_registro', descripcion: 'Registro o registros a los que se refiere.', requerido: true },
+      { nombre: 'tipo', descripcion: 'Tipo de observación.', requerido: true },
+      { nombre: 'descripcion', descripcion: 'Qué se encontró.', requerido: true },
+      { nombre: 'confianza', descripcion: 'alta | media | baja (cuadre de votaciones).', tipo: 'catalogo', valores: ['alta', 'media', 'baja'] },
+      { nombre: 'estado', descripcion: 'abierta | resuelta', tipo: 'catalogo', valores: ['abierta', 'resuelta'], requerido: true },
+      { nombre: 'resolucion', descripcion: 'Cómo se resolvió.' },
+      fuente(false),
+      { nombre: 'id_fuente_resolucion', descripcion: 'Evidencia con que se resolvió.', ref: { tabla: 'evidencias', columna: 'id_fuente' } },
+      { nombre: 'fecha_registro', descripcion: 'AAAA-MM-DD', tipo: 'fecha', requerido: true },
+      { nombre: 'fecha_resolucion', descripcion: 'AAAA-MM-DD', tipo: 'fecha' },
     ],
   },
   compromisos: {

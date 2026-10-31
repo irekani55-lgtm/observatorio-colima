@@ -66,6 +66,10 @@ export default function Asistencias() {
         </p>
       </div>
 
+      <Aviso titulo="Qué registra la lista oficial">
+        La lista de asistencia de la Gaceta corresponde al <strong>último pase de lista de la sesión</strong> (el de confirmación): coincide con él en el 99.5&nbsp;% de los registros comparables. Por eso una «falta justificada» significa que la persona no estaba en ese pase; pudo estar al inicio, votar y salir, o llegar después. Cuando el acta la registra votando, se anota en la columna de observaciones y el dato oficial no se modifica. Los registros que la Gaceta mezclaba en una sola página se resolvieron con el pase de lista del acta de cada sesión (ver la bitácora en Fuentes).
+      </Aviso>
+
       <BarraFiltros extraLimpiar={['diputado', 'estado', 'periodo_sesion']}>
         <FiltroParam id="diputado" etiqueta="Diputada o diputado" ancho opciones={base.diputados.map((d) => ({ valor: d.id_diputado, etiqueta: d.nombre_completo }))} />
         <FiltroParam id="estado" etiqueta="Estado del registro" opciones={[...Object.entries(ESTADOS_ASISTENCIA).map(([k, v]) => ({ valor: k, etiqueta: v.etiqueta as string })), { valor: 'sin_registro', etiqueta: 'Sin registro capturado' }]} />

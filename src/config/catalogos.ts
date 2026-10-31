@@ -188,6 +188,25 @@ export const RESULTADOS_VOTACION = {
 } as const satisfies Catalogo<string>;
 export type ResultadoVotacion = keyof typeof RESULTADOS_VOTACION;
 
+/** Cuadre entre la lista nominal del acta y el total que declara la Presidencia. */
+export const CUADRE_VOTACION = {
+  coincide: { etiqueta: 'Coincide', descripcion: 'La lista nominal suma exactamente el total declarado.', tono: 'positivo' },
+  faltan_nombres: { etiqueta: 'Votos sin nombre', descripcion: 'El total declarado es mayor que los nombres escritos en el acta.', tono: 'alerta' },
+  sobran_nombres: { etiqueta: 'Lista con votos de más', descripcion: 'La lista trae más votos de los declarados en algún sentido.', tono: 'alerta' },
+  distinto_reparto: { etiqueta: 'Distinto reparto', descripcion: 'Mismo número de votos, distinta distribución entre a favor, en contra y abstención.', tono: 'alerta' },
+} as const satisfies Catalogo<string>;
+
+export const CONFIANZA_OBSERVACION = {
+  alta: { etiqueta: 'Confianza alta', descripcion: 'Una sola explicación posible; se registra como voto probable.', tono: 'positivo' },
+  media: { etiqueta: 'Confianza media', descripcion: 'Explicación probable pero no única; no se asigna voto.', tono: 'pendiente' },
+  baja: { etiqueta: 'Confianza baja', descripcion: 'Varias explicaciones posibles o documentos que se contradicen; no se asigna voto.', tono: 'alerta' },
+} as const satisfies Catalogo<string>;
+
+export const ESTADOS_OBSERVACION = {
+  abierta: { etiqueta: 'Abierta', descripcion: 'Sin resolver.', tono: 'pendiente' },
+  resuelta: { etiqueta: 'Resuelta', descripcion: 'Resuelta con la fuente indicada.', tono: 'positivo' },
+} as const satisfies Catalogo<string>;
+
 // ---------------------------------------------------------------- Compromisos
 
 export const SEGUIMIENTO_COMPROMISO = {

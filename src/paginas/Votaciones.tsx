@@ -5,10 +5,10 @@ import { BarraFiltros, FiltroParam } from '../componentes/Filtros';
 import { EnlaceFuente } from '../componentes/Fuente';
 import { InsigniaCatalogo } from '../componentes/Insignia';
 import { Tabla } from '../componentes/Tabla';
-import { TablaVotos } from '../componentes/TablasRegistros';
+import { EnlaceDip, nombreDip, TablaVotos } from '../componentes/TablasRegistros';
 import { fmt, Tarjeta } from '../componentes/Tarjeta';
-import { ESTADOS_VERIFICACION, RESULTADOS_VOTACION, SENTIDOS_VOTO, TIPOS_VOTACION, etiquetaDe } from '../config/catalogos';
-import type { Votacion } from '../datos/modelo';
+import { CUADRE_VOTACION, ESTADOS_VERIFICACION, RESULTADOS_VOTACION, SENTIDOS_VOTO, TIPOS_VOTACION, etiquetaDe } from '../config/catalogos';
+import type { Votacion, VotoInferido } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { useFiltro } from '../estado/useFiltro';
 import { fechaCorta } from '../indicadores/filtro';
@@ -24,6 +24,10 @@ export default function Votaciones() {
   const votos = base.votos.filter((v) => ids.has(v.id_votacion) && (!idDip || v.id_diputado === idDip) && (!sentido || v.sentido === sentido) && (!filtro.partido || base.idx.diputado.get(v.id_diputado)?.id_partido === filtro.partido));
   const nominales = votaciones.filter((v) => v.tipo_votacion === 'nominal').length;
   const porSentido = Object.keys(SENTIDOS_VOTO).map((k) => ({ k, n: votos.filter((v) => v.sentido === k).length }));
+  const conCuadre = votaciones.filter((v) => v.cuadre);
+  const coinciden = conCuadre.filter((v) => v.cuadre === 'coincide').length;
+  const sinNombre = conCuadre.reduce((n, v) => n + (v.cuadre === 'faltan_nombres' ? (v.votos_sin_nombre ?? 0) : 0), 0);
+  const inferidos = base.votosInferidos.filter((v) => ids.has(v.id_votacion) && (!idDip || v.id_diputado === idDip) && (!sentido || v.sentido === sentido) && (!filtro.partido || base.idx.diputado.get(v.id_diputado)?.id_partido === filtro.partido));
 
   return (
     <>
@@ -42,7 +46,8 @@ export default function Votaciones() {
       </BarraFiltros>
       <div className="rejilla rejilla--tarjetas">
         <Tarjeta titulo="Votaciones registradas" valor={base.votaciones.length ? fmt(votaciones.length) : null} detalle={`${fmt(nominales)} nominales`} />
-        <Tarjeta titulo="Votos individuales" valor={base.votaciones.length ? fmt(votos.length) : null} detalle={porSentido.filter((x) => x.n).map((x) => `${etiquetaDe(SENTIDOS_VOTO, x.k)}: ${fmt(x.n)}`).join(' · ')} />
+        <Tarjeta titulo="Votos individuales" valor={base.votaciones.length ? fmt(votos.length) : null} detalle={porSentido.filter((x) => x.n).map((x) => `${etiquetaDe(SENTIDOS_VOTO, x.k)}: ${fmt(x.n)}`).join(' · ')} explica="Solo votos escritos en el acta." />
+        <Tarjeta titulo="Lista y total coinciden" valor={conCuadre.length ? `${fmt(coinciden)} de ${fmt(conCuadre.length)}` : null} detalle={`${fmt(sinNombre)} votos del total oficial sin nombre en el acta`} explica="Votaciones nominales en que la lista del acta suma lo mismo que el total que declara la Presidencia." />
       </div>
       <section className="seccion">
         <h2>Votaciones</h2>
@@ -60,6 +65,21 @@ export default function Votaciones() {
             { id: 't', titulo: 'Tipo', valor: (v) => etiquetaDe(TIPOS_VOTACION, v.tipo_votacion) },
             { id: 'r', titulo: 'Resultado', valor: (v) => v.resultado, render: (v) => <InsigniaCatalogo catalogo={RESULTADOS_VOTACION} valor={v.resultado} /> },
             { id: 'tot', titulo: 'Favor / contra / abst.', valor: (v) => v.total_favor ?? '', render: (v) => <span className="num">{v.total_favor ?? '—'} / {v.total_contra ?? '—'} / {v.total_abstencion ?? '—'}</span> },
+            {
+              id: 'cu',
+              titulo: 'Lista vs. total',
+              valor: (v) => (v.cuadre ? etiquetaDe(CUADRE_VOTACION, v.cuadre) : ''),
+              render: (v) =>
+                v.cuadre ? (
+                  <span className="pequeno">
+                    <InsigniaCatalogo catalogo={CUADRE_VOTACION} valor={v.cuadre} />
+                    {v.cuadre === 'faltan_nombres' && <span className="num"> {v.votos_sin_nombre}</span>}
+                    {v.observaciones && <div className="muy-pequeno texto-3">{v.observaciones}</div>}
+                  </span>
+                ) : (
+                  <span className="texto-3">—</span>
+                ),
+            },
             { id: 'v', titulo: 'Verificación', valor: (v) => v.estado_verificacion, render: (v) => <InsigniaCatalogo catalogo={ESTADOS_VERIFICACION} valor={v.estado_verificacion} /> },
             { id: 'fu', titulo: 'Fuente', valor: (v) => v.id_fuente, render: (v) => <EnlaceFuente id={v.id_fuente} corto /> },
           ]}
@@ -68,6 +88,27 @@ export default function Votaciones() {
       <section className="seccion">
         <h2>Votos individuales</h2>
         <TablaVotos votos={votos} titulo="Votos individuales" archivo="votos" />
+      </section>
+      <section className="seccion">
+        <h2>Votos probables deducidos por el Observatorio</h2>
+        <p className="seccion__intro">
+          Votos que el acta <strong>no escribe</strong>, pero que se deducen con confianza alta al cuadrar la lista con el total oficial: la persona está escrita sin sentido de voto, es la única presente que no aparece, o el total declarado es igual a todas las diputaciones en funciones. <strong>No se suman</strong> a los votos individuales ni a ningún indicador. Los casos de confianza media o baja no se atribuyen a nadie.
+        </p>
+        <Tabla<VotoInferido>
+          titulo="Votos probables"
+          filas={inferidos}
+          clave={(v) => `${v.id_votacion}|${v.id_diputado}`}
+          archivo="votos_probables"
+          ordenInicial={{ id: 'f', desc: true }}
+          vacio="No hay votos probables para los filtros elegidos."
+          columnas={[
+            { id: 'f', titulo: 'Fecha', valor: (v) => base.idx.sesion.get(base.idx.votacion.get(v.id_votacion)?.id_sesion ?? '')?.fecha ?? '', render: (v) => fechaCorta(base.idx.sesion.get(base.idx.votacion.get(v.id_votacion)?.id_sesion ?? '')?.fecha) },
+            { id: 'v', titulo: 'Votación', valor: (v) => v.id_votacion, render: (v) => <span className="muy-pequeno num">{v.id_votacion}</span> },
+            { id: 'd', titulo: 'Diputada/o', valor: (v) => nombreDip(base, v.id_diputado), render: (v) => <EnlaceDip id={v.id_diputado} /> },
+            { id: 's', titulo: 'Sentido probable', valor: (v) => etiquetaDe(SENTIDOS_VOTO, v.sentido) },
+            { id: 'fu', titulo: 'Fundamento', valor: (v) => v.fundamento, render: (v) => <span className="muy-pequeno">{v.fundamento}</span> },
+          ]}
+        />
       </section>
     </>
   );
