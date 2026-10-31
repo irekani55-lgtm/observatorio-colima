@@ -33,11 +33,17 @@ function InfoDistrito({ n }: { n: number }) {
   );
 }
 
-export default function PaginaMapa() {
+/**
+ * Mapa interactivo de los 16 distritos con la ficha del distrito elegido. Lo usan la página de Inicio y la del
+ * mapa. `clave` es el parámetro de la URL que guarda el distrito: en Inicio se usa uno propio para que elegir un
+ * distrito no filtre los demás indicadores de la página.
+ */
+export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima · 16 distritos locales' }: { clave?: string; titulo?: string }) {
   const { base } = useDatos();
   const [filtro, , params, fijar] = useFiltro();
   const cartografia = useCartografia();
-  const sel = filtro.distrito ?? null;
+  const valor = Number(params.get(clave));
+  const sel = Number.isInteger(valor) && valor > 0 ? valor : null;
   const periodo = { anio: filtro.anio, desde: filtro.desde, hasta: filtro.hasta };
   const personas = sel ? personasDelDistrito(base, sel) : [];
   const idPersona = params.get('persona');
@@ -48,7 +54,7 @@ export default function PaginaMapa() {
   };
   const ficha = useRef<HTMLElement>(null);
   const seleccionar = (d: number | null) => {
-    fijar({ persona: undefined, distrito: d == null ? undefined : String(d) });
+    fijar({ persona: undefined, [clave]: d == null ? undefined : String(d) });
     // En pantallas angostas la ficha queda debajo del mapa: se lleva a la vista.
     if (d != null && typeof window !== 'undefined' && window.matchMedia?.('(max-width: 900px)').matches) {
       requestAnimationFrame(() => ficha.current?.scrollIntoView?.({ behavior: 'smooth', block: 'start' }));
@@ -56,18 +62,10 @@ export default function PaginaMapa() {
   };
 
   return (
-    <>
-      <EncabezadoPagina titulo="Mapa de distritos electorales locales">
-        <p>
-          Colima elige {LEGISLATURA.integracion.MR} diputaciones por mayoría relativa, una por cada distrito electoral local. Seleccione un distrito en el mapa o en la lista para ver la ficha de la persona que lo representa. Las {LEGISLATURA.integracion.RP} diputaciones de representación proporcional no corresponden a un distrito y se consultan en <Link to="/representacion-proporcional">su propio apartado</Link>.
-        </p>
-      </EncabezadoPagina>
-      <BarraFiltros campos={['anio', 'fechas']} />
-
       <div className="mapa-disposicion">
         <section className="panel" aria-label="Mapa">
           <div className="panel__cabecera">
-            <h2 style={{ fontSize: '1.1rem' }}>Estado de Colima · 16 distritos locales</h2>
+            <h2 style={{ fontSize: '1.1rem' }}>{titulo}</h2>
             {sel != null && (
               <button type="button" className="boton boton--chico" onClick={() => seleccionar(null)}>
                 <IcoReiniciar width={15} height={15} /> Restablecer selección
@@ -134,6 +132,19 @@ export default function PaginaMapa() {
           )}
         </section>
       </div>
+  );
+}
+
+export default function PaginaMapa() {
+  return (
+    <>
+      <EncabezadoPagina titulo="Mapa de distritos electorales locales">
+        <p>
+          Colima elige {LEGISLATURA.integracion.MR} diputaciones por mayoría relativa, una por cada distrito electoral local. Seleccione un distrito en el mapa o en la lista para ver la ficha de la persona que lo representa. Las {LEGISLATURA.integracion.RP} diputaciones de representación proporcional no corresponden a un distrito y se consultan en <Link to="/representacion-proporcional">su propio apartado</Link>.
+        </p>
+      </EncabezadoPagina>
+      <BarraFiltros campos={['anio', 'fechas']} />
+      <MapaInteractivo />
     </>
   );
 }
