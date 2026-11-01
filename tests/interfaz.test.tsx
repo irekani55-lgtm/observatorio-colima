@@ -80,6 +80,8 @@ describe('interfaz', () => {
     expect(ficha).toHaveTextContent('(exhortos) 1 vez; el Congreso aprobó 1.');
     expect(ficha).toHaveTextContent('No ha hablado ante el Congreso');
     expect(screen.getByRole('link', { name: 'Ver su perfil completo' })).toHaveAttribute('href', '/diputaciones/D1');
+    expect(screen.getByRole('region', { name: '¿Qué puede hacer usted?' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Compartir' })).toBeInTheDocument();
     await u.click(screen.getByRole('button', { name: /Restablecer selección/ }));
     expect(screen.getByRole('heading', { name: 'Elija su distrito' })).toBeInTheDocument();
   });
