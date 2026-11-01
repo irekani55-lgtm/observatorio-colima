@@ -122,7 +122,7 @@ export default function Inicio() {
 
   return (
     <>
-      <EncabezadoPagina titulo="¿Qué hace su diputada o diputado en el Congreso de Colima?">
+      <EncabezadoPagina titulo="¿Qué hace su diputada o diputado en el Congreso de Colima?" destacado>
         <p>Conozca quién le representa en el Congreso del Estado y qué ha hecho. Todos los datos vienen de documentos oficiales.</p>
         <p className="pequeno texto-3">
           Datos al <strong>{base.manifiesto.fecha_corte ? fechaCorta(base.manifiesto.fecha_corte) : 'sin definir'}</strong> · <Link to="/metodologia">¿Cómo obtenemos los datos?</Link>

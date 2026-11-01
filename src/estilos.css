@@ -1445,3 +1445,47 @@ code {
   height: 14px;
   border-radius: 3px;
 }
+
+/* ---------------------------------------------------------------- Encabezado destacado (inicio) */
+.encabezado-pagina--destacado {
+  --banda-fondo-1: #0f4f6b;
+  --banda-fondo-2: #156a8e;
+  --banda-texto: #ffffff;
+  --banda-texto-2: #dbeaf1;
+  background: linear-gradient(120deg, var(--banda-fondo-1), var(--banda-fondo-2));
+  color: var(--banda-texto);
+  border-radius: var(--radio);
+  padding: 1.6rem 1.6rem 1.3rem;
+  margin-bottom: 1.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .encabezado-pagina--destacado {
+    --banda-fondo-1: #0e3445;
+    --banda-fondo-2: #14506a;
+    --banda-texto-2: #c9dfe9;
+  }
+}
+:root[data-theme='dark'] .encabezado-pagina--destacado {
+  --banda-fondo-1: #0e3445;
+  --banda-fondo-2: #14506a;
+  --banda-texto-2: #c9dfe9;
+}
+.encabezado-pagina--destacado h1 {
+  color: var(--banda-texto);
+}
+.encabezado-pagina--destacado p,
+.encabezado-pagina--destacado .texto-3 {
+  color: var(--banda-texto-2);
+}
+.encabezado-pagina--destacado a {
+  color: var(--banda-texto);
+  text-decoration-color: rgb(255 255 255 / 0.6);
+}
+.encabezado-pagina--destacado strong {
+  color: var(--banda-texto);
+}
+@media (max-width: 560px) {
+  .encabezado-pagina--destacado {
+    padding: 1.1rem 1rem 1rem;
+  }
+}

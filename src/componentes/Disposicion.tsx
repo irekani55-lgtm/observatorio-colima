@@ -178,12 +178,12 @@ export function Disposicion() {
   );
 }
 
-export function EncabezadoPagina({ titulo, children, migas }: { titulo: string; children?: ReactNode; migas?: { a: string; texto: string }[] }) {
+export function EncabezadoPagina({ titulo, children, migas, destacado }: { titulo: string; children?: ReactNode; migas?: { a: string; texto: string }[]; destacado?: boolean }) {
   useEffect(() => {
     document.title = `${titulo} | Observatorio Legislativo Colima`;
   }, [titulo]);
   return (
-    <header className="encabezado-pagina">
+    <header className={`encabezado-pagina${destacado ? ' encabezado-pagina--destacado' : ''}`}>
       {migas && (
         <nav className="migas" aria-label="Ruta de navegación">
           {migas.map((m, i) => (
