@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { CALIDAD_CARGO, etiquetaDe } from '../config/catalogos';
 import type { Diputado } from '../datos/modelo';
@@ -73,6 +74,18 @@ function referenciaCongresoMemo(b: Base, f: Filtro) {
   return m.get(k)!;
 }
 
+/** Un dato de la ficha: la cifra en su columna, a la izquierda, y la frase a tamaño normal. */
+function Dato({ cifra, children }: { cifra: string; children: ReactNode }) {
+  return (
+    <li className="dato-fila">
+      <span className="dato-fila__cifra" aria-hidden="true">
+        {cifra}
+      </span>
+      <div className="dato-fila__texto">{children}</div>
+    </li>
+  );
+}
+
 /** Ficha breve en lenguaje ciudadano: lo más importante primero y el resto en «Ver todos los datos». */
 export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
   const { base } = useDatos();
@@ -80,11 +93,7 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
   const mas = indicadoresDePersonas(base, [d], filtro);
   const ref = referenciaCongresoMemo(base, filtro);
   const div = votosDivididosDeDiputado(base, d.id_diputado, filtro);
-  const veces = (n: number, destacar = false) => (
-    <>
-      {destacar ? <strong>{fmt(n)}</strong> : fmt(n)} {n === 1 ? 'vez' : 'veces'}
-    </>
-  );
+  const veces = (n: number) => `${fmt(n)} ${n === 1 ? 'vez' : 'veces'}`;
 
   return (
     <article aria-label={`Ficha de ${d.nombre_completo}`}>
@@ -99,29 +108,23 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
         Periodo: {describirPeriodo(filtro, base.manifiesto.fecha_corte)}
       </p>
 
-      <h4 className="indicador__titulo">¿Qué ha hecho en el Congreso?</h4>
+      <h4 className="ficha__seccion">¿Qué ha hecho en el Congreso?</h4>
       <p className="pequeno texto-3" style={{ marginTop: 0 }}>
         Ordenado según las tres tareas de una diputación.
       </p>
 
-      <h5 className="ficha__funcion">1. Hacer leyes</h5>
+      <h5 className="ficha__funcion">
+        <span className="ficha__funcion-num" aria-hidden="true">1</span>
+        Hacer leyes
+      </h5>
       <ul className="lista-limpia ficha__datos">
-        <li className="dato-claro">
+        <Dato cifra={fmt(mas.iniciativasPresentadas)}>
           {mas.iniciativasPresentadas === 0 ? (
-            <>
-              No ha presentado <Termino t="iniciativa">propuestas de ley</Termino>.
-            </>
+            <>No ha presentado propuestas de ley.</>
           ) : (
             <>
-              Presentó <strong>{fmt(mas.iniciativasPresentadas)}</strong> <Termino t="iniciativa">{mas.iniciativasPresentadas === 1 ? 'propuesta de ley' : 'propuestas de ley'}</Termino>; el Congreso
-              aprobó {fmt(mas.iniciativasAprobadas)}.{' '}
-              <Link
-                className="pequeno"
-                to={enlaceConPeriodo('/asuntos', filtro, {
-                  diputado: d.id_diputado,
-                  tipo: 'iniciativa',
-                })}
-              >
+              Presentó {fmt(mas.iniciativasPresentadas)} {mas.iniciativasPresentadas === 1 ? 'propuesta de ley' : 'propuestas de ley'}; el Congreso aprobó {fmt(mas.iniciativasAprobadas)}.{' '}
+              <Link className="pequeno" to={enlaceConPeriodo('/asuntos', filtro, { diputado: d.id_diputado, tipo: 'iniciativa' })}>
                 Ver propuestas
               </Link>
               {(mas.alcancePresentadas.tramite > 0 || mas.alcancePresentadas.conmemorativa > 0) && (
@@ -139,94 +142,66 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
               Lo más común en el Congreso: {fmt(ref.medianaIniciativas)} {ref.medianaIniciativas === 1 ? 'propuesta' : 'propuestas'} por diputación.
             </span>
           )}
-        </li>
-        <li className="dato-claro">
+        </Dato>
+        <Dato cifra={div.divididas === 0 ? '—' : fmt(div.conVoto)}>
           {div.divididas === 0 ? (
             <span className="texto-3">No hubo votaciones divididas en este periodo.</span>
           ) : div.conVoto === 0 ? (
             <>
-              En las <strong>{fmt(div.divididas)}</strong> <Termino t="votacion_dividida">votaciones divididas</Termino> del periodo, el acta no escribe su voto.
+              En las {fmt(div.divididas)} <Termino t="votacion_dividida">votaciones divididas</Termino> del periodo, el acta no escribe su voto.
             </>
           ) : (
             <>
-              En las <Termino t="votacion_dividida">votaciones divididas</Termino>, su voto quedó escrito en <strong>{fmt(div.conVoto)}</strong> de {fmt(div.divididas)}: {fmt(div.porSentido.favor)} a
-              favor, {fmt(div.porSentido.contra)} en contra
-              {div.porSentido.abstencion > 0 && (
-                <>
-                  {' '}
-                  y {fmt(div.porSentido.abstencion)} {div.porSentido.abstencion === 1 ? 'abstención' : 'abstenciones'}
-                </>
-              )}
-              .{' '}
-              <Link
-                className="pequeno"
-                to={enlaceConPeriodo('/votaciones', filtro, {
-                  diputado: d.id_diputado,
-                  divididas: '1',
-                })}
-              >
+              En las <Termino t="votacion_dividida">votaciones divididas</Termino>, su voto quedó escrito en {fmt(div.conVoto)} de {fmt(div.divididas)}: {fmt(div.porSentido.favor)} a favor, {fmt(div.porSentido.contra)} en contra
+              {div.porSentido.abstencion > 0 && <> y {fmt(div.porSentido.abstencion)} {div.porSentido.abstencion === 1 ? 'abstención' : 'abstenciones'}</>}.{' '}
+              <Link className="pequeno" to={enlaceConPeriodo('/votaciones', filtro, { diputado: d.id_diputado, divididas: '1' })}>
                 Ver cómo votó
               </Link>
             </>
           )}
-        </li>
+        </Dato>
       </ul>
 
-      <h5 className="ficha__funcion">2. Representar</h5>
+      <h5 className="ficha__funcion">
+        <span className="ficha__funcion-num" aria-hidden="true">2</span>
+        Representar
+      </h5>
       <ul className="lista-limpia ficha__datos">
-        <li className="dato-claro">
+        <Dato cifra={asis.porcentaje == null ? '—' : fmtPct(asis.porcentaje)}>
           {asis.porcentaje == null ? (
             <span className="texto-3">Asistencia: sin datos suficientes en este periodo.</span>
           ) : (
             <>
-              <Termino t="pase_lista">Registró asistencia</Termino> en <strong>{fmt(asis.asistencias)}</strong> de {fmt(asis.denominador)} <Termino t="sesion">sesiones</Termino> (
-              {fmtPct(asis.porcentaje)}).
+              Registró asistencia en {fmt(asis.asistencias)} de {fmt(asis.denominador)} sesiones ({fmtPct(asis.porcentaje)}).
               {asis.justificadas > 0 && <> Faltó con permiso {veces(asis.justificadas)}.</>}
               {asis.ausencias > 0 && <> Faltó sin permiso {veces(asis.ausencias)}.</>}
             </>
           )}{' '}
-          <Link
-            className="pequeno"
-            to={enlaceConPeriodo('/asistencias', filtro, {
-              diputado: d.id_diputado,
-            })}
-          >
+          <Link className="pequeno" to={enlaceConPeriodo('/asistencias', filtro, { diputado: d.id_diputado })}>
             Ver sesiones
           </Link>
           {ref.asistencia != null && <span className="ficha__nota">Todo el Congreso: {fmtPct(ref.asistencia)}.</span>}
-        </li>
-        <li className="dato-claro">
-          {mas.intervenciones === 0 ? (
-            <>
-              No ha hablado ante el Congreso (<Termino t="tribuna">tribuna</Termino>).
-            </>
-          ) : (
-            <>
-              Habló ante el Congreso (<Termino t="tribuna">tribuna</Termino>) {veces(mas.intervenciones, true)}.
-            </>
-          )}
-        </li>
+        </Dato>
+        <Dato cifra={fmt(mas.intervenciones)}>
+          {mas.intervenciones === 0 ? <>No ha hablado ante el Congreso.</> : <>Habló ante el Congreso {veces(mas.intervenciones)}.</>}
+        </Dato>
       </ul>
 
-      <h5 className="ficha__funcion">3. Vigilar al gobierno</h5>
+      <h5 className="ficha__funcion">
+        <span className="ficha__funcion-num" aria-hidden="true">3</span>
+        Vigilar al gobierno
+      </h5>
       <ul className="lista-limpia ficha__datos">
-        <li className="dato-claro">
+        <Dato cifra={fmt(mas.exhortosPresentados)}>
           {mas.exhortosPresentados === 0 ? (
-            <>
-              No ha presentado <Termino t="exhorto">exhortos</Termino>.
-            </>
+            <>No ha pedido a otras autoridades que atiendan un problema (exhortos).</>
           ) : (
             <>
-              Pidió a otras autoridades atender un problema (<Termino t="exhorto">exhortos</Termino>) {veces(mas.exhortosPresentados, true)}; el Congreso{' '}
-              {mas.exhortosAprobados === 0 ? (
-                'no aprobó ninguno'
-              ) : (
-                <>aprobó {mas.exhortosAprobados === mas.exhortosPresentados && mas.exhortosPresentados > 1 ? 'todos' : fmt(mas.exhortosAprobados)}</>
-              )}
-              .
+              Pidió a otras autoridades que atendieran un problema (exhortos) {veces(mas.exhortosPresentados)}; el Congreso{' '}
+              {mas.exhortosAprobados === 0 ? 'no aprobó ninguno' : <>aprobó {mas.exhortosAprobados === mas.exhortosPresentados && mas.exhortosPresentados > 1 ? 'todos' : fmt(mas.exhortosAprobados)}</>}.
             </>
           )}
-        </li>
+        </Dato>
       </ul>
 
       <details className="desplegable" style={{ marginTop: '1rem' }}>

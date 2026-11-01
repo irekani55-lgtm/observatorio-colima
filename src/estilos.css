@@ -54,7 +54,8 @@
   --radio: 10px;
   --radio-s: 6px;
   --ancho: 1240px;
-  --fuente: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Public Sans: letra neutra y legible, la misma en todos los aparatos. Si no carga, la del sistema. */
+  --fuente: 'Public Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1612,11 +1613,24 @@ code {
 }
 .resumen-frases { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.75rem; max-width: 72ch; }
 .resumen-frases li { padding-left: 1rem; border-left: 3px solid var(--primario-2); line-height: 1.55; }
-.ficha__funcion { margin: 1rem 0 0.4rem; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--primario); }
-.ficha__datos { display: grid; gap: 0.6rem; }
+.ficha__funcion { display: flex; align-items: center; gap: 0.5rem; margin: 1.25rem 0 0.5rem; font-size: 1.05rem; font-weight: 700; color: var(--texto); }
+.ficha__funcion-num {
+  display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; flex: none;
+  background: var(--primario-suave); color: var(--primario); font-size: 0.85rem;
+}
+.ficha__datos { display: grid; gap: 0.75rem; }
+/* Cifra en su propia columna: los renglones de la frase conservan la misma altura. */
+.dato-fila { display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.75rem; align-items: baseline; line-height: 1.5; }
+.dato-fila__cifra { font-size: 1.45rem; font-weight: 700; line-height: 1.1; text-align: right; font-variant-numeric: tabular-nums; color: var(--primario); white-space: nowrap; }
+.dato-fila__texto { min-width: 0; }
 .ficha__nota { display: block; margin-top: 0.2rem; font-size: 0.85rem; color: var(--texto-3); }
 .que-hacer { margin-top: 1rem; padding: 0.9rem 1rem; border-radius: var(--radio); background: var(--primario-suave); }
 .que-hacer ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.4rem; }
 .compartir { display: inline-flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
 .compartir__opciones { display: inline-flex; gap: 0.4rem; }
 .seccion[id] { scroll-margin-top: 8rem; }
+.ficha__seccion { margin: 1.25rem 0 0.25rem; font-size: 1.15rem; font-weight: 700; }
+@media (max-width: 480px) {
+  .dato-fila { grid-template-columns: 4.2rem 1fr; gap: 0.6rem; }
+  .dato-fila__cifra { font-size: 1.2rem; }
+}

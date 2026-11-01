@@ -8,7 +8,7 @@ export function QuePuedeHacer({ d }: { d: Diputado }) {
   const tel = CONTACTO_CONGRESO.telefonos;
   return (
     <section className="que-hacer" aria-label="¿Qué puede hacer usted?">
-      <h4 className="indicador__titulo" style={{ marginTop: 0 }}>
+      <h4 className="ficha__seccion" style={{ marginTop: 0 }}>
         ¿Qué puede hacer usted?
       </h4>
       <ul className="pequeno">
