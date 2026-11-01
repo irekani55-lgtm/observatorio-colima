@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
@@ -12,6 +12,11 @@ import type { Base, Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { useFiltro } from '../estado/useFiltro';
 import { LienzoMapa, SelloMapa, useCartografia } from '../mapa/MapaDistritos';
+import { Tabla } from '../componentes/Tabla';
+import { BuscadorDistrito } from '../componentes/BuscadorDistrito';
+import { fmt, fmtPct } from '../componentes/Tarjeta';
+import { EnlaceDip } from '../componentes/TablasRegistros';
+import { indicadoresDePersonas, type IndicadoresPersonas } from '../indicadores/distritos';
 
 /** Personas que ocuparon la curul de un distrito: primero quien está en funciones. */
 export function personasDelDistrito(b: Base, distrito: number): Diputado[] {
@@ -135,6 +140,79 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
   );
 }
 
+interface FilaDistrito extends IndicadoresPersonas {
+  distrito: number;
+  municipios: string;
+  personas: Diputado[];
+}
+
+/** Tabla con los indicadores de los 16 distritos, para compararlos. Suma a quienes ocuparon la curul en el periodo. */
+export function TablaDistritos() {
+  const { base } = useDatos();
+  const [filtro] = useFiltro();
+  const periodo = { anio: filtro.anio, desde: filtro.desde, hasta: filtro.hasta };
+  const filas = useMemo<FilaDistrito[]>(
+    () =>
+      Array.from({ length: LEGISLATURA.distritos }, (_, i) => i + 1).map((n) => {
+        const personas = personasDelDistrito(base, n);
+        const dist = base.distritos.find((x) => x.distrito === n);
+        return { distrito: n, municipios: dist?.municipios.join(', ') ?? '', personas, ...indicadoresDePersonas(base, personas, periodo) };
+      }),
+    [base, periodo.anio, periodo.desde, periodo.hasta], // eslint-disable-line react-hooks/exhaustive-deps
+  );
+  const n = (k: keyof IndicadoresPersonas, titulo: string) => ({ id: k, titulo, numerica: true, valor: (f: FilaDistrito) => f[k] as number, render: (f: FilaDistrito) => <span className="num">{fmt(f[k] as number)}</span> });
+  return (
+    <Tabla<FilaDistrito>
+      titulo="Indicadores por distrito"
+      filas={filas}
+      clave={(f) => String(f.distrito)}
+      archivo="indicadores_por_distrito"
+      porPagina={16}
+      ordenInicial={{ id: 'd', desc: false }}
+      columnas={[
+        { id: 'd', titulo: 'Distrito', numerica: true, valor: (f) => f.distrito },
+        { id: 'm', titulo: 'Municipios', valor: (f) => f.municipios, render: (f) => <span className="pequeno">{f.municipios || '—'}</span> },
+        {
+          id: 'p',
+          titulo: 'Diputada/o',
+          valor: (f) => f.personas.map((p) => p.nombre_completo).join('; '),
+          render: (f) => (
+            <span className="pequeno">
+              {f.personas.map((p, i) => (
+                <span key={p.id_diputado}>
+                  {i > 0 && <br />}
+                  <EnlaceDip id={p.id_diputado} />
+                  {p.calidad === 'suplente' && <span className="texto-3"> (suplente)</span>}
+                </span>
+              ))}
+            </span>
+          ),
+        },
+        { id: 'a', titulo: 'Asistencia', numerica: true, valor: (f) => f.asistencia.porcentaje ?? '', render: (f) => <span className="num">{f.asistencia.porcentaje == null ? '—' : fmtPct(f.asistencia.porcentaje)}</span> },
+        n('iniciativasPresentadas', 'Iniciativas presentadas'),
+        n('iniciativasAprobadas', 'Iniciativas aprobadas'),
+        n('dictamenesDeSusIniciativas', 'Dictámenes de sus iniciativas'),
+        n('dictamenesComisionesQuePreside', 'Dictámenes de comisiones que preside'),
+        n('dictamenesComisionesQueIntegra', 'Dictámenes de comisiones que integra'),
+        n('exhortosPresentados', 'Exhortos presentados'),
+        n('exhortosAprobados', 'Exhortos aprobados'),
+        n('puntosAcuerdo', 'Puntos de acuerdo'),
+        n('intervenciones', 'Intervenciones'),
+        n('votosRegistrados', 'Votos registrados'),
+      ]}
+    />
+  );
+}
+
+/** Nota que acompaña a la tabla por distrito. */
+export function NotaTablaDistritos() {
+  return (
+    <p className="seccion__intro">
+      Un distrito no es lo mismo que un municipio: los 16 distritos se forman con secciones electorales según la población. Algunos ocupan solo una parte de un municipio (la ciudad de Colima se reparte entre los distritos 1, 2 y 3) y otros reúnen partes de dos municipios. Cuando una suplente ocupó la curul durante una licencia, sus registros se suman a los del distrito y cada asunto cuenta una sola vez. Los dictámenes se cuentan por las comisiones a las que pertenece la persona: son trabajo colectivo, no individual. Los totales de la tabla no se suman entre distritos, porque un asunto compartido aparece en cada distrito que lo promovió.
+    </p>
+  );
+}
+
 export default function PaginaMapa() {
   return (
     <>
@@ -144,7 +222,13 @@ export default function PaginaMapa() {
         </p>
       </EncabezadoPagina>
       <BarraFiltros campos={['anio', 'fechas']} />
+      <BuscadorDistrito />
       <MapaInteractivo />
+      <section className="seccion">
+        <h2>Indicadores por distrito</h2>
+        <NotaTablaDistritos />
+        <TablaDistritos />
+      </section>
     </>
   );
 }

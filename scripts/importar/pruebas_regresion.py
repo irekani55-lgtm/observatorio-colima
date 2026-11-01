@@ -71,6 +71,12 @@ def main() -> None:
     geo = json.load(open(Path(__file__).resolve().parents[2] / "public" / "geo" / "distritos_locales.geojson", encoding="utf-8"))
     nums = sorted(int(f["properties"]["distrito_l"]) for f in geo["features"])
     comprobar(nums == list(range(1, 17)), "La cartografía tiene exactamente los distritos 1 a 16, uno por polígono")
+    import csv as _csv
+    with open(Path(__file__).resolve().parents[2] / "public" / "geo" / "secciones_distrito.csv", encoding="utf-8") as fh:
+        secs = list(_csv.DictReader(fh))
+    comprobar(len(secs) == len({x["seccion"] for x in secs}) and {int(x["distrito"]) for x in secs} == set(range(1, 17)),
+              f"Buscador por sección: {len(secs)} secciones únicas que cubren los 16 distritos")
+    comprobar(sum(1 for a in leer_csv("asunto_comisiones") if a["id_asunto"].startswith("DIC-")) > 200, "Cada dictamen registra la comisión que lo elaboró")
     comprobar("OBS-GEO-01" in obs, "La versión de la cartografía está documentada en la bitácora (OBS-GEO-01)")
 
     print("Bitácora")

@@ -4,6 +4,7 @@ import type { Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { asistenciaDeDiputado } from '../indicadores/asistencia';
 import { indicadoresAsuntosDiputado } from '../indicadores/asuntos';
+import { indicadoresDePersonas } from '../indicadores/distritos';
 import { describirPeriodo, fechaCorta, type Filtro } from '../indicadores/filtro';
 import { Foto } from './Foto';
 import { Partido } from './Partido';
@@ -59,6 +60,7 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
   const hayExhortos = base.asuntos.some((a) => a.tipo === 'exhorto');
   const hayIniciativas = base.asuntos.some((a) => a.tipo === 'iniciativa');
   const sinVerificarIni = ind.iniciativasAprobadas.noVerificados;
+  const mas = indicadoresDePersonas(base, [d], filtro);
 
   return (
     <article aria-label={`Ficha de ${d.nombre_completo}`}>
@@ -136,6 +138,35 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
           </Link>
         </section>
       </div>
+
+      <h4 className="indicador__titulo" style={{ marginTop: '1.25rem' }}>Todos los indicadores</h4>
+      <dl className="definiciones pequeno">
+        <dt>Iniciativas presentadas</dt>
+        <dd className="num">{fmt(mas.iniciativasPresentadas)}</dd>
+        <dt>Iniciativas aprobadas</dt>
+        <dd className="num">{fmt(mas.iniciativasAprobadas)}</dd>
+        <dt>Dictámenes de sus iniciativas</dt>
+        <dd className="num">{fmt(mas.dictamenesDeSusIniciativas)}</dd>
+        <dt>Dictámenes de las comisiones que preside</dt>
+        <dd className="num">
+          {fmt(mas.dictamenesComisionesQuePreside)} <span className="texto-3">· {plural(mas.comisionesQuePreside, 'comisión', 'comisiones')}</span>
+        </dd>
+        <dt>Dictámenes de las comisiones que integra</dt>
+        <dd className="num">
+          {fmt(mas.dictamenesComisionesQueIntegra)} <span className="texto-3">· {plural(mas.comisionesQueIntegra, 'comisión', 'comisiones')}</span>
+        </dd>
+        <dt>Exhortos presentados / aprobados</dt>
+        <dd className="num">
+          {fmt(mas.exhortosPresentados)} / {fmt(mas.exhortosAprobados)}
+        </dd>
+        <dt>Puntos de acuerdo</dt>
+        <dd className="num">{fmt(mas.puntosAcuerdo)}</dd>
+        <dt>Intervenciones en tribuna</dt>
+        <dd className="num">{fmt(mas.intervenciones)}</dd>
+        <dt>Votos registrados en actas</dt>
+        <dd className="num">{fmt(mas.votosRegistrados)}</dd>
+      </dl>
+      <p className="muy-pequeno texto-3">Los dictámenes son trabajo colectivo de las comisiones: se cuentan los de las comisiones a las que pertenece, no como obra individual.</p>
       <p style={{ marginTop: '1rem' }}>
         <Link className="boton boton--primario" to={enlaceConPeriodo(`/diputaciones/${encodeURIComponent(d.id_diputado)}`, filtro)}>
           Consultar perfil completo

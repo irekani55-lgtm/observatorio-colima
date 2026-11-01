@@ -682,7 +682,7 @@ def bloque_comisiones() -> None:
     CARGO = {"presidencia": "Presidencia", "secretaria": "Secretaría", "vocal": "Vocal"}
     resumen = []
     for c in sorted(coms, key=lambda x: x["nombre"]):
-        mios = [t for t in turnos if t["id_comision"] == c["id_comision"]]
+        mios = [t for t in turnos if t["id_comision"] == c["id_comision"] and not t["id_asunto"].startswith("DIC-")]
         ids = {t["id_asunto"] for t in mios}
         ini = [asuntos[i] for i in ids if i in asuntos]
         dics = [asuntos[i] for i in dic_de[c["id_comision"]] if i in asuntos]

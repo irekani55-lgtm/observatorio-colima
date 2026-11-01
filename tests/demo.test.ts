@@ -5,6 +5,9 @@ import { cargarConjunto } from '../src/datos/cargar';
 import { construirBase } from '../src/datos/modelo';
 import { validarTodo } from '../src/datos/validar';
 import { autoverificar } from '../src/indicadores/autoverificacion';
+import { indicadoresAsuntosDiputado } from '../src/indicadores/asuntos';
+import { indicadoresDePersonas } from '../src/indicadores/distritos';
+import { indicadoresComisiones } from '../src/indicadores/comisiones';
 
 const leer = async (r: string) => readFile(join(__dirname, '..', 'public', 'datos', r), 'utf8').catch(() => null);
 
@@ -38,5 +41,20 @@ describe('conjuntos de datos incluidos', () => {
     const noCuadran = b.votaciones.filter((v) => v.cuadre && v.cuadre !== 'coincide');
     expect(noCuadran.every((v) => b.idx.observacion.has(v.id_observacion))).toBe(true);
     expect(b.observaciones.some((o) => o.estado === 'resuelta')).toBe(true);
+  });
+
+  it('los indicadores por distrito coinciden con los del perfil y los dictámenes no se cuentan como turnos', async () => {
+    const b = construirBase(await cargarConjunto(leer, 'oficial'));
+    for (const d of b.diputados.filter((x) => x.tipo_representacion === 'MR')) {
+      const perfil = indicadoresAsuntosDiputado(b, d, {});
+      const dist = indicadoresDePersonas(b, [d], {});
+      expect(dist.iniciativasPresentadas).toBe(perfil.iniciativasPresentadas.total);
+      expect(dist.iniciativasAprobadas).toBe(perfil.iniciativasAprobadas.total);
+      expect(dist.exhortosAprobados).toBe(perfil.exhortosAprobados.total);
+      expect(dist.dictamenesDeSusIniciativas).toBe(perfil.dictamenesRelacionados.length);
+      expect(dist.dictamenesComisionesQuePreside).toBeLessThanOrEqual(dist.dictamenesComisionesQueIntegra);
+    }
+    const turnados = indicadoresComisiones(b, {}).flatMap((c) => c.idsAsuntos);
+    expect(turnados.some((id) => id.startsWith('DIC-'))).toBe(false);
   });
 });

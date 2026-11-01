@@ -73,7 +73,8 @@ def main() -> None:
     asuntos = [a for a in leer_csv("asuntos") if not a["id_asunto"].startswith("DIC-")]
     if not asuntos:
         sys.exit("Primero corra congreso_asuntos.py.")
-    turnos = leer_csv("asunto_comisiones")
+    # Las filas de dictámenes (DIC-) las escribe este mismo script: se descartan para poder volver a correrlo.
+    turnos = [t for t in leer_csv("asunto_comisiones") if not t["id_asunto"].startswith("DIC-")]
     coms = leer_csv("comisiones")
     nombre_com = {c["id_comision"]: c["nombre"] for c in coms}
     turnos_de: dict[str, set[str]] = {}
@@ -202,7 +203,10 @@ def main() -> None:
     print("3/3 Escribiendo…")
     cols = list(leer_csv("asuntos")[0].keys())
     escribir("asuntos", cols, asuntos + nuevos)
-    escribir("asunto_comisiones", list(turnos[0].keys()), turnos)
+    # Comisión o comisiones que elaboraron cada dictamen (rol «dictaminadora»; fecha_dictamen = fecha del dictamen).
+    elaboro = [{"id_asunto": n["id_asunto"], "id_comision": c, "rol": "dictaminadora", "fecha_turno": "", "fecha_dictamen": n["fecha_dictamen"], "id_fuente": n["id_fuente"]}
+               for n in nuevos for c in dict.fromkeys(n["_comisiones"])]
+    escribir("asunto_comisiones", list(turnos[0].keys()), turnos + elaboro)
     existentes = {e["id_fuente"]: e for e in leer_csv("evidencias")}
     existentes.update({k: v for k, v in EVID.items() if k not in existentes})
     escribir("evidencias", ["id_fuente", "tipo", "titulo", "institucion", "url", "fecha_documento", "fecha_consulta", "oficial", "pagina", "notas"], list(existentes.values()))

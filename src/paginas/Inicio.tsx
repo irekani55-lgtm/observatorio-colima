@@ -15,7 +15,8 @@ import { asistenciaAgregada } from '../indicadores/asistencia';
 import { asuntosFiltrados, esAprobado, idsDiputadosPromoventes, resumenAsuntos } from '../indicadores/asuntos';
 import { coberturaEvidencia } from '../indicadores/evidencia';
 import { diputadosFiltrados, fechaCorta, fechaEnPeriodo } from '../indicadores/filtro';
-import { MapaInteractivo } from './Mapa';
+import { MapaInteractivo, NotaTablaDistritos, TablaDistritos } from './Mapa';
+import { BuscadorDistrito } from '../componentes/BuscadorDistrito';
 
 const recortar = (v: string) => (v.length > 26 ? `${v.slice(0, 25)}…` : v);
 
@@ -133,9 +134,13 @@ export default function Inicio() {
       <section className="seccion" aria-labelledby="titulo-mapa-inicio" style={{ marginTop: 0 }}>
         <h2 id="titulo-mapa-inicio">¿Quién representa a su distrito?</h2>
         <p className="seccion__intro">
-          Elija su distrito en el mapa para ver a su diputada o diputado y sus indicadores principales: asistencia, iniciativas aprobadas y exhortos aprobados. Las {LEGISLATURA.integracion.RP} diputaciones de representación proporcional no tienen distrito: consúltelas en <Link to="/representacion-proporcional">su propio apartado</Link>.
+          Busque su distrito con la sección de su credencial para votar, o elíjalo en el mapa, para ver a su diputada o diputado y sus indicadores principales: asistencia, iniciativas aprobadas y exhortos aprobados. Las {LEGISLATURA.integracion.RP} diputaciones de representación proporcional no tienen distrito: consúltelas en <Link to="/representacion-proporcional">su propio apartado</Link>.
         </p>
+        <BuscadorDistrito clave="mapa_distrito" />
         <MapaInteractivo clave="mapa_distrito" />
+        <h3 style={{ marginTop: '1.5rem' }}>Indicadores de los 16 distritos</h3>
+        <NotaTablaDistritos />
+        <TablaDistritos />
       </section>
 
       <h2>Indicadores de toda la Legislatura</h2>

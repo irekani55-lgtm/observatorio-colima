@@ -23,7 +23,8 @@ export interface IndicadoresComision {
 
 export function indicadoresComisiones(b: Base, f: Filtro): IndicadoresComision[] {
   return b.comisiones.map((c) => {
-    const turnos = b.asuntos.flatMap((a) =>
+    // Los dictámenes registran la comisión que los elaboró; no son asuntos turnados.
+    const turnos = b.asuntos.filter((a) => a.tipo !== 'dictamen').flatMap((a) =>
       a.turnos.filter((t) => t.id_comision === c.id_comision && fechaEnPeriodo(t.fecha_turno || a.fecha_presentacion, f)).map((t) => ({ a, t })),
     );
     const dictaminados = turnos.filter(({ a, t }) => Boolean(t.fecha_dictamen || a.fecha_dictamen));
@@ -67,4 +68,9 @@ export function participacionComisionesDiputado(b: Base, idDiputado: string, f: 
     evaluables: evaluables.length,
     porcentaje: evaluables.length ? (asistencias / evaluables.length) * 100 : null,
   };
+}
+
+/** Dictámenes elaborados por una comisión (solo o en comisiones unidas), con fecha de dictamen en el periodo. */
+export function dictamenesDeComision(b: Base, idComision: string, f: Filtro) {
+  return b.asuntos.filter((a) => a.tipo === 'dictamen' && a.turnos.some((t) => t.id_comision === idComision) && fechaEnPeriodo(a.fecha_dictamen, f));
 }
