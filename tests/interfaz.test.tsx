@@ -67,9 +67,10 @@ describe('interfaz', () => {
     expect(screen.getByText('Distrito electoral local 3', { selector: 'h2' })).toBeInTheDocument();
     // datos principales en lenguaje ciudadano
     const ficha = screen.getByRole('article', { name: 'Ficha de Ana Ejemplo' });
-    expect(ficha).toHaveTextContent('Fue a 1 de 2 sesiones (50.0 %)');
+    expect(ficha).toHaveTextContent('Registró asistencia en 1 de 2 sesiones (50.0 %). Faltó sin permiso 1 vez.');
     expect(ficha).toHaveTextContent('Presentó 1 propuesta de ley; el Congreso aprobó 1.');
-    expect(ficha).toHaveTextContent('(exhortos) 1 vez; el Congreso lo aprobó 1 vez.');
+    expect(ficha).toHaveTextContent('(exhortos) 1 vez; el Congreso aprobó 1.');
+    expect(ficha).toHaveTextContent('No ha hablado ante el Congreso');
     expect(screen.getByRole('link', { name: 'Ver su perfil completo' })).toHaveAttribute('href', '/diputaciones/D1');
     await u.click(screen.getByRole('button', { name: /Restablecer selección/ }));
     expect(screen.getByRole('heading', { name: 'Elija su distrito' })).toBeInTheDocument();

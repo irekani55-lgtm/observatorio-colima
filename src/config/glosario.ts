@@ -10,6 +10,7 @@ export const GLOSARIO = {
   comision: 'Grupo de diputadas y diputados que estudia un tema, como salud o agua, antes de que lo vote todo el Congreso.',
   exhorto: 'Petición del Congreso a otra autoridad para que atienda un problema. No la obliga.',
   punto_acuerdo: 'Propuesta para que el Congreso tome una postura o haga una petición; no cambia leyes.',
+  pase_lista: 'La lista oficial anota quién estaba en el último pase de lista de cada sesión. Una persona puede llegar o salir antes, y aun así votar.',
   sesion: 'Reunión de todas las diputaciones para discutir y votar.',
   tribuna: 'Lugar desde donde se habla ante todo el Congreso.',
   mayoria_relativa: 'Diputación que ganó la elección en su distrito.',

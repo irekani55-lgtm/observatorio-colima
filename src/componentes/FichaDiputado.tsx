@@ -91,7 +91,9 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
             <span className="texto-3">Asistencia: sin datos suficientes en este periodo.</span>
           ) : (
             <>
-              Fue a <strong>{fmt(asis.asistencias)}</strong> de {fmt(asis.denominador)} <Termino t="sesion">sesiones</Termino> ({fmtPct(asis.porcentaje)}).
+              <Termino t="pase_lista">Registró asistencia</Termino> en <strong>{fmt(asis.asistencias)}</strong> de {fmt(asis.denominador)} <Termino t="sesion">sesiones</Termino> ({fmtPct(asis.porcentaje)}).
+              {asis.justificadas > 0 && <> Faltó con permiso {veces(asis.justificadas)}.</>}
+              {asis.ausencias > 0 && <> Faltó sin permiso {veces(asis.ausencias)}.</>}
             </>
           )}{' '}
           <Link className="pequeno" to={enlaceConPeriodo('/asistencias', filtro, { diputado: d.id_diputado })}>
@@ -99,16 +101,41 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
           </Link>
         </li>
         <li className="dato-claro">
-          Presentó <strong>{fmt(mas.iniciativasPresentadas)}</strong> <Termino t="iniciativa">{mas.iniciativasPresentadas === 1 ? 'propuesta de ley' : 'propuestas de ley'}</Termino>; el Congreso aprobó {fmt(mas.iniciativasAprobadas)}.{' '}
-          <Link className="pequeno" to={enlaceConPeriodo('/asuntos', filtro, { diputado: d.id_diputado, tipo: 'iniciativa' })}>
-            Ver propuestas
-          </Link>
+          {mas.iniciativasPresentadas === 0 ? (
+            <>
+              No ha presentado <Termino t="iniciativa">propuestas de ley</Termino>.
+            </>
+          ) : (
+            <>
+              Presentó <strong>{fmt(mas.iniciativasPresentadas)}</strong> <Termino t="iniciativa">{mas.iniciativasPresentadas === 1 ? 'propuesta de ley' : 'propuestas de ley'}</Termino>; el Congreso aprobó {fmt(mas.iniciativasAprobadas)}.{' '}
+              <Link className="pequeno" to={enlaceConPeriodo('/asuntos', filtro, { diputado: d.id_diputado, tipo: 'iniciativa' })}>
+                Ver propuestas
+              </Link>
+            </>
+          )}
         </li>
         <li className="dato-claro">
-          Pidió a otras autoridades atender un problema (<Termino t="exhorto">exhortos</Termino>) {veces(mas.exhortosPresentados, true)}; el Congreso lo aprobó {veces(mas.exhortosAprobados)}.
+          {mas.exhortosPresentados === 0 ? (
+            <>
+              No ha presentado <Termino t="exhorto">exhortos</Termino>.
+            </>
+          ) : (
+            <>
+              Pidió a otras autoridades atender un problema (<Termino t="exhorto">exhortos</Termino>) {veces(mas.exhortosPresentados, true)}; el Congreso{' '}
+              {mas.exhortosAprobados === 0 ? 'no aprobó ninguno' : <>aprobó {mas.exhortosAprobados === mas.exhortosPresentados && mas.exhortosPresentados > 1 ? 'todos' : fmt(mas.exhortosAprobados)}</>}.
+            </>
+          )}
         </li>
         <li className="dato-claro">
-          Habló ante el Congreso (<Termino t="tribuna">tribuna</Termino>) {veces(mas.intervenciones, true)}.
+          {mas.intervenciones === 0 ? (
+            <>
+              No ha hablado ante el Congreso (<Termino t="tribuna">tribuna</Termino>).
+            </>
+          ) : (
+            <>
+              Habló ante el Congreso (<Termino t="tribuna">tribuna</Termino>) {veces(mas.intervenciones, true)}.
+            </>
+          )}
         </li>
       </ul>
 
@@ -133,8 +160,6 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
           <dd className="num">{fmt(mas.puntosAcuerdo)}</dd>
           <dt>Votaciones en que su voto quedó escrito en el acta</dt>
           <dd className="num">{fmt(mas.votosRegistrados)}</dd>
-          <dt>Faltas con permiso a sesiones</dt>
-          <dd className="num">{fmt(asis.justificadas)}</dd>
         </dl>
         <p className="muy-pequeno texto-3">
           Los dictámenes son trabajo de toda la comisión, no de una sola persona. Que un dato no aparezca no significa que no ocurrió: solo contamos lo que está en documentos oficiales.

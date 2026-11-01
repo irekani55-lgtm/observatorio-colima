@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { DatosGenerales } from '../componentes/FichaDiputado';
+import { BarraFiltros } from '../componentes/Filtros';
 import { Foto } from '../componentes/Foto';
 import { EnlaceExterno, EnlaceFuente } from '../componentes/Fuente';
 import { InsigniaCatalogo } from '../componentes/Insignia';
@@ -100,6 +101,7 @@ function PerfilDe({ d }: { d: Diputado }) {
       <section className="seccion">
         <h2>Indicadores por dimensión</h2>
         <p className="seccion__intro">Cada dimensión se presenta por separado y no se combina en una calificación global. Los conteos describen actividad documentada en las fuentes; su ausencia no prueba que la actividad no ocurriera.</p>
+        <BarraFiltros campos={['anio']} />
         <div className="rejilla rejilla--2">
           <div className="panel dimension">
             <h3>Actividad</h3>

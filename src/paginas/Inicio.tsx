@@ -122,7 +122,7 @@ export default function Inicio() {
 
   return (
     <>
-      <EncabezadoPagina titulo="¿Qué hace su diputación en el Congreso de Colima?">
+      <EncabezadoPagina titulo="¿Qué hace su diputada o diputado en el Congreso de Colima?">
         <p>Conozca quién le representa en el Congreso del Estado y qué ha hecho. Todos los datos vienen de documentos oficiales.</p>
         <p className="pequeno texto-3">
           Datos al <strong>{base.manifiesto.fecha_corte ? fechaCorta(base.manifiesto.fecha_corte) : 'sin definir'}</strong> · <Link to="/metodologia">¿Cómo obtenemos los datos?</Link>
@@ -134,9 +134,13 @@ export default function Inicio() {
         <p className="seccion__intro">Búsquelo con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
         <BuscadorDistrito clave="mapa_distrito" />
         <MapaInteractivo clave="mapa_distrito" />
-        <h3 style={{ marginTop: '1.5rem' }}>Indicadores de los 16 distritos</h3>
-        <NotaTablaDistritos />
-        <TablaDistritos />
+        <details className="desplegable" style={{ marginTop: '1.5rem' }}>
+          <summary>Comparar los 16 distritos</summary>
+          <div style={{ marginTop: '0.75rem' }}>
+            <NotaTablaDistritos />
+            <TablaDistritos />
+          </div>
+        </details>
       </section>
 
       <h2>Indicadores de toda la Legislatura</h2>
