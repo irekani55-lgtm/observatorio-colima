@@ -1313,3 +1313,89 @@ code {
   font-size: 1.6rem;
   font-variant-numeric: tabular-nums;
 }
+
+/* ---------------------------------------------------------------- Filtros compactos
+   Una franja delgada: etiqueta al lado del selector y controles bajos, para no quitar espacio. */
+.filtros {
+  gap: 0.4rem 0.9rem;
+  align-items: center;
+  background: transparent;
+  padding: 0.35rem 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.filtros .campo {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  flex: 0 1 auto;
+  max-width: none;
+}
+.filtros .campo label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.filtros .campo select,
+.filtros .campo input {
+  min-height: 30px;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.82rem;
+  width: auto;
+  max-width: 220px;
+}
+.filtros .campo--ancho select {
+  max-width: 280px;
+}
+.filtros .boton--chico {
+  min-height: 30px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.78rem;
+}
+.filtros__acciones {
+  margin-left: 0;
+}
+.periodo-activo {
+  font-size: 0.78rem;
+  margin: 0 0 0.75rem;
+}
+@media (max-width: 560px) {
+  .filtros .campo {
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+  .filtros .campo select,
+  .filtros .campo input {
+    flex: 1 1 auto;
+    max-width: 65%;
+  }
+}
+.filtros__abrir {
+  display: none;
+}
+.periodo-activo span {
+  flex: 1 1 0;
+  min-width: 0;
+}
+@media (max-width: 560px) {
+  .filtros__abrir {
+    display: inline-flex;
+    margin-bottom: 0.5rem;
+    max-width: 100%;
+    text-align: left;
+  }
+  .filtros--cerrado-movil {
+    display: none;
+  }
+  .filtros--cerrado-movil + .periodo-activo {
+    display: none;
+  }
+}
+.filtros-contexto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+  color: var(--texto-2);
+  margin: 0 0 0.75rem;
+}

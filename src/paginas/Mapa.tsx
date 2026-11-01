@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
-import { BarraFiltros } from '../componentes/Filtros';
 import { IcoReiniciar } from '../componentes/Iconos';
 import { LEGISLATURA } from '../config/legislatura';
 import { CONFIG_MAPA } from '../config/mapa';
@@ -219,7 +218,6 @@ export default function PaginaMapa() {
           Colima elige {LEGISLATURA.integracion.MR} diputaciones por mayoría relativa, una por cada distrito electoral local. Seleccione un distrito en el mapa o en la lista para ver la ficha de la persona que lo representa. Las {LEGISLATURA.integracion.RP} diputaciones de representación proporcional no corresponden a un distrito y se consultan en <Link to="/representacion-proporcional">su propio apartado</Link>.
         </p>
       </EncabezadoPagina>
-      <BarraFiltros campos={['anio', 'fechas']} />
       <BuscadorDistrito />
       <MapaInteractivo />
       <section className="seccion">

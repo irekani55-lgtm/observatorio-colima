@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
-import { BarraFiltros } from '../componentes/Filtros';
 import { Foto } from '../componentes/Foto';
 import { Partido } from '../componentes/Partido';
 import { LEGISLATURA } from '../config/legislatura';
@@ -23,7 +22,6 @@ export default function RepresentacionProporcional() {
           {LEGISLATURA.integracion.RP} curules se asignan según la votación que obtiene cada partido en todo el estado. Estas diputaciones <strong>no representan a un distrito geográfico</strong>, por lo que no aparecen en el <Link to="/mapa">mapa</Link>. Sus indicadores se calculan con la misma metodología.
         </p>
       </EncabezadoPagina>
-      <BarraFiltros campos={['anio', 'fechas']} />
       {rp.length === 0 ? (
         <Aviso tipo="alerta" titulo="Información pendiente de integración">
           No hay diputaciones de representación proporcional en el catálogo cargado.

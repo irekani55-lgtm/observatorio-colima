@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { ANIOS_LEGISLATIVOS } from '../config/legislatura';
 import { TIPOS_REPRESENTACION } from '../config/catalogos';
 import { useDatos } from '../estado/DatosContext';
@@ -16,11 +17,35 @@ export function BarraFiltros({ campos = ['anio', 'fechas', 'partido', 'represent
   // Las fechas exactas quedan ocultas: para la mayoría basta el año. Se muestran si ya hay fechas elegidas.
   const [verFechas, setVerFechas] = useState(false);
   const fechasVisibles = verFechas || Boolean(f.desde || f.hasta);
+  // En celular la barra se recoge detrás de un botón para no ocupar media pantalla.
+  const [abiertoMovil, setAbiertoMovil] = useState(false);
   const ultimaFecha = base.manifiesto.fecha_corte;
+
+  // Si se llegó desde el botón de una diputación (p. ej. «Ver propuestas» en su ficha), la página ya sabe de
+  // quién se trata: en lugar de la barra de filtros se muestra a quién corresponde y cómo ver a todas.
+  const idDip = params.get('diputado');
+  const dip = idDip ? base.idx.diputado.get(idDip) : undefined;
+  if (dip) {
+    return (
+      <p className="filtros-contexto">
+        Está viendo los registros de{' '}
+        <Link to={`/diputaciones/${encodeURIComponent(dip.id_diputado)}`}>
+          <strong>{dip.nombre_completo}</strong>
+        </Link>{' '}
+        · {describirPeriodo(f, ultimaFecha)} ·{' '}
+        <button type="button" className="boton boton--fantasma boton--chico" onClick={() => fijar({ diputado: undefined })}>
+          Ver de todas las diputaciones
+        </button>
+      </p>
+    );
+  }
 
   return (
     <>
-      <form className="filtros" role="search" aria-label="Filtros" onSubmit={(e) => e.preventDefault()}>
+      <button type="button" className="boton boton--chico filtros__abrir" aria-expanded={abiertoMovil} aria-controls="barra-filtros" onClick={() => setAbiertoMovil(!abiertoMovil)}>
+        <IcoCalendario width={15} height={15} /> {abiertoMovil ? 'Ocultar filtros' : `Filtrar · ${describirPeriodo(f, base.manifiesto.fecha_corte)}`}
+      </button>
+      <form id="barra-filtros" className={`filtros${abiertoMovil ? '' : ' filtros--cerrado-movil'}`} role="search" aria-label="Filtros" onSubmit={(e) => e.preventDefault()}>
         {campos.includes('anio') && (
           <div className="campo">
             <label htmlFor="f-anio">Año legislativo</label>
