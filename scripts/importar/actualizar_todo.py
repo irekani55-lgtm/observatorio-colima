@@ -25,6 +25,7 @@ pasos = [
     ("Acuerdos, puntos de acuerdo y exhortos", [sys.executable, str(AQUI / "congreso_acuerdos.py"), *extra]),
     ("Votaciones", [sys.executable, str(AQUI / "congreso_votaciones.py")]),
     ("Intervenciones en tribuna", [sys.executable, str(AQUI / "congreso_intervenciones.py"), *extra]),
+    ("Distrito de cada sección en 2024 (PREP del IEE)", [sys.executable, str(AQUI / "iee_secciones_2024.py"), *extra]),
     ("Bitácora de observaciones y cuadre de votaciones", [sys.executable, str(AQUI / "observaciones.py")]),
     ("Pruebas de regresión", [sys.executable, str(AQUI / "pruebas_regresion.py")]),
     ("Validación", ["npx", "tsx", "scripts/validar-datos.ts", "oficial"]),

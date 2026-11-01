@@ -74,13 +74,18 @@ def main() -> None:
     import csv as _csv
     with open(Path(__file__).resolve().parents[2] / "public" / "geo" / "secciones_distrito.csv", encoding="utf-8") as fh:
         secs = list(_csv.DictReader(fh))
-    comprobar(len(secs) == len({x["seccion"] for x in secs}) and {int(x["distrito"]) for x in secs} == set(range(1, 17)),
+    vig = [x for x in secs if x["distrito"]]
+    comprobar(len(secs) == len({x["seccion"] for x in secs}) and {int(x["distrito"]) for x in vig} == set(range(1, 17)),
               f"Buscador por sección: {len(secs)} secciones únicas que cubren los 16 distritos")
+    s20 = next((x for x in secs if x["seccion"] == "20"), {})
+    comprobar(s20.get("distrito_2024") == "2" and s20.get("distrito") == "1", "Sección 0020: distrito 2 en 2024 y 1 en la cartografía vigente (PREP 2024)")
+    comprobar(sum(1 for x in secs if x["situacion"] == "cambio_distrito") == 1 and sum(1 for x in secs if x["situacion"] == "solo_2024") == 7,
+              "Solo una sección cambió de distrito y las 7 de 2024 que ya no existen siguen localizables")
     comprobar(sum(1 for a in leer_csv("asunto_comisiones") if a["id_asunto"].startswith("DIC-")) > 200, "Cada dictamen registra la comisión que lo elaboró")
     comprobar("OBS-GEO-01" in obs, "La versión de la cartografía está documentada en la bitácora (OBS-GEO-01)")
 
     print("Bitácora")
-    for oid in ("OBS-LIC-01", "OBS-LIC-03", "OBS-LIC-04", "OBS-EXH-01", "OBS-EXH-02", "OBS-EXH-03", "OBS-INI-01", "OBS-ASI-04"):
+    for oid in ("OBS-GEO-01", "OBS-LIC-01", "OBS-LIC-03", "OBS-LIC-04", "OBS-EXH-01", "OBS-EXH-02", "OBS-EXH-03", "OBS-INI-01", "OBS-ASI-04"):
         comprobar(obs.get(oid, {}).get("estado") == "resuelta", f"{oid} registrada como resuelta")
     comprobar(all(o["estado"] in ("abierta", "resuelta") for o in obs.values()), "Estados válidos en la bitácora")
 

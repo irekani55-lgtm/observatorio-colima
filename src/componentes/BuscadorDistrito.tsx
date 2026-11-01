@@ -8,10 +8,16 @@ import { Aviso } from './Aviso';
 import { EnlaceExterno } from './Fuente';
 import { EnlaceDip } from './TablasRegistros';
 
+type Situacion = 'igual' | 'cambio_distrito' | 'nueva' | 'sin_casilla_2024' | 'solo_2024';
+
 interface Seccion {
   seccion: number;
-  distrito: number;
+  /** Distrito en la cartografía vigente del INE (vacío si la sección ya no existe). */
+  distrito: number | null;
   municipio: string;
+  /** Distrito en que votó la sección en la elección de 2024 (PREP del IEE). */
+  distrito2024: number | null;
+  situacion: Situacion;
 }
 
 /** Nombres con acentos de los 10 municipios (la cartografía del INE los trae en mayúsculas y sin acentos). */
@@ -37,9 +43,12 @@ function useSecciones() {
       .catch(() => '')
       .then((t) => {
         const m = new Map<number, Seccion>();
+        const num = (v: string | undefined) => (v && /^\d+$/.test(v) ? Number(v) : null);
         for (const linea of t.trim().split(/\r?\n/).slice(1)) {
-          const [s, d, mun] = linea.split(',');
-          if (/^\d+$/.test(s ?? '') && /^\d+$/.test(d ?? '')) m.set(Number(s), { seccion: Number(s), distrito: Number(d), municipio: MUNICIPIOS[mun ?? ''] ?? mun ?? '' });
+          const [s, d, mun, d24, sit] = linea.split(',');
+          const seccion = num(s);
+          if (seccion == null || (num(d) == null && num(d24) == null)) continue;
+          m.set(seccion, { seccion, distrito: num(d), municipio: MUNICIPIOS[mun ?? ''] ?? mun ?? '', distrito2024: num(d24), situacion: (sit || 'igual') as Situacion });
         }
         if (vivo) setEstado({ cargando: false, secciones: m });
       });
@@ -69,10 +78,12 @@ export function BuscadorDistrito({ clave = 'distrito' }: { clave?: string }) {
   if (!cargando && secciones.size === 0) return null;
   const numero = buscado && /^\d{1,4}$/.test(buscado) ? Number(buscado) : null;
   const hallada = numero != null ? secciones.get(numero) : undefined;
-  const titulares = hallada ? base.diputados.filter((d) => d.tipo_representacion === 'MR' && d.distrito === hallada.distrito) : [];
+  // El diputado de la persona es el del distrito en que votó su sección en 2024; si la sección es posterior, el vigente.
+  const distritoRep = hallada ? (hallada.distrito2024 ?? hallada.distrito) : null;
+  const titulares = distritoRep ? base.diputados.filter((d) => d.tipo_representacion === 'MR' && d.distrito === distritoRep) : [];
   const actual = enFuncionesHoy(titulares);
-  const dist = hallada ? base.distritos.find((x) => x.distrito === hallada.distrito) : undefined;
-
+  const dist = distritoRep ? base.distritos.find((x) => x.distrito === distritoRep) : undefined;
+  const nn = (n: number) => String(n).padStart(4, '0');
   return (
     <div className="panel" style={{ marginBottom: '1rem' }}>
       <h3 style={{ fontSize: '1.05rem', marginTop: 0 }}>¿En qué distrito vivo?</h3>
@@ -101,15 +112,30 @@ export function BuscadorDistrito({ clave = 'distrito' }: { clave?: string }) {
         {buscado != null && numero == null && <Aviso tipo="alerta">Escriba solo el número de sección (hasta cuatro dígitos).</Aviso>}
         {numero != null && !hallada && (
           <Aviso tipo="alerta" titulo={`No encontramos la sección ${String(numero).padStart(4, '0')}`}>
-            Revise el número en su credencial. Las secciones de Colima van de la 0002 a la 0446 en la cartografía vigente del INE; algunas se renumeraron en ajustes recientes. También puede consultar su ubicación en el <EnlaceExterno url="https://ubicatucasilla.ine.mx/">sitio del INE</EnlaceExterno>.
+            Revise el número en su credencial. Las secciones de Colima van de la 0002 a la 0446. También puede consultar su ubicación en el <EnlaceExterno url="https://ubicatucasilla.ine.mx/">sitio del INE</EnlaceExterno>.
           </Aviso>
         )}
-        {hallada && (
+        {hallada && distritoRep && (
           <div style={{ marginTop: '0.75rem' }}>
             <p>
-              La sección <strong className="num">{String(hallada.seccion).padStart(4, '0')}</strong> ({hallada.municipio}) pertenece al <strong>distrito electoral local {hallada.distrito}</strong>
+              La sección <strong className="num">{nn(hallada.seccion)}</strong>
+              {hallada.municipio && <> ({hallada.municipio})</>} {hallada.situacion === 'solo_2024' || hallada.situacion === 'cambio_distrito' ? 'votó en 2024 en el' : 'pertenece al'} <strong>distrito electoral local {distritoRep}</strong>
               {dist?.cabecera && <> (cabecera: {dist.cabecera})</>}.
             </p>
+            {hallada.situacion === 'cambio_distrito' && (
+              <Aviso tipo="alerta" titulo="Esta sección cambió de distrito">
+                En la elección de 2024, con la que se eligió a la LXI Legislatura, votó en el distrito {hallada.distrito2024}. Con la cartografía vigente del INE ahora pertenece al distrito {hallada.distrito}, que contará a partir de la siguiente elección.
+              </Aviso>
+            )}
+            {hallada.situacion === 'solo_2024' && (
+              <Aviso titulo="Sección que ya no existe">
+                Existía en la elección de 2024 y después el INE la dividió en secciones nuevas del mismo distrito. Si su credencial es reciente, puede tener un número de sección distinto.
+              </Aviso>
+            )}
+            {hallada.situacion === 'nueva' && (
+              <p className="pequeno texto-2">Es una sección creada después de 2024. Las secciones nuevas se formaron al dividir secciones de 2024 que quedaron en los mismos distritos, por lo que su distrito no cambió.</p>
+            )}
+            {hallada.situacion === 'sin_casilla_2024' && <p className="pequeno texto-2">En 2024 esta sección no tuvo casilla propia; su distrito es el de la cartografía vigente.</p>}
             {actual ? (
               <p>
                 Su diputada o diputado de mayoría relativa: <EnlaceDip id={actual.id_diputado} />
@@ -119,12 +145,12 @@ export function BuscadorDistrito({ clave = 'distrito' }: { clave?: string }) {
               <p className="texto-3">No hay una diputación registrada para este distrito.</p>
             )}
             <p className="fila-flex">
-              <button type="button" className="boton" onClick={() => fijar({ persona: undefined, [clave]: String(hallada.distrito) })}>
+              <button type="button" className="boton" onClick={() => fijar({ persona: undefined, [clave]: String(distritoRep) })}>
                 Ver su ficha en el mapa
               </button>
             </p>
             <p className="muy-pequeno texto-3">
-              Además, las {LEGISLATURA.integracion.RP} diputaciones de <Link to="/representacion-proporcional">representación proporcional</Link> representan a todo el estado. Sección y distrito según la cartografía vigente del INE (Base Geográfica Digital, enero 2026).
+              Además, las {LEGISLATURA.integracion.RP} diputaciones de <Link to="/representacion-proporcional">representación proporcional</Link> representan a todo el estado. Distrito de 2024 según la base de datos del PREP 2024 del IEE Colima (cada casilla con su sección y distrito); distrito vigente según la Base Geográfica Digital del INE (enero 2026).
             </p>
           </div>
         )}

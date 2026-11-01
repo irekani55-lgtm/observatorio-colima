@@ -31,11 +31,12 @@ export const CONFIG_MAPA = {
     url: 'https://cartografia.ine.mx/sige8/',
     distritacion: 'Distritación local de 2022, con la que se eligió la LXI Legislatura en 2024',
     /**
-     * Cotejo con el IEE (proceso 2024): los municipios de los 16 distritos coinciden. El número de secciones
-     * difiere en 7 distritos (1, 4, 5, 7, 8, 10 y 13) (411 en el IEE; 430 en la BGD 2026) por cambios posteriores del Marco Geográfico,
-     * entre ellos el ajuste de 2025 en Colima, Coquimatlán y Villa de Álvarez. Ver OBS-GEO-01 en la bitácora.
+     * Cotejo con la elección de 2024 (PREP 2024 del IEE: cada casilla con su sección y distrito): de las 381
+     * secciones que existen en ambas, 380 están en el mismo distrito; solo la 0020 pasó del distrito 2 al 1.
+     * Las 7 secciones de 2024 que ya no existen se dividieron en 46 nuevas de los mismos distritos.
+     * Ver OBS-GEO-01 en la bitácora.
      */
-    nota: 'Cartografía vigente del INE: en Colima, Coquimatlán y Villa de Álvarez los límites pueden diferir ligeramente de los usados en la elección de 2024. Para el límite exacto de cada distrito consulte el mapa oficial del IEE.',
+    nota: 'Comparada con la elección de 2024, solo la sección 0020 (Colima) cambió de distrito: votó en el 2 y hoy pertenece al 1. El resto de los límites coincide.',
     verificado: true,
   },
 };

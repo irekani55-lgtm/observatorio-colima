@@ -366,12 +366,14 @@ REVISION = [
      "abierta", "", "", "", ""),
     ("OBS-EXH-06", "exhortos", "(todos)", "dato_faltante",
      "No se publican los oficios con que el Congreso envía los exhortos a las autoridades; la fecha de envío no puede documentarse.", "abierta", "", "", "", ""),
-    ("OBS-GEO-01", "distritos", "(cartografía del mapa)", "version_cartografia",
-     "El mapa usa la capa DISTRITO_LOCAL de la Base Geográfica Digital de Colima del INE con corte de enero de 2026. Cotejo con el IEE (proceso electoral 2024): "
-     "los municipios de los 16 distritos coinciden, pero el número de secciones difiere en 7 distritos (1, 4, 5, 7, 8, 10 y 13; 411 secciones en el IEE y 430 en la BGD), "
-     "por cambios posteriores del Marco Geográfico Electoral, entre ellos el ajuste de 2025 en Colima, Coquimatlán y Villa de Álvarez. En esa zona los límites pueden "
-     "diferir ligeramente de los usados en la elección de la LXI Legislatura.",
-     "abierta", "", "", "", ""),
+    ("OBS-GEO-01", "distritos", "(cartografía del mapa y buscador por sección)", "version_cartografia",
+     "El mapa usa la capa DISTRITO_LOCAL de la Base Geográfica Digital de Colima del INE con corte de enero de 2026, posterior a la elección de 2024. "
+     "Las páginas de distritos del IEE dan otros números de secciones (411 en total), pero corresponden a datos de 2020.",
+     "resuelta",
+     "Cotejo sección por sección con la base del PREP 2024 del IEE (cada casilla con su sección y su distrito local): de las 381 secciones que existen en ambas, "
+     "380 están en el mismo distrito y solo la 0020 (Colima) pasó del distrito 2 al 1. Las 7 secciones de 2024 que ya no existen (0060, 0139, 0146, 0236, 0248, 0250 y 0280) "
+     "se dividieron en 46 secciones nuevas (0401 a 0446) de los mismos distritos. El buscador por sección usa el distrito de 2024 y avisa del cambio de la 0020.",
+     "", "EV-IEE-PREP-2024", "2026-11-01"),
     ("OBS-COM-01", "comisiones", "(varias)", "inconsistencia_documental",
      "El número de reuniones de la página de comisiones no coincide con el de los informes anuales (p. ej., Hacienda: 47 en la página; 56 y 67 en los informes).",
      "abierta", "", "EV-CONG-COMISIONES", "", ""),
@@ -381,7 +383,13 @@ REVISION = [
 def main() -> None:
     observaciones: list[dict] = []
     resueltos, restantes, votaron_sin_asistencia = cuadre_votaciones(observaciones)
-    evid = {e["id_fuente"] for e in leer_csv("evidencias")}
+    evidencias = leer_csv("evidencias")
+    if not any(e["id_fuente"] == "EV-IEE-PREP-2024" for e in evidencias):
+        evidencias.append({"id_fuente": "EV-IEE-PREP-2024", "tipo": "otro", "titulo": "Base de datos del PREP 2024, diputaciones locales (casillas con sección y distrito local)",
+                           "institucion": "Instituto Electoral del Estado de Colima", "url": "https://ieecolima.org.mx/PREP_24/20240602_0819_PREP_COL.zip",
+                           "fecha_documento": "2024-06-03", "fecha_consulta": HOY, "oficial": "si", "pagina": "", "notas": "Se usa solo la relación sección–distrito local, no los resultados preliminares."})
+        escribir("evidencias", list(evidencias[0].keys()), evidencias)
+    evid = {e["id_fuente"] for e in evidencias}
     for (oid, tabla, reg, tipo, desc, estado, resol, fte, fte_res, f_res) in REVISION:
         observaciones.append({"id_observacion": oid, "tabla": tabla, "id_registro": reg, "tipo": tipo, "descripcion": desc, "confianza": "",
                               "estado": estado, "resolucion": resol, "id_fuente": fte if fte in evid else "",

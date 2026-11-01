@@ -7,12 +7,14 @@
 Se reproyectó de UTM 13N a WGS84 y se simplificó con mapshaper conservando la topología; no se
 alteraron los límites. La copia original está en `datos_crudos/ine/bgd_colima_2026-01/`.
 
-Cotejo con el IEE (proceso electoral 2024): los municipios de los 16 distritos coinciden. El número
-de secciones difiere en 7 distritos (1, 4, 5, 7, 8, 10 y 13: 411 en el IEE y 430 en la BGD) por
-cambios posteriores del Marco Geográfico Electoral, entre ellos el ajuste de 2025 en Colima,
-Coquimatlán y Villa de Álvarez. Por eso el mapa advierte que en esa zona los límites pueden diferir
-ligeramente de los de 2024 (observación OBS-GEO-01). Si se obtiene la BGD con corte de 2024, basta
-con volver a ejecutar la conversión.
+Cotejo con la elección de 2024, sección por sección, con la base de datos del PREP 2024 del IEE (cada
+casilla trae su sección y su distrito local): de las 381 secciones que existen en ambas, 380 están en el
+mismo distrito y solo la **0020** (Colima) pasó del distrito 2 al 1. Las 7 secciones de 2024 que ya no
+existen se dividieron en 46 nuevas (0401 a 0446) de los mismos distritos (observación OBS-GEO-01).
+
+`secciones_distrito.csv` (buscador «¿En qué distrito vivo?»): sección, distrito vigente, municipio,
+distrito en 2024 y situación. La generan `npm run geo:convertir` (cartografía vigente) y
+`scripts/importar/iee_secciones_2024.py` (distrito de 2024).
 
 ## Requisitos originales
 
