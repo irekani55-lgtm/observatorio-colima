@@ -10,6 +10,7 @@ import { IcoCongreso, IcoLuna, IcoMenu, IcoSol, IcoX } from './Iconos';
 export const NAV_PRINCIPAL = [
   { a: '/', texto: 'Inicio', fin: true },
   { a: '/mapa', texto: 'Mapa por distrito' },
+  { a: '/congreso', texto: 'El Congreso en números' },
   { a: '/diputaciones', texto: 'Diputaciones' },
   { a: '/representacion-proporcional', texto: 'Representación proporcional' },
   { a: '/asuntos', texto: 'Actividad legislativa' },

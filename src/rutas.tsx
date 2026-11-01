@@ -1,5 +1,6 @@
 import { Route } from 'react-router-dom';
 import Inicio from './paginas/Inicio';
+import Congreso from './paginas/Congreso';
 import PaginaMapa from './paginas/Mapa';
 import Directorio from './paginas/Directorio';
 import Perfil from './paginas/Perfil';
@@ -21,6 +22,7 @@ export function Rutas() {
   return (
     <>
       <Route index element={<Inicio />} />
+      <Route path="congreso" element={<Congreso />} />
       <Route path="mapa" element={<PaginaMapa />} />
       <Route path="diputaciones" element={<Directorio />} />
       <Route path="diputaciones/:id" element={<Perfil />} />

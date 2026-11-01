@@ -40,8 +40,8 @@ const datos = () =>
   });
 
 describe('interfaz', () => {
-  it('el inicio calcula las tarjetas a partir de los datos y muestra el aviso de demostración', async () => {
-    montar('/', datos());
+  it('«El Congreso en números» calcula las tarjetas a partir de los datos y muestra el aviso de demostración', async () => {
+    montar('/congreso', datos());
     expect(await screen.findByText(/DATOS DE DEMOSTRACIÓN/)).toBeInTheDocument();
     const tarjeta = screen.getByRole('heading', { name: 'Asistencia a sesiones del Pleno' }).closest('article')!;
     expect(within(tarjeta).getByText('50.0 %')).toBeInTheDocument();
@@ -50,9 +50,17 @@ describe('interfaz', () => {
   });
 
   it('sin datos muestra «pendiente de integración» en lugar de cifras', async () => {
-    montar('/', conjunto());
+    montar('/congreso', conjunto());
     const tarjeta = (await screen.findByRole('heading', { name: 'Iniciativas presentadas' })).closest('article')!;
     expect(within(tarjeta).getByText(/pendiente de integración/i)).toBeInTheDocument();
+  });
+
+  it('el inicio resume en frases sencillas y enlaza a «El Congreso en números»', async () => {
+    montar('/', datos());
+    expect(await screen.findByRole('heading', { name: '¿Qué hace una diputación?' })).toBeInTheDocument();
+    const resumen = screen.getByRole('heading', { name: 'El Congreso en resumen' }).closest('section')!;
+    expect(within(resumen).getByText(/registraron asistencia en el/)).toBeInTheDocument();
+    expect(within(resumen).getByRole('link', { name: 'Ver el Congreso en números' })).toHaveAttribute('href', '/congreso');
   });
 
   it('el mapa permite seleccionar un distrito desde la lista y restablecer la vista', async () => {
