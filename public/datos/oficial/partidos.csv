@@ -1,8 +1,8 @@
 id_partido,nombre,siglas,color_serie,color_claro,color_oscuro,notas
-PAN,Partido Acción Nacional,PAN,1,#0659a8,#4f95e0,Color institucional aproximado para gráficas
-MC,Movimiento Ciudadano,MC,2,#f07c00,#ff9a2e,Color institucional aproximado para gráficas
-PANAL,Nueva Alianza Colima,NA,3,#00a19a,#2cc5bd,Color institucional aproximado para gráficas
-PT,Partido del Trabajo,PT,4,#d9a400,#e8bb2e,Color institucional aproximado para gráficas
-PVEM,Partido Verde Ecologista de México,PVEM,6,#3a9c3a,#5cc25c,Color institucional aproximado para gráficas
-PRI,Partido Revolucionario Institucional,PRI,7,#d0202a,#ef5350,Color institucional aproximado para gráficas
-MORENA,MORENA,MORENA,8,#9b1d45,#c9496f,Color institucional aproximado para gráficas
+PAN,Partido Acción Nacional,PAN,1,#0659a8,#1763b3,Color institucional aproximado para gráficas
+MC,Movimiento Ciudadano,MC,2,#f07c00,#d67525,Color institucional aproximado para gráficas
+PANAL,Nueva Alianza Colima,NA,3,#00a19a,#17a7a0,Color institucional aproximado para gráficas
+PT,Partido del Trabajo,PT,4,#d9a400,#b3880e,Color institucional aproximado para gráficas
+PVEM,Partido Verde Ecologista de México,PVEM,6,#2e8b57,#2b8855,Color institucional aproximado para gráficas
+PRI,Partido Revolucionario Institucional,PRI,7,#d0202a,#d02f19,Color institucional aproximado para gráficas
+MORENA,MORENA,MORENA,8,#8a1e5a,#8e3d65,Color institucional aproximado para gráficas

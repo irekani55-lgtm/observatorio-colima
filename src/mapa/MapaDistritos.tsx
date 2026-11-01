@@ -53,6 +53,8 @@ interface Props {
   seleccionado: number | null;
   onSeleccionar: (d: number) => void;
   etiquetaDistrito?: (d: number) => string;
+  /** Color de relleno de cada distrito (p. ej. el del partido de quien ocupa la curul). */
+  colorDistrito?: (d: number) => string | undefined;
   titulo: string;
 }
 
@@ -60,7 +62,7 @@ interface Props {
  * Lienzo SVG del mapa. Cada distrito es un control accesible: se activa con
  * clic, toque, Enter o Espacio. El cursor resalta y muestra el número.
  */
-export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito, titulo }: Props) {
+export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito, colorDistrito, titulo }: Props) {
   const [hover, setHover] = useState<{ d: number; x: number; y: number } | null>(null);
   const caja = useRef<HTMLDivElement>(null);
 
@@ -74,7 +76,7 @@ export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito
   const formas = [...mapa.formas].sort((a, b) => Number(a.distrito === seleccionado) - Number(b.distrito === seleccionado));
 
   return (
-    <div className="mapa-lienzo" ref={caja} onPointerLeave={() => setHover(null)}>
+    <div className={`mapa-lienzo${colorDistrito ? ' mapa-lienzo--color' : ''}${seleccionado != null ? ' mapa-lienzo--seleccion' : ''}`} ref={caja} onPointerLeave={() => setHover(null)}>
       <svg viewBox={`0 0 ${mapa.ancho} ${mapa.alto}`} role="group" aria-label={titulo}>
         <title>{titulo}</title>
         {formas.map((f) => {
@@ -90,6 +92,7 @@ export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito
               aria-label={nombre}
               aria-pressed={sel}
               data-distrito={f.distrito}
+              style={colorDistrito?.(f.distrito) ? { fill: colorDistrito(f.distrito) } : undefined}
               onPointerMove={(e) => mover(e, f.distrito)}
               onPointerEnter={(e) => mover(e, f.distrito)}
               onClick={() => onSeleccionar(f.distrito)}

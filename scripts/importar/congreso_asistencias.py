@@ -102,13 +102,16 @@ def evidencia(id_: str, tipo: str, titulo: str, url: str, institucion: str = "H.
 ROMANOS = {r: i for i, r in enumerate("I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI".split(), start=1)}
 PARTIDOS = {
     # clave del logo del directorio → (id, nombre, siglas, color_serie, color institucional claro, oscuro)
-    "PAN": ("PAN", "Partido Acción Nacional", "PAN", 1, "#0659a8", "#4f95e0"),
-    "movimiento": ("MC", "Movimiento Ciudadano", "MC", 2, "#f07c00", "#ff9a2e"),
-    "NuevaAlianza": ("PANAL", "Nueva Alianza Colima", "NA", 3, "#00a19a", "#2cc5bd"),
-    "PT": ("PT", "Partido del Trabajo", "PT", 4, "#d9a400", "#e8bb2e"),
-    "Verde": ("PVEM", "Partido Verde Ecologista de México", "PVEM", 6, "#3a9c3a", "#5cc25c"),
-    "PRI": ("PRI", "Partido Revolucionario Institucional", "PRI", 7, "#d0202a", "#ef5350"),
-    "morena": ("MORENA", "MORENA", "MORENA", 8, "#9b1d45", "#c9496f"),  # vino / tinto
+    # Colores institucionales ajustados para distinguirse entre sí (también con daltonismo) en el mapa y las
+    # gráficas, validados con el script de la guía de visualización en modo claro y oscuro: MORENA vino más
+    # morado para separarse del rojo del PRI; PVEM verde más azulado para separarse del rojo con daltonismo.
+    "PAN": ("PAN", "Partido Acción Nacional", "PAN", 1, "#0659a8", "#1763b3"),
+    "movimiento": ("MC", "Movimiento Ciudadano", "MC", 2, "#f07c00", "#d67525"),
+    "NuevaAlianza": ("PANAL", "Nueva Alianza Colima", "NA", 3, "#00a19a", "#17a7a0"),
+    "PT": ("PT", "Partido del Trabajo", "PT", 4, "#d9a400", "#b3880e"),
+    "Verde": ("PVEM", "Partido Verde Ecologista de México", "PVEM", 6, "#2e8b57", "#2b8855"),
+    "PRI": ("PRI", "Partido Revolucionario Institucional", "PRI", 7, "#d0202a", "#d02f19"),
+    "morena": ("MORENA", "MORENA", "MORENA", 8, "#8a1e5a", "#8e3d65"),  # vino / tinto
 }
 PARTIDO_POR_TEXTO = {"pan": "PAN", "movimiento ciudadano": "MC", "nueva alianza": "PANAL", "pt": "PT", "partido verde": "PVEM", "pri": "PRI", "morena": "MORENA"}
 

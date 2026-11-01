@@ -1399,3 +1399,49 @@ code {
   color: var(--texto-2);
   margin: 0 0 0.75rem;
 }
+
+/* ---------------------------------------------------------------- Mapa con color por partido
+   Cada distrito lleva el color del partido de quien ocupa la curul. El borde del color de la superficie separa los
+   distritos (codificación secundaria junto con la leyenda y el nombre del partido al pasar el cursor). */
+.mapa-lienzo--color .mapa-forma {
+  stroke: var(--superficie);
+  stroke-width: 1.5;
+  transition: opacity 0.12s, filter 0.12s;
+}
+.mapa-lienzo--color .mapa-forma:hover,
+.mapa-lienzo--color .mapa-forma.hover {
+  filter: brightness(1.15) saturate(1.05);
+}
+.mapa-lienzo--color.mapa-lienzo--seleccion .mapa-forma:not(.seleccionado) {
+  opacity: 0.4;
+}
+.mapa-lienzo--color .mapa-forma.seleccionado {
+  stroke: var(--texto);
+  stroke-width: 3;
+}
+.mapa-lienzo--color .mapa-etiqueta,
+.mapa-lienzo--color .mapa-etiqueta.seleccionado {
+  fill: #fff;
+  stroke: rgb(0 0 0 / 0.55);
+  stroke-width: 3px;
+}
+.leyenda-mapa {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: var(--texto-2);
+}
+.leyenda-mapa li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.leyenda-mapa .muestra {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}

@@ -5,6 +5,7 @@ import { EncabezadoPagina } from '../componentes/Disposicion';
 import { FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
 import { IcoReiniciar } from '../componentes/Iconos';
 import { LEGISLATURA } from '../config/legislatura';
+import { colorPartido } from '../componentes/colores';
 import { CONFIG_MAPA } from '../config/mapa';
 import { EnlaceExterno } from '../componentes/Fuente';
 import type { Base, Diputado } from '../datos/modelo';
@@ -56,6 +57,14 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
     const p = personasDelDistrito(base, d)[0];
     return p ? `Distrito ${d} · ${p.nombre_completo}` : `Distrito ${d}`;
   };
+  // Color del partido de quien ocupa hoy la curul; en el mapa la etiqueta también dice el partido.
+  const partidoDe = (d: number) => personasDelDistrito(base, d)[0]?.id_partido;
+  const siglasDe = (d: number) => base.idx.partido.get(partidoDe(d) ?? '')?.siglas ?? partidoDe(d) ?? '';
+  const colorDe = (d: number) => (partidoDe(d) ? colorPartido(base, partidoDe(d)!) : undefined);
+  const etiquetaMapa = (d: number) => `${nombreDe(d)}${siglasDe(d) ? ` (${siglasDe(d)})` : ''}`;
+  const leyenda = Object.entries(
+    Array.from({ length: LEGISLATURA.distritos }, (_, i) => partidoDe(i + 1)).reduce<Record<string, number>>((m, id) => (id ? { ...m, [id]: (m[id] ?? 0) + 1 } : m), {}),
+  ).sort((a, b) => b[1] - a[1]);
   const ficha = useRef<HTMLElement>(null);
   const seleccionar = (d: number | null) => {
     fijar({ persona: undefined, [clave]: d == null ? undefined : String(d) });
@@ -82,7 +91,15 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             </p>
           ) : (
             <>
-              <LienzoMapa mapa={cartografia.mapa} seleccionado={sel} onSeleccionar={(d) => seleccionar(d === sel ? null : d)} etiquetaDistrito={nombreDe} titulo="Mapa de distritos electorales locales de Colima" />
+              <LienzoMapa mapa={cartografia.mapa} seleccionado={sel} onSeleccionar={(d) => seleccionar(d === sel ? null : d)} etiquetaDistrito={etiquetaMapa} colorDistrito={colorDe} titulo="Mapa de distritos electorales locales de Colima" />
+              <ul className="leyenda-mapa" aria-label="Partido de quien representa cada distrito">
+                {leyenda.map(([id, n]) => (
+                  <li key={id}>
+                    <span className="muestra" style={{ background: colorPartido(base, id) }} aria-hidden="true" />
+                    {base.idx.partido.get(id)?.siglas ?? id} <span className="texto-3">· {n} {n === 1 ? 'distrito' : 'distritos'}</span>
+                  </li>
+                ))}
+              </ul>
               <SelloMapa estado={cartografia} />
             </>
           )}
