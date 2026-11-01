@@ -122,20 +122,16 @@ export default function Inicio() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Actividad documentada de la LXI Legislatura">
-        <p>
-          Consulte y compare la actividad legislativa de las diputadas y los diputados del H. Congreso del Estado de Colima ({LEGISLATURA.periodo}). Todas las cifras se calculan a partir de registros con fuente; cada indicador enlaza a los registros que lo componen.
-        </p>
+      <EncabezadoPagina titulo="¿Qué hace su diputación en el Congreso de Colima?">
+        <p>Conozca quién le representa en el Congreso del Estado y qué ha hecho. Todos los datos vienen de documentos oficiales.</p>
         <p className="pequeno texto-3">
-          Fecha de corte de los datos: <strong>{base.manifiesto.fecha_corte ? fechaCorta(base.manifiesto.fecha_corte) : 'sin definir'}</strong> · <Link to="/metodologia">¿Cómo se calculan los indicadores?</Link>
+          Datos al <strong>{base.manifiesto.fecha_corte ? fechaCorta(base.manifiesto.fecha_corte) : 'sin definir'}</strong> · <Link to="/metodologia">¿Cómo obtenemos los datos?</Link>
         </p>
       </EncabezadoPagina>
 
       <section className="seccion" aria-labelledby="titulo-mapa-inicio" style={{ marginTop: 0 }}>
-        <h2 id="titulo-mapa-inicio">¿Quién representa a su distrito?</h2>
-        <p className="seccion__intro">
-          Busque su distrito con la sección de su credencial para votar, o elíjalo en el mapa, para ver a su diputada o diputado y sus indicadores principales: asistencia, iniciativas aprobadas y exhortos aprobados. Las {LEGISLATURA.integracion.RP} diputaciones de representación proporcional no tienen distrito: consúltelas en <Link to="/representacion-proporcional">su propio apartado</Link>.
-        </p>
+        <h2 id="titulo-mapa-inicio">¿Quién le representa?</h2>
+        <p className="seccion__intro">Búsquelo con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
         <BuscadorDistrito clave="mapa_distrito" />
         <MapaInteractivo clave="mapa_distrito" />
         <h3 style={{ marginTop: '1.5rem' }}>Indicadores de los 16 distritos</h3>

@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
-import { CALIDAD_CARGO, TIPOS_REPRESENTACION, etiquetaDe } from '../config/catalogos';
+import { CALIDAD_CARGO, etiquetaDe } from '../config/catalogos';
 import type { Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { asistenciaDeDiputado } from '../indicadores/asistencia';
-import { indicadoresAsuntosDiputado } from '../indicadores/asuntos';
 import { indicadoresDePersonas } from '../indicadores/distritos';
 import { describirPeriodo, fechaCorta, type Filtro } from '../indicadores/filtro';
 import { Foto } from './Foto';
 import { Partido } from './Partido';
-import { Insignia } from './Insignia';
+import { Termino } from './Termino';
 import { fmt, fmtPct, plural } from './Tarjeta';
 
 /** Construye un enlace conservando el periodo filtrado. */
@@ -34,33 +33,43 @@ export function DatosGenerales({ d }: { d: Diputado }) {
       <dt>Partido</dt>
       <dd>
         <Partido id={d.id_partido} />
-        {d.criterio_adscripcion && <div className="muy-pequeno texto-3">{d.criterio_adscripcion}</div>}
       </dd>
-      <dt>Representación</dt>
-      <dd>{etiquetaDe(TIPOS_REPRESENTACION, d.tipo_representacion)}</dd>
-      {d.tipo_representacion === 'MR' && (
+      <dt>Cómo llegó al cargo</dt>
+      <dd>
+        {d.tipo_representacion === 'MR' ? (
+          <>
+            Ganó la elección en el <Termino t="distrito">distrito {d.distrito ?? '—'}</Termino>
+          </>
+        ) : (
+          <>
+            Por la lista de su partido (<Termino t="representacion_proporcional">representación proporcional</Termino>)
+          </>
+        )}
+      </dd>
+      {d.calidad === 'suplente' && (
         <>
-          <dt>Distrito</dt>
-          <dd>{d.distrito != null ? `Distrito electoral local ${d.distrito}` : 'Sin dato'}</dd>
+          <dt>Cargo</dt>
+          <dd>
+            <Termino t="suplente">Suplente</Termino> en funciones
+          </dd>
         </>
       )}
-      <dt>Calidad</dt>
-      <dd>{etiquetaDe(CALIDAD_CARGO, d.calidad)}</dd>
-      <dt>Ejercicio</dt>
+      <dt>En el cargo</dt>
       <dd>{periodoEjercicio(d)}</dd>
     </dl>
   );
 }
 
-/** Ficha con los tres indicadores principales (mapa y representación proporcional). */
+/** Ficha breve en lenguaje ciudadano: lo más importante primero y el resto en «Ver todos los datos». */
 export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
   const { base } = useDatos();
   const asis = asistenciaDeDiputado(base, d, filtro);
-  const ind = indicadoresAsuntosDiputado(base, d, filtro);
-  const hayExhortos = base.asuntos.some((a) => a.tipo === 'exhorto');
-  const hayIniciativas = base.asuntos.some((a) => a.tipo === 'iniciativa');
-  const sinVerificarIni = ind.iniciativasAprobadas.noVerificados;
   const mas = indicadoresDePersonas(base, [d], filtro);
+  const veces = (n: number, destacar = false) => (
+    <>
+      {destacar ? <strong>{fmt(n)}</strong> : fmt(n)} {n === 1 ? 'vez' : 'veces'}
+    </>
+  );
 
   return (
     <article aria-label={`Ficha de ${d.nombre_completo}`}>
@@ -68,108 +77,73 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
         <Foto url={d.url_foto} archivo={d.archivo_foto} nombre={d.nombre_completo} />
         <div>
           <h3 className="ficha__nombre">{d.nombre_completo}</h3>
-          {d.estado_verificacion !== 'verificado' && (
-            <p>
-              <Insignia entrada={{ etiqueta: 'Datos generales no verificados', descripcion: 'La integración y adscripción de esta persona aún no se contrastan con la fuente oficial.', tono: 'alerta' }} />
-            </p>
-          )}
           <DatosGenerales d={d} />
         </div>
       </div>
-      <p className="pequeno texto-2" style={{ marginTop: '0.75rem' }}>
-        <strong>Periodo de referencia de los indicadores:</strong> {describirPeriodo(filtro, base.manifiesto.fecha_corte)}
+      <p className="pequeno texto-3" style={{ marginTop: '0.75rem' }}>
+        Periodo: {describirPeriodo(filtro, base.manifiesto.fecha_corte)}
       </p>
 
-      <div className="indicadores-ficha">
-        <section className="indicador" aria-label="Asistencia a sesiones">
-          <h4 className="indicador__titulo">Asistencia a sesiones</h4>
+      <h4 className="indicador__titulo">¿Qué ha hecho en el Congreso?</h4>
+      <ul className="lista-limpia" style={{ display: 'grid', gap: '0.75rem' }}>
+        <li className="dato-claro">
           {asis.porcentaje == null ? (
-            <span className="tarjeta__valor--pendiente">{asis.sesionesElegibles === 0 ? 'Sin sesiones en el periodo' : 'Pendiente de verificación'}</span>
+            <span className="texto-3">Asistencia: sin datos suficientes en este periodo.</span>
           ) : (
             <>
-              <span className="indicador__valor">{fmtPct(asis.porcentaje)}</span>
-              <div className="barra-progreso" aria-hidden="true">
-                <span style={{ width: `${asis.porcentaje}%` }} />
-              </div>
+              Fue a <strong>{fmt(asis.asistencias)}</strong> de {fmt(asis.denominador)} <Termino t="sesion">sesiones</Termino> ({fmtPct(asis.porcentaje)}).
             </>
-          )}
-          <span className="indicador__detalle">
-            {fmt(asis.asistencias)} asistencias de {fmt(asis.denominador)} sesiones evaluables
-            {asis.justificadas > 0 && ` (incluye ${fmt(asis.justificadas)} ausencias justificadas)`}.
-          </span>
-          {!asis.definitivo && (
-            <span className="indicador__detalle">
-              <Insignia entrada={{ etiqueta: 'Provisional', descripcion: '', tono: 'pendiente' }} /> {fmt(asis.pendientes + asis.sinRegistro + asis.noVerificadas)} de {fmt(asis.sesionesElegibles)} sesiones sin registro verificable, excluidas del cálculo.
-            </span>
-          )}
-          <span className="indicador__explica">Porcentaje de sesiones del Pleno con asistencia registrada, entre las sesiones que pueden evaluarse con información verificable.</span>
-          <Link className="tarjeta__enlace" to={enlaceConPeriodo('/asistencias', filtro, { diputado: d.id_diputado })}>
-            Ver registros de asistencia →
+          )}{' '}
+          <Link className="pequeno" to={enlaceConPeriodo('/asistencias', filtro, { diputado: d.id_diputado })}>
+            Ver sesiones
           </Link>
-        </section>
-
-        <section className="indicador" aria-label="Iniciativas aprobadas">
-          <h4 className="indicador__titulo">Iniciativas aprobadas</h4>
-          {hayIniciativas ? <span className="indicador__valor">{fmt(ind.iniciativasAprobadas.total)}</span> : <span className="tarjeta__valor--pendiente">Información pendiente de integración</span>}
-          <span className="indicador__detalle">
-            {plural(ind.iniciativasAprobadas.individuales, 'individual', 'individuales')} · {plural(ind.iniciativasAprobadas.compartidos, 'compartida', 'compartidas')} · de {plural(ind.iniciativasPresentadas.total, 'presentada', 'presentadas')}
-          </span>
-          {sinVerificarIni > 0 && <span className="indicador__detalle texto-3">{fmt(sinVerificarIni)} con registro pendiente de verificación.</span>}
-          <span className="indicador__explica">Iniciativas en las que figura como autora o coautora y que el Pleno aprobó. Una iniciativa compartida se cuenta una vez para cada promovente, pero una sola vez en el total de la Legislatura.</span>
-          <Link className="tarjeta__enlace" to={enlaceConPeriodo('/asuntos', filtro, { diputado: d.id_diputado, tipo: 'iniciativa', estado: 'aprobados' })}>
-            Ver iniciativas →
+        </li>
+        <li className="dato-claro">
+          Presentó <strong>{fmt(mas.iniciativasPresentadas)}</strong> <Termino t="iniciativa">{mas.iniciativasPresentadas === 1 ? 'propuesta de ley' : 'propuestas de ley'}</Termino>; el Congreso aprobó {fmt(mas.iniciativasAprobadas)}.{' '}
+          <Link className="pequeno" to={enlaceConPeriodo('/asuntos', filtro, { diputado: d.id_diputado, tipo: 'iniciativa' })}>
+            Ver propuestas
           </Link>
-        </section>
+        </li>
+        <li className="dato-claro">
+          Pidió a otras autoridades atender un problema (<Termino t="exhorto">exhortos</Termino>) {veces(mas.exhortosPresentados, true)}; el Congreso lo aprobó {veces(mas.exhortosAprobados)}.
+        </li>
+        <li className="dato-claro">
+          Habló ante el Congreso (<Termino t="tribuna">tribuna</Termino>) {veces(mas.intervenciones, true)}.
+        </li>
+      </ul>
 
-        <section className="indicador" aria-label="Exhortos aprobados">
-          <h4 className="indicador__titulo">Exhortos aprobados</h4>
-          {hayExhortos ? <span className="indicador__valor">{fmt(ind.exhortosAprobados.total)}</span> : <span className="tarjeta__valor--pendiente">Información pendiente de integración</span>}
-          <span className="indicador__detalle">
-            {plural(ind.exhortosAprobados.individuales, 'individual', 'individuales')} · {plural(ind.exhortosAprobados.compartidos, 'compartido', 'compartidos')} · de {plural(ind.exhortosPresentados.total, 'presentado', 'presentados')}
-          </span>
-          {ind.exhortosAprobadosSinVerificar > 0 && (
-            <span className="indicador__detalle">
-              <Insignia entrada={{ etiqueta: 'Pendiente de verificación', descripcion: '', tono: 'alerta' }} /> {fmt(ind.exhortosAprobadosSinVerificar)} aprobado(s) más cuya autoría no está verificada.
-            </span>
-          )}
-          <span className="indicador__explica">Exhortos que promovió y que el Congreso aprobó. Aprobar un exhorto no significa que la autoridad lo haya atendido.</span>
-          <Link className="tarjeta__enlace" to={enlaceConPeriodo('/exhortos', filtro, { diputado: d.id_diputado })}>
-            Ver exhortos →
-          </Link>
-        </section>
-      </div>
+      <details className="desplegable" style={{ marginTop: '1rem' }}>
+        <summary>Ver todos los datos</summary>
+        <dl className="definiciones pequeno" style={{ marginTop: '0.75rem' }}>
+          <dt>
+            <Termino t="dictamen">Dictámenes</Termino> sobre sus propuestas
+          </dt>
+          <dd className="num">{fmt(mas.dictamenesDeSusIniciativas)}</dd>
+          <dt>
+            Dictámenes de la <Termino t="comision">comisión</Termino> que encabeza
+          </dt>
+          <dd className="num">{mas.comisionesQuePreside ? fmt(mas.dictamenesComisionesQuePreside) : 'No encabeza ninguna'}</dd>
+          <dt>Dictámenes de las comisiones de las que forma parte</dt>
+          <dd className="num">
+            {fmt(mas.dictamenesComisionesQueIntegra)} <span className="texto-3">({plural(mas.comisionesQueIntegra, 'comisión', 'comisiones')})</span>
+          </dd>
+          <dt>
+            <Termino t="punto_acuerdo">Puntos de acuerdo</Termino> que presentó
+          </dt>
+          <dd className="num">{fmt(mas.puntosAcuerdo)}</dd>
+          <dt>Votaciones en que su voto quedó escrito en el acta</dt>
+          <dd className="num">{fmt(mas.votosRegistrados)}</dd>
+          <dt>Faltas con permiso a sesiones</dt>
+          <dd className="num">{fmt(asis.justificadas)}</dd>
+        </dl>
+        <p className="muy-pequeno texto-3">
+          Los dictámenes son trabajo de toda la comisión, no de una sola persona. Que un dato no aparezca no significa que no ocurrió: solo contamos lo que está en documentos oficiales.
+        </p>
+      </details>
 
-      <h4 className="indicador__titulo" style={{ marginTop: '1.25rem' }}>Todos los indicadores</h4>
-      <dl className="definiciones pequeno">
-        <dt>Iniciativas presentadas</dt>
-        <dd className="num">{fmt(mas.iniciativasPresentadas)}</dd>
-        <dt>Iniciativas aprobadas</dt>
-        <dd className="num">{fmt(mas.iniciativasAprobadas)}</dd>
-        <dt>Dictámenes de sus iniciativas</dt>
-        <dd className="num">{fmt(mas.dictamenesDeSusIniciativas)}</dd>
-        <dt>Dictámenes de las comisiones que preside</dt>
-        <dd className="num">
-          {fmt(mas.dictamenesComisionesQuePreside)} <span className="texto-3">· {plural(mas.comisionesQuePreside, 'comisión', 'comisiones')}</span>
-        </dd>
-        <dt>Dictámenes de las comisiones que integra</dt>
-        <dd className="num">
-          {fmt(mas.dictamenesComisionesQueIntegra)} <span className="texto-3">· {plural(mas.comisionesQueIntegra, 'comisión', 'comisiones')}</span>
-        </dd>
-        <dt>Exhortos presentados / aprobados</dt>
-        <dd className="num">
-          {fmt(mas.exhortosPresentados)} / {fmt(mas.exhortosAprobados)}
-        </dd>
-        <dt>Puntos de acuerdo</dt>
-        <dd className="num">{fmt(mas.puntosAcuerdo)}</dd>
-        <dt>Intervenciones en tribuna</dt>
-        <dd className="num">{fmt(mas.intervenciones)}</dd>
-        <dt>Votos registrados en actas</dt>
-        <dd className="num">{fmt(mas.votosRegistrados)}</dd>
-      </dl>
-      <p className="muy-pequeno texto-3">Los dictámenes son trabajo colectivo de las comisiones: se cuentan los de las comisiones a las que pertenece, no como obra individual.</p>
       <p style={{ marginTop: '1rem' }}>
         <Link className="boton boton--primario" to={enlaceConPeriodo(`/diputaciones/${encodeURIComponent(d.id_diputado)}`, filtro)}>
-          Consultar perfil completo
+          Ver su perfil completo
         </Link>
       </p>
     </article>

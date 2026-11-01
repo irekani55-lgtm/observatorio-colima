@@ -104,11 +104,9 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
         <section className="panel" ref={ficha} aria-live="polite" aria-label="Ficha del distrito seleccionado" style={{ scrollMarginTop: 80 }}>
           {sel == null ? (
             <>
-              <h2 style={{ fontSize: '1.1rem' }}>Vista general</h2>
-              <p className="texto-2">Seleccione un distrito para consultar la ficha de su diputada o diputado y sus tres indicadores principales: asistencia a sesiones, iniciativas aprobadas y exhortos aprobados.</p>
-              <p className="pequeno texto-3">
-                En pantallas táctiles, toque el distrito. Con teclado, use Tab para recorrer los distritos y Enter para seleccionar.
-              </p>
+              <h2 style={{ fontSize: '1.1rem' }}>Elija su distrito</h2>
+              <p className="texto-2">Toque su distrito en el mapa o elija su número abajo. Verá quién le representa y qué ha hecho en el Congreso.</p>
+              <p className="pequeno texto-3">Con teclado: use Tab para moverse entre los distritos y Enter para elegir uno.</p>
             </>
           ) : !persona ? (
             <>

@@ -65,13 +65,14 @@ describe('interfaz', () => {
     expect(document.querySelector('path[data-distrito="3"]')).toHaveClass('seleccionado');
     expect(screen.getByRole('heading', { name: 'Ana Ejemplo' })).toBeInTheDocument();
     expect(screen.getByText('Distrito electoral local 3', { selector: 'h2' })).toBeInTheDocument();
-    // tres indicadores principales
-    expect(screen.getByRole('region', { name: 'Asistencia a sesiones' })).toHaveTextContent('50.0 %');
-    expect(screen.getByRole('region', { name: 'Iniciativas aprobadas' })).toHaveTextContent('1');
-    expect(screen.getByRole('region', { name: 'Exhortos aprobados' })).toHaveTextContent('1');
-    expect(screen.getByRole('link', { name: 'Consultar perfil completo' })).toHaveAttribute('href', '/diputaciones/D1');
+    // datos principales en lenguaje ciudadano
+    const ficha = screen.getByRole('article', { name: 'Ficha de Ana Ejemplo' });
+    expect(ficha).toHaveTextContent('Fue a 1 de 2 sesiones (50.0 %)');
+    expect(ficha).toHaveTextContent('Presentó 1 propuesta de ley; el Congreso aprobó 1.');
+    expect(ficha).toHaveTextContent('(exhortos) 1 vez; el Congreso lo aprobó 1 vez.');
+    expect(screen.getByRole('link', { name: 'Ver su perfil completo' })).toHaveAttribute('href', '/diputaciones/D1');
     await u.click(screen.getByRole('button', { name: /Restablecer selección/ }));
-    expect(screen.getByRole('heading', { name: 'Vista general' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Elija su distrito' })).toBeInTheDocument();
   });
 
   it('el mapa se puede operar con teclado', async () => {

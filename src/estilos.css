@@ -1272,3 +1272,44 @@ code {
 .tabla code {
   white-space: nowrap;
 }
+
+/* ---------------------------------------------------------------- Glosario en línea */
+.termino__palabra {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+.termino {
+  position: relative;
+}
+.termino__explicacion {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 20;
+  width: max-content;
+  max-width: min(280px, 80vw);
+  margin-top: 0.3rem;
+  border: 1px solid var(--borde);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.12);
+  line-height: 1.4;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--texto-2);
+  background: var(--superficie);
+  border-radius: var(--radio-s);
+}
+.dato-claro {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.dato-claro strong {
+  font-size: 1.6rem;
+  font-variant-numeric: tabular-nums;
+}

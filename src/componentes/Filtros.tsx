@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { ANIOS_LEGISLATIVOS } from '../config/legislatura';
 import { TIPOS_REPRESENTACION } from '../config/catalogos';
 import { useDatos } from '../estado/DatosContext';
@@ -13,6 +13,9 @@ export function BarraFiltros({ campos = ['anio', 'fechas', 'partido', 'represent
   const { base } = useDatos();
   const [f, actualizar, params, fijar] = useFiltro();
   const hayFiltros = Boolean(f.anio || f.desde || f.hasta || f.partido || f.tipoRepresentacion || f.distrito || extraLimpiar.some((k) => params.get(k)));
+  // Las fechas exactas quedan ocultas: para la mayoría basta el año. Se muestran si ya hay fechas elegidas.
+  const [verFechas, setVerFechas] = useState(false);
+  const fechasVisibles = verFechas || Boolean(f.desde || f.hasta);
   const ultimaFecha = base.manifiesto.fecha_corte;
 
   return (
@@ -31,7 +34,7 @@ export function BarraFiltros({ campos = ['anio', 'fechas', 'partido', 'represent
             </select>
           </div>
         )}
-        {campos.includes('fechas') && (
+        {campos.includes('fechas') && fechasVisibles && (
           <>
             <div className="campo">
               <label htmlFor="f-desde">Desde</label>
@@ -42,6 +45,13 @@ export function BarraFiltros({ campos = ['anio', 'fechas', 'partido', 'represent
               <input id="f-hasta" type="date" value={f.hasta ?? ''} min={f.desde || undefined} onChange={(e) => actualizar({ hasta: e.target.value })} />
             </div>
           </>
+        )}
+        {campos.includes('fechas') && !fechasVisibles && (
+          <div className="filtros__acciones">
+            <button type="button" className="boton boton--fantasma boton--chico" onClick={() => setVerFechas(true)}>
+              <IcoCalendario width={15} height={15} /> Elegir fechas exactas
+            </button>
+          </div>
         )}
         {campos.includes('partido') && (
           <div className="campo">
@@ -58,12 +68,12 @@ export function BarraFiltros({ campos = ['anio', 'fechas', 'partido', 'represent
         )}
         {campos.includes('representacion') && (
           <div className="campo">
-            <label htmlFor="f-rep">Tipo de representación</label>
+            <label htmlFor="f-rep">Cómo llegó al cargo</label>
             <select id="f-rep" value={f.tipoRepresentacion ?? ''} onChange={(e) => actualizar({ tipoRepresentacion: e.target.value })}>
-              <option value="">Ambos</option>
-              {Object.entries(TIPOS_REPRESENTACION).map(([k, v]) => (
+              <option value="">Todas las diputaciones</option>
+              {Object.keys(TIPOS_REPRESENTACION).map((k) => (
                 <option key={k} value={k}>
-                  {v.etiqueta}
+                  {k === 'MR' ? 'Ganó en su distrito' : 'Por lista de su partido'}
                 </option>
               ))}
             </select>
