@@ -86,8 +86,11 @@ export function Disposicion() {
   const loc = useLocation();
   useEffect(() => {
     setMenu(false);
-    window.scrollTo?.(0, 0);
-  }, [loc.pathname]);
+    // Un enlace con ancla (p. ej. /metodologia#votaciones-divididas) lleva a esa sección; si no, al inicio.
+    const ancla = loc.hash ? document.getElementById(decodeURIComponent(loc.hash.slice(1))) : null;
+    if (ancla) requestAnimationFrame(() => ancla.scrollIntoView?.({ block: 'start' }));
+    else window.scrollTo?.(0, 0);
+  }, [loc.pathname, loc.hash]);
   const enActividad = NAV_ACTIVIDAD.some((n) => loc.pathname.startsWith(n.a));
 
   return (

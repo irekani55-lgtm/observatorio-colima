@@ -10,12 +10,16 @@ import { asuntosDeDiputado, esAprobado } from './asuntos';
 import { dictamenesDeComision } from './comisiones';
 import type { Filtro } from './filtro';
 import { intervencionesFiltradas } from './intervenciones';
+import { contarPorAlcance } from './clasificacion';
+import { diputadosFiltrados } from './filtro';
 import { votosDeDiputado } from './votaciones';
 
 export interface IndicadoresPersonas {
   asistencia: ReturnType<typeof asistenciaAgregada>;
   iniciativasPresentadas: number;
   iniciativasAprobadas: number;
+  /** Propuestas presentadas según su alcance (cambio de fondo, trámite o conmemorativa). */
+  alcancePresentadas: ReturnType<typeof contarPorAlcance>;
   dictamenesDeSusIniciativas: number;
   exhortosPresentados: number;
   exhortosAprobados: number;
@@ -46,6 +50,7 @@ export function indicadoresDePersonas(b: Base, personas: Diputado[], f: Filtro):
     asistencia: asistenciaAgregada(b, personas, f),
     iniciativasPresentadas: ini.length,
     iniciativasAprobadas: ini.filter(esAprobado).length,
+    alcancePresentadas: contarPorAlcance(ini),
     dictamenesDeSusIniciativas: b.asuntos.filter((a) => a.tipo === 'dictamen' && idsIni.has(a.id_asunto_origen)).length,
     exhortosPresentados: exh.length,
     exhortosAprobados: exh.filter((a) => esAprobado(a) && a.estado_verificacion === 'verificado').length,
@@ -62,4 +67,19 @@ export function indicadoresDePersonas(b: Base, personas: Diputado[], f: Filtro):
 /** Personas que ocuparon la curul de mayoría relativa de un distrito. */
 export function personasDeDistrito(b: Base, distrito: number): Diputado[] {
   return b.diputados.filter((d) => d.tipo_representacion === 'MR' && d.distrito === distrito);
+}
+
+/**
+ * Puntos de referencia del Congreso para leer la ficha de una persona: la asistencia de todas las diputaciones
+ * juntas y la mediana de propuestas presentadas por las diputaciones titulares (la mitad presentó más y la mitad
+ * menos). Se usa la mediana porque unas pocas personas con muchas propuestas inflarían el promedio.
+ */
+export function referenciaCongreso(b: Base, f: Filtro) {
+  const dips = diputadosFiltrados(b, { anio: f.anio, desde: f.desde, hasta: f.hasta });
+  const asistencia = asistenciaAgregada(b, dips, f).porcentaje;
+  const titulares = dips.filter((d) => d.calidad !== 'suplente');
+  const ns = titulares.map((d) => asuntosDeDiputado(b, d.id_diputado, f, ['iniciativa']).length).sort((x, y) => x - y);
+  const m = ns.length;
+  const medianaIniciativas = m === 0 ? null : m % 2 ? ns[(m - 1) / 2] : (ns[m / 2 - 1] + ns[m / 2]) / 2;
+  return { asistencia, medianaIniciativas, titulares: m };
 }

@@ -6,7 +6,9 @@ import { construirBase } from '../src/datos/modelo';
 import { validarTodo } from '../src/datos/validar';
 import { autoverificar } from '../src/indicadores/autoverificacion';
 import { indicadoresAsuntosDiputado } from '../src/indicadores/asuntos';
-import { indicadoresDePersonas } from '../src/indicadores/distritos';
+import { indicadoresDePersonas, referenciaCongreso } from '../src/indicadores/distritos';
+import { esDividida, votosDivididosDeDiputado } from '../src/indicadores/votaciones';
+import { contarPorAlcance } from '../src/indicadores/clasificacion';
 import { indicadoresComisiones } from '../src/indicadores/comisiones';
 import { enFunciones } from '../src/indicadores/filtro';
 import { COALICIONES_2024, LEGISLATURA } from '../src/config/legislatura';
@@ -67,5 +69,26 @@ describe('conjuntos de datos incluidos', () => {
     expect(enCurul.filter((d) => d.tipo_representacion === 'MR').length).toBe(LEGISLATURA.integracion.MR);
     expect(new Set(enCurul.filter((d) => d.tipo_representacion === 'MR').map((d) => d.distrito)).size).toBe(LEGISLATURA.distritos);
     for (const c of COALICIONES_2024) for (const p of c.partidos) expect(b.idx.partido.has(p)).toBe(true);
+  });
+
+  it('votaciones divididas, clasificación de propuestas y referencia del Congreso son coherentes', async () => {
+    const b = construirBase(await cargarConjunto(leer, 'oficial'));
+    const divididas = b.votaciones.filter(esDividida);
+    expect(divididas.length).toBeGreaterThan(0);
+    for (const v of divididas) {
+      expect(v.tipo_votacion).toBe('nominal');
+      expect(Math.min(v.total_favor ?? 0, (v.total_contra ?? 0) + (v.total_abstencion ?? 0))).toBeGreaterThanOrEqual(3);
+    }
+    for (const d of b.diputados) {
+      const r = votosDivididosDeDiputado(b, d.id_diputado, {});
+      expect(r.conVoto).toBeLessThanOrEqual(r.divididas);
+    }
+    const ini = b.asuntos.filter((a) => a.tipo === 'iniciativa');
+    const c = contarPorAlcance(ini);
+    expect(c.fondo + c.tramite + c.conmemorativa).toBe(ini.length);
+    expect(c.tramite).toBeGreaterThan(0);
+    const ref = referenciaCongreso(b, {});
+    expect(ref.asistencia).not.toBeNull();
+    expect(ref.medianaIniciativas).not.toBeNull();
   });
 });

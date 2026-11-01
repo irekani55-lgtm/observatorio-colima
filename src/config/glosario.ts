@@ -17,6 +17,7 @@ export const GLOSARIO = {
   representacion_proporcional: 'Diputación asignada a un partido según sus votos en todo el estado. Representa a todo Colima, no a un distrito.',
   suplente: 'Persona que ocupa el lugar de la diputación titular cuando esta pide permiso (licencia).',
   licencia: 'Permiso para dejar el cargo por un tiempo. Mientras dura, entra la persona suplente.',
+  votacion_dividida: 'Votación en la que al menos 3 diputaciones votaron a favor y al menos 3 en contra o se abstuvieron. Ahí se ve mejor la postura de cada persona, porque el Congreso no votó en bloque.',
 } as const;
 
 export type TerminoGlosario = keyof typeof GLOSARIO;
