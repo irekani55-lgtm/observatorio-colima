@@ -4,7 +4,7 @@ import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
 import { IcoReiniciar } from '../componentes/Iconos';
-import { LEGISLATURA } from '../config/legislatura';
+import { COALICIONES_2024, LEGISLATURA } from '../config/legislatura';
 import { colorPartido } from '../componentes/colores';
 import { Foto } from '../componentes/Foto';
 import { Termino } from '../componentes/Termino';
@@ -74,6 +74,13 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
   const plurinominales = base.diputados
     .filter((d) => d.tipo_representacion === 'RP' && enFunciones(d, corte))
     .sort((a, b) => (base.idx.partido.get(a.id_partido)?.orden ?? 99) - (base.idx.partido.get(b.id_partido)?.orden ?? 99) || a.nombre_completo.localeCompare(b.nombre_completo));
+  const enCurul = base.diputados.filter((d) => enFunciones(d, corte));
+  const porPartido = Object.entries(enCurul.reduce<Record<string, Diputado[]>>((m, d) => ({ ...m, [d.id_partido]: [...(m[d.id_partido] ?? []), d] }), {})).sort(
+    (a, b) => b[1].length - a[1].length || (base.idx.partido.get(a[0])?.orden ?? 99) - (base.idx.partido.get(b[0])?.orden ?? 99),
+  );
+  const siglas = (id: string) => base.idx.partido.get(id)?.siglas ?? id;
+  const listaSiglas = (ids: readonly string[]) => ids.map(siglas).join(', ').replace(/, ([^,]*)$/, ' y $1');
+  const abrirCurul = (d: Diputado) => (d.tipo_representacion === 'MR' && d.distrito != null ? seleccionar(d.distrito) : seleccionarRp(d.id_diputado));
   const rp = sel == null ? plurinominales.find((d) => d.id_diputado === params.get(claveRp)) : undefined;
   const ficha = useRef<HTMLElement>(null);
   const seleccionarRp = (id: string) => {
@@ -115,6 +122,9 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
                   </li>
                 ))}
               </ul>
+              <p className="muy-pequeno texto-3" style={{ margin: '0.35rem 0 0' }}>
+                Los distritos tienen distinto tamaño pero casi la misma población: el color muestra quién representa cada zona, no cuánta gente vive en ella.
+              </p>
               <SelloMapa estado={cartografia} />
             </>
           )}
@@ -174,6 +184,47 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
           )}
         </section>
       </div>
+
+      {enCurul.length > 0 && (
+        <section className="panel curules" aria-labelledby={`${claveRp}-curules`}>
+          <h3 id={`${claveRp}-curules`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
+            ¿Cómo se reparten los {enCurul.length} lugares del Congreso?
+          </h3>
+          <div className="curules__grupos">
+            {porPartido.map(([id, personas]) => (
+              <div key={id} className="curules__grupo">
+                <span className="curules__etiqueta">
+                  <strong className="num">{personas.length}</strong> {siglas(id)}
+                </span>
+                <span className="curules__cuadros">
+                  {personas.map((d) => (
+                    <button
+                      key={d.id_diputado}
+                      type="button"
+                      className="curules__cuadro"
+                      style={{ background: colorPartido(base, id) }}
+                      title={`${d.nombre_completo} (${siglas(id)})`}
+                      aria-label={`${d.nombre_completo}, ${siglas(id)}. Ver su ficha`}
+                      onClick={() => abrirCurul(d)}
+                    />
+                  ))}
+                </span>
+              </div>
+            ))}
+          </div>
+          <ul className="pequeno texto-2 curules__coaliciones">
+            {COALICIONES_2024.map((c) => {
+              const n = enCurul.filter((d) => (c.partidos as readonly string[]).includes(d.id_partido)).length;
+              return (
+                <li key={c.nombre}>
+                  {listaSiglas(c.partidos)} se unieron en la elección de 2024 («{c.nombre}») y juntos tienen <strong>{n}</strong> de los {enCurul.length} lugares.
+                </li>
+              );
+            })}
+          </ul>
+          <p className="muy-pequeno texto-3">Cada cuadro es una persona. Tóquelo para ver qué ha hecho.</p>
+        </section>
+      )}
 
       {plurinominales.length > 0 && (
         <section className="panel franja-rp" aria-labelledby={`${claveRp}-titulo`}>

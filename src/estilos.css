@@ -1552,3 +1552,52 @@ code {
 .franja-rp__foto .foto__vacia span {
   display: none;
 }
+
+/* ---------------------------------------------------------------- Reparto de las curules */
+.curules {
+  margin-top: 1rem;
+}
+.curules__grupos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin: 0.5rem 0 0.75rem;
+}
+.curules__grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.curules__etiqueta {
+  font-size: 0.85rem;
+  color: var(--texto-2);
+}
+.curules__etiqueta strong {
+  font-size: 1.15rem;
+  color: var(--texto);
+}
+.curules__cuadros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: 172px;
+}
+.curules__cuadro {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+}
+.curules__cuadro:hover {
+  filter: brightness(1.15);
+}
+.curules__cuadro:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
+}
+.curules__coaliciones {
+  margin: 0 0 0.25rem;
+  padding-left: 1.1rem;
+}

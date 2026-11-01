@@ -8,6 +8,8 @@ import { autoverificar } from '../src/indicadores/autoverificacion';
 import { indicadoresAsuntosDiputado } from '../src/indicadores/asuntos';
 import { indicadoresDePersonas } from '../src/indicadores/distritos';
 import { indicadoresComisiones } from '../src/indicadores/comisiones';
+import { enFunciones } from '../src/indicadores/filtro';
+import { COALICIONES_2024, LEGISLATURA } from '../src/config/legislatura';
 
 const leer = async (r: string) => readFile(join(__dirname, '..', 'public', 'datos', r), 'utf8').catch(() => null);
 
@@ -56,5 +58,14 @@ describe('conjuntos de datos incluidos', () => {
     }
     const turnados = indicadoresComisiones(b, {}).flatMap((c) => c.idsAsuntos);
     expect(turnados.some((id) => id.startsWith('DIC-'))).toBe(false);
+  });
+
+  it('a la fecha de corte hay exactamente una persona en cada una de las 25 curules', async () => {
+    const b = construirBase(await cargarConjunto(leer, 'oficial'));
+    const enCurul = b.diputados.filter((d) => enFunciones(d, b.manifiesto.fecha_corte));
+    expect(enCurul.length).toBe(LEGISLATURA.integracion.total);
+    expect(enCurul.filter((d) => d.tipo_representacion === 'MR').length).toBe(LEGISLATURA.integracion.MR);
+    expect(new Set(enCurul.filter((d) => d.tipo_representacion === 'MR').map((d) => d.distrito)).size).toBe(LEGISLATURA.distritos);
+    for (const c of COALICIONES_2024) for (const p of c.partidos) expect(b.idx.partido.has(p)).toBe(true);
   });
 });

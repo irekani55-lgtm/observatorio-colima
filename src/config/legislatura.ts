@@ -101,3 +101,13 @@ export const FUENTES_INSTITUCIONALES: FuenteInstitucional[] = [
     uso: 'Resultados y constancias de mayoría y de asignación de representación proporcional.',
   },
 ];
+
+/**
+ * Coaliciones con que se compitió en la elección local de 2024 (IEE Colima, integración de las diputaciones
+ * 2024-2027: https://ieecolima.org.mx/diputaciones2024.html). Sirven para explicar el reparto del Congreso;
+ * las curules se cuentan siempre por el partido de cada persona.
+ */
+export const COALICIONES_2024 = [
+  { nombre: 'Sigamos Haciendo Historia en Colima', partidos: ['MORENA', 'PT', 'PVEM'] },
+  { nombre: 'Fuerza y Corazón por Colima', partidos: ['PAN', 'PRI'] },
+] as const;
