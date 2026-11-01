@@ -366,6 +366,12 @@ REVISION = [
      "abierta", "", "", "", ""),
     ("OBS-EXH-06", "exhortos", "(todos)", "dato_faltante",
      "No se publican los oficios con que el Congreso envía los exhortos a las autoridades; la fecha de envío no puede documentarse.", "abierta", "", "", "", ""),
+    ("OBS-GEO-01", "distritos", "(cartografía del mapa)", "version_cartografia",
+     "El mapa usa la capa DISTRITO_LOCAL de la Base Geográfica Digital de Colima del INE con corte de enero de 2026. Cotejo con el IEE (proceso electoral 2024): "
+     "los municipios de los 16 distritos coinciden, pero el número de secciones difiere en 7 distritos (1, 4, 5, 7, 8, 10 y 13; 411 secciones en el IEE y 430 en la BGD), "
+     "por cambios posteriores del Marco Geográfico Electoral, entre ellos el ajuste de 2025 en Colima, Coquimatlán y Villa de Álvarez. En esa zona los límites pueden "
+     "diferir ligeramente de los usados en la elección de la LXI Legislatura.",
+     "abierta", "", "", "", ""),
     ("OBS-COM-01", "comisiones", "(varias)", "inconsistencia_documental",
      "El número de reuniones de la página de comisiones no coincide con el de los informes anuales (p. ej., Hacienda: 47 en la página; 56 y 67 en los informes).",
      "abierta", "", "EV-CONG-COMISIONES", "", ""),

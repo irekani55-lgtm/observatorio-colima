@@ -1,5 +1,21 @@
 # Cartografía de distritos electorales locales
 
+## Archivo en uso
+
+`distritos_locales.geojson` proviene de la **Base Geográfica Digital (BGD) de Colima del INE**, capa
+`DISTRITO_LOCAL`, con corte de enero de 2026 (descargada de https://cartografia.ine.mx/sige8/).
+Se reproyectó de UTM 13N a WGS84 y se simplificó con mapshaper conservando la topología; no se
+alteraron los límites. La copia original está en `datos_crudos/ine/bgd_colima_2026-01/`.
+
+Cotejo con el IEE (proceso electoral 2024): los municipios de los 16 distritos coinciden. El número
+de secciones difiere en 7 distritos (1, 4, 5, 7, 8, 10 y 13: 411 en el IEE y 430 en la BGD) por
+cambios posteriores del Marco Geográfico Electoral, entre ellos el ajuste de 2025 en Colima,
+Coquimatlán y Villa de Álvarez. Por eso el mapa advierte que en esa zona los límites pueden diferir
+ligeramente de los de 2024 (observación OBS-GEO-01). Si se obtiene la BGD con corte de 2024, basta
+con volver a ejecutar la conversión.
+
+## Requisitos originales
+
 El mapa necesita **un archivo** que no se incluye en el proyecto porque debe provenir de la
 fuente oficial:
 

@@ -66,6 +66,13 @@ def main() -> None:
     comprobar(estados["no_verificado"] + estados["pendiente"] <= 10, f"Registros sin verificar acotados (hay {estados['no_verificado'] + estados['pendiente']})")
     comprobar(asis.get(("S-A1-PO1-SOL-005", "DIP-145"), {}).get("estado") == "asistencia", "26 nov 2024: Jaime Sotelo presente según el acta (sin marca en la Gaceta)")
 
+    print("Mapa")
+    import json
+    geo = json.load(open(Path(__file__).resolve().parents[2] / "public" / "geo" / "distritos_locales.geojson", encoding="utf-8"))
+    nums = sorted(int(f["properties"]["distrito_l"]) for f in geo["features"])
+    comprobar(nums == list(range(1, 17)), "La cartografía tiene exactamente los distritos 1 a 16, uno por polígono")
+    comprobar("OBS-GEO-01" in obs, "La versión de la cartografía está documentada en la bitácora (OBS-GEO-01)")
+
     print("Bitácora")
     for oid in ("OBS-LIC-01", "OBS-LIC-03", "OBS-LIC-04", "OBS-EXH-01", "OBS-EXH-02", "OBS-EXH-03", "OBS-INI-01", "OBS-ASI-04"):
         comprobar(obs.get(oid, {}).get("estado") == "resuelta", f"{oid} registrada como resuelta")

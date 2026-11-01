@@ -131,6 +131,7 @@ export function SelloMapa({ estado }: { estado: EstadoCarga }) {
             Fuente: <EnlaceExterno url={f.url}>{f.nombre}</EnlaceExterno>, {f.institucion}. {f.distritacion}.{!estado.mapa.geografico && ' Coordenadas proyectadas.'} Las islas Revillagigedo quedan fuera del encuadre.
           </span>
         </p>
+        {f.nota && <p className="mapa-sello">{f.nota}</p>}
         {!f.verificado && <p className="mapa-sello">Metadatos de la cartografía pendientes de confirmar contra la fuente oficial.</p>}
         {estado.mapa.advertencias.map((a) => (
           <Aviso key={a} tipo="alerta">
