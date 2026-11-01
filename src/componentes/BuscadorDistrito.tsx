@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { LEGISLATURA } from '../config/legislatura';
 import type { Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
@@ -150,9 +149,17 @@ export function BuscadorDistrito({ clave = 'distrito' }: { clave?: string }) {
                 Ver qué ha hecho
               </button>
             </p>
-            <p className="muy-pequeno texto-3">
-              Además, {LEGISLATURA.integracion.RP} diputaciones representan a todo el estado (<Link to="/representacion-proporcional">ver quiénes son</Link>). Fuentes: INE e IEE Colima.
+            <p className="pequeno">
+              Además, le representan <strong>{LEGISLATURA.integracion.RP} diputaciones de todo el estado</strong>.{' '}
+              <button
+                type="button"
+                className="boton boton--fantasma boton--chico"
+                onClick={() => document.getElementById(`${clave === 'distrito' ? 'rp' : `${clave}_rp`}-titulo`)?.scrollIntoView?.({ behavior: 'smooth', block: 'start' })}
+              >
+                Ver quiénes son
+              </button>
             </p>
+            <p className="muy-pequeno texto-3">Fuentes: INE e IEE Colima.</p>
           </div>
         )}
       </div>

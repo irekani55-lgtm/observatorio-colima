@@ -6,6 +6,9 @@ import { FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
 import { IcoReiniciar } from '../componentes/Iconos';
 import { LEGISLATURA } from '../config/legislatura';
 import { colorPartido } from '../componentes/colores';
+import { Foto } from '../componentes/Foto';
+import { Termino } from '../componentes/Termino';
+import { enFunciones } from '../indicadores/filtro';
 import { CONFIG_MAPA } from '../config/mapa';
 import { EnlaceExterno } from '../componentes/Fuente';
 import type { Base, Diputado } from '../datos/modelo';
@@ -65,9 +68,20 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
   const leyenda = Object.entries(
     Array.from({ length: LEGISLATURA.distritos }, (_, i) => partidoDe(i + 1)).reduce<Record<string, number>>((m, id) => (id ? { ...m, [id]: (m[id] ?? 0) + 1 } : m), {}),
   ).sort((a, b) => b[1] - a[1]);
+  // Diputaciones de representación proporcional: representan a todo el estado, no a un distrito.
+  const claveRp = clave === 'distrito' ? 'rp' : `${clave}_rp`;
+  const corte = base.manifiesto.fecha_corte;
+  const plurinominales = base.diputados
+    .filter((d) => d.tipo_representacion === 'RP' && enFunciones(d, corte))
+    .sort((a, b) => (base.idx.partido.get(a.id_partido)?.orden ?? 99) - (base.idx.partido.get(b.id_partido)?.orden ?? 99) || a.nombre_completo.localeCompare(b.nombre_completo));
+  const rp = sel == null ? plurinominales.find((d) => d.id_diputado === params.get(claveRp)) : undefined;
   const ficha = useRef<HTMLElement>(null);
+  const seleccionarRp = (id: string) => {
+    fijar({ persona: undefined, [clave]: undefined, [claveRp]: id });
+    requestAnimationFrame(() => ficha.current?.scrollIntoView?.({ behavior: 'smooth', block: 'start' }));
+  };
   const seleccionar = (d: number | null) => {
-    fijar({ persona: undefined, [clave]: d == null ? undefined : String(d) });
+    fijar({ persona: undefined, [claveRp]: undefined, [clave]: d == null ? undefined : String(d) });
     // En pantallas angostas la ficha queda debajo del mapa: se lleva a la vista.
     if (d != null && typeof window !== 'undefined' && window.matchMedia?.('(max-width: 900px)').matches) {
       requestAnimationFrame(() => ficha.current?.scrollIntoView?.({ behavior: 'smooth', block: 'start' }));
@@ -75,6 +89,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
   };
 
   return (
+    <>
       <div className="mapa-disposicion">
         <section className="panel" aria-label="Mapa">
           <div className="panel__cabecera">
@@ -118,7 +133,15 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
         </section>
 
         <section className="panel" ref={ficha} aria-live="polite" aria-label="Ficha del distrito seleccionado" style={{ scrollMarginTop: 80 }}>
-          {sel == null ? (
+          {rp ? (
+            <>
+              <h2 style={{ fontSize: '1.1rem' }}>Diputación de todo el estado</h2>
+              <p className="pequeno texto-2" style={{ marginTop: '-0.25rem' }}>
+                Llegó al Congreso por la <Termino t="representacion_proporcional">lista de su partido</Termino> y representa a todo Colima.
+              </p>
+              <FichaResumen d={rp} filtro={periodo} />
+            </>
+          ) : sel == null ? (
             <>
               <h2 style={{ fontSize: '1.1rem' }}>Elija su distrito</h2>
               <p className="texto-2">Toque su distrito en el mapa o elija su número abajo. Verá quién le representa y qué ha hecho en el Congreso.</p>
@@ -151,6 +174,46 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
           )}
         </section>
       </div>
+
+      {plurinominales.length > 0 && (
+        <section className="panel franja-rp" aria-labelledby={`${claveRp}-titulo`}>
+          <h3 id={`${claveRp}-titulo`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
+            Además, a todo Colima le representan estas {plurinominales.length} diputaciones
+          </h3>
+          <p className="pequeno texto-2">
+            Llegaron al Congreso por la <Termino t="representacion_proporcional">lista de su partido</Termino>, no por un distrito. Toque a una persona para ver qué ha hecho.
+          </p>
+          <ul className="franja-rp__lista">
+            {plurinominales.map((d) => {
+              const partido = base.idx.partido.get(d.id_partido);
+              return (
+                <li key={d.id_diputado}>
+                  <button
+                    type="button"
+                    className="franja-rp__persona"
+                    aria-pressed={rp?.id_diputado === d.id_diputado}
+                    style={{ borderLeftColor: colorPartido(base, d.id_partido) }}
+                    onClick={() => seleccionarRp(d.id_diputado)}
+                  >
+                    <span className="franja-rp__foto">
+                      <Foto url={d.url_foto} archivo={d.archivo_foto} nombre={d.nombre_completo} />
+                    </span>
+                    <span>
+                      <span className="franja-rp__nombre">{d.nombre_completo}</span>
+                      <span className="franja-rp__partido">
+                        <span className="muestra" style={{ background: colorPartido(base, d.id_partido) }} aria-hidden="true" />
+                        {partido?.siglas ?? d.id_partido}
+                        {d.calidad === 'suplente' && ' · suplente'}
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+    </>
   );
 }
 

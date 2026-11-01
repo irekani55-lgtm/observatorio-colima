@@ -42,7 +42,7 @@ export function DatosGenerales({ d }: { d: Diputado }) {
           </>
         ) : (
           <>
-            Por la lista de su partido (<Termino t="representacion_proporcional">representación proporcional</Termino>)
+            Por la <Termino t="representacion_proporcional">lista de su partido</Termino>
           </>
         )}
       </dd>

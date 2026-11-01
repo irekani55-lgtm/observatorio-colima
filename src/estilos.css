@@ -1275,6 +1275,9 @@ code {
 
 /* ---------------------------------------------------------------- Glosario en línea */
 .termino__palabra {
+  display: inline;
+  white-space: normal;
+  text-align: inherit;
   font: inherit;
   color: inherit;
   background: none;
@@ -1488,4 +1491,64 @@ code {
   .encabezado-pagina--destacado {
     padding: 1.1rem 1rem 1rem;
   }
+}
+
+/* ---------------------------------------------------------------- Diputaciones de todo el estado (RP) */
+.franja-rp {
+  margin-top: 1rem;
+}
+.franja-rp__lista {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.6rem;
+}
+.franja-rp__persona {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 5px solid var(--borde);
+  border-radius: var(--radio-s);
+  padding: 0.45rem 0.6rem;
+  cursor: pointer;
+}
+.franja-rp__persona:hover {
+  background: var(--superficie-2);
+}
+.franja-rp__persona[aria-pressed='true'] {
+  outline: 2px solid var(--texto);
+  outline-offset: 1px;
+}
+.franja-rp__foto {
+  flex: 0 0 44px;
+  width: 44px;
+}
+.franja-rp__nombre {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  line-height: 1.25;
+}
+.franja-rp__partido {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  color: var(--texto-2);
+}
+.franja-rp__partido .muestra {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.franja-rp__foto .foto__vacia span {
+  display: none;
 }
