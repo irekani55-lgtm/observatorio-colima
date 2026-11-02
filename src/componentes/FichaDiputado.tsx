@@ -26,16 +26,35 @@ export function enlaceConPeriodo(ruta: string, f: Filtro, extra: Record<string, 
   return q ? `${ruta}?${q}` : ruta;
 }
 
+/** Fecha de inicio de una licencia que sigue abierta (sin fecha de regreso), o null. */
+export function licenciaVigente(d: Diputado): string | null {
+  const abierta = (d.licencias ?? []).find(([, b]) => !b);
+  return abierta ? abierta[0] : null;
+}
+
 export function periodoEjercicio(d: Diputado): string {
-  const base = `${fechaCorta(d.fecha_inicio)} – ${d.fecha_fin ? fechaCorta(d.fecha_fin) : 'en funciones'}`;
-  const lic = (d.licencias ?? []).map(([a, b]) => `licencia ${fechaCorta(a)} – ${b ? fechaCorta(b) : 'vigente'}`);
-  return lic.length ? `${base} (${lic.join('; ')})` : base;
+  const vigente = licenciaVigente(d);
+  const pasadas = (d.licencias ?? []).filter(([, b]) => b).map(([a, b]) => `licencia ${fechaCorta(a)} – ${fechaCorta(b)}`);
+  const fin = d.fecha_fin ? fechaCorta(d.fecha_fin) : vigente ? `con licencia desde ${fechaCorta(vigente)}, no ha regresado` : 'en funciones';
+  const base = `${fechaCorta(d.fecha_inicio)} – ${fin}`;
+  return pasadas.length ? `${base} (${pasadas.join('; ')})` : base;
 }
 
 /** «suplente» (distrito) o «en sustitución» (lista de partido, que no tiene suplente); vacío si es titular. */
 export function etiquetaSuplencia(d: Diputado): string {
   if (d.calidad !== 'suplente') return '';
   return d.tipo_representacion === 'RP' ? 'en sustitución' : 'suplente';
+}
+
+/** Quién ocupa hoy el lugar de una persona con licencia. */
+function EnSuLugar({ d }: { d: Diputado }) {
+  const { base } = useDatos();
+  const quien = base.diputados.find((x) => x.id_titular === d.id_diputado && !x.fecha_fin);
+  return quien ? (
+    <>
+      En su lugar está <Link to={`/diputaciones/${encodeURIComponent(quien.id_diputado)}`}>{quien.nombre_completo}</Link>.
+    </>
+  ) : null;
 }
 
 function EnlaceTitular({ d }: { d: Diputado }) {
@@ -76,6 +95,14 @@ export function DatosGenerales({ d }: { d: Diputado }) {
                 <Termino t="suplente">Suplente</Termino> de <EnlaceTitular d={d} />
               </>
             )}
+          </dd>
+        </>
+      )}
+      {licenciaVigente(d) && (
+        <>
+          <dt>Situación</dt>
+          <dd>
+            Pidió <Termino t="licencia">licencia</Termino> el {fechaCorta(licenciaVigente(d)!)} y no ha regresado al Congreso. <EnSuLugar d={d} />
           </dd>
         </>
       )}
@@ -280,7 +307,7 @@ export function TarjetaDiputado({ d }: { d: Diputado }) {
           <span className="insignia insignia--neutro">{d.tipo_representacion === 'MR' ? `Distrito ${d.distrito ?? '¿?'}` : 'Representación proporcional'}</span>
         </div>
         <div className="muy-pequeno texto-2">
-          {d.calidad === 'suplente' ? (d.tipo_representacion === 'RP' ? 'En sustitución (siguiente en la lista)' : 'Suplente en funciones') : etiquetaDe(CALIDAD_CARGO, d.calidad)} · {periodoEjercicio(d)}
+          {d.calidad === 'suplente' ? (d.tipo_representacion === 'RP' ? 'En sustitución (siguiente en la lista)' : 'Suplente en funciones') : licenciaVigente(d) ? 'Titular con licencia' : etiquetaDe(CALIDAD_CARGO, d.calidad)} · {periodoEjercicio(d)}
         </div>
       </div>
     </Link>
