@@ -111,7 +111,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
 
   return (
     <>
-      <div className="mapa-disposicion">
+      <div className={`mapa-disposicion${sel == null && !rp ? ' mapa-disposicion--igualar' : ''}`}>
         <section className="panel" aria-label="Mapa">
           <div className="panel__cabecera">
             <h2 style={{ fontSize: '1.1rem' }}>{titulo}</h2>
@@ -156,9 +156,13 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             </>
           ) : sel == null ? (
             <>
-              <h2 style={{ fontSize: '1.1rem' }}>Elija su distrito</h2>
-              <p className="texto-2">Toque su distrito en el mapa o elija su número abajo. Verá quién le representa y qué ha hecho en el Congreso.</p>
-              <p className="pequeno texto-3">Con teclado: use Tab para moverse entre los distritos y Enter para elegir uno.</p>
+              <h2 className="mapa-columna__titulo">Elija su distrito</h2>
+              <p className="pequeno texto-2" style={{ margin: '0 0 0.35rem' }}>
+                Toque su distrito en el mapa o elija su número abajo. Verá quién le representa y qué ha hecho en el Congreso.
+              </p>
+              <p className="muy-pequeno texto-3" style={{ margin: 0 }}>
+                Con teclado: use Tab para moverse entre los distritos y Enter para elegir uno.
+              </p>
             </>
           ) : !persona ? (
             <>
@@ -187,7 +191,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
           )}
         </section>
         <section className={`panel${claseNuevo()}`} aria-labelledby="lista-distritos">
-          <h3 className="pequeno" style={{ marginTop: 0 }} id="lista-distritos">
+          <h3 className="mapa-columna__titulo" id="lista-distritos">
             Seleccionar distrito por número
           </h3>
           <ul className="lista-distritos" aria-labelledby="lista-distritos">

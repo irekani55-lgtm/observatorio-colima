@@ -1702,3 +1702,40 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 /* Columna derecha del mapa: ficha, selector por número y reparto de los 25 lugares. */
 .mapa-columna { display: grid; gap: 1rem; min-width: 0; }
 .mapa-columna > .panel { margin: 0; }
+/* Columna derecha compacta: botones delgados y cuadritos chicos para que termine a la par del mapa. */
+.mapa-columna > .panel { padding: 0.85rem 1rem; }
+.mapa-columna .lista-distritos { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.25rem; }
+.mapa-columna .lista-distritos button { min-height: 28px; padding: 0.1rem 0; font-size: 0.82rem; }
+.mapa-columna .curules { margin-top: 0; }
+.mapa-columna .curules h3 { font-size: 0.95rem !important; margin-bottom: 0.25rem; }
+.mapa-columna .curules__grupos { gap: 0.5rem 1rem; margin: 0.35rem 0 0.5rem; }
+.mapa-columna .curules__etiqueta { font-size: 0.78rem; }
+.mapa-columna .curules__etiqueta strong { font-size: 0.95rem; }
+.mapa-columna .curules__cuadros { max-width: 120px; gap: 2px; }
+.mapa-columna .curules__cuadro { width: 18px; height: 18px; border-radius: 3px; }
+.mapa-columna .curules__coaliciones { font-size: 0.8rem; margin-bottom: 0.15rem; }
+/* Sin distrito elegido, las dos columnas terminan a la misma altura. */
+.mapa-disposicion--igualar { align-items: stretch; }
+.mapa-disposicion--igualar .mapa-columna { display: flex; flex-direction: column; }
+.mapa-disposicion--igualar .mapa-columna > .panel:last-child { flex: 1; }
+@media (max-width: 900px) { .mapa-columna .lista-distritos button { min-height: 36px; } }
+/* Los tres recuadros de la columna derecha usan el mismo tamaño de título y de texto. */
+.mapa-columna__titulo, .mapa-columna .curules h3 { font-size: 0.95rem !important; font-weight: 700; margin: 0 0 0.35rem !important; }
+.mapa-columna .lista-distritos button { min-height: 32px; }
+.mapa-columna .curules__cuadros { max-width: 144px; }
+.mapa-columna .curules__cuadro { width: 22px; height: 22px; }
+.mapa-disposicion--igualar .mapa-columna > .curules { display: flex; flex-direction: column; }
+.mapa-disposicion--igualar .mapa-columna > .curules .curules__grupos { flex: 1; justify-content: space-evenly; }
+/* En la columna derecha, un renglón por partido: número y siglas a la izquierda, sus cuadritos a la derecha. */
+.mapa-columna .curules__grupos { flex-direction: column; flex-wrap: nowrap; gap: 0.3rem; }
+.mapa-columna .curules__grupo { flex-direction: row; align-items: center; gap: 0.6rem; }
+.mapa-columna .curules__etiqueta { flex: none; width: 5.5rem; }
+.mapa-columna .curules__cuadros { max-width: none; flex-wrap: nowrap; }
+.mapa-columna .curules__cuadro { width: 24px; height: 24px; }
+@media (max-width: 420px) { .mapa-columna .curules__cuadro { width: 20px; height: 20px; } }
+@media (min-width: 1100px) {
+  .mapa-columna .curules__cuadro { width: 30px; height: 30px; border-radius: 4px; }
+  .mapa-columna .curules__etiqueta { font-size: 0.85rem; }
+  .mapa-columna .curules__etiqueta strong { font-size: 1.05rem; }
+}
+.marca-nuevo__etiqueta { align-self: flex-start; width: fit-content; }
