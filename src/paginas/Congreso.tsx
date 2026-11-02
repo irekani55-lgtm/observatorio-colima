@@ -17,6 +17,7 @@ import { coberturaEvidencia } from '../indicadores/evidencia';
 import { diputadosFiltrados, fechaEnPeriodo } from '../indicadores/filtro';
 import { NotaTablaDistritos, TablaDistritos } from './Mapa';
 import { IndicadoresDetallados } from './Eficacia';
+import { ejercioEnPeriodo, TablaComparativa } from './Directorio';
 import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 
 const recortar = (v: string) => (v.length > 26 ? `${v.slice(0, 25)}…` : v);
@@ -45,6 +46,7 @@ export default function Congreso() {
   const [agrupar, setAgrupar] = useState<'diputado' | 'partido'>('partido');
 
   const dips = diputadosFiltrados(base, filtro);
+  const dipsComparar = dips.filter((d) => ejercioEnPeriodo(d, filtro));
   const asis = useMemo(() => asistenciaAgregada(base, dips, filtro), [base, dips, filtro]);
   const asuntos = useMemo(() => asuntosFiltrados(base, filtro), [base, filtro]);
   const res = resumenAsuntos(asuntos);
@@ -243,6 +245,13 @@ export default function Congreso() {
         <NotaTablaDistritos />
         <TablaDistritos />
       </section>
+      <section className={`seccion${claseNuevo()}`} id="comparar">
+        <h2>Comparar a las diputaciones, dato por dato</h2>
+        <p className="seccion__intro">Cada columna se ordena por separado. Sirve para ver diferencias, no para decir quién trabaja mejor.</p>
+        <TablaComparativa lista={dipsComparar} />
+        <Nuevo texto="antes estaba en Diputaciones" />
+      </section>
+
       <section className={`seccion${claseNuevo()}`} id="indicadores">
         <details className="desplegable">
           <summary>Indicadores detallados: cómo se calcula cada número y sus límites</summary>

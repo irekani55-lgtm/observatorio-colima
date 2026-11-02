@@ -31,28 +31,6 @@ export default function Directorio() {
     .filter((d) => ejercioEnPeriodo(d, filtro))
     .sort((a, b) => (a.tipo_representacion === b.tipo_representacion ? (a.distrito ?? 99) - (b.distrito ?? 99) || a.nombre_completo.localeCompare(b.nombre_completo) : a.tipo_representacion === 'MR' ? -1 : 1));
 
-  const filas = useMemo(() => {
-    const inter = intervencionesFiltradas(base, filtro);
-    return lista.map((d) => {
-      const a = asistenciaDeDiputado(base, d, filtro);
-      const i = indicadoresAsuntosDiputado(base, d, filtro);
-      return { d, asistencia: a.porcentaje, provisional: !a.definitivo, ini: i.iniciativasPresentadas.total, iniAprob: i.iniciativasAprobadas.total, exh: i.exhortosPresentados.total, exhAprob: i.exhortosAprobados.total, inter: inter.filter((x) => x.id_diputado === d.id_diputado).length };
-    });
-  }, [base, filtro, lista]);
-  type FilaT = (typeof filas)[number];
-
-  const columnas: Columna<FilaT>[] = [
-    { id: 'nombre', titulo: 'Nombre', valor: (f) => f.d.nombre_completo, render: (f) => <Link to={`/diputaciones/${encodeURIComponent(f.d.id_diputado)}`}>{f.d.nombre_completo}</Link> },
-    { id: 'partido', titulo: 'Partido', valor: (f) => base.idx.partido.get(f.d.id_partido)?.siglas ?? f.d.id_partido, render: (f) => <Partido id={f.d.id_partido} /> },
-    { id: 'rep', titulo: 'Representación', valor: (f) => (f.d.tipo_representacion === 'MR' ? `Distrito ${f.d.distrito}` : 'RP') },
-    { id: 'asis', titulo: 'Asistencia', numerica: true, valor: (f) => f.asistencia, render: (f) => (f.asistencia == null ? 'Pendiente' : `${fmtPct(f.asistencia)}${f.provisional ? '*' : ''}`) },
-    { id: 'ini', titulo: 'Iniciativas presentadas', numerica: true, valor: (f) => f.ini },
-    { id: 'inia', titulo: 'Iniciativas aprobadas', numerica: true, valor: (f) => f.iniAprob },
-    { id: 'exh', titulo: 'Exhortos presentados', numerica: true, valor: (f) => f.exh },
-    { id: 'exha', titulo: 'Exhortos aprobados', numerica: true, valor: (f) => f.exhAprob },
-    { id: 'int', titulo: 'Intervenciones', numerica: true, valor: (f) => f.inter },
-  ];
-
   return (
     <>
       <EncabezadoPagina titulo="Directorio de diputadas y diputados">
@@ -95,15 +73,46 @@ export default function Directorio() {
               ))}
             </div>
           ) : (
-            <>
-              <Aviso>
-                Cada columna es un indicador independiente y puede ordenarse por separado. <strong>No se calcula una calificación global</strong>: un número mayor describe más actividad documentada, no mejor desempeño. * Asistencia provisional (hay sesiones sin registro verificable).
-              </Aviso>
-              <Tabla titulo="Comparativo de indicadores por persona" columnas={columnas} filas={filas} clave={(f) => f.d.id_diputado} archivo="directorio-indicadores" porPagina={30} />
-            </>
+            <TablaComparativa lista={lista} />
           )}
         </>
       )}
+    </>
+  );
+}
+
+/** Tabla con los indicadores de cada persona, uno por columna. No calcula una calificación global. */
+export function TablaComparativa({ lista }: { lista: Diputado[] }) {
+  const { base } = useDatos();
+  const [filtro] = useFiltro();
+  const filas = useMemo(() => {
+    const inter = intervencionesFiltradas(base, filtro);
+    return lista.map((d) => {
+      const a = asistenciaDeDiputado(base, d, filtro);
+      const i = indicadoresAsuntosDiputado(base, d, filtro);
+      return { d, asistencia: a.porcentaje, provisional: !a.definitivo, ini: i.iniciativasPresentadas.total, iniAprob: i.iniciativasAprobadas.total, exh: i.exhortosPresentados.total, exhAprob: i.exhortosAprobados.total, inter: inter.filter((x) => x.id_diputado === d.id_diputado).length };
+    });
+  }, [base, filtro, lista]);
+  type FilaT = (typeof filas)[number];
+
+  const columnas: Columna<FilaT>[] = [
+    { id: 'nombre', titulo: 'Nombre', valor: (f) => f.d.nombre_completo, render: (f) => <Link to={`/diputaciones/${encodeURIComponent(f.d.id_diputado)}`}>{f.d.nombre_completo}</Link> },
+    { id: 'partido', titulo: 'Partido', valor: (f) => base.idx.partido.get(f.d.id_partido)?.siglas ?? f.d.id_partido, render: (f) => <Partido id={f.d.id_partido} /> },
+    { id: 'rep', titulo: 'Representación', valor: (f) => (f.d.tipo_representacion === 'MR' ? `Distrito ${f.d.distrito}` : 'RP') },
+    { id: 'asis', titulo: 'Asistencia', numerica: true, valor: (f) => f.asistencia, render: (f) => (f.asistencia == null ? 'Pendiente' : `${fmtPct(f.asistencia)}${f.provisional ? '*' : ''}`) },
+    { id: 'ini', titulo: 'Iniciativas presentadas', numerica: true, valor: (f) => f.ini },
+    { id: 'inia', titulo: 'Iniciativas aprobadas', numerica: true, valor: (f) => f.iniAprob },
+    { id: 'exh', titulo: 'Exhortos presentados', numerica: true, valor: (f) => f.exh },
+    { id: 'exha', titulo: 'Exhortos aprobados', numerica: true, valor: (f) => f.exhAprob },
+    { id: 'int', titulo: 'Intervenciones', numerica: true, valor: (f) => f.inter },
+  ];
+
+  return (
+    <>
+      <Aviso>
+        Cada columna es un indicador independiente y puede ordenarse por separado. <strong>No se calcula una calificación global</strong>: un número mayor describe más actividad documentada, no mejor desempeño. Quien llegó por una licencia estuvo menos tiempo y por eso tiene números más bajos. * Asistencia provisional (hay sesiones sin registro verificable).
+      </Aviso>
+      <Tabla titulo="Comparativo de indicadores por persona" columnas={columnas} filas={filas} clave={(f) => f.d.id_diputado} archivo="comparativo-diputaciones" porPagina={30} />
     </>
   );
 }

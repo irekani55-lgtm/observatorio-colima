@@ -109,11 +109,18 @@ describe('interfaz', () => {
     expect(screen.getByRole('heading', { name: 'Diputación de todo el estado' })).toBeInTheDocument();
   });
 
-  it('el menú tiene 4 opciones y las páginas viejas llevan a su nuevo lugar', async () => {
+  it('en el inicio se puede buscar a una diputación por su nombre', async () => {
+    const u = userEvent.setup();
+    montar('/', datos());
+    await u.type(await screen.findByRole('searchbox', { name: 'Nombre' }), 'ana ejem');
+    expect(screen.getByRole('link', { name: 'Ana Ejemplo' })).toHaveAttribute('href', '/diputaciones/D1');
+  });
+
+  it('el menú tiene 3 opciones y las páginas viejas llevan a su nuevo lugar', async () => {
     montar('/representacion-proporcional', datos());
     expect(await screen.findByRole('button', { name: 'Llegaron por la lista de su partido', pressed: true })).toBeInTheDocument();
     const menu = screen.getByRole('navigation', { name: 'Navegación principal' });
-    expect(within(menu).getAllByRole('link').map((a) => a.textContent)).toEqual(['Inicio', 'Diputaciones', '¿Qué se hace en el Congreso?', 'El Congreso en números']);
+    expect(within(menu).getAllByRole('link').map((a) => a.textContent)).toEqual(['Inicio', '¿Qué se hace en el Congreso?', 'El Congreso en números']);
   });
 
   it('el perfil muestra fotografía no disponible y los registros de asistencia', async () => {

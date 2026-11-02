@@ -1766,3 +1766,8 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 .mapa-columna .curules__etiqueta { width: auto; }
 .mapa-indicacion { margin: 0; font-size: 0.875rem; color: var(--texto-2); }
 .mapa-indicacion { font-size: 0.8rem; font-weight: 400; color: var(--texto-3); }
+/* Inicio: los dos buscadores lado a lado (sección y nombre). */
+.buscadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1rem; margin-bottom: 1rem; align-items: stretch; }
+.buscadores > * > .panel, .buscadores > .panel { margin: 0 !important; height: 100%; }
+.buscador-nombre__lista { display: grid; gap: 0.3rem; margin: 0.5rem 0; }
+.buscadores > div:not(.panel) { display: flex; flex-direction: column; } .buscadores > div:not(.panel) > .panel { flex: 1; }

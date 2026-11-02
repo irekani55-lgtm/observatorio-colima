@@ -8,10 +8,9 @@ import { cssPartidos } from './colores';
 import { CAMBIOS_VISTA_PREVIA, claseNuevo, MARCAR_CAMBIOS, Nuevo } from './Nuevo';
 import { IcoCongreso, IcoLuna, IcoMenu, IcoSol, IcoX } from './Iconos';
 
-/** Cuatro opciones. Metodología y Fuentes van al pie, en «¿De dónde salen los datos?». */
+/** Tres opciones. La lista de diputaciones se abre desde el inicio («¿Sabe su nombre?»). Metodología y Fuentes van al pie, en «¿De dónde salen los datos?». */
 export const NAV_PRINCIPAL = [
   { a: '/', texto: 'Inicio', fin: true },
-  { a: '/diputaciones', texto: 'Diputaciones' },
   { a: '/asuntos', texto: '¿Qué se hace en el Congreso?' },
   { a: '/congreso', texto: 'El Congreso en números' },
 ];

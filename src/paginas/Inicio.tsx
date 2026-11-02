@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { BuscadorDistrito } from '../componentes/BuscadorDistrito';
+import { BuscadorNombre } from '../componentes/BuscadorNombre';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { fmt, fmtPct } from '../componentes/Tarjeta';
 import { Termino } from '../componentes/Termino';
@@ -116,7 +117,13 @@ export default function Inicio() {
       <section className="seccion" aria-labelledby="titulo-mapa-inicio">
         <h2 id="titulo-mapa-inicio">¿Quién le representa?</h2>
         <p className="seccion__intro">Búsquelo con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
-        <BuscadorDistrito clave="mapa_distrito" />
+        <div className="buscadores">
+          <BuscadorDistrito clave="mapa_distrito" />
+          <div className={claseNuevo()}>
+            <BuscadorNombre />
+            <Nuevo texto="buscar por nombre" />
+          </div>
+        </div>
         <MapaInteractivo clave="mapa_distrito" />
       </section>
     </>
