@@ -315,6 +315,14 @@ REVISION = [
      "La base daba como incierto quién ocupó la curul de Julio César León Trujillo el 2 oct 2024 (dos sesiones ese día).", "resuelta",
      "Acta de la Ordinaria 01: falta con justificación Julio César León Trujillo y se aprueba su licencia. Acta de la Ordinaria 02: rinde protesta Alfredo Álvarez Ramírez y el pase de lista posterior verifica 25 presentes.",
      "EV-ACUERDO-4", "EV-ACTA-2024-10-02-159", "2026-10-30"),
+    ("OBS-LIC-05", "diputados", "DIP-137, DIP-133, DIP-RP-JCLT", "dato_faltante",
+     "Pregunta para el área de taquigrafía parlamentaria (fase 2): ¿qué cargo fueron a ocupar las tres personas con licencia? "
+     "Los acuerdos solo dicen el motivo general: Isamar Ramírez Rodríguez, «comisión o empleo público» (Acuerdo 6, 16 oct 2024 – 15 abr 2025); "
+     "Diana Xally Yael Zepeda Figueroa, «empleo de carácter estatal» (Acuerdo 17, 16 ene 2025 – 15 oct 2026); "
+     "Julio César León Trujillo, «comisión o empleo público» (Acuerdo 4, desde el 2 oct 2024, sin reincorporación). "
+     "Para León Trujillo la prensa (SDP Noticias) dice que fue nombrado coordinador nacional de Becas para el Bienestar Benito Juárez; falta una fuente oficial. "
+     "También conviene preguntar si su licencia sigue vigente o si hay algún acuerdo posterior.",
+     "abierta", "", "EV-ACUERDO-4", "", ""),
     ("OBS-EVI-01", "evidencias", "EV-ACUERDO-4, EV-ACUERDO-6, EV-ACUERDO-29", "enlace_roto",
      "Los enlaces a los acuerdos 4, 6 y 29 daban error 404: la Gaceta usa nombres de archivo distintos (Acuerdo_04_61, Acuerdo_06_61, ACUERDO_29_61).", "resuelta",
      "Se tomaron los nombres de archivo de la lista de acuerdos de la Gaceta.", "EV-ACUERDO-6", "", "2026-10-30"),
