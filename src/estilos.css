@@ -1739,3 +1739,25 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
   .mapa-columna .curules__etiqueta strong { font-size: 1.05rem; }
 }
 .marca-nuevo__etiqueta { align-self: flex-start; width: fit-content; }
+/* Renglones de los 25 lugares: letra y cuadritos un poco más chicos para que MORENA (11) no llegue al borde. */
+@media (min-width: 1100px) {
+  .mapa-columna .curules__cuadro { width: 24px; height: 24px; border-radius: 3px; }
+  .mapa-columna .curules__etiqueta { font-size: 0.78rem; width: 5rem; }
+  .mapa-columna .curules__etiqueta strong { font-size: 0.92rem; }
+}
+@media (min-width: 901px) and (max-width: 1099px) {
+  .mapa-columna .curules__cuadro { width: 20px; height: 20px; border-radius: 3px; }
+  .mapa-columna .curules__etiqueta { font-size: 0.75rem; width: 4.6rem; }
+  .mapa-columna .curules__etiqueta strong { font-size: 0.9rem; }
+}
+/* Por seguridad, si algún día no caben, los cuadritos bajan de renglón en vez de salirse. */
+.mapa-columna .curules__cuadros { flex-wrap: wrap; }
+@media (min-width: 901px) and (max-width: 1099px) { .mapa-columna .curules__cuadro { width: 18px; height: 18px; } }
+@media (max-width: 480px) {
+  .mapa-columna .curules__cuadro { width: 17px; height: 17px; border-radius: 3px; }
+  .mapa-columna .curules__etiqueta { font-size: 0.75rem; width: 4.3rem; }
+  .mapa-columna .curules__etiqueta strong { font-size: 0.9rem; }
+  .mapa-columna .curules__grupo { gap: 0.4rem; }
+}
+.mapa-columna .curules__etiqueta { white-space: nowrap; }
+@media (max-width: 480px) { .mapa-columna .curules__etiqueta { width: 4.7rem; } .mapa-columna .curules__cuadro { width: 16px; height: 16px; } }
