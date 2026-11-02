@@ -2,7 +2,7 @@ import { useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
-import { FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
+import { etiquetaSuplencia, FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
 import { IcoReiniciar } from '../componentes/Iconos';
 import { COALICIONES_2024, LEGISLATURA } from '../config/legislatura';
 import { colorPartido } from '../componentes/colores';
@@ -254,7 +254,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
                       <span className="franja-rp__partido">
                         <span className="muestra" style={{ background: colorPartido(base, d.id_partido) }} aria-hidden="true" />
                         {partido?.siglas ?? d.id_partido}
-                        {d.calidad === 'suplente' && ' · suplente'}
+                        {etiquetaSuplencia(d) && ` · ${etiquetaSuplencia(d)}`}
                       </span>
                     </span>
                   </button>
@@ -310,7 +310,7 @@ export function TablaDistritos() {
                 <span key={p.id_diputado}>
                   {i > 0 && <br />}
                   <EnlaceDip id={p.id_diputado} />
-                  {p.calidad === 'suplente' && <span className="texto-3"> (suplente)</span>}
+                  {etiquetaSuplencia(p) && <span className="texto-3"> ({etiquetaSuplencia(p)})</span>}
                 </span>
               ))}
             </span>

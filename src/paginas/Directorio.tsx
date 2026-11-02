@@ -56,7 +56,7 @@ export default function Directorio() {
     <>
       <EncabezadoPagina titulo="Directorio de diputadas y diputados">
         <p>
-          Personas que han ejercido una curul en la LXI Legislatura según el catálogo cargado, incluidas las suplentes en funciones. Las diputaciones de representación proporcional también tienen <Link to="/representacion-proporcional">un apartado propio</Link>.
+          Personas que han ejercido una curul en la LXI Legislatura según el catálogo cargado, incluidas las personas que entraron por una licencia: suplentes en los distritos y, en las diputaciones por lista, la siguiente persona de la lista del partido (esas no tienen suplente). Las diputaciones de representación proporcional también tienen <Link to="/representacion-proporcional">un apartado propio</Link>.
         </p>
       </EncabezadoPagina>
       <BarraFiltros campos={['anio', 'fechas', 'partido', 'representacion', 'distrito']} />

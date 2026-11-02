@@ -216,7 +216,7 @@ def aplicar_licencias(diputados: list[dict]) -> None:
         if sup["nombre"] is None:  # la suplente/el suplente ya está en el directorio (sigue en funciones)
             s_ = por_id[sup["id"]]
             s_.update({"calidad": "suplente", "id_titular": t["id_diputado"], "fecha_inicio": lic["desde"], "estado_verificacion": "verificado",
-                       "notas": f"Suplente en funciones de {t['nombre_completo']}. {lic['nota']}"})
+                       "notas": f"Entró en lugar de {t['nombre_completo']} como siguiente persona en la lista de su partido (las diputaciones de representación proporcional no tienen suplente). {lic['nota']}"})
         else:
             diputados.append({"id_diputado": sup["id"], "nombre_completo": sup["nombre"], "id_partido": t["id_partido"], "criterio_adscripcion": "Partido de la persona titular (verificar)",
                               "tipo_representacion": t["tipo_representacion"], "distrito": t["distrito"], "calidad": "suplente", "id_titular": t["id_diputado"],

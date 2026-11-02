@@ -10,6 +10,7 @@ import type { Base } from '../datos/modelo';
 import { describirPeriodo, fechaCorta, type Filtro } from '../indicadores/filtro';
 import { Foto } from './Foto';
 import { Partido } from './Partido';
+import { BarraComparada } from './BarraComparada';
 import { Compartir, QuePuedeHacer } from './QuePuedeHacer';
 import { Termino } from './Termino';
 import { fmt, fmtPct, plural } from './Tarjeta';
@@ -29,6 +30,18 @@ export function periodoEjercicio(d: Diputado): string {
   const base = `${fechaCorta(d.fecha_inicio)} – ${d.fecha_fin ? fechaCorta(d.fecha_fin) : 'en funciones'}`;
   const lic = (d.licencias ?? []).map(([a, b]) => `licencia ${fechaCorta(a)} – ${b ? fechaCorta(b) : 'vigente'}`);
   return lic.length ? `${base} (${lic.join('; ')})` : base;
+}
+
+/** «suplente» (distrito) o «en sustitución» (lista de partido, que no tiene suplente); vacío si es titular. */
+export function etiquetaSuplencia(d: Diputado): string {
+  if (d.calidad !== 'suplente') return '';
+  return d.tipo_representacion === 'RP' ? 'en sustitución' : 'suplente';
+}
+
+function EnlaceTitular({ d }: { d: Diputado }) {
+  const { base } = useDatos();
+  const t = d.id_titular ? base.idx.diputado.get(d.id_titular) : undefined;
+  return t ? <Link to={`/diputaciones/${encodeURIComponent(t.id_diputado)}`}>{t.nombre_completo}</Link> : <>la persona titular</>;
 }
 
 export function DatosGenerales({ d }: { d: Diputado }) {
@@ -54,7 +67,15 @@ export function DatosGenerales({ d }: { d: Diputado }) {
         <>
           <dt>Cargo</dt>
           <dd>
-            <Termino t="suplente">Suplente</Termino> en funciones
+            {d.tipo_representacion === 'RP' ? (
+              <>
+                Entró en lugar de <EnlaceTitular d={d} />, por ser la siguiente persona en la <Termino t="sustitucion">lista de su partido</Termino>
+              </>
+            ) : (
+              <>
+                <Termino t="suplente">Suplente</Termino> de <EnlaceTitular d={d} />
+              </>
+            )}
           </dd>
         </>
       )}
@@ -105,6 +126,11 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
         </div>
       </div>
       <p className="pequeno texto-3" style={{ marginTop: '0.75rem' }}>
+        {base.manifiesto.fecha_corte && (
+          <>
+            Datos al <strong>{fechaCorta(base.manifiesto.fecha_corte)}</strong> ·{' '}
+          </>
+        )}
         Periodo: {describirPeriodo(filtro, base.manifiesto.fecha_corte)}
       </p>
 
@@ -180,7 +206,7 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
           <Link className="pequeno" to={enlaceConPeriodo('/asistencias', filtro, { diputado: d.id_diputado })}>
             Ver sesiones
           </Link>
-          {ref.asistencia != null && <span className="ficha__nota">Todo el Congreso: {fmtPct(ref.asistencia)}.</span>}
+          {asis.porcentaje != null && <BarraComparada valor={asis.porcentaje} referencia={ref.asistencia} />}
         </Dato>
         <Dato cifra={fmt(mas.intervenciones)}>
           {mas.intervenciones === 0 ? <>No ha hablado ante el Congreso.</> : <>Habló ante el Congreso {veces(mas.intervenciones)}.</>}
@@ -254,7 +280,7 @@ export function TarjetaDiputado({ d }: { d: Diputado }) {
           <span className="insignia insignia--neutro">{d.tipo_representacion === 'MR' ? `Distrito ${d.distrito ?? '¿?'}` : 'Representación proporcional'}</span>
         </div>
         <div className="muy-pequeno texto-2">
-          {etiquetaDe(CALIDAD_CARGO, d.calidad)} · {periodoEjercicio(d)}
+          {d.calidad === 'suplente' ? (d.tipo_representacion === 'RP' ? 'En sustitución (siguiente en la lista)' : 'Suplente en funciones') : etiquetaDe(CALIDAD_CARGO, d.calidad)} · {periodoEjercicio(d)}
         </div>
       </div>
     </Link>

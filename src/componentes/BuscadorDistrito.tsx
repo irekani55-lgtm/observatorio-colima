@@ -4,6 +4,7 @@ import type { Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { useFiltro } from '../estado/useFiltro';
 import { Aviso } from './Aviso';
+import { etiquetaSuplencia } from './FichaDiputado';
 import { EnlaceExterno } from './Fuente';
 import { EnlaceDip } from './TablasRegistros';
 
@@ -122,7 +123,7 @@ export function BuscadorDistrito({ clave = 'distrito' }: { clave?: string }) {
             {actual ? (
               <p className="dato-claro">
                 Quien le representa en el Congreso: <EnlaceDip id={actual.id_diputado} />
-                {actual.calidad === 'suplente' && <span className="texto-3"> (suplente)</span>}.
+                {etiquetaSuplencia(actual) && <span className="texto-3"> ({etiquetaSuplencia(actual)})</span>}.
               </p>
             ) : (
               <p className="texto-3">No hay una diputación registrada para este distrito.</p>

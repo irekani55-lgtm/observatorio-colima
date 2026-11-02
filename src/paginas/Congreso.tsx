@@ -131,7 +131,7 @@ export default function Congreso() {
           titulo="Diputadas y diputados en la base"
           valor={base.diputados.length ? fmt(dips.length) : null}
           detalle={`${fmt(enFuncionesHoy)} en funciones · integración constitucional: ${LEGISLATURA.integracion.total} curules`}
-          explica="Incluye suplentes que han ejercido el cargo; por eso puede superar el número de curules."
+          explica="Incluye a quienes entraron por una licencia (suplentes de distrito y sustitutos de la lista de un partido); por eso puede superar el número de curules."
           enlace={{ a: '/diputaciones', texto: 'Ver directorio' }}
         />
         <Tarjeta

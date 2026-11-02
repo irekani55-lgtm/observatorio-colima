@@ -15,7 +15,8 @@ export const GLOSARIO = {
   tribuna: 'Lugar desde donde se habla ante todo el Congreso.',
   mayoria_relativa: 'Diputación que ganó la elección en su distrito.',
   representacion_proporcional: 'Diputación asignada a un partido según sus votos en todo el estado. Representa a todo Colima, no a un distrito.',
-  suplente: 'Persona que ocupa el lugar de la diputación titular cuando esta pide permiso (licencia).',
+  suplente: 'Persona que ocupa el lugar de la diputación titular de un distrito cuando esta pide permiso (licencia).',
+  sustitucion: 'Las diputaciones por lista de partido no tienen suplente. Si una pide licencia, entra la siguiente persona de la lista de su partido (Código Electoral del Estado de Colima).',
   licencia: 'Permiso para dejar el cargo por un tiempo. Mientras dura, entra la persona suplente.',
   votacion_dividida: 'Votación en la que al menos 3 diputaciones votaron a favor y al menos 3 en contra o se abstuvieron. Ahí se ve mejor la postura de cada persona, porque el Congreso no votó en bloque.',
 } as const;

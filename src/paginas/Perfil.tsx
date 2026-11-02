@@ -21,7 +21,10 @@ import { compromisosFiltrados } from '../indicadores/compromisos';
 import { fichasExhortos } from '../indicadores/exhortos';
 import { fechaCorta, fechaEnPeriodo } from '../indicadores/filtro';
 import { intervencionesFiltradas } from '../indicadores/intervenciones';
-import { votosDeDiputado } from '../indicadores/votaciones';
+import { votosDeDiputado, votosDivididosDeDiputado } from '../indicadores/votaciones';
+import { contarPorAlcance } from '../indicadores/clasificacion';
+import { referenciaCongreso } from '../indicadores/distritos';
+import { BarraComparada } from '../componentes/BarraComparada';
 
 const PESTANAS = ['Asistencias', 'Asuntos', 'Exhortos', 'Intervenciones', 'Comisiones', 'Votaciones', 'Compromisos', 'Agenda', 'Fuentes'] as const;
 
@@ -69,9 +72,12 @@ function PerfilDe({ d }: { d: Diputado }) {
     const comp = compromisosFiltrados(base, periodo, d.id_diputado);
     const tiempos = tiemposProcesales(ind.iniciativasPresentadas.asuntos);
     const agenda = base.agenda.filter((a) => a.id_diputado === d.id_diputado && fechaEnPeriodo(a.fecha, periodo));
-    return { asis, ind, asuntos, inter, votos, com, exh, comp, tiempos, agenda };
+    const alcance = contarPorAlcance(ind.iniciativasPresentadas.asuntos);
+    const div = votosDivididosDeDiputado(base, d.id_diputado, periodo);
+    const ref = referenciaCongreso(base, periodo);
+    return { asis, ind, asuntos, inter, votos, com, exh, comp, tiempos, agenda, alcance, div, ref };
   }, [base, d, periodo.anio, periodo.desde, periodo.hasta]); // eslint-disable-line react-hooks/exhaustive-deps
-  const { asis, ind, asuntos, inter, votos, com, exh, comp, tiempos, agenda } = calc;
+  const { asis, ind, asuntos, inter, votos, com, exh, comp, tiempos, agenda, alcance, div, ref } = calc;
 
   const fuentes = useMemo(() => {
     const ids = new Set<string>([d.id_fuente, ...asuntos.map((a) => a.id_fuente), ...inter.map((i) => i.id_fuente), ...comp.map((c) => c.id_fuente)].filter(Boolean));
@@ -99,48 +105,67 @@ function PerfilDe({ d }: { d: Diputado }) {
       </div>
 
       <section className="seccion">
-        <h2>Indicadores por dimensión</h2>
-        <p className="seccion__intro">Cada dimensión se presenta por separado y no se combina en una calificación global. Los conteos describen actividad documentada en las fuentes; su ausencia no prueba que la actividad no ocurriera.</p>
+        <h2>¿Qué ha hecho en el Congreso?</h2>
+        <p className="seccion__intro">
+          Ordenado según las tres tareas de una diputación. Cada tarea se muestra por separado: no las sumamos en una calificación. Solo contamos lo que está en documentos oficiales; que un dato no aparezca no prueba que no ocurrió.
+        </p>
         <BarraFiltros campos={['anio']} />
-        <div className="rejilla rejilla--2">
+        <div className="perfil-tareas">
           <div className="panel dimension">
-            <h3>Actividad</h3>
+            <h3 className="ficha__funcion">
+              <span className="ficha__funcion-num" aria-hidden="true">1</span>
+              Hacer leyes
+            </h3>
             <dl className="definiciones">
-              <Dato etiqueta="Iniciativas presentadas" valor={ind.iniciativasPresentadas.total} detalle={`${ind.iniciativasPresentadas.individuales} individuales, ${ind.iniciativasPresentadas.compartidos} compartidas`} />
+              <Dato etiqueta="Propuestas de ley presentadas" valor={ind.iniciativasPresentadas.total} detalle={`${ind.iniciativasPresentadas.individuales} solo de esta persona, ${ind.iniciativasPresentadas.compartidos} con otras`} />
+              <Dato etiqueta="…que cambian o crean leyes" valor={alcance.fondo} detalle={`${alcance.tramite} trámites, ${alcance.conmemorativa} reconocimientos`} />
+              <Dato etiqueta="Lo más común en el Congreso" valor={ref.medianaIniciativas == null ? null : `${fmt(ref.medianaIniciativas)} propuestas`} />
+              <Dato etiqueta="Aprobadas por el Congreso" valor={ind.iniciativasAprobadas.total} />
+              <Dato etiqueta="Ya publicadas como ley o decreto" valor={contarDecretosPublicados(ind.iniciativasPresentadas.asuntos)} />
+              <Dato etiqueta="Todavía sin resolver" valor={ind.iniciativasPendientes.total} />
+              <Dato etiqueta="Tiempo típico hasta aprobarse" valor={tiempos.presentacionAprobacion.mediana == null ? 'Sin casos todavía' : `${fmt(tiempos.presentacionAprobacion.mediana)} días`} detalle={tiempos.presentacionAprobacion.casos ? `mediana de ${tiempos.presentacionAprobacion.casos} ${tiempos.presentacionAprobacion.casos === 1 ? 'caso' : 'casos'}` : undefined} />
+              <Dato etiqueta="Votos escritos con su nombre en el acta" valor={votos.total} detalle={`${votos.porSentido.favor} a favor, ${votos.porSentido.contra} en contra, ${votos.porSentido.abstencion} abstenciones`} />
+              <Dato etiqueta="En votaciones divididas" valor={div.divididas ? `${fmt(div.conVoto)} de ${fmt(div.divididas)}` : null} detalle={div.conVoto ? `${div.porSentido.favor} a favor, ${div.porSentido.contra} en contra, ${div.porSentido.abstencion} abstenciones` : undefined} />
+            </dl>
+            <p className="muy-pequeno">
+              <Link to="/metodologia#clasificacion-propuestas">¿Cómo separamos las propuestas?</Link> · <Link to="/metodologia#votaciones-divididas">¿Qué es una votación dividida?</Link>
+            </p>
+          </div>
+          <div className="panel dimension">
+            <h3 className="ficha__funcion">
+              <span className="ficha__funcion-num" aria-hidden="true">2</span>
+              Representar
+            </h3>
+            <dl className="definiciones">
+              <dt>Asistencia a las sesiones</dt>
+              <dd>
+                <strong className="num">{asis.porcentaje == null ? 'Pendiente' : fmtPct(asis.porcentaje)}</strong>
+                <span className="texto-3 muy-pequeno">
+                  {' '}
+                  · {asis.asistencias} de {asis.denominador}
+                  {asis.definitivo ? '' : ' · provisional'}
+                </span>
+                {asis.porcentaje != null && <BarraComparada valor={asis.porcentaje} referencia={ref.asistencia} />}
+              </dd>
+              <Dato etiqueta="Faltas" valor={asis.ausencias + asis.justificadas} detalle={`${asis.justificadas} con permiso, ${asis.ausencias} sin permiso`} />
+              <Dato etiqueta="Veces que habló ante el Congreso" valor={inter.length} />
+              <Dato etiqueta="Comisiones de las que forma parte" valor={com.cargos.length} />
+              <Dato etiqueta="Asistencia a reuniones de comisión" valor={com.porcentaje == null ? null : fmtPct(com.porcentaje)} detalle={`${com.asistencias} de ${com.evaluables} reuniones con lista`} />
+            </dl>
+          </div>
+          <div className="panel dimension">
+            <h3 className="ficha__funcion">
+              <span className="ficha__funcion-num" aria-hidden="true">3</span>
+              Vigilar al gobierno
+            </h3>
+            <dl className="definiciones">
               <Dato etiqueta="Exhortos presentados" valor={ind.exhortosPresentados.total} />
-              <Dato etiqueta="Puntos de acuerdo" valor={ind.puntosAcuerdo.total} />
-              <Dato etiqueta="Intervenciones en tribuna" valor={inter.length} />
-              <Dato etiqueta="Asistencias registradas" valor={asis.asistencias} detalle={`${asis.ausencias} ausencias, ${asis.justificadas} justificadas`} />
-              <Dato etiqueta="Reuniones de comisión con registro" valor={com.reunionesConRegistro} />
-            </dl>
-          </div>
-          <div className="panel dimension">
-            <h3>Avance procesal de sus iniciativas</h3>
-            <dl className="definiciones">
-              <Dato etiqueta="Dictaminadas" valor={ind.iniciativasDictaminadas.total} detalle={`de ${ind.iniciativasPresentadas.total}`} />
-              <Dato etiqueta="Aprobadas" valor={ind.iniciativasAprobadas.total} detalle={`${ind.iniciativasAprobadas.individuales} individuales, ${ind.iniciativasAprobadas.compartidos} compartidas`} />
-              <Dato etiqueta="Pendientes" valor={ind.iniciativasPendientes.total} />
-              <Dato etiqueta="Dictámenes relacionados" valor={ind.dictamenesRelacionados.length} />
-              <Dato etiqueta="Mediana presentación → aprobación" valor={tiempos.presentacionAprobacion.mediana == null ? null : `${fmt(tiempos.presentacionAprobacion.mediana)} días`} detalle={`${tiempos.presentacionAprobacion.casos} casos con ambas fechas`} />
-            </dl>
-          </div>
-          <div className="panel dimension">
-            <h3>Participación y deliberación</h3>
-            <dl className="definiciones">
-              <Dato etiqueta="Asistencia al Pleno" valor={asis.porcentaje == null ? null : fmtPct(asis.porcentaje)} detalle={`${asis.asistencias}/${asis.denominador} evaluables${asis.definitivo ? '' : ' · provisional'}`} />
-              <Dato etiqueta="Votos individuales registrados" valor={votos.total} detalle={`${votos.porSentido.favor} a favor, ${votos.porSentido.contra} en contra, ${votos.porSentido.abstencion} abstenciones`} />
-              <Dato etiqueta="Comisiones que integra" valor={com.cargos.length} />
-              <Dato etiqueta="Asistencia a comisiones" valor={com.porcentaje == null ? null : fmtPct(com.porcentaje)} detalle={`${com.asistencias}/${com.evaluables} reuniones con lista`} />
-            </dl>
-          </div>
-          <div className="panel dimension">
-            <h3>Seguimiento y resultados documentados</h3>
-            <dl className="definiciones">
-              <Dato etiqueta="Decretos publicados (de sus iniciativas)" valor={contarDecretosPublicados(ind.iniciativasPresentadas.asuntos)} />
               <Dato etiqueta="Exhortos aprobados" valor={ind.exhortosAprobados.total} detalle={ind.exhortosAprobadosSinVerificar ? `+${ind.exhortosAprobadosSinVerificar} sin verificar` : undefined} />
-              <Dato etiqueta="Exhortos con respuesta localizada" valor={exh.filter((x) => x.seguimiento === 'con_respuesta' || x.seguimiento === 'con_acciones').length} />
+              <Dato etiqueta="Exhortos con respuesta de la autoridad" valor={exh.filter((x) => x.seguimiento === 'con_respuesta' || x.seguimiento === 'con_acciones').length} />
+              <Dato etiqueta="Puntos de acuerdo" valor={ind.puntosAcuerdo.total} />
               <Dato etiqueta="Compromisos con avance documentado" valor={comp.filter((c) => c.estado_seguimiento === 'cumplido_documentado' || c.estado_seguimiento === 'avance_documentado').length} detalle={`de ${comp.length} registrados`} />
             </dl>
+            <p className="muy-pequeno texto-3">Un exhorto es una petición a otra autoridad para que atienda un problema. Aprobarlo no obliga a la autoridad a atenderlo.</p>
           </div>
         </div>
       </section>
