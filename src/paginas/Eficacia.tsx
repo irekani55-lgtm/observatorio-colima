@@ -61,6 +61,21 @@ const pct = (n: number, d: number) => (d ? fmtPct((n / d) * 100) : 'No calculabl
 const dias = (m: number | null) => (m == null ? 'Sin fechas' : `${fmt(m)} días`);
 
 export default function Eficacia() {
+  return (
+    <>
+      <EncabezadoPagina titulo="Indicadores de eficacia legislativa">
+        <p>
+          Los indicadores se organizan en cuatro dimensiones independientes. Para cada uno se muestran el valor, su numerador y denominador, y sus limitaciones. Los valores individuales se consultan en el <Link to="/diputaciones">comparativo del directorio</Link> y en cada perfil.
+        </p>
+      </EncabezadoPagina>
+      <BarraFiltros />
+      <IndicadoresDetallados />
+    </>
+  );
+}
+
+/** Tablas de indicadores con su cálculo y limitaciones (se muestran en «El Congreso en números»). */
+export function IndicadoresDetallados() {
   const { base } = useDatos();
   const [filtro] = useFiltro();
 
@@ -91,15 +106,9 @@ export default function Eficacia() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Indicadores de eficacia legislativa">
-        <p>
-          Los indicadores se organizan en cuatro dimensiones independientes, tanto para la actividad individual como para el funcionamiento del Congreso. Para cada uno se muestran el valor, su numerador y denominador, y sus limitaciones. Los valores individuales se consultan en el <Link to="/diputaciones">comparativo del directorio</Link> y en cada perfil.
-        </p>
-      </EncabezadoPagina>
       <Aviso titulo="Sin índice único">
         Este tablero no construye un índice de «mejor diputado» ni un ranking de calidad legislativa: no existe una metodología consensuada que pondere actividades tan distintas como legislar, deliberar, representar y gestionar. Cada indicador describe un aspecto específico.
       </Aviso>
-      <BarraFiltros />
 
       <TablaDimension
         titulo="1. Actividad"
@@ -143,7 +152,7 @@ export default function Eficacia() {
           { indicador: 'Decretos publicados', valor: fmt(res.decretosPublicados), calculo: 'Números de decreto únicos con fecha de publicación oficial.', limitacion: 'No todos los asuntos aprobados requieren publicación.', enlace: '/asuntos?estado=publicado' },
           { indicador: 'Exhortos con respuesta localizada', valor: pct(ex.conRespuesta, ex.aprobados), calculo: `${fmt(ex.conRespuesta)} ÷ ${fmt(ex.aprobados)} exhortos aprobados`, limitacion: `${fmt(ex.pendientesSeguimiento)} aprobados aún sin búsqueda de respuesta; ${fmt(ex.noVerificados)} no verificados.`, enlace: '/exhortos' },
           { indicador: 'Exhortos con acciones posteriores', valor: pct(ex.conAcciones, ex.aprobados), calculo: `${fmt(ex.conAcciones)} ÷ ${fmt(ex.aprobados)}`, limitacion: 'Una respuesta no equivale a atender la solicitud.', enlace: '/exhortos?seguimiento=con_acciones' },
-          { indicador: 'Compromisos con avance documentado', valor: pct(avanceComp, comp.length), calculo: `${fmt(avanceComp)} ÷ ${fmt(comp.length)} compromisos registrados`, limitacion: 'Solo compromisos documentables; no es un inventario exhaustivo.', enlace: '/compromisos' },
+          { indicador: 'Compromisos con avance documentado', valor: pct(avanceComp, comp.length), calculo: `${fmt(avanceComp)} ÷ ${fmt(comp.length)} compromisos registrados`, limitacion: 'Solo compromisos documentables; no es un inventario exhaustivo.' },
         ]}
       />
     </>

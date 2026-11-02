@@ -4,6 +4,7 @@ import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { TarjetaDiputado } from '../componentes/FichaDiputado';
 import { BarraFiltros } from '../componentes/Filtros';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { Partido } from '../componentes/Partido';
 import { Tabla, type Columna } from '../componentes/Tabla';
 import { fmtPct } from '../componentes/Tarjeta';
@@ -24,7 +25,7 @@ export function ejercioEnPeriodo(d: Diputado, f: Filtro): boolean {
 
 export default function Directorio() {
   const { base } = useDatos();
-  const [filtro] = useFiltro();
+  const [filtro, , , fijar] = useFiltro();
   const [vista, setVista] = useState<'fichas' | 'tabla'>('fichas');
   const lista = diputadosFiltrados(base, filtro)
     .filter((d) => ejercioEnPeriodo(d, filtro))
@@ -56,10 +57,22 @@ export default function Directorio() {
     <>
       <EncabezadoPagina titulo="Directorio de diputadas y diputados">
         <p>
-          Personas que han ejercido una curul en la LXI Legislatura según el catálogo cargado, incluidas las personas que entraron por una licencia: suplentes en los distritos y, en las diputaciones por lista, la siguiente persona de la lista del partido (esas no tienen suplente). Las diputaciones de representación proporcional también tienen <Link to="/representacion-proporcional">un apartado propio</Link>.
+          Personas que han ejercido una curul en la LXI Legislatura según el catálogo cargado, incluidas las personas que entraron por una licencia: suplentes en los distritos y, en las diputaciones por lista, la siguiente persona de la lista del partido (esas no tienen suplente).
         </p>
       </EncabezadoPagina>
-      <BarraFiltros campos={['anio', 'fechas', 'partido', 'representacion', 'distrito']} />
+      <div className={`fila-flex${claseNuevo()}`} role="group" aria-label="Cómo llegaron al cargo" style={{ marginBottom: '0.75rem' }}>
+        <button type="button" className="boton boton--chico" aria-pressed={!filtro.tipoRepresentacion} onClick={() => fijar('representacion', undefined)}>
+          Todas
+        </button>
+        <button type="button" className="boton boton--chico" aria-pressed={filtro.tipoRepresentacion === 'MR'} onClick={() => fijar('representacion', 'MR')}>
+          Ganaron en su distrito
+        </button>
+        <button type="button" className="boton boton--chico" aria-pressed={filtro.tipoRepresentacion === 'RP'} onClick={() => fijar('representacion', 'RP')}>
+          Llegaron por la lista de su partido
+        </button>
+        <Nuevo texto="aquí quedó lo que antes era «Representación proporcional»" />
+      </div>
+      <BarraFiltros campos={['anio', 'fechas', 'partido', 'distrito']} />
       {base.diputados.length === 0 ? (
         <Aviso tipo="alerta" titulo="Información pendiente de integración">
           El catálogo <code>diputados.csv</code> está vacío. Consulte <Link to="/fuentes#integracion">cómo integrar los datos</Link>.

@@ -16,6 +16,8 @@ import { asuntosFiltrados, esAprobado, idsDiputadosPromoventes, resumenAsuntos }
 import { coberturaEvidencia } from '../indicadores/evidencia';
 import { diputadosFiltrados, fechaEnPeriodo } from '../indicadores/filtro';
 import { NotaTablaDistritos, TablaDistritos } from './Mapa';
+import { IndicadoresDetallados } from './Eficacia';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 
 const recortar = (v: string) => (v.length > 26 ? `${v.slice(0, 25)}…` : v);
 
@@ -240,6 +242,15 @@ export default function Congreso() {
         <h2>Comparar los 16 distritos</h2>
         <NotaTablaDistritos />
         <TablaDistritos />
+      </section>
+      <section className={`seccion${claseNuevo()}`} id="indicadores">
+        <details className="desplegable">
+          <summary>Indicadores detallados: cómo se calcula cada número y sus límites</summary>
+          <div style={{ marginTop: '0.75rem' }}>
+            <IndicadoresDetallados />
+          </div>
+        </details>
+        <Nuevo texto="aquí quedó lo que antes era «Indicadores»" />
       </section>
     </>
   );

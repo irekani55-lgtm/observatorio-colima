@@ -101,12 +101,19 @@ describe('interfaz', () => {
     expect(screen.getByRole('heading', { name: '¿Qué hace una diputación?' })).toBeInTheDocument();
   });
 
-  it('las diputaciones RP no se asocian a un distrito y tienen su propia ficha', async () => {
+  it('las diputaciones RP tienen su ficha desde el inicio y la página vieja lleva a Diputaciones filtrada', async () => {
     const u = userEvent.setup();
-    montar('/representacion-proporcional', datos());
+    montar('/', datos());
     await u.click(await screen.findByRole('button', { name: /Beto Ejemplo/ }));
     expect(screen.getByRole('heading', { name: 'Beto Ejemplo' })).toBeInTheDocument();
-    expect(screen.queryByText(/Distrito electoral local/)).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Diputación de todo el estado' })).toBeInTheDocument();
+  });
+
+  it('el menú tiene 4 opciones y las páginas viejas llevan a su nuevo lugar', async () => {
+    montar('/representacion-proporcional', datos());
+    expect(await screen.findByRole('button', { name: 'Llegaron por la lista de su partido', pressed: true })).toBeInTheDocument();
+    const menu = screen.getByRole('navigation', { name: 'Navegación principal' });
+    expect(within(menu).getAllByRole('link').map((a) => a.textContent)).toEqual(['Inicio', 'Diputaciones', '¿Qué se hace en el Congreso?', 'El Congreso en números']);
   });
 
   it('el perfil muestra fotografía no disponible y los registros de asistencia', async () => {

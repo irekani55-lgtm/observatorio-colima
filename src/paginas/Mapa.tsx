@@ -116,7 +116,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             <div>
               <h2 style={{ fontSize: '1.1rem', marginBottom: '0.2rem' }}>{titulo}</h2>
               <p className={`mapa-indicacion${claseNuevo()}`}>
-                <span aria-hidden="true">👆</span> Toque un distrito en el mapa para ver quién le representa. <Nuevo texto="indicación" />
+                Toque un distrito en el mapa para ver quién le representa. <Nuevo texto="indicación" />
               </p>
             </div>
             {sel != null && (
@@ -365,7 +365,7 @@ export default function PaginaMapa() {
     <>
       <EncabezadoPagina titulo="Mapa de distritos electorales locales">
         <p>
-          Colima elige {LEGISLATURA.integracion.MR} diputaciones por mayoría relativa, una por cada distrito electoral local. Seleccione un distrito en el mapa o en la lista para ver la ficha de la persona que lo representa. Las {LEGISLATURA.integracion.RP} diputaciones de representación proporcional no corresponden a un distrito y se consultan en <Link to="/representacion-proporcional">su propio apartado</Link>.
+          Colima elige {LEGISLATURA.integracion.MR} diputaciones por mayoría relativa, una por cada distrito electoral local. Seleccione un distrito en el mapa o en la lista para ver la ficha de la persona que lo representa. Las {LEGISLATURA.integracion.RP} diputaciones de representación proporcional no corresponden a un distrito y se consultan en <Link to="/diputaciones?representacion=RP">Diputaciones</Link>.
         </p>
       </EncabezadoPagina>
       <BuscadorDistrito />

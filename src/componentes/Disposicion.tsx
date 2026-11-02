@@ -5,18 +5,15 @@ import { useDatos } from '../estado/DatosContext';
 import { fechaCorta } from '../indicadores/filtro';
 import { EnlaceExterno } from './Fuente';
 import { cssPartidos } from './colores';
-import { CAMBIOS_VISTA_PREVIA, MARCAR_CAMBIOS } from './Nuevo';
+import { CAMBIOS_VISTA_PREVIA, claseNuevo, MARCAR_CAMBIOS, Nuevo } from './Nuevo';
 import { IcoCongreso, IcoLuna, IcoMenu, IcoSol, IcoX } from './Iconos';
 
+/** Cuatro opciones. Metodología y Fuentes van al pie, en «¿De dónde salen los datos?». */
 export const NAV_PRINCIPAL = [
   { a: '/', texto: 'Inicio', fin: true },
-  { a: '/congreso', texto: 'En números' },
   { a: '/diputaciones', texto: 'Diputaciones' },
-  { a: '/representacion-proporcional', texto: 'Representación proporcional' },
-  { a: '/asuntos', texto: 'Actividad legislativa' },
-  { a: '/eficacia', texto: 'Indicadores' },
-  { a: '/metodologia', texto: 'Metodología' },
-  { a: '/fuentes', texto: 'Fuentes y datos' },
+  { a: '/asuntos', texto: '¿Qué se hace en el Congreso?' },
+  { a: '/congreso', texto: 'El Congreso en números' },
 ];
 
 export const NAV_ACTIVIDAD = [
@@ -26,7 +23,6 @@ export const NAV_ACTIVIDAD = [
   { a: '/intervenciones', texto: 'Intervenciones' },
   { a: '/comisiones', texto: 'Comisiones' },
   { a: '/votaciones', texto: 'Votaciones' },
-  { a: '/compromisos', texto: 'Compromisos' },
 ];
 
 export const NOTA_PUBLICA =
@@ -161,17 +157,17 @@ export function Disposicion() {
         <div className="contenedor">
           <p className="nota-publica">{NOTA_PUBLICA}</p>
           <div className="pie__rejilla" style={{ marginTop: '1.5rem' }}>
-            <div>
-              <h2>Datos</h2>
+            <div className={claseNuevo()}>
+              <h2>¿De dónde salen los datos?</h2>
               <p>
-                Conjunto: <strong>{base.manifiesto.nombre}</strong>
-                <br />
-                Fecha de corte: {base.manifiesto.fecha_corte ? fechaCorta(base.manifiesto.fecha_corte) : 'sin definir'}
+                Datos al {base.manifiesto.fecha_corte ? fechaCorta(base.manifiesto.fecha_corte) : 'sin definir'}, tomados de documentos oficiales.
               </p>
               <ul>
-                <li><Link to="/metodologia">Metodología</Link></li>
-                <li><Link to="/fuentes">Fuentes y calidad de datos</Link></li>
+                <li><Link to="/metodologia">Cómo calculamos cada dato</Link></li>
+                <li><Link to="/fuentes">Fuentes, calidad y descargas</Link></li>
+                <li><Link to="/fuentes#bitacora">Bitácora de observaciones</Link></li>
               </ul>
+              <Nuevo texto="Metodología y Fuentes ahora están aquí" />
             </div>
             <div>
               <h2>Fuentes oficiales</h2>
