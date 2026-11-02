@@ -25,6 +25,7 @@ export const CAMBIOS_VISTA_PREVIA = [
   { texto: 'Inicio: «El Congreso en resumen» con la misma letra que «¿Qué hace una diputación?» y en palabras más sencillas.', a: '/' },
   { texto: 'Mapa: «Seleccionar distrito por número» y «¿Cómo se reparten los 25 lugares?» pasan a la columna derecha, debajo de la ficha.', a: '/' },
   { texto: 'Mapa: la columna derecha es más compacta (un renglón por partido) y termina a la misma altura que el mapa.', a: '/' },
+  { texto: 'Mapa: «¿Cómo se reparten los 25 lugares?» muestra un cuadrito de color por partido con su número.', a: '/' },
   { texto: 'Mapa: los botones del 1 al 16 se cambiaron por una lista desplegable («¿Prefiere elegir de una lista?»).', a: '/' },
   { texto: 'Descargas: «Descargar CSV» ahora funciona dentro del dashboard publicado (pide confirmar antes de guardar).', a: '/diputaciones/DIP-148' },
   { texto: 'Julio César León Trujillo ya no aparece «en funciones»: dice que tiene licencia desde el 2 oct 2024, que no ha regresado y quién está en su lugar.', a: '/diputaciones/DIP-RP-JCLT' },

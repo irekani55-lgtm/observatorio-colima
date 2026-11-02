@@ -1761,3 +1761,6 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 }
 .mapa-columna .curules__etiqueta { white-space: nowrap; }
 @media (max-width: 480px) { .mapa-columna .curules__etiqueta { width: 4.7rem; } .mapa-columna .curules__cuadro { width: 16px; height: 16px; } }
+/* Un solo cuadrito de color por partido, a la izquierda de su número. */
+.mapa-columna .curules__cuadro--uno { width: 16px !important; height: 16px !important; border-radius: 3px; cursor: default; }
+.mapa-columna .curules__etiqueta { width: auto; }

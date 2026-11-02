@@ -94,7 +94,6 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
   );
   const siglas = (id: string) => base.idx.partido.get(id)?.siglas ?? id;
   const listaSiglas = (ids: readonly string[]) => ids.map(siglas).join(', ').replace(/, ([^,]*)$/, ' y $1');
-  const abrirCurul = (d: Diputado) => (d.tipo_representacion === 'MR' && d.distrito != null ? seleccionar(d.distrito) : seleccionarRp(d.id_diputado));
   const rp = sel == null ? plurinominales.find((d) => d.id_diputado === params.get(claveRp)) : undefined;
   const ficha = useRef<HTMLElement>(null);
   const seleccionarRp = (id: string) => {
@@ -217,21 +216,9 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             <div className="curules__grupos">
               {porPartido.map(([id, personas]) => (
                 <div key={id} className="curules__grupo">
+                  <span className="curules__cuadro curules__cuadro--uno" style={{ background: colorPartido(base, id) }} aria-hidden="true" />
                   <span className="curules__etiqueta">
                     <strong className="num">{personas.length}</strong> {siglas(id)}
-                  </span>
-                  <span className="curules__cuadros">
-                    {personas.map((d) => (
-                      <button
-                        key={d.id_diputado}
-                        type="button"
-                        className="curules__cuadro"
-                        style={{ background: colorPartido(base, id) }}
-                        title={`${d.nombre_completo} (${siglas(id)})`}
-                        aria-label={`${d.nombre_completo}, ${siglas(id)}. Ver su ficha`}
-                        onClick={() => abrirCurul(d)}
-                      />
-                    ))}
                   </span>
                 </div>
               ))}
@@ -241,13 +228,13 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
                 const n = enCurul.filter((d) => (c.partidos as readonly string[]).includes(d.id_partido)).length;
                 return (
                   <li key={c.nombre}>
-                    {listaSiglas(c.partidos)} se unieron en la elección de 2024 («{c.nombre}») y juntos tienen <strong>{n}</strong> de los {enCurul.length} lugares.
+                    {listaSiglas(c.partidos)} se unieron en la elección de 2024 («{c.nombre}») y juntos tienen <strong>{n}</strong> de los {enCurul.length} lugares{n > enCurul.length / 2 ? ': más de la mitad del Congreso' : ''}.
                   </li>
                 );
               })}
             </ul>
-            <p className="muy-pequeno texto-3">Cada cuadro es una persona. Tóquelo para ver qué ha hecho.</p>
-            <Nuevo texto="ahora va a la derecha" />
+            <p className="muy-pequeno texto-3">Cada número es cuántos lugares tiene el partido, contando a quienes ganaron un distrito y a quienes llegaron por la lista.</p>
+            <Nuevo texto="un cuadrito de color por partido" />
           </section>
         )}
         </div>
