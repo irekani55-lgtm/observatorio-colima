@@ -158,7 +158,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             <>
               <h2 className="mapa-columna__titulo">Elija su distrito</h2>
               <p className="pequeno texto-2" style={{ margin: '0 0 0.35rem' }}>
-                Toque su distrito en el mapa o elija su número abajo. Verá quién le representa y qué ha hecho en el Congreso.
+                Toque su distrito en el mapa o elíjalo en la lista de abajo. Verá quién le representa y qué ha hecho en el Congreso.
               </p>
               <p className="muy-pequeno texto-3" style={{ margin: 0 }}>
                 Con teclado: use Tab para moverse entre los distritos y Enter para elegir uno.
@@ -192,18 +192,22 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
         </section>
         <section className={`panel${claseNuevo()}`} aria-labelledby="lista-distritos">
           <h3 className="mapa-columna__titulo" id="lista-distritos">
-            Seleccionar distrito por número
+            ¿Prefiere elegir de una lista?
           </h3>
-          <ul className="lista-distritos" aria-labelledby="lista-distritos">
-            {Array.from({ length: LEGISLATURA.distritos }, (_, i) => i + 1).map((d) => (
-              <li key={d}>
-                <button type="button" className="boton boton--chico" aria-pressed={sel === d} aria-label={nombreDe(d)} onClick={() => seleccionar(sel === d ? null : d)}>
-                  {d}
-                </button>
-              </li>
-            ))}
-          </ul>
-          <Nuevo texto="ahora va a la derecha" />
+          <div className="campo">
+            <label htmlFor={`${clave}-lista`} className="sr-only">
+              Elegir distrito
+            </label>
+            <select id={`${clave}-lista`} value={sel ?? ''} onChange={(e) => seleccionar(e.target.value ? Number(e.target.value) : null)}>
+              <option value="">Elija un distrito…</option>
+              {Array.from({ length: LEGISLATURA.distritos }, (_, i) => i + 1).map((d) => (
+                <option key={d} value={d}>
+                  {etiquetaMapa(d)}
+                </option>
+              ))}
+            </select>
+          </div>
+          <Nuevo texto="lista desplegable en lugar de los botones del 1 al 16" />
         </section>
         {enCurul.length > 0 && (
           <section className={`panel curules${claseNuevo()}`} aria-labelledby={`${claveRp}-curules`}>

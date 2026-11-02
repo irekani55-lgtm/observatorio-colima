@@ -67,9 +67,9 @@ describe('interfaz', () => {
     const u = userEvent.setup();
     montar('/', datos());
     expect(await screen.findByText(/Esquema no geográfico/)).toBeInTheDocument();
-    const lista = screen.getByRole('list', { name: 'Seleccionar distrito por número' });
-    await u.click(within(lista).getByRole('button', { name: 'Distrito 3 · Ana Ejemplo' }));
-    expect(within(lista).getByRole('button', { name: 'Distrito 3 · Ana Ejemplo' })).toHaveAttribute('aria-pressed', 'true');
+    const lista = screen.getByRole('combobox', { name: 'Elegir distrito' });
+    await u.selectOptions(lista, '3');
+    expect(lista).toHaveValue('3');
     expect(document.querySelector('path[data-distrito="3"]')).toHaveClass('seleccionado');
     expect(screen.getByRole('heading', { name: 'Ana Ejemplo' })).toBeInTheDocument();
     expect(screen.getByText('Distrito electoral local 3', { selector: 'h2' })).toBeInTheDocument();
