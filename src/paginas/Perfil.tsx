@@ -1,42 +1,60 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Aviso } from '../componentes/Aviso';
+import { BarraComparada } from '../componentes/BarraComparada';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { DatosGenerales } from '../componentes/FichaDiputado';
 import { BarraFiltros } from '../componentes/Filtros';
 import { Foto } from '../componentes/Foto';
 import { EnlaceExterno, EnlaceFuente } from '../componentes/Fuente';
 import { InsigniaCatalogo } from '../componentes/Insignia';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { Tabla } from '../componentes/Tabla';
 import { TablaAsistencias, TablaAsuntos, TablaIntervenciones, TablaVotos } from '../componentes/TablasRegistros';
-import { fmt, fmtPct } from '../componentes/Tarjeta';
+import { fmt } from '../componentes/Tarjeta';
 import { CARGOS_COMISION, ESTADOS_VERIFICACION, SEGUIMIENTO_COMPROMISO, etiquetaDe } from '../config/catalogos';
-import type { Diputado } from '../datos/modelo';
+import type { Asunto, Compromiso, Diputado, Integrante, Intervencion, Voto } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { useFiltro } from '../estado/useFiltro';
-import { asistenciaDeDiputado } from '../indicadores/asistencia';
-import { asuntosDeDiputado, contarDecretosPublicados, indicadoresAsuntosDiputado, tiemposProcesales } from '../indicadores/asuntos';
-import { participacionComisionesDiputado } from '../indicadores/comisiones';
-import { compromisosFiltrados } from '../indicadores/compromisos';
-import { fichasExhortos } from '../indicadores/exhortos';
-import { fechaCorta, fechaEnPeriodo } from '../indicadores/filtro';
-import { intervencionesFiltradas } from '../indicadores/intervenciones';
-import { votosDeDiputado, votosDivididosDeDiputado } from '../indicadores/votaciones';
-import { contarPorAlcance } from '../indicadores/clasificacion';
-import { referenciaCongreso } from '../indicadores/distritos';
-import { BarraComparada } from '../componentes/BarraComparada';
+import type { RegistroAsistencia } from '../indicadores/asistencia';
+import { fechaCorta } from '../indicadores/filtro';
+import { aSlug, datosPerfil, indicadoresQueNoCuadran, periodoArchivo, PESTANAS, type IndicadorPerfil, type Pestana } from '../indicadores/perfil';
 
-const PESTANAS = ['Asistencias', 'Asuntos', 'Exhortos', 'Intervenciones', 'Comisiones', 'Votaciones', 'Compromisos', 'Agenda', 'Fuentes'] as const;
-
-function Dato({ etiqueta, valor, detalle }: { etiqueta: string; valor: string | number | null; detalle?: string }) {
-  return (
+/** Un renglón de indicador. Si sale de registros propios y no vale 0, todo el renglón lleva a sus registros. */
+function FilaIndicador({ i, onVer, refAsistencia, pct }: { i: IndicadorPerfil; onVer: () => void; refAsistencia?: number | null; pct?: number | null }) {
+  const valor = i.valor == null ? 'Pendiente' : typeof i.valor === 'number' ? fmt(i.valor) : i.valor;
+  const clic = Boolean(i.pestana && i.filas && i.conteo && i.conteo > 0);
+  const contenido = (
     <>
-      <dt>{etiqueta}</dt>
-      <dd>
-        <strong className="num">{valor == null ? 'Pendiente' : typeof valor === 'number' ? fmt(valor) : valor}</strong>
-        {detalle && <span className="texto-3 muy-pequeno"> · {detalle}</span>}
-      </dd>
+      <span className="ind__etiqueta">{i.etiqueta}</span>
+      <span className="ind__valor">
+        <strong className="num">{valor}</strong>
+        {i.detalle && <span className="texto-3 muy-pequeno"> · {i.detalle}</span>}
+      </span>
+      {clic && (
+        <span className="ind__ver" aria-hidden="true">
+          Ver →
+        </span>
+      )}
     </>
+  );
+  return (
+    <li className={`ind${claseNuevo(Boolean(i.cambio))}`}>
+      {clic ? (
+        <button type="button" className="ind__fila ind__fila--enlace" onClick={onVer} aria-label={`${i.etiqueta}: ${valor}${i.detalle ? ` (${i.detalle})` : ''}. Ver ${i.conteo} ${i.conteo === 1 ? 'registro' : 'registros'}`}>
+          {contenido}
+        </button>
+      ) : (
+        <div className="ind__fila">{contenido}</div>
+      )}
+      {i.id === 'asistencia' && pct != null && (
+        <div className="ind__extra">
+          <BarraComparada valor={pct} referencia={refAsistencia ?? null} />
+        </div>
+      )}
+      {i.nota && <p className="ind__nota muy-pequeno texto-3">ⓘ {i.nota}</p>}
+      {i.cambio && <Nuevo texto={i.cambio} />}
+    </li>
   );
 }
 
@@ -59,25 +77,28 @@ function PerfilDe({ d }: { d: Diputado }) {
   const { base } = useDatos();
   const [filtro] = useFiltro();
   const periodo = { anio: filtro.anio, desde: filtro.desde, hasta: filtro.hasta };
-  const [tab, setTab] = useState<(typeof PESTANAS)[number]>('Asistencias');
+  const [tab, setTab] = useState<Pestana>('Asistencias');
 
-  const calc = useMemo(() => {
-    const asis = asistenciaDeDiputado(base, d, periodo);
-    const ind = indicadoresAsuntosDiputado(base, d, periodo);
-    const asuntos = asuntosDeDiputado(base, d.id_diputado, periodo);
-    const inter = intervencionesFiltradas(base, periodo).filter((i) => i.id_diputado === d.id_diputado);
-    const votos = votosDeDiputado(base, d.id_diputado, periodo);
-    const com = participacionComisionesDiputado(base, d.id_diputado, periodo);
-    const exh = fichasExhortos(base, periodo).filter((x) => x.asunto.promoventes.some((p) => p.id_diputado === d.id_diputado && (p.rol === 'autor' || p.rol === 'coautor')));
-    const comp = compromisosFiltrados(base, periodo, d.id_diputado);
-    const tiempos = tiemposProcesales(ind.iniciativasPresentadas.asuntos);
-    const agenda = base.agenda.filter((a) => a.id_diputado === d.id_diputado && fechaEnPeriodo(a.fecha, periodo));
-    const alcance = contarPorAlcance(ind.iniciativasPresentadas.asuntos);
-    const div = votosDivididosDeDiputado(base, d.id_diputado, periodo);
-    const ref = referenciaCongreso(base, periodo);
-    return { asis, ind, asuntos, inter, votos, com, exh, comp, tiempos, agenda, alcance, div, ref };
-  }, [base, d, periodo.anio, periodo.desde, periodo.hasta]); // eslint-disable-line react-hooks/exhaustive-deps
-  const { asis, ind, asuntos, inter, votos, com, exh, comp, tiempos, agenda, alcance, div, ref } = calc;
+  const calc = useMemo(() => datosPerfil(base, d, periodo), [base, d, periodo.anio, periodo.desde, periodo.hasta]); // eslint-disable-line react-hooks/exhaustive-deps
+  const { asis, asuntos, inter, votos, cargos, exh, comp, agenda, tareas, ref } = calc;
+  const ind = calc.ind;
+  const fallas = useMemo(() => indicadoresQueNoCuadran(tareas), [tareas]);
+
+  // Indicador elegido: la pestaña que le toca muestra solo sus filas (o las de una parte del desglose).
+  const [sel, setSel] = useState<{ ind: string; parte?: string } | null>(null);
+  const indSel = sel ? tareas.flatMap((t) => t.indicadores).find((i) => i.id === sel.ind) : undefined;
+  const parteSel = indSel && sel?.parte ? indSel.partes?.find((p) => p.id === sel.parte) : undefined;
+  const filasSel = parteSel ? parteSel.filas : indSel?.filas;
+  const activo = (p: Pestana) => Boolean(indSel && filasSel && indSel.pestana === p);
+  const filasDe = <T,>(p: Pestana, todas: T[]): T[] => (activo(p) ? (filasSel as T[]) : todas);
+  const periodoTxt = periodoArchivo(periodo, base.manifiesto.fecha_corte);
+  const archivoDe = (p: Pestana, base_: string) =>
+    activo(p) ? `${indSel!.id}${parteSel ? `-${parteSel.id}` : ''}_${aSlug(d.nombre_completo)}_${periodoTxt}` : `${base_}_${aSlug(d.nombre_completo)}_${periodoTxt}`;
+  function ver(i: IndicadorPerfil, parte?: string) {
+    setSel({ ind: i.id, parte });
+    if (i.pestana) setTab(i.pestana);
+    requestAnimationFrame(() => document.getElementById('registros')?.scrollIntoView?.({ behavior: 'smooth', block: 'start' }));
+  }
 
   const fuentes = useMemo(() => {
     const ids = new Set<string>([d.id_fuente, ...asuntos.map((a) => a.id_fuente), ...inter.map((i) => i.id_fuente), ...comp.map((c) => c.id_fuente)].filter(Boolean));
@@ -109,98 +130,119 @@ function PerfilDe({ d }: { d: Diputado }) {
         <p className="seccion__intro">
           Ordenado según las tres tareas de una diputación. Cada tarea se muestra por separado: no las sumamos en una calificación. Solo contamos lo que está en documentos oficiales; que un dato no aparezca no prueba que no ocurrió.
         </p>
+        <p className={`pequeno${claseNuevo()}`}>
+          Toque un renglón que diga <strong>Ver →</strong> para ver los registros que forman ese número. <Nuevo />
+        </p>
         <BarraFiltros campos={['anio']} />
+        {fallas.length > 0 && (
+          <Aviso tipo="alerta" titulo="Hay indicadores que no coinciden con sus registros">
+            <ul>
+              {fallas.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </Aviso>
+        )}
         <div className="perfil-tareas">
-          <div className="panel dimension">
-            <h3 className="ficha__funcion">
-              <span className="ficha__funcion-num" aria-hidden="true">1</span>
-              Hacer leyes
-            </h3>
-            <dl className="definiciones">
-              <Dato etiqueta="Propuestas de ley presentadas" valor={ind.iniciativasPresentadas.total} detalle={`${ind.iniciativasPresentadas.individuales} solo de esta persona, ${ind.iniciativasPresentadas.compartidos} con otras`} />
-              <Dato etiqueta="…que cambian o crean leyes" valor={alcance.fondo} detalle={`${alcance.tramite} trámites, ${alcance.conmemorativa} reconocimientos`} />
-              <Dato etiqueta="Lo más común en el Congreso" valor={ref.medianaIniciativas == null ? null : `${fmt(ref.medianaIniciativas)} propuestas`} />
-              <Dato etiqueta="Aprobadas por el Congreso" valor={ind.iniciativasAprobadas.total} />
-              <Dato etiqueta="Ya publicadas como ley o decreto" valor={contarDecretosPublicados(ind.iniciativasPresentadas.asuntos)} />
-              <Dato etiqueta="Todavía sin resolver" valor={ind.iniciativasPendientes.total} />
-              <Dato etiqueta="Tiempo típico hasta aprobarse" valor={tiempos.presentacionAprobacion.mediana == null ? 'Sin casos todavía' : `${fmt(tiempos.presentacionAprobacion.mediana)} días`} detalle={tiempos.presentacionAprobacion.casos ? `mediana de ${tiempos.presentacionAprobacion.casos} ${tiempos.presentacionAprobacion.casos === 1 ? 'caso' : 'casos'}` : undefined} />
-              <Dato etiqueta="Votos escritos con su nombre en el acta" valor={votos.total} detalle={`${votos.porSentido.favor} a favor, ${votos.porSentido.contra} en contra, ${votos.porSentido.abstencion} abstenciones`} />
-              <Dato etiqueta="En votaciones divididas" valor={div.divididas ? `${fmt(div.conVoto)} de ${fmt(div.divididas)}` : null} detalle={div.conVoto ? `${div.porSentido.favor} a favor, ${div.porSentido.contra} en contra, ${div.porSentido.abstencion} abstenciones` : undefined} />
-            </dl>
-            <p className="muy-pequeno">
-              <Link to="/metodologia#clasificacion-propuestas">¿Cómo separamos las propuestas?</Link> · <Link to="/metodologia#votaciones-divididas">¿Qué es una votación dividida?</Link>
-            </p>
-          </div>
-          <div className="panel dimension">
-            <h3 className="ficha__funcion">
-              <span className="ficha__funcion-num" aria-hidden="true">2</span>
-              Representar
-            </h3>
-            <dl className="definiciones">
-              <dt>Asistencia a las sesiones</dt>
-              <dd>
-                <strong className="num">{asis.porcentaje == null ? 'Pendiente' : fmtPct(asis.porcentaje)}</strong>
-                <span className="texto-3 muy-pequeno">
-                  {' '}
-                  · {asis.asistencias} de {asis.denominador}
-                  {asis.definitivo ? '' : ' · provisional'}
+          {tareas.map((t) => (
+            <div key={t.numero} className="panel dimension">
+              <h3 className="ficha__funcion">
+                <span className="ficha__funcion-num" aria-hidden="true">
+                  {t.numero}
                 </span>
-                {asis.porcentaje != null && <BarraComparada valor={asis.porcentaje} referencia={ref.asistencia} />}
-              </dd>
-              <Dato etiqueta="Faltas" valor={asis.ausencias + asis.justificadas} detalle={`${asis.justificadas} con permiso, ${asis.ausencias} sin permiso`} />
-              <Dato etiqueta="Veces que habló ante el Congreso" valor={inter.length} />
-              <Dato etiqueta="Comisiones de las que forma parte" valor={com.cargos.length} />
-              <Dato etiqueta="Asistencia a reuniones de comisión" valor={com.porcentaje == null ? null : fmtPct(com.porcentaje)} detalle={`${com.asistencias} de ${com.evaluables} reuniones con lista`} />
-            </dl>
-          </div>
-          <div className="panel dimension">
-            <h3 className="ficha__funcion">
-              <span className="ficha__funcion-num" aria-hidden="true">3</span>
-              Vigilar al gobierno
-            </h3>
-            <dl className="definiciones">
-              <Dato etiqueta="Exhortos presentados" valor={ind.exhortosPresentados.total} />
-              <Dato etiqueta="Exhortos aprobados" valor={ind.exhortosAprobados.total} detalle={ind.exhortosAprobadosSinVerificar ? `+${ind.exhortosAprobadosSinVerificar} sin verificar` : undefined} />
-              <Dato etiqueta="Exhortos con respuesta de la autoridad" valor={exh.filter((x) => x.seguimiento === 'con_respuesta' || x.seguimiento === 'con_acciones').length} />
-              <Dato etiqueta="Puntos de acuerdo" valor={ind.puntosAcuerdo.total} />
-              <Dato etiqueta="Compromisos con avance documentado" valor={comp.filter((c) => c.estado_seguimiento === 'cumplido_documentado' || c.estado_seguimiento === 'avance_documentado').length} detalle={`de ${comp.length} registrados`} />
-            </dl>
-            <p className="muy-pequeno texto-3">Un exhorto es una petición a otra autoridad para que atienda un problema. Aprobarlo no obliga a la autoridad a atenderlo.</p>
-          </div>
+                {t.titulo}
+              </h3>
+              <ul className="lista-limpia indicadores">
+                {t.indicadores.map((i) => (
+                  <FilaIndicador key={i.id} i={i} onVer={() => ver(i)} refAsistencia={ref.asistencia} pct={asis.porcentaje} />
+                ))}
+              </ul>
+              {t.numero === 1 && (
+                <p className="muy-pequeno">
+                  <Link to="/metodologia#clasificacion-propuestas">¿Cómo separamos las propuestas?</Link> · <Link to="/metodologia#votaciones-divididas">¿Qué es una votación dividida?</Link>
+                </p>
+              )}
+              {t.pie && <p className="muy-pequeno texto-3">{t.pie}</p>}
+            </div>
+          ))}
         </div>
       </section>
 
-      <section className="seccion">
+      <section className="seccion" id="registros">
         <h2>Registros</h2>
         <div className="pestanas" role="tablist" aria-label="Registros de la persona">
           {PESTANAS.map((p) => (
-            <button key={p} type="button" role="tab" id={`tab-${p}`} aria-selected={tab === p} aria-controls="panel-registros" onClick={() => setTab(p)}>
+            <button key={p} type="button" role="tab" id={`tab-${p}`} aria-selected={tab === p} aria-controls="panel-registros" onClick={() => {
+                setTab(p);
+                setSel(null);
+              }}>
               {p}
             </button>
           ))}
         </div>
         <div id="panel-registros" role="tabpanel" aria-labelledby={`tab-${tab}`}>
+          {indSel && filasSel && indSel.pestana === tab && (
+            <div className={`filtro-activo${claseNuevo()}`} role="status">
+              <p>
+                Mostrando: <strong>{indSel.etiqueta.replace(/^…/, 'Propuestas que ')}</strong>
+                {parteSel && <> · {parteSel.etiqueta}</>} · {fmt(filasSel.length)} {filasSel.length === 1 ? 'registro' : 'registros'}{' '}
+                <button type="button" className="boton boton--chico" onClick={() => setSel(null)}>
+                  ✕ Quitar filtro
+                </button>
+              </p>
+              {indSel.partes && indSel.partes.length > 0 && (
+                <div className="filtro-activo__partes" role="group" aria-label="Afinar el filtro">
+                  {!indSel.partesHermanas && (
+                    <button type="button" className="boton boton--chico" aria-pressed={!parteSel} onClick={() => setSel({ ind: indSel.id })}>
+                      Todas ({fmt(indSel.filas!.length)})
+                    </button>
+                  )}
+                  {indSel.partes.map((p) =>
+                    p.filas.length === 0 ? (
+                      <span key={p.id} className="boton boton--chico boton--inactivo" aria-disabled="true">
+                        {p.etiqueta} (0)
+                      </span>
+                    ) : (
+                      <button key={p.id} type="button" className="boton boton--chico" aria-pressed={parteSel?.id === p.id || (indSel.partesHermanas && !parteSel && p.filas === indSel.filas)} onClick={() => setSel({ ind: indSel.id, parte: p.id })}>
+                        {p.etiqueta} ({fmt(p.filas.length)})
+                      </button>
+                    ),
+                  )}
+                </div>
+              )}
+              <p className="muy-pequeno texto-3">
+                «Descargar CSV» baja solo estas filas. <Nuevo />
+              </p>
+            </div>
+          )}
           {tab === 'Asistencias' && (
             <>
-              {!asis.definitivo && <Aviso tipo="alerta">Hay {asis.pendientes + asis.sinRegistro + asis.noVerificadas} sesiones elegibles sin registro verificable: no se cuentan como ausencias y quedan fuera del porcentaje.</Aviso>}
-              <TablaAsistencias registros={asis.registros} titulo="Asistencias" archivo={`asistencias-${d.id_diputado}`} conDiputado={false} />
+              {!asis.definitivo && !activo('Asistencias') && (
+                <Aviso tipo="alerta">
+                  {(() => {
+                    const n = asis.pendientes + asis.sinRegistro + asis.noVerificadas;
+                    return n === 1 ? 'Hay 1 sesión elegible sin registro verificable: no se cuenta como ausencia y queda fuera del porcentaje.' : `Hay ${n} sesiones elegibles sin registro verificable: no se cuentan como ausencias y quedan fuera del porcentaje.`;
+                  })()}
+                </Aviso>
+              )}
+              <TablaAsistencias registros={filasDe<RegistroAsistencia>('Asistencias', asis.registros)} titulo="Asistencias" archivo={archivoDe('Asistencias', 'asistencias')} conDiputado={false} />
             </>
           )}
           {tab === 'Asuntos' && (
             <>
-              <TablaAsuntos asuntos={asuntos} titulo="Asuntos promovidos" archivo={`asuntos-${d.id_diputado}`} resaltar={d.id_diputado} />
-              <h3 style={{ marginTop: '1.5rem' }}>Dictámenes relacionados con sus iniciativas</h3>
-              <TablaAsuntos asuntos={ind.dictamenesRelacionados} titulo="Dictámenes relacionados" archivo={`dictamenes-${d.id_diputado}`} />
+              <TablaAsuntos asuntos={filasDe<Asunto>('Asuntos', asuntos)} titulo="Asuntos promovidos" archivo={archivoDe('Asuntos', 'asuntos')} resaltar={d.id_diputado} />
+              {!activo('Asuntos') && <h3 style={{ marginTop: '1.5rem' }}>Dictámenes relacionados con sus iniciativas</h3>}
+              {!activo('Asuntos') && <TablaAsuntos asuntos={ind.dictamenesRelacionados} titulo="Dictámenes relacionados" archivo={`dictamenes_${aSlug(d.nombre_completo)}_${periodoTxt}`} />}
             </>
           )}
-          {tab === 'Exhortos' && <TablaAsuntos asuntos={exh.map((x) => x.asunto)} titulo="Exhortos promovidos" archivo={`exhortos-${d.id_diputado}`} resaltar={d.id_diputado} />}
-          {tab === 'Intervenciones' && <TablaIntervenciones lista={inter} titulo="Intervenciones" archivo={`intervenciones-${d.id_diputado}`} conDiputado={false} />}
+          {tab === 'Exhortos' && <TablaAsuntos asuntos={filasDe<Asunto>('Exhortos', exh.map((x) => x.asunto))} titulo="Exhortos promovidos" archivo={archivoDe('Exhortos', 'exhortos')} resaltar={d.id_diputado} />}
+          {tab === 'Intervenciones' && <TablaIntervenciones lista={filasDe<Intervencion>('Intervenciones', inter)} titulo="Intervenciones" archivo={archivoDe('Intervenciones', 'intervenciones')} conDiputado={false} />}
           {tab === 'Comisiones' && (
             <Tabla
               titulo="Comisiones"
-              filas={com.cargos}
+              filas={filasDe<Integrante>('Comisiones', cargos)}
               clave={(c) => c.id_comision + c.fecha_inicio}
-              archivo={`comisiones-${d.id_diputado}`}
+              archivo={archivoDe('Comisiones', 'comisiones')}
               columnas={[
                 { id: 'com', titulo: 'Comisión', valor: (c) => base.idx.comision.get(c.id_comision)?.nombre ?? c.id_comision },
                 { id: 'cargo', titulo: 'Cargo', valor: (c) => etiquetaDe(CARGOS_COMISION, c.cargo) },
@@ -211,13 +253,13 @@ function PerfilDe({ d }: { d: Diputado }) {
               vacio="Sin participación en comisiones documentada."
             />
           )}
-          {tab === 'Votaciones' && <TablaVotos votos={votos.votos} titulo="Votos" archivo={`votos-${d.id_diputado}`} conDiputado={false} />}
+          {tab === 'Votaciones' && <TablaVotos votos={filasDe<Voto>('Votaciones', votos.votos)} titulo="Votos" archivo={archivoDe('Votaciones', 'votos')} conDiputado={false} />}
           {tab === 'Compromisos' && (
             <Tabla
               titulo="Compromisos"
-              filas={comp}
+              filas={filasDe<Compromiso>('Compromisos', comp)}
               clave={(c) => c.id_compromiso}
-              archivo={`compromisos-${d.id_diputado}`}
+              archivo={archivoDe('Compromisos', 'compromisos')}
               columnas={[
                 { id: 'desc', titulo: 'Compromiso', valor: (c) => c.descripcion },
                 { id: 'o', titulo: 'Origen', valor: (c) => c.fecha_origen, render: (c) => fechaCorta(c.fecha_origen) },

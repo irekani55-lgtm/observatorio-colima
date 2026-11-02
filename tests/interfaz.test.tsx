@@ -109,6 +109,22 @@ describe('interfaz', () => {
     expect(screen.getByText('Ausencia registrada')).toBeInTheDocument();
   });
 
+  it('en el perfil, tocar un indicador filtra su pestaña, muestra el filtro activo y permite quitarlo', async () => {
+    const u = userEvent.setup();
+    montar('/diputaciones/D1', datos());
+    await u.click(await screen.findByRole('button', { name: /^Faltas: 1 .*Ver 1 registro$/ }));
+    const filtro = screen.getByRole('status', { name: '' });
+    expect(filtro).toHaveTextContent('Mostrando: Faltas · 1 registro');
+    expect(screen.getByRole('tab', { name: 'Asistencias' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByText('1 registro')).toBeInTheDocument();
+    await u.click(screen.getByRole('button', { name: 'Sin permiso (1)' }));
+    expect(screen.getByRole('status', { name: '' })).toHaveTextContent('Faltas · Sin permiso · 1 registro');
+    await u.click(screen.getByRole('button', { name: '✕ Quitar filtro' }));
+    expect(screen.queryByText(/Mostrando:/)).not.toBeInTheDocument();
+    // Un indicador en 0 no es enlace.
+    expect(screen.queryByRole('button', { name: /^Puntos de acuerdo:/ })).not.toBeInTheDocument();
+  });
+
   it('los filtros de asuntos actualizan la tabla', async () => {
     montar('/asuntos?tipo=exhorto', datos());
     expect(await screen.findByText('Asunto X1')).toBeInTheDocument();

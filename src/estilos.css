@@ -1654,3 +1654,40 @@ code {
   .ficha--grande dl { grid-template-columns: 1fr; }
   .ficha--grande dt { margin-top: 0.35rem; }
 }
+
+/* ---- Perfil: renglones de indicador que llevan a sus registros ---- */
+.indicadores { display: grid; gap: 0.15rem; }
+.ind { border-radius: var(--radio); }
+.ind__fila {
+  display: grid; grid-template-columns: minmax(12rem, 18rem) 1fr auto; gap: 0.25rem 1rem; align-items: baseline;
+  width: 100%; padding: 0.45rem 0.6rem; font: inherit; font-size: 0.92rem; text-align: left; color: inherit;
+  background: none; border: 0; border-radius: var(--radio);
+}
+.ind__fila--enlace { cursor: pointer; }
+.ind__fila--enlace:hover { background: var(--primario-suave); }
+.ind__fila--enlace:focus-visible { outline: 2px solid var(--foco); outline-offset: 1px; }
+.ind__etiqueta { font-weight: 600; }
+.ind__ver { color: var(--enlace); font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
+.ind__fila--enlace:hover .ind__ver { text-decoration: underline; }
+.ind__extra, .ind__nota { margin: 0 0.6rem 0.35rem; }
+.ind__nota { max-width: 60ch; }
+@media (max-width: 640px) {
+  .ind__fila { grid-template-columns: 1fr auto; }
+  .ind__valor { grid-column: 1; }
+  .ind__ver { grid-row: 1 / span 2; grid-column: 2; align-self: center; }
+}
+
+/* Filtro activo arriba de la tabla de registros */
+.filtro-activo { margin: 0.75rem 0; padding: 0.75rem 1rem; border-radius: var(--radio); background: var(--primario-suave); border: 1px solid var(--borde); }
+.filtro-activo p { margin: 0 0 0.4rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.filtro-activo__partes { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.4rem; }
+.filtro-activo__partes .boton[aria-pressed='true'] { background: var(--primario); color: #fff; border-color: var(--primario); }
+.boton--inactivo { opacity: 0.55; cursor: default; }
+
+/* Marcas «Nuevo» (solo en la vista previa) */
+.marca-nuevo { outline: 2px dashed #d4a800; outline-offset: 3px; }
+.marca-nuevo__etiqueta {
+  display: inline-block; margin: 0.15rem 0.6rem 0.35rem; padding: 0.1rem 0.5rem; border-radius: 999px;
+  background: #ffe066; color: #3d3000; font-size: 0.75rem; font-weight: 700;
+}
+.aviso-vista-previa { background: #ffe066; color: #3d3000; text-align: center; font-size: 0.85rem; font-weight: 600; padding: 0.35rem 1rem; }

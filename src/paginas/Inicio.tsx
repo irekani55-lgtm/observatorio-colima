@@ -4,6 +4,7 @@ import { BuscadorDistrito } from '../componentes/BuscadorDistrito';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { fmt, fmtPct } from '../componentes/Tarjeta';
 import { Termino } from '../componentes/Termino';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { LEGISLATURA } from '../config/legislatura';
 import { useDatos } from '../estado/DatosContext';
 import { asistenciaAgregada } from '../indicadores/asistencia';
@@ -63,15 +64,9 @@ export default function Inicio() {
         </p>
       </EncabezadoPagina>
 
-      <section className="seccion" aria-labelledby="titulo-mapa-inicio" style={{ marginTop: 0 }}>
-        <h2 id="titulo-mapa-inicio">¿Quién le representa?</h2>
-        <p className="seccion__intro">Búsquelo con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
-        <BuscadorDistrito clave="mapa_distrito" />
-        <MapaInteractivo clave="mapa_distrito" />
-      </section>
-
-      <section className="seccion" aria-labelledby="titulo-funciones">
+      <section className={`seccion${claseNuevo()}`} aria-labelledby="titulo-funciones" style={{ marginTop: 0 }}>
         <h2 id="titulo-funciones">¿Qué hace una diputación?</h2>
+        <Nuevo texto="ahora va al principio" />
         <p className="seccion__intro">El Congreso de Colima tiene {LEGISLATURA.integracion.total} diputaciones. Cada una tiene tres tareas principales:</p>
         <div className="rejilla rejilla--3 funciones">
           {FUNCIONES.map((f, i) => (
@@ -90,8 +85,9 @@ export default function Inicio() {
       </section>
 
       {hayDatos && (
-        <section className="seccion" aria-labelledby="titulo-resumen">
+        <section className={`seccion${claseNuevo()}`} aria-labelledby="titulo-resumen">
           <h2 id="titulo-resumen">El Congreso en resumen</h2>
+          <Nuevo texto="ahora va al principio" />
           <ul className="resumen-frases">
             <li>
               Se han presentado <strong>{fmt(resumen.ini)}</strong> <Termino t="iniciativa">iniciativas</Termino> y el Congreso aprobó <strong>{fmt(resumen.iniAprob)}</strong>. De las aprobadas,{' '}
@@ -118,6 +114,13 @@ export default function Inicio() {
           </p>
         </section>
       )}
+
+      <section className="seccion" aria-labelledby="titulo-mapa-inicio">
+        <h2 id="titulo-mapa-inicio">¿Quién le representa?</h2>
+        <p className="seccion__intro">Búsquelo con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
+        <BuscadorDistrito clave="mapa_distrito" />
+        <MapaInteractivo clave="mapa_distrito" />
+      </section>
     </>
   );
 }

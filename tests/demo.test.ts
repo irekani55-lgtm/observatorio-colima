@@ -9,8 +9,9 @@ import { indicadoresAsuntosDiputado } from '../src/indicadores/asuntos';
 import { indicadoresDePersonas, referenciaCongreso } from '../src/indicadores/distritos';
 import { esDividida, votosDivididosDeDiputado } from '../src/indicadores/votaciones';
 import { contarPorAlcance } from '../src/indicadores/clasificacion';
+import { datosPerfil, indicadoresQueNoCuadran, periodoArchivo } from '../src/indicadores/perfil';
 import { indicadoresComisiones } from '../src/indicadores/comisiones';
-import { enFunciones } from '../src/indicadores/filtro';
+import { enFunciones, type Filtro } from '../src/indicadores/filtro';
 import { COALICIONES_2024, LEGISLATURA } from '../src/config/legislatura';
 
 const leer = async (r: string) => readFile(join(__dirname, '..', 'public', 'datos', r), 'utf8').catch(() => null);
@@ -90,5 +91,21 @@ describe('conjuntos de datos incluidos', () => {
     const ref = referenciaCongreso(b, {});
     expect(ref.asistencia).not.toBeNull();
     expect(ref.medianaIniciativas).not.toBeNull();
+  });
+
+  it('en el perfil, cada indicador clicable coincide exactamente con sus filas (toda la Legislatura y cada año)', async () => {
+    const b = construirBase(await cargarConjunto(leer, 'oficial'));
+    const fallas: string[] = [];
+    const periodos: Filtro[] = [{}, { anio: 1 }, { anio: 2 }, { anio: 3 }];
+    for (const f of periodos)
+      for (const d of b.diputados) {
+        const { tareas } = datosPerfil(b, d, f);
+        for (const x of indicadoresQueNoCuadran(tareas)) fallas.push(`${d.id_diputado} ${JSON.stringify(f)} ${x}`);
+        const faltas = tareas[1].indicadores.find((i) => i.id === 'faltas')!;
+        expect(faltas.partes!.reduce((n, p) => n + p.filas.length, 0)).toBe(faltas.conteo);
+      }
+    expect(fallas).toEqual([]);
+    expect(periodoArchivo({}, '2026-10-28')).toBe('LXI_2024-2026');
+    expect(periodoArchivo({ anio: 1 }, '2026-10-28')).toBe('LXI-anio1_2024-2025');
   });
 });
