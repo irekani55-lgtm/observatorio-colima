@@ -113,7 +113,12 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
       <div className={`mapa-disposicion${sel == null && !rp ? ' mapa-disposicion--igualar' : ''}`}>
         <section className="panel" aria-label="Mapa">
           <div className="panel__cabecera">
-            <h2 style={{ fontSize: '1.1rem' }}>{titulo}</h2>
+            <div>
+              <h2 style={{ fontSize: '1.1rem', marginBottom: '0.2rem' }}>{titulo}</h2>
+              <p className={`mapa-indicacion${claseNuevo()}`}>
+                <span aria-hidden="true">👆</span> Toque un distrito en el mapa para ver quién le representa. <Nuevo texto="indicación" />
+              </p>
+            </div>
             {sel != null && (
               <button type="button" className="boton boton--chico" onClick={() => seleccionar(null)}>
                 <IcoReiniciar width={15} height={15} /> Restablecer selección
