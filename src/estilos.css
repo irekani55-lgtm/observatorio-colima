@@ -1691,3 +1691,11 @@ code {
   background: #ffe066; color: #3d3000; font-size: 0.75rem; font-weight: 700;
 }
 .aviso-vista-previa { background: #ffe066; color: #3d3000; text-align: center; font-size: 0.85rem; font-weight: 600; padding: 0.35rem 1rem; }
+.mapa-sello__mas { display: block; }
+.mapa-sello__mas summary { cursor: pointer; color: var(--enlace); }
+.mapa-sello__mas p { margin: 0.3rem 0 0; }
+.mapa-nota { margin-top: 0.6rem; padding: 0.6rem 0.8rem; border-radius: var(--radio); background: var(--primario-suave); font-size: 0.88rem; }
+.mapa-nota p { margin: 0; }
+details.aviso-vista-previa summary { cursor: pointer; }
+details.aviso-vista-previa ol { text-align: left; max-width: 60rem; margin: 0.5rem auto 0.25rem; font-weight: 400; display: grid; gap: 0.2rem; }
+details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }

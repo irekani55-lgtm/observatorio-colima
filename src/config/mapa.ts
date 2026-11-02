@@ -36,7 +36,11 @@ export const CONFIG_MAPA = {
      * Las 7 secciones de 2024 que ya no existen se dividieron en 46 nuevas de los mismos distritos.
      * Ver OBS-GEO-01 en la bitácora.
      */
-    nota: 'Comparada con la elección de 2024, solo la sección 0020 (Colima) cambió de distrito: votó en el 2 y hoy pertenece al 1. El resto de los límites coincide.',
+    /** Explicación en lenguaje ciudadano del único cambio respecto de 2024. */
+    nota: {
+      titulo: '¿Cambió su distrito desde la elección de 2024?',
+      texto: 'Casi seguro que no: los distritos son los mismos con los que se votó en 2024. Solo cambió una sección de la ciudad de Colima, la 0020. Si su credencial dice sección 0020, en 2024 votó en el distrito 2 y en la próxima elección votará en el distrito 1.',
+    },
     verificado: true,
   },
 };

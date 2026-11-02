@@ -5,7 +5,7 @@ import { useDatos } from '../estado/DatosContext';
 import { fechaCorta } from '../indicadores/filtro';
 import { EnlaceExterno } from './Fuente';
 import { cssPartidos } from './colores';
-import { MARCAR_CAMBIOS } from './Nuevo';
+import { CAMBIOS_VISTA_PREVIA, MARCAR_CAMBIOS } from './Nuevo';
 import { IcoCongreso, IcoLuna, IcoMenu, IcoSol, IcoX } from './Iconos';
 
 export const NAV_PRINCIPAL = [
@@ -98,9 +98,16 @@ export function Disposicion() {
     <>
       <style>{cssPartidos(base)}</style>
       {MARCAR_CAMBIOS && (
-        <p className="aviso-vista-previa" role="note">
-          Vista previa · Lo marcado en amarillo es nuevo o cambió. En el dashboard oficial no aparecen estas marcas.
-        </p>
+        <details className="aviso-vista-previa" role="note">
+          <summary>Vista previa · Lo marcado en amarillo es nuevo o cambió (en el oficial no aparecen estas marcas). Ver la lista de cambios</summary>
+          <ol>
+            {CAMBIOS_VISTA_PREVIA.map((c) => (
+              <li key={c.texto}>
+                {c.texto} <Link to={c.a}>Ir</Link>
+              </li>
+            ))}
+          </ol>
+        </details>
       )}
       <a className="saltar" href="#contenido">
         Saltar al contenido

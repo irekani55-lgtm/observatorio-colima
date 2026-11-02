@@ -3,6 +3,7 @@ import type { FeatureCollection } from 'geojson';
 import { CONFIG_MAPA } from '../config/mapa';
 import { Aviso } from '../componentes/Aviso';
 import { EnlaceExterno } from '../componentes/Fuente';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { IcoInfo } from '../componentes/Iconos';
 import { esquemaHexagonal, mapaDesdeGeojson, type Mapa } from './geometria';
 
@@ -131,10 +132,23 @@ export function SelloMapa({ estado }: { estado: EstadoCarga }) {
         <p className="mapa-sello">
           <IcoInfo width={14} height={14} />
           <span>
-            Fuente: <EnlaceExterno url={f.url}>{f.nombre}</EnlaceExterno>, {f.institucion}. {f.distritacion}.{!estado.mapa.geografico && ' Coordenadas proyectadas.'} Las islas Revillagigedo quedan fuera del encuadre.
+            Fuente: <EnlaceExterno url={f.url}>{f.nombre}</EnlaceExterno>.
           </span>
         </p>
-        {f.nota && <p className="mapa-sello">{f.nota}</p>}
+        <details className={`mapa-sello mapa-sello__mas${claseNuevo()}`}>
+          <summary>Más datos de la fuente</summary>
+          <p>
+            {f.institucion}. {f.distritacion}.{!estado.mapa.geografico && ' Coordenadas proyectadas.'} Las islas Revillagigedo quedan fuera del encuadre.
+          </p>
+        </details>
+        {f.nota && (
+          <div className={`mapa-nota${claseNuevo()}`}>
+            <p>
+              <strong>{f.nota.titulo}</strong> {f.nota.texto}
+            </p>
+            <Nuevo texto="en palabras sencillas" />
+          </div>
+        )}
         {!f.verificado && <p className="mapa-sello">Metadatos de la cartografía pendientes de confirmar contra la fuente oficial.</p>}
         {estado.mapa.advertencias.map((a) => (
           <Aviso key={a} tipo="alerta">

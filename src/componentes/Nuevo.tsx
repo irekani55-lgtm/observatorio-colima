@@ -11,3 +11,15 @@ export function Nuevo({ texto }: { texto?: string }) {
 
 /** Clase para resaltar un bloque nuevo o cambiado (vacía en el oficial). */
 export const claseNuevo = (activo = true) => (MARCAR_CAMBIOS && activo ? ' marca-nuevo' : '');
+
+/** Lista de cambios de esta vista previa, con el lugar donde se ven. */
+export const CAMBIOS_VISTA_PREVIA = [
+  { texto: 'Inicio: «¿Qué hace una diputación?» y «El Congreso en resumen» ahora van al principio, antes del mapa.', a: '/' },
+  { texto: 'Perfil: cada indicador con «Ver →» lleva a sus registros filtrados, con botones para el desglose y «Quitar filtro».', a: '/diputaciones/DIP-148' },
+  { texto: 'Perfil: «Descargar CSV» baja solo las filas filtradas, con un nombre que dice el indicador, la persona y el periodo.', a: '/diputaciones/DIP-148' },
+  { texto: 'Perfil: «Ya publicadas como ley o decreto» cuenta propuestas, no números de decreto.', a: '/diputaciones/DIP-135' },
+  { texto: 'Perfil: «Comisiones de las que forma parte» respeta el año legislativo elegido.', a: '/diputaciones/DIP-148' },
+  { texto: 'Perfil: los indicadores que no salen de registros propios explican cómo se calculan (ⓘ).', a: '/diputaciones/DIP-148' },
+  { texto: 'Mapa: los datos técnicos de la fuente quedan en «Más datos de la fuente».', a: '/mapa' },
+  { texto: 'Mapa: la nota de la sección 0020 ahora está en palabras sencillas.', a: '/mapa' },
+];
