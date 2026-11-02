@@ -25,5 +25,6 @@ export const CAMBIOS_VISTA_PREVIA = [
   { texto: 'Inicio: «El Congreso en resumen» con la misma letra que «¿Qué hace una diputación?» y en palabras más sencillas.', a: '/' },
   { texto: 'Mapa: «Seleccionar distrito por número» y «¿Cómo se reparten los 25 lugares?» pasan a la columna derecha, debajo de la ficha.', a: '/' },
   { texto: 'Mapa: la columna derecha es más compacta (botones delgados, un renglón por partido) y termina a la misma altura que el mapa.', a: '/' },
+  { texto: 'Descargas: «Descargar CSV» ahora funciona dentro del dashboard publicado (pide confirmar antes de guardar).', a: '/diputaciones/DIP-148' },
   { texto: 'Menú: se quitó «Mapa», porque todo lo del mapa ya está en el inicio. Los enlaces viejos llevan al inicio.', a: '/' },
 ];

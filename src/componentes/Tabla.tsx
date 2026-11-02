@@ -1,4 +1,5 @@
 import { useMemo, useState, type ReactNode } from 'react';
+import { guardarArchivo } from './guardarArchivo';
 import { aCsv } from '../datos/csv';
 import { IcoDescarga, IcoFlecha } from './Iconos';
 
@@ -60,15 +61,14 @@ export function Tabla<T>({ columnas, filas, clave, titulo, porPagina = 25, archi
   const actual = Math.min(pagina, paginas - 1);
   const visibles = filtradas.slice(actual * porPagina, actual * porPagina + porPagina);
 
-  function descargar() {
+  const [avisoDescarga, setAvisoDescarga] = useState('');
+  async function descargar() {
     const cols = columnas.map((c) => c.titulo);
     const datos = filtradas.map((f) => Object.fromEntries(columnas.map((c) => [c.titulo, String(c.valor(f) ?? '')])));
     const blob = new Blob(['﻿' + aCsv(cols, datos)], { type: 'text/csv;charset=utf-8' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `${archivo ?? 'registros'}.csv`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    setAvisoDescarga('');
+    const r = await guardarArchivo(`${archivo ?? 'registros'}.csv`, blob);
+    if (r === 'no_disponible') setAvisoDescarga('No se pudo descargar aquí. Abra el dashboard en claude.ai o en otro navegador e intente de nuevo.');
   }
 
   return (
@@ -84,6 +84,11 @@ export function Tabla<T>({ columnas, filas, clave, titulo, porPagina = 25, archi
           <button type="button" className="boton boton--chico" onClick={descargar}>
             <IcoDescarga width={15} height={15} /> Descargar CSV
           </button>
+        )}
+        {avisoDescarga && (
+          <span className="muy-pequeno texto-3" role="status">
+            {avisoDescarga}
+          </span>
         )}
       </div>
       <div className="tabla-envoltura">
