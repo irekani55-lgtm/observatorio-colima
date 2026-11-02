@@ -59,13 +59,13 @@ describe('interfaz', () => {
     montar('/', datos());
     expect(await screen.findByRole('heading', { name: '¿Qué hace una diputación?' })).toBeInTheDocument();
     const resumen = screen.getByRole('heading', { name: 'El Congreso en resumen' }).closest('section')!;
-    expect(within(resumen).getByText(/registraron asistencia en el/)).toBeInTheDocument();
+    expect(within(resumen).getByText(/fueron a/)).toBeInTheDocument();
     expect(within(resumen).getByRole('link', { name: 'Ver el Congreso en números' })).toHaveAttribute('href', '/congreso');
   });
 
   it('el mapa permite seleccionar un distrito desde la lista y restablecer la vista', async () => {
     const u = userEvent.setup();
-    montar('/mapa', datos());
+    montar('/', datos());
     expect(await screen.findByText(/Esquema no geográfico/)).toBeInTheDocument();
     const lista = screen.getByRole('list', { name: 'Seleccionar distrito por número' });
     await u.click(within(lista).getByRole('button', { name: 'Distrito 3 · Ana Ejemplo' }));
@@ -88,11 +88,17 @@ describe('interfaz', () => {
 
   it('el mapa se puede operar con teclado', async () => {
     const u = userEvent.setup();
-    montar('/mapa', datos());
+    montar('/', datos());
     const forma = await screen.findByRole('button', { name: 'Distrito 5', pressed: false });
     forma.focus();
     await u.keyboard('{Enter}');
     expect(screen.getByText(/No hay una diputación de mayoría relativa registrada/)).toBeInTheDocument();
+  });
+
+  it('los enlaces viejos a /mapa llevan al inicio con el mismo distrito', async () => {
+    montar('/mapa?distrito=3', datos());
+    expect(await screen.findByText('Distrito electoral local 3', { selector: 'h2' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '¿Qué hace una diputación?' })).toBeInTheDocument();
   });
 
   it('las diputaciones RP no se asocian a un distrito y tienen su propia ficha', async () => {

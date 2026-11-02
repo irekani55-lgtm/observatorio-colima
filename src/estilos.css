@@ -1612,7 +1612,7 @@ code {
   background: var(--primario-suave); color: var(--primario); font-weight: 700;
 }
 .resumen-frases { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.75rem; max-width: 72ch; }
-.resumen-frases li { padding-left: 1rem; border-left: 3px solid var(--primario-2); line-height: 1.55; }
+.resumen-frases li { padding-left: 1rem; border-left: 3px solid var(--primario-2); font-size: 0.875rem; line-height: 1.5; }
 .ficha__funcion { display: flex; align-items: center; gap: 0.5rem; margin: 1.25rem 0 0.5rem; font-size: 1.05rem; font-weight: 700; color: var(--texto); }
 .ficha__funcion-num {
   display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; flex: none;
@@ -1699,3 +1699,6 @@ code {
 details.aviso-vista-previa summary { cursor: pointer; }
 details.aviso-vista-previa ol { text-align: left; max-width: 60rem; margin: 0.5rem auto 0.25rem; font-weight: 400; display: grid; gap: 0.2rem; }
 details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
+/* Columna derecha del mapa: ficha, selector por número y reparto de los 25 lugares. */
+.mapa-columna { display: grid; gap: 1rem; min-width: 0; }
+.mapa-columna > .panel { margin: 0; }

@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom';
 import Inicio from './paginas/Inicio';
 import Congreso from './paginas/Congreso';
-import PaginaMapa from './paginas/Mapa';
+import { RedirigirMapa } from './paginas/Mapa';
 import Directorio from './paginas/Directorio';
 import Perfil from './paginas/Perfil';
 import RepresentacionProporcional from './paginas/RepresentacionProporcional';
@@ -23,7 +23,7 @@ export function Rutas() {
     <>
       <Route index element={<Inicio />} />
       <Route path="congreso" element={<Congreso />} />
-      <Route path="mapa" element={<PaginaMapa />} />
+      <Route path="mapa" element={<RedirigirMapa />} />
       <Route path="diputaciones" element={<Directorio />} />
       <Route path="diputaciones/:id" element={<Perfil />} />
       <Route path="representacion-proporcional" element={<RepresentacionProporcional />} />

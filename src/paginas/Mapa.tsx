@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { etiquetaSuplencia, FichaResumen, periodoEjercicio } from '../componentes/FichaDiputado';
@@ -11,6 +11,7 @@ import { Termino } from '../componentes/Termino';
 import { enFunciones } from '../indicadores/filtro';
 import { CONFIG_MAPA } from '../config/mapa';
 import { EnlaceExterno } from '../componentes/Fuente';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import type { Base, Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { useFiltro } from '../estado/useFiltro';
@@ -46,6 +47,19 @@ function InfoDistrito({ n }: { n: number }) {
  * mapa. `clave` es el parámetro de la URL que guarda el distrito: en Inicio se usa uno propio para que elegir un
  * distrito no filtre los demás indicadores de la página.
  */
+/**
+ * La página «Mapa» se unió al inicio, que ya tiene el buscador, el mapa y la ficha. Los enlaces viejos
+ * (/mapa?distrito=3) llevan al inicio con el mismo distrito o la misma diputación de lista elegidos.
+ */
+export function RedirigirMapa() {
+  const [params] = useSearchParams();
+  const q = new URLSearchParams();
+  const traducir: Record<string, string> = { distrito: 'mapa_distrito', rp: 'mapa_distrito_rp', persona: 'persona' };
+  for (const [k, v] of params) q.set(traducir[k] ?? k, v);
+  const texto = q.toString();
+  return <Navigate to={texto ? `/?${texto}` : '/'} replace />;
+}
+
 export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima · 16 distritos locales' }: { clave?: string; titulo?: string }) {
   const { base } = useDatos();
   const [filtro, , params, fijar] = useFiltro();
@@ -128,20 +142,9 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
               <SelloMapa estado={cartografia} />
             </>
           )}
-          <h3 className="pequeno" style={{ marginTop: '1rem' }} id="lista-distritos">
-            Seleccionar distrito por número
-          </h3>
-          <ul className="lista-distritos" aria-labelledby="lista-distritos">
-            {Array.from({ length: LEGISLATURA.distritos }, (_, i) => i + 1).map((d) => (
-              <li key={d}>
-                <button type="button" className="boton boton--chico" aria-pressed={sel === d} aria-label={nombreDe(d)} onClick={() => seleccionar(sel === d ? null : d)}>
-                  {d}
-                </button>
-              </li>
-            ))}
-          </ul>
         </section>
 
+        <div className="mapa-columna">
         <section className="panel" ref={ficha} aria-live="polite" aria-label="Ficha del distrito seleccionado" style={{ scrollMarginTop: 80 }}>
           {rp ? (
             <>
@@ -183,48 +186,64 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             </>
           )}
         </section>
-      </div>
-
-      {enCurul.length > 0 && (
-        <section className="panel curules" aria-labelledby={`${claveRp}-curules`}>
-          <h3 id={`${claveRp}-curules`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
-            ¿Cómo se reparten los {enCurul.length} lugares del Congreso?
+        <section className={`panel${claseNuevo()}`} aria-labelledby="lista-distritos">
+          <h3 className="pequeno" style={{ marginTop: 0 }} id="lista-distritos">
+            Seleccionar distrito por número
           </h3>
-          <div className="curules__grupos">
-            {porPartido.map(([id, personas]) => (
-              <div key={id} className="curules__grupo">
-                <span className="curules__etiqueta">
-                  <strong className="num">{personas.length}</strong> {siglas(id)}
-                </span>
-                <span className="curules__cuadros">
-                  {personas.map((d) => (
-                    <button
-                      key={d.id_diputado}
-                      type="button"
-                      className="curules__cuadro"
-                      style={{ background: colorPartido(base, id) }}
-                      title={`${d.nombre_completo} (${siglas(id)})`}
-                      aria-label={`${d.nombre_completo}, ${siglas(id)}. Ver su ficha`}
-                      onClick={() => abrirCurul(d)}
-                    />
-                  ))}
-                </span>
-              </div>
+          <ul className="lista-distritos" aria-labelledby="lista-distritos">
+            {Array.from({ length: LEGISLATURA.distritos }, (_, i) => i + 1).map((d) => (
+              <li key={d}>
+                <button type="button" className="boton boton--chico" aria-pressed={sel === d} aria-label={nombreDe(d)} onClick={() => seleccionar(sel === d ? null : d)}>
+                  {d}
+                </button>
+              </li>
             ))}
-          </div>
-          <ul className="pequeno texto-2 curules__coaliciones">
-            {COALICIONES_2024.map((c) => {
-              const n = enCurul.filter((d) => (c.partidos as readonly string[]).includes(d.id_partido)).length;
-              return (
-                <li key={c.nombre}>
-                  {listaSiglas(c.partidos)} se unieron en la elección de 2024 («{c.nombre}») y juntos tienen <strong>{n}</strong> de los {enCurul.length} lugares.
-                </li>
-              );
-            })}
           </ul>
-          <p className="muy-pequeno texto-3">Cada cuadro es una persona. Tóquelo para ver qué ha hecho.</p>
+          <Nuevo texto="ahora va a la derecha" />
         </section>
-      )}
+        {enCurul.length > 0 && (
+          <section className={`panel curules${claseNuevo()}`} aria-labelledby={`${claveRp}-curules`}>
+            <h3 id={`${claveRp}-curules`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
+              ¿Cómo se reparten los {enCurul.length} lugares del Congreso?
+            </h3>
+            <div className="curules__grupos">
+              {porPartido.map(([id, personas]) => (
+                <div key={id} className="curules__grupo">
+                  <span className="curules__etiqueta">
+                    <strong className="num">{personas.length}</strong> {siglas(id)}
+                  </span>
+                  <span className="curules__cuadros">
+                    {personas.map((d) => (
+                      <button
+                        key={d.id_diputado}
+                        type="button"
+                        className="curules__cuadro"
+                        style={{ background: colorPartido(base, id) }}
+                        title={`${d.nombre_completo} (${siglas(id)})`}
+                        aria-label={`${d.nombre_completo}, ${siglas(id)}. Ver su ficha`}
+                        onClick={() => abrirCurul(d)}
+                      />
+                    ))}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <ul className="pequeno texto-2 curules__coaliciones">
+              {COALICIONES_2024.map((c) => {
+                const n = enCurul.filter((d) => (c.partidos as readonly string[]).includes(d.id_partido)).length;
+                return (
+                  <li key={c.nombre}>
+                    {listaSiglas(c.partidos)} se unieron en la elección de 2024 («{c.nombre}») y juntos tienen <strong>{n}</strong> de los {enCurul.length} lugares.
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="muy-pequeno texto-3">Cada cuadro es una persona. Tóquelo para ver qué ha hecho.</p>
+            <Nuevo texto="ahora va a la derecha" />
+          </section>
+        )}
+        </div>
+      </div>
 
       {plurinominales.length > 0 && (
         <section className="panel franja-rp" aria-labelledby={`${claveRp}-titulo`}>

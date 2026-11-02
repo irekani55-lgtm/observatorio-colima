@@ -20,6 +20,9 @@ export const CAMBIOS_VISTA_PREVIA = [
   { texto: 'Perfil: «Ya publicadas como ley o decreto» cuenta propuestas, no números de decreto.', a: '/diputaciones/DIP-135' },
   { texto: 'Perfil: «Comisiones de las que forma parte» respeta el año legislativo elegido.', a: '/diputaciones/DIP-148' },
   { texto: 'Perfil: los indicadores que no salen de registros propios explican cómo se calculan (ⓘ).', a: '/diputaciones/DIP-148' },
-  { texto: 'Mapa: los datos técnicos de la fuente quedan en «Más datos de la fuente».', a: '/mapa' },
-  { texto: 'Mapa: la nota de la sección 0020 ahora está en palabras sencillas.', a: '/mapa' },
+  { texto: 'Mapa: los datos técnicos de la fuente quedan en «Más datos de la fuente».', a: '/' },
+  { texto: 'Mapa: la nota de la sección 0020 ahora está en palabras sencillas.', a: '/' },
+  { texto: 'Inicio: «El Congreso en resumen» con la misma letra que «¿Qué hace una diputación?» y en palabras más sencillas.', a: '/' },
+  { texto: 'Mapa: «Seleccionar distrito por número» y «¿Cómo se reparten los 25 lugares?» pasan a la columna derecha, debajo de la ficha.', a: '/' },
+  { texto: 'Menú: se quitó «Mapa», porque todo lo del mapa ya está en el inicio. Los enlaces viejos llevan al inicio.', a: '/' },
 ];

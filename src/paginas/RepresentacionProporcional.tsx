@@ -19,7 +19,7 @@ export default function RepresentacionProporcional() {
     <>
       <EncabezadoPagina titulo="Diputaciones de representación proporcional">
         <p>
-          {LEGISLATURA.integracion.RP} curules se asignan según la votación que obtiene cada partido en todo el estado. Estas diputaciones <strong>no representan a un distrito geográfico</strong>, por lo que no aparecen en el <Link to="/mapa">mapa</Link>. Sus indicadores se calculan con la misma metodología.
+          {LEGISLATURA.integracion.RP} curules se asignan según la votación que obtiene cada partido en todo el estado. Estas diputaciones <strong>no representan a un distrito geográfico</strong>, por lo que no aparecen en el <Link to="/">mapa de distritos</Link>. Sus indicadores se calculan con la misma metodología.
         </p>
       </EncabezadoPagina>
       {rp.length === 0 ? (

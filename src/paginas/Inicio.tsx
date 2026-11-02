@@ -87,23 +87,21 @@ export default function Inicio() {
       {hayDatos && (
         <section className={`seccion${claseNuevo()}`} aria-labelledby="titulo-resumen">
           <h2 id="titulo-resumen">El Congreso en resumen</h2>
-          <Nuevo texto="ahora va al principio" />
+          <Nuevo texto="va al principio, con la misma letra y en palabras más sencillas" />
           <ul className="resumen-frases">
             <li>
-              Se han presentado <strong>{fmt(resumen.ini)}</strong> <Termino t="iniciativa">iniciativas</Termino> y el Congreso aprobó <strong>{fmt(resumen.iniAprob)}</strong>. De las aprobadas,{' '}
-              <strong>{fmt(resumen.alcance.fondo)}</strong> cambian o crean leyes; <strong>{fmt(resumen.alcance.tramite)}</strong> son trámites que se repiten cada año (como descuentos en el predial o
-              leyes de ingresos de los municipios) y <strong>{fmt(resumen.alcance.conmemorativa)}</strong> son reconocimientos o fechas conmemorativas.{' '}
-              <Link to="/metodologia#clasificacion-propuestas" className="texto-3">
-                ¿Cómo las separamos?
-              </Link>
+              Desde que empezó esta Legislatura, en octubre de 2024, llegaron al Congreso <strong>{fmt(resumen.ini)}</strong> propuestas de ley y se aprobaron <strong>{fmt(resumen.iniAprob)}</strong>. Pero no todas pesan
+              igual: <strong>{fmt(resumen.alcance.fondo)}</strong> crean o cambian leyes; <strong>{fmt(resumen.alcance.tramite)}</strong> son trámites de cada año, como descuentos en el predial o el agua, o las
+              cuentas de ingresos de cada municipio; y <strong>{fmt(resumen.alcance.conmemorativa)}</strong> son homenajes o fechas especiales.{' '}
+              <Link to="/metodologia#clasificacion-propuestas">¿Cómo las separamos?</Link>
             </li>
             <li>
-              Se presentaron <strong>{fmt(resumen.exh)}</strong> <Termino t="exhorto">exhortos</Termino> y el Congreso aprobó <strong>{fmt(resumen.exhAprob)}</strong>. Aprobar un exhorto no obliga a
-              la autoridad a atenderlo.
+              Las diputaciones pidieron <strong>{fmt(resumen.exh)}</strong> veces a otras autoridades que atendieran un problema (a esto se le llama <Termino t="exhorto">exhorto</Termino>). El Congreso aprobó{' '}
+              <strong>{fmt(resumen.exhAprob)}</strong> de esas peticiones, pero la autoridad no está obligada a hacer caso.
             </li>
             {resumen.asis.porcentaje != null && (
               <li>
-                En conjunto, las diputaciones registraron asistencia en el <strong>{fmtPct(resumen.asis.porcentaje)}</strong> de las <Termino t="sesion">sesiones</Termino> en que les tocaba estar.
+                En promedio, las diputaciones fueron a <strong>{Math.round(resumen.asis.porcentaje / 10)} de cada 10</strong> sesiones del Congreso ({fmtPct(resumen.asis.porcentaje)}).
               </li>
             )}
           </ul>
