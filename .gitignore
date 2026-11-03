@@ -7,3 +7,5 @@ datos_crudos/
 entrega/
 __pycache__/
 capturas_celular/
+dist-offline/
+observatorio-sin-internet.html
