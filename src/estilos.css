@@ -1785,3 +1785,10 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
   .mapa-disposicion > .mapa-columna { order: 2; }
   .mapa-izquierda > :not(:first-child) { order: 3; }
 }
+/* Con una ficha abierta, el mapa se queda fijo a la izquierda mientras se baja por la ficha. */
+@media (min-width: 901px) {
+  .mapa-disposicion--fijo { align-items: start; }
+  .mapa-disposicion--fijo .mapa-izquierda { position: sticky; top: calc(var(--alto-cabecera, 110px) + 0.75rem); }
+  .mapa-disposicion--fijo .mapa-izquierda .mapa-lienzo svg { max-height: calc(100vh - var(--alto-cabecera, 110px) - 15rem); }
+}
+@media (min-width: 901px) { .mapa-disposicion--fijo .mapa-izquierda .mapa-lienzo svg { max-height: calc(100vh - var(--alto-cabecera, 110px) - 19rem); } }

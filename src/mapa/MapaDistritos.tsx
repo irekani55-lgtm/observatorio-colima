@@ -124,7 +124,7 @@ export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito
 }
 
 /** Rótulo de origen bajo el mapa: oficial o esquema. */
-export function SelloMapa({ estado }: { estado: EstadoCarga }) {
+export function SelloMapa({ estado, compacto = false }: { estado: EstadoCarga; compacto?: boolean }) {
   if (estado.tipo === 'oficial') {
     const f = CONFIG_MAPA.fuente;
     return (
@@ -135,13 +135,13 @@ export function SelloMapa({ estado }: { estado: EstadoCarga }) {
             Fuente: <EnlaceExterno url={f.url}>{f.nombre}</EnlaceExterno>.
           </span>
         </p>
-        <details className={`mapa-sello mapa-sello__mas${claseNuevo()}`}>
+        {!compacto && <details className={`mapa-sello mapa-sello__mas${claseNuevo()}`}>
           <summary>Más datos de la fuente</summary>
           <p>
             {f.institucion}. {f.distritacion}.{!estado.mapa.geografico && ' Coordenadas proyectadas.'} Las islas Revillagigedo quedan fuera del encuadre.
           </p>
-        </details>
-        {f.nota && (
+        </details>}
+        {f.nota && !compacto && (
           <div className={`mapa-nota${claseNuevo()}`}>
             <p>
               <strong>{f.nota.titulo}</strong> {f.nota.texto}

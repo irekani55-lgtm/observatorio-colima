@@ -171,8 +171,8 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
 
   return (
     <>
-      <div className="mapa-disposicion mapa-disposicion--igualar">
-        <div className="mapa-izquierda">
+      <div className={`mapa-disposicion${fichaAbierta ? ' mapa-disposicion--fijo' : ' mapa-disposicion--igualar'}`}>
+        <div className={`mapa-izquierda${fichaAbierta ? claseNuevo() : ''}`}>
         <section className="panel" aria-label="Mapa">
           <div className="panel__cabecera">
             <div>
@@ -202,15 +202,14 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
                   </li>
                 ))}
               </ul>
-              <p className="muy-pequeno texto-3" style={{ margin: '0.35rem 0 0' }}>
+              {!fichaAbierta && <p className="muy-pequeno texto-3" style={{ margin: '0.35rem 0 0' }}>
                 Los distritos tienen distinto tamaño pero casi la misma población: el color muestra quién representa cada zona, no cuánta gente vive en ella.
-              </p>
-              <SelloMapa estado={cartografia} />
+              </p>}
+              <SelloMapa estado={cartografia} compacto={fichaAbierta} />
+              {fichaAbierta && <Nuevo texto="el mapa se queda fijo mientras baja por la ficha" />}
             </>
           )}
         </section>
-        {fichaAbierta && listaDistritos}
-        {fichaAbierta && franjaRp && <div className={claseNuevo()}>{franjaRp}<Nuevo texto="con una ficha abierta, las 9 suben debajo del mapa" /></div>}
         </div>
 
         <div className="mapa-columna">
@@ -259,7 +258,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             </>
           )}
         </section>
-        {!fichaAbierta && listaDistritos}
+        {listaDistritos}
         {enCurul.length > 0 && (
           <section className={`panel curules${claseNuevo()}`} aria-labelledby={`${claveRp}-curules`}>
             <h3 id={`${claveRp}-curules`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
@@ -292,7 +291,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
         </div>
       </div>
 
-      {!fichaAbierta && franjaRp}
+      {franjaRp}
     </>
   );
 }
