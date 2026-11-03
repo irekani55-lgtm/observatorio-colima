@@ -69,7 +69,8 @@ describe('interfaz', () => {
     expect(await screen.findByText(/Esquema no geográfico/)).toBeInTheDocument();
     const lista = screen.getByRole('combobox', { name: 'Elegir distrito' });
     await u.selectOptions(lista, '3');
-    expect(lista).toHaveValue('3');
+    // Con la ficha abierta la lista pasa debajo del mapa: se vuelve a buscar.
+    expect(screen.getByRole('combobox', { name: 'Elegir distrito' })).toHaveValue('3');
     expect(document.querySelector('path[data-distrito="3"]')).toHaveClass('seleccionado');
     expect(screen.getByRole('heading', { name: 'Ana Ejemplo' })).toBeInTheDocument();
     expect(screen.getByText('Distrito electoral local 3', { selector: 'h2' })).toBeInTheDocument();
