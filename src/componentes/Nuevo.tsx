@@ -31,6 +31,7 @@ export const CAMBIOS_VISTA_PREVIA = [
   { texto: 'Descargas: «Descargar CSV» ahora funciona dentro del dashboard publicado (pide confirmar antes de guardar).', a: '/diputaciones/DIP-148' },
   { texto: 'Julio César León Trujillo ya no aparece «en funciones»: dice que tiene licencia desde el 2 oct 2024, que no ha regresado y quién está en su lugar.', a: '/diputaciones/DIP-RP-JCLT' },
   { texto: 'Menú: se quitó «Mapa», porque todo lo del mapa ya está en el inicio. Los enlaces viejos llevan al inicio.', a: '/' },
+  { texto: 'Mapa: al abrir una ficha, la lista de distritos y las 9 diputaciones por lista suben debajo del mapa para que no quede espacio vacío.', a: '/?mapa_distrito=3' },
   { texto: 'Menú: ahora tiene 3 opciones: Inicio, ¿Qué se hace en el Congreso? y El Congreso en números.', a: '/' },
   { texto: 'Inicio: nuevo buscador «¿Sabe su nombre?» y enlace a la lista de las 28 personas.', a: '/' },
   { texto: 'El Congreso en números: «Comparar a las diputaciones, dato por dato» (la tabla que estaba en Diputaciones).', a: '/congreso#comparar' },

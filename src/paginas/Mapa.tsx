@@ -108,9 +108,71 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
     }
   };
 
+  const fichaAbierta = sel != null || Boolean(rp);
+  const listaDistritos = (
+        <section className={`panel${claseNuevo()}`} aria-labelledby="lista-distritos">
+          <h3 className="mapa-columna__titulo" id="lista-distritos">
+            ¿Prefiere elegir de una lista?
+          </h3>
+          <div className="campo">
+            <label htmlFor={`${clave}-lista`} className="sr-only">
+              Elegir distrito
+            </label>
+            <select id={`${clave}-lista`} value={sel ?? ''} onChange={(e) => seleccionar(e.target.value ? Number(e.target.value) : null)}>
+              <option value="">Elija un distrito…</option>
+              {Array.from({ length: LEGISLATURA.distritos }, (_, i) => i + 1).map((d) => (
+                <option key={d} value={d}>
+                  {etiquetaMapa(d)}
+                </option>
+              ))}
+            </select>
+          </div>
+          <Nuevo texto="lista desplegable en lugar de los botones del 1 al 16" />
+        </section>
+  );
+  const franjaRp = plurinominales.length > 0 ? (
+        <section className="panel franja-rp" aria-labelledby={`${claveRp}-titulo`}>
+          <h3 id={`${claveRp}-titulo`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
+            Además, a todo Colima le representan estas {plurinominales.length} diputaciones
+          </h3>
+          <p className="pequeno texto-2">
+            Llegaron al Congreso por la <Termino t="representacion_proporcional">lista de su partido</Termino>, no por un distrito. Toque a una persona para ver qué ha hecho.
+          </p>
+          <ul className="franja-rp__lista">
+            {plurinominales.map((d) => {
+              const partido = base.idx.partido.get(d.id_partido);
+              return (
+                <li key={d.id_diputado}>
+                  <button
+                    type="button"
+                    className="franja-rp__persona"
+                    aria-pressed={rp?.id_diputado === d.id_diputado}
+                    style={{ borderLeftColor: colorPartido(base, d.id_partido) }}
+                    onClick={() => seleccionarRp(d.id_diputado)}
+                  >
+                    <span className="franja-rp__foto">
+                      <Foto url={d.url_foto} archivo={d.archivo_foto} nombre={d.nombre_completo} />
+                    </span>
+                    <span>
+                      <span className="franja-rp__nombre">{d.nombre_completo}</span>
+                      <span className="franja-rp__partido">
+                        <span className="muestra" style={{ background: colorPartido(base, d.id_partido) }} aria-hidden="true" />
+                        {partido?.siglas ?? d.id_partido}
+                        {etiquetaSuplencia(d) && ` · ${etiquetaSuplencia(d)}`}
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+  ) : null;
+
   return (
     <>
-      <div className={`mapa-disposicion${sel == null && !rp ? ' mapa-disposicion--igualar' : ''}`}>
+      <div className="mapa-disposicion mapa-disposicion--igualar">
+        <div className="mapa-izquierda">
         <section className="panel" aria-label="Mapa">
           <div className="panel__cabecera">
             <div>
@@ -147,6 +209,9 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             </>
           )}
         </section>
+        {fichaAbierta && listaDistritos}
+        {fichaAbierta && franjaRp && <div className={claseNuevo()}>{franjaRp}<Nuevo texto="con una ficha abierta, las 9 suben debajo del mapa" /></div>}
+        </div>
 
         <div className="mapa-columna">
         <section className="panel" ref={ficha} aria-live="polite" aria-label="Ficha del distrito seleccionado" style={{ scrollMarginTop: 80 }}>
@@ -194,25 +259,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             </>
           )}
         </section>
-        <section className={`panel${claseNuevo()}`} aria-labelledby="lista-distritos">
-          <h3 className="mapa-columna__titulo" id="lista-distritos">
-            ¿Prefiere elegir de una lista?
-          </h3>
-          <div className="campo">
-            <label htmlFor={`${clave}-lista`} className="sr-only">
-              Elegir distrito
-            </label>
-            <select id={`${clave}-lista`} value={sel ?? ''} onChange={(e) => seleccionar(e.target.value ? Number(e.target.value) : null)}>
-              <option value="">Elija un distrito…</option>
-              {Array.from({ length: LEGISLATURA.distritos }, (_, i) => i + 1).map((d) => (
-                <option key={d} value={d}>
-                  {etiquetaMapa(d)}
-                </option>
-              ))}
-            </select>
-          </div>
-          <Nuevo texto="lista desplegable en lugar de los botones del 1 al 16" />
-        </section>
+        {!fichaAbierta && listaDistritos}
         {enCurul.length > 0 && (
           <section className={`panel curules${claseNuevo()}`} aria-labelledby={`${claveRp}-curules`}>
             <h3 id={`${claveRp}-curules`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
@@ -245,44 +292,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
         </div>
       </div>
 
-      {plurinominales.length > 0 && (
-        <section className="panel franja-rp" aria-labelledby={`${claveRp}-titulo`}>
-          <h3 id={`${claveRp}-titulo`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
-            Además, a todo Colima le representan estas {plurinominales.length} diputaciones
-          </h3>
-          <p className="pequeno texto-2">
-            Llegaron al Congreso por la <Termino t="representacion_proporcional">lista de su partido</Termino>, no por un distrito. Toque a una persona para ver qué ha hecho.
-          </p>
-          <ul className="franja-rp__lista">
-            {plurinominales.map((d) => {
-              const partido = base.idx.partido.get(d.id_partido);
-              return (
-                <li key={d.id_diputado}>
-                  <button
-                    type="button"
-                    className="franja-rp__persona"
-                    aria-pressed={rp?.id_diputado === d.id_diputado}
-                    style={{ borderLeftColor: colorPartido(base, d.id_partido) }}
-                    onClick={() => seleccionarRp(d.id_diputado)}
-                  >
-                    <span className="franja-rp__foto">
-                      <Foto url={d.url_foto} archivo={d.archivo_foto} nombre={d.nombre_completo} />
-                    </span>
-                    <span>
-                      <span className="franja-rp__nombre">{d.nombre_completo}</span>
-                      <span className="franja-rp__partido">
-                        <span className="muestra" style={{ background: colorPartido(base, d.id_partido) }} aria-hidden="true" />
-                        {partido?.siglas ?? d.id_partido}
-                        {etiquetaSuplencia(d) && ` · ${etiquetaSuplencia(d)}`}
-                      </span>
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      )}
+      {!fichaAbierta && franjaRp}
     </>
   );
 }

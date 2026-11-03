@@ -1771,3 +1771,17 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 .buscadores > * > .panel, .buscadores > .panel { margin: 0 !important; height: 100%; }
 .buscador-nombre__lista { display: grid; gap: 0.3rem; margin: 0.5rem 0; }
 .buscadores > div:not(.panel) { display: flex; flex-direction: column; } .buscadores > div:not(.panel) > .panel { flex: 1; }
+/* Columna izquierda: el mapa y, con una ficha abierta, las 9 diputaciones por lista debajo (llenan el hueco). */
+.mapa-izquierda { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.mapa-izquierda > .panel, .mapa-izquierda .franja-rp { margin: 0; }
+.mapa-disposicion--igualar .mapa-izquierda > .panel:first-child { flex: 1; }
+/* Con ficha abierta: la columna más corta estira su último recuadro para terminar a la par. */
+.mapa-disposicion--igualar .mapa-izquierda > :last-child:not(:first-child) { flex: 1; }
+.mapa-disposicion--igualar .mapa-izquierda > :last-child:not(:first-child) > .franja-rp { height: 100%; }
+/* En celular (una columna): mapa, luego la ficha, y después la lista y las 9 por lista. */
+@media (max-width: 900px) {
+  .mapa-izquierda { display: contents; }
+  .mapa-izquierda > :first-child { order: 1; }
+  .mapa-disposicion > .mapa-columna { order: 2; }
+  .mapa-izquierda > :not(:first-child) { order: 3; }
+}
