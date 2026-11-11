@@ -45,6 +45,8 @@
   --serie-8: #e34948;
   --rejilla: #e1e0d9;
   --eje: #898781;
+  /* Barras de contexto: gris que deja resaltar la barra importante. */
+  --barra-contexto: #c4c3bb;
 
   --mapa-relleno: #dbe8ee;
   --mapa-hover: #9cc3d6;
@@ -98,6 +100,8 @@
     --serie-8: #e66767;
     --rejilla: #2c2c2a;
     --eje: #898781;
+    /* Barras de contexto: gris que deja resaltar la barra importante. */
+    --barra-contexto: #4d4d48;
     --mapa-relleno: #24404d;
     --mapa-hover: #3c6f86;
     --mapa-sel: #8fc7e2;
@@ -143,6 +147,8 @@
   --serie-8: #e66767;
   --rejilla: #2c2c2a;
   --eje: #898781;
+  /* Barras de contexto: gris que deja resaltar la barra importante. */
+  --barra-contexto: #4d4d48;
   --mapa-relleno: #24404d;
   --mapa-hover: #3c6f86;
   --mapa-sel: #8fc7e2;
@@ -1827,3 +1833,9 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
   .filtros .campo label { white-space: normal; }
   .filtros .campo select, .filtros .campo input { max-width: 100%; }
 }
+.barras-lista__fila--destacada .barras-lista__valor, .barras-lista__fila--destacada .barras-lista__etiqueta { color: var(--texto); font-weight: 700; }
+.barras-lista__nota { margin: 0.4rem 0 0; font-size: 0.78rem; color: var(--texto-3); }
+/* Leyenda de la línea de promedio y del punto marcado, debajo de la gráfica. */
+.grafica__leyenda-ref { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin: 0.35rem 0 0; font-size: 0.8rem; color: var(--texto-2); }
+.grafica__linea-ref { display: inline-block; width: 1.4rem; border-top: 2px dashed var(--texto-3); vertical-align: middle; }
+.grafica__punto-ref { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--serie-1); vertical-align: middle; }

@@ -3,7 +3,7 @@
  * contraste), leyenda cuando hay 2+ series y tooltip al pasar el cursor.
  */
 import { useState, type ReactNode } from 'react';
-import { Bar, BarChart, CartesianGrid, LabelList, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis, type TooltipContentProps } from 'recharts';
+import { Bar, BarChart, CartesianGrid, LabelList, Line, LineChart, ReferenceDot, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis, type TooltipContentProps } from 'recharts';
 import { IcoGrafica, IcoTabla } from './Iconos';
 
 export interface Serie {
@@ -170,7 +170,29 @@ export function GraficaBarras({ datos, claveX, series, horizontal, apilado, alto
   );
 }
 
-export function GraficaLineas({ datos, claveX, series, alto = 280, etiquetaX, dominioY, sufijoY = '' }: { datos: Dato[]; claveX: string; series: Serie[]; alto?: number; etiquetaX?: (v: string) => string; dominioY?: [number, number]; sufijoY?: string }) {
+export function GraficaLineas({
+  datos,
+  claveX,
+  series,
+  alto = 280,
+  etiquetaX,
+  dominioY,
+  sufijoY = '',
+  referencia,
+  marca,
+}: {
+  datos: Dato[];
+  claveX: string;
+  series: Serie[];
+  alto?: number;
+  etiquetaX?: (v: string) => string;
+  dominioY?: [number, number];
+  sufijoY?: string;
+  /** Línea punteada horizontal de referencia (p. ej. el promedio), con su etiqueta escrita. */
+  referencia?: { valor: number; etiqueta: string };
+  /** Punto marcado con su etiqueta (p. ej. el mes más bajo). */
+  marca?: { x: string; y: number; etiqueta: string };
+}) {
   return (
     <>
       {series.length > 1 && <Leyenda series={series} />}
@@ -181,12 +203,32 @@ export function GraficaLineas({ datos, claveX, series, alto = 280, etiquetaX, do
             <XAxis dataKey={claveX} tickFormatter={etiquetaX} minTickGap={24} {...ejeProps} />
             <YAxis allowDecimals={false} width={48} domain={dominioY} tickFormatter={(v) => `${v}${sufijoY}`} {...ejeProps} />
             <Tooltip cursor={{ stroke: 'var(--borde-fuerte)' }} content={(p) => <Globo {...(p as TooltipContentProps<number, string>)} series={series} etiquetaX={etiquetaX} />} />
+            {referencia && (
+              <ReferenceLine y={referencia.valor} stroke="var(--texto-3)" strokeDasharray="5 4" strokeWidth={1.5} />
+            )}
+            {marca && (
+              <ReferenceDot x={marca.x} y={marca.y} r={6} fill="var(--serie-1)" stroke="var(--superficie)" strokeWidth={2} />
+            )}
             {series.map((s) => (
               <Line key={s.clave} type="linear" dataKey={s.clave} name={s.etiqueta} stroke={s.color} strokeWidth={2} dot={false} activeDot={{ r: 5, stroke: 'var(--superficie)', strokeWidth: 2 }} isAnimationActive={false} />
             ))}
           </LineChart>
         </ResponsiveContainer>
       </div>
+      {(referencia || marca) && (
+        <p className="grafica__leyenda-ref">
+          {referencia && (
+            <span>
+              <span className="grafica__linea-ref" aria-hidden="true" /> {referencia.etiqueta}
+            </span>
+          )}
+          {marca && (
+            <span>
+              <span className="grafica__punto-ref" aria-hidden="true" /> {marca.etiqueta}
+            </span>
+          )}
+        </p>
+      )}
     </>
   );
 }

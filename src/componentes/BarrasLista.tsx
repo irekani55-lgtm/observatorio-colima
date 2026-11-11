@@ -9,6 +9,8 @@ export interface FilaBarra {
   encabezado?: boolean;
   /** Si se da, la etiqueta es un botón (por ejemplo, para abrir una explicación). */
   onClick?: () => void;
+  /** Barra que explica la frase de arriba: va en color; las demás, en gris. */
+  destacada?: boolean;
 }
 
 /**
@@ -17,7 +19,11 @@ export interface FilaBarra {
  */
 export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-MX'), titulo, color = 'var(--serie-1)' }: { filas: FilaBarra[]; max?: number; formato?: (v: number) => string; titulo: string; color?: string }) {
   const tope = max ?? Math.max(1, ...filas.filter((f) => !f.encabezado).map((f) => f.valor));
+  // Si alguna barra está destacada, las demás van en gris para que el ojo vaya directo a la importante.
+  const hayDestacadas = filas.some((f) => f.destacada);
+  const colorDe = (f: FilaBarra) => (!hayDestacadas || f.destacada ? color : 'var(--barra-contexto)');
   return (
+    <>
     <ul className="barras-lista" aria-label={titulo}>
       {filas.map((f, i) =>
         f.encabezado ? (
@@ -25,7 +31,7 @@ export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-
             {f.etiqueta}
           </li>
         ) : (
-          <li key={i} className={`barras-lista__fila${f.nivel ? ' barras-lista__fila--desglose' : ''}`}>
+          <li key={i} className={`barras-lista__fila${f.nivel ? ' barras-lista__fila--desglose' : ''}${f.destacada ? ' barras-lista__fila--destacada' : ''}`}>
             <span className="barras-lista__etiqueta">
               {f.onClick ? (
                 <button type="button" className="barras-lista__enlace" onClick={f.onClick}>
@@ -36,13 +42,15 @@ export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-
               )}
             </span>
             <span className="barras-lista__pista" aria-hidden="true">
-              <span className="barras-lista__barra" style={{ width: `${Math.max(f.valor > 0 ? 1.5 : 0, (f.valor / tope) * 100)}%`, background: color }} />
+              <span className="barras-lista__barra" style={{ width: `${Math.max(f.valor > 0 ? 1.5 : 0, (f.valor / tope) * 100)}%`, background: colorDe(f) }} />
             </span>
             <span className="barras-lista__valor">{formato(f.valor)}</span>
           </li>
         ),
       )}
     </ul>
+    {hayDestacadas && <p className="barras-lista__nota">La barra en color es la que explica la frase de arriba.</p>}
+    </>
   );
 }
 

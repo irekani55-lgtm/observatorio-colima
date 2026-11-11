@@ -49,10 +49,10 @@ export function PreguntasCongreso() {
   ];
   const filasAvance: FilaBarra[] = [
     { etiqueta: 'Llegaron al Congreso', valor: avance.presentadas },
-    { etiqueta: 'Se aprobaron', valor: avance.aprobadas },
+    { etiqueta: 'Se aprobaron', valor: avance.aprobadas, destacada: true },
     { etiqueta: `De las ${fmt(avance.aprobadas)} aprobadas:`, valor: 0, encabezado: true },
     { etiqueta: 'Crean o cambian leyes', valor: avance.fondo, nivel: 1 },
-    { etiqueta: 'Trámites de cada año', valor: avance.tramite, nivel: 1 },
+    { etiqueta: 'Trámites de cada año', valor: avance.tramite, nivel: 1, destacada: true },
     { etiqueta: 'Homenajes o fechas especiales', valor: avance.conmemorativa, nivel: 1 },
   ];
   const origenOrdenado = [...origen.filas].sort((a, b) => b.total - a.total);
@@ -62,7 +62,7 @@ export function PreguntasCongreso() {
     { resultado: 'El acta no dice si se aprobó', total: exhortos.sinResultado },
   ].filter((x) => x.total > 0);
   const filasExh: FilaBarra[] = [
-    { etiqueta: 'Aprobados', valor: exhortos.aprobados },
+    { etiqueta: 'Aprobados', valor: exhortos.aprobados, destacada: true },
     { etiqueta: 'Rechazados', valor: exhortos.rechazados },
     ...(exhortos.sinResultado ? [{ etiqueta: 'El acta no dice si se aprobó', valor: exhortos.sinResultado, onClick: () => setVerSinResultado(true) }] : []),
   ];
@@ -71,6 +71,7 @@ export function PreguntasCongreso() {
     { tipo: 'Casi todos (1 o 2 en contra o abstención)', total: votos.casi },
     { tipo: 'Divididas (3 o más de cada lado)', total: votos.divididas },
   ];
+  const partidosEtiq = partidos.map((p) => ({ ...p, etiqueta: `${p.partido} (${p.lugares} ${p.lugares === 1 ? 'lugar' : 'lugares'})` }));
   const vals = partidos.map((p) => p.porLugar);
   const rango = vals.length ? `${Math.min(...vals).toLocaleString('es-MX')} y ${Math.max(...vals).toLocaleString('es-MX')}` : '—';
   const asisProm = asistencia.length ? asistencia.reduce((s, x) => s + x.asistencia * x.sesiones, 0) / asistencia.reduce((s, x) => s + x.sesiones, 0) : null;
@@ -111,7 +112,7 @@ export function PreguntasCongreso() {
         >
           <BarrasLista
             titulo="Quién manda las propuestas"
-            filas={origenOrdenado.map((o) => ({ etiqueta: o.origen, valor: o.total, onClick: o.origen === 'Gobernadora' ? () => setVerGobernadora(true) : undefined }))}
+            filas={origenOrdenado.map((o) => ({ etiqueta: o.origen, valor: o.total, destacada: o.origen === 'Ayuntamientos' || o.origen === 'Gobernadora', onClick: o.origen === 'Gobernadora' ? () => setVerGobernadora(true) : undefined }))}
           />
           <p className="muy-pequeno texto-3" style={{ marginBottom: 0 }}>
             Toque «Gobernadora» para saber qué le toca hacer según la Constitución de Colima.
@@ -145,7 +146,7 @@ export function PreguntasCongreso() {
           columnas={[{ clave: 'tipo', etiqueta: 'Cómo votaron' }, { clave: 'total', etiqueta: 'Votaciones' }]}
           vacio={votos.total === 0}
         >
-          <BarrasLista titulo="Cómo votaron" filas={datosVotos.map((v) => ({ etiqueta: v.tipo, valor: v.total }))} />
+          <BarrasLista titulo="Cómo votaron" filas={datosVotos.map((v, i) => ({ etiqueta: v.tipo, valor: v.total, destacada: i === 2 }))} />
         </PanelGrafica>
 
         <PanelGrafica
@@ -161,7 +162,16 @@ export function PreguntasCongreso() {
           datos={asistencia.map((x) => ({ mes: etiquetaMes(x.mes), asistencia: x.asistencia, sesiones: x.sesiones }))}
           columnas={[{ clave: 'mes', etiqueta: 'Mes' }, { clave: 'asistencia', etiqueta: 'Asistencia (%)' }, { clave: 'sesiones', etiqueta: 'Registros' }]}
         >
-          <GraficaLineas datos={asistencia} claveX="mes" etiquetaX={etiquetaMes} series={serie('asistencia', 'Asistencia (%)')} dominioY={[0, 100]} sufijoY=" %" />
+          <GraficaLineas
+            datos={asistencia}
+            claveX="mes"
+            etiquetaX={etiquetaMes}
+            series={serie('asistencia', 'Asistencia (%)')}
+            dominioY={[0, 100]}
+            sufijoY=" %"
+            referencia={asisProm == null ? undefined : { valor: Math.round(asisProm * 10) / 10, etiqueta: `Promedio: ${pct(asisProm)}` }}
+            marca={asisMin ? { x: asisMin.mes, y: asisMin.asistencia, etiqueta: `Mes más bajo: ${etiquetaMes(asisMin.mes)}, ${pct(asisMin.asistencia)}` } : undefined}
+          />
         </PanelGrafica>
 
         <PanelGrafica
@@ -171,10 +181,10 @@ export function PreguntasCongreso() {
               Se divide entre los lugares de cada partido, porque un partido con más lugares presenta más en total. Por cada lugar, los partidos presentan entre <strong>{rango}</strong> propuestas. No mide calidad ni impacto.
             </>
           }
-          datos={partidos}
+          datos={partidosEtiq}
           columnas={[{ clave: 'partido', etiqueta: 'Partido' }, { clave: 'lugares', etiqueta: 'Lugares' }, { clave: 'propuestas', etiqueta: 'Propuestas' }, { clave: 'porLugar', etiqueta: 'Por lugar' }]}
         >
-          <GraficaBarras datos={partidos} claveX="partido" series={serie('porLugar', 'Propuestas por lugar')} horizontal anchoEtiqueta={70} colorFila={(d) => colorPartido(base, String(d.id_partido))} valores={(v) => v.toLocaleString('es-MX', { maximumFractionDigits: 1 })} />
+          <GraficaBarras datos={partidosEtiq} claveX="etiqueta" series={serie('porLugar', 'Propuestas por lugar')} horizontal anchoEtiqueta={170} colorFila={(d) => colorPartido(base, String(d.id_partido))} valores={(v) => v.toLocaleString('es-MX', { maximumFractionDigits: 1 })} />
         </PanelGrafica>
       </div>
       <Explicacion titulo="¿Qué hace la gobernadora y por qué manda propuestas?" abierta={verGobernadora} onCerrar={() => setVerGobernadora(false)}>
