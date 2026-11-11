@@ -33,12 +33,16 @@ export function origenPropuesta(a: Asunto): Origen {
   return 'Ciudadanía y otros';
 }
 
-/** ¿Quién manda las propuestas al Congreso? */
+/** ¿Quién manda las propuestas al Congreso? Con cuántas de cada quien cambian leyes, son trámites u homenajes. */
 export function origenesPropuestas(asuntos: Asunto[]) {
-  const c = Object.fromEntries(ORIGENES.map((o) => [o, 0])) as Record<Origen, number>;
+  const c = Object.fromEntries(ORIGENES.map((o) => [o, { total: 0, fondo: 0, tramite: 0, conmemorativa: 0 }])) as Record<Origen, { total: number; fondo: number; tramite: number; conmemorativa: number }>;
   const ini = asuntos.filter((a) => a.tipo === 'iniciativa');
-  for (const a of ini) c[origenPropuesta(a)]++;
-  return { total: ini.length, filas: ORIGENES.map((o) => ({ origen: o, total: c[o] })) };
+  for (const a of ini) {
+    const x = c[origenPropuesta(a)];
+    x.total++;
+    x[alcancePropuesta(a)]++;
+  }
+  return { total: ini.length, filas: ORIGENES.map((o) => ({ origen: o, ...c[o] })) };
 }
 
 /** ¿Qué pasó con los exhortos? */

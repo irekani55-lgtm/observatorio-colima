@@ -39,6 +39,7 @@ export function PreguntasCongreso() {
   const [verSinResultado, setVerSinResultado] = useState(false);
   const [verGobernadora, setVerGobernadora] = useState(false);
   const serie = (clave: string, etiqueta: string) => [{ clave, etiqueta, color: SERIES[0] }];
+  const tramitesAyun = { ayun: origen.filas.find((f) => f.origen === 'Ayuntamientos')?.tramite ?? 0, total: origen.filas.reduce((n, f) => n + f.tramite, 0) };
   const fueraDip = origen.total - (origen.filas.find((f) => f.origen === 'Diputaciones')?.total ?? 0);
   const datosAvance = [
     { paso: 'Llegaron al Congreso', total: avance.presentadas },
@@ -56,6 +57,15 @@ export function PreguntasCongreso() {
     { etiqueta: 'Homenajes o fechas especiales', valor: avance.conmemorativa, nivel: 1 },
   ];
   const origenOrdenado = [...origen.filas].sort((a, b) => b.total - a.total);
+  // Letra chica bajo cada barra: de lo que mandó cada quien, cuánto cambia leyes y cuánto es trámite u homenaje.
+  const desglose = (o: { fondo: number; tramite: number; conmemorativa: number }) =>
+    [
+      o.tramite ? `${fmt(o.tramite)} ${o.tramite === 1 ? 'es trámite' : 'son trámites'}${o.tramite >= 50 ? ' (predial, agua, ingresos de cada municipio)' : ''}` : '',
+      o.fondo ? `${fmt(o.fondo)} ${o.fondo === 1 ? 'cambia o crea leyes' : 'cambian o crean leyes'}` : '',
+      o.conmemorativa ? `${fmt(o.conmemorativa)} ${o.conmemorativa === 1 ? 'es homenaje' : 'son homenajes'}` : '',
+    ]
+      .filter(Boolean)
+      .join(' · ') || undefined;
   const datosExh = [
     { resultado: 'Aprobados', total: exhortos.aprobados },
     { resultado: 'Rechazados', total: exhortos.rechazados },
@@ -103,16 +113,22 @@ export function PreguntasCongreso() {
           titulo="¿Quién manda las propuestas al Congreso?"
           nota={
             <>
-              <strong>{deCada10(fueraDip, origen.total)} de cada 10</strong> propuestas no las presentan las diputaciones: las mandan sobre todo los ayuntamientos y la gobernadora. Las diputaciones también votan esas propuestas.
+              <strong>{deCada10(fueraDip, origen.total)} de cada 10</strong> propuestas no las presentan las diputaciones: las mandan sobre todo los ayuntamientos y la gobernadora.{tramitesAyun.total > 0 && <> De los trámites (como los descuentos en el predial), <strong>{deCada10(tramitesAyun.ayun, tramitesAyun.total)} de cada 10</strong> los mandan los ayuntamientos.</>} Las diputaciones también votan esas propuestas.
             </>
           }
           datos={origenOrdenado}
-          columnas={[{ clave: 'origen', etiqueta: 'Quién la manda' }, { clave: 'total', etiqueta: 'Propuestas' }]}
+          columnas={[
+            { clave: 'origen', etiqueta: 'Quién la manda' },
+            { clave: 'total', etiqueta: 'Propuestas' },
+            { clave: 'fondo', etiqueta: 'Cambian o crean leyes' },
+            { clave: 'tramite', etiqueta: 'Trámites' },
+            { clave: 'conmemorativa', etiqueta: 'Homenajes' },
+          ]}
           vacio={origen.total === 0}
         >
           <BarrasLista
             titulo="Quién manda las propuestas"
-            filas={origenOrdenado.map((o) => ({ etiqueta: o.origen, valor: o.total, destacada: o.origen === 'Ayuntamientos' || o.origen === 'Gobernadora', onClick: o.origen === 'Gobernadora' ? () => setVerGobernadora(true) : undefined }))}
+            filas={origenOrdenado.map((o) => ({ etiqueta: o.origen, valor: o.total, destacada: o.origen === 'Ayuntamientos' || o.origen === 'Gobernadora', onClick: o.origen === 'Gobernadora' ? () => setVerGobernadora(true) : undefined, nota: desglose(o) }))}
           />
           <p className="muy-pequeno texto-3" style={{ marginBottom: 0 }}>
             Toque «Gobernadora» para saber qué le toca hacer según la Constitución de Colima.

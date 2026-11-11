@@ -11,6 +11,8 @@ export interface FilaBarra {
   onClick?: () => void;
   /** Barra que explica la frase de arriba: va en color; las demás, en gris. */
   destacada?: boolean;
+  /** Detalle en letra chica debajo del renglón (p. ej. «114 son trámites…»). */
+  nota?: string;
 }
 
 /**
@@ -45,6 +47,7 @@ export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-
               <span className="barras-lista__barra" style={{ width: `${Math.max(f.valor > 0 ? 1.5 : 0, (f.valor / tope) * 100)}%`, background: colorDe(f) }} />
             </span>
             <span className="barras-lista__valor">{formato(f.valor)}</span>
+            {f.nota && <span className="barras-lista__detalle">{f.nota}</span>}
           </li>
         ),
       )}

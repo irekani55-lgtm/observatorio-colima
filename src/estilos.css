@@ -1839,3 +1839,5 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 .grafica__leyenda-ref { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin: 0.35rem 0 0; font-size: 0.8rem; color: var(--texto-2); }
 .grafica__linea-ref { display: inline-block; width: 1.4rem; border-top: 2px dashed var(--texto-3); vertical-align: middle; }
 .grafica__punto-ref { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--serie-1); vertical-align: middle; }
+/* Detalle en letra chica debajo de una barra (ocupa todo el renglón). */
+.barras-lista__detalle { grid-column: 1 / -1; margin-top: -0.2rem; font-size: 0.76rem; color: var(--texto-3); line-height: 1.35; }
