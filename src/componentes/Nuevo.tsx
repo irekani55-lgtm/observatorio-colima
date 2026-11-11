@@ -32,6 +32,7 @@ export const CAMBIOS_VISTA_PREVIA = [
   { texto: 'Julio César León Trujillo ya no aparece «en funciones»: dice que tiene licencia desde el 2 oct 2024, que no ha regresado y quién está en su lugar.', a: '/diputaciones/DIP-RP-JCLT' },
   { texto: 'Menú: se quitó «Mapa», porque todo lo del mapa ya está en el inicio. Los enlaces viejos llevan al inicio.', a: '/' },
   { texto: 'Mapa: al abrir una ficha, el mapa se queda fijo a la izquierda mientras usted baja por la ficha (sin espacio vacío).', a: '/?mapa_distrito=3' },
+  { texto: 'Todas las páginas (menos el inicio) tienen arriba un botón «← Regresar» a la página anterior.', a: '/congreso' },
   { texto: 'El Congreso en números: ahora son seis preguntas en palabras sencillas, cada una con su respuesta y una gráfica; lo técnico quedó guardado en «Para revisar a fondo».', a: '/congreso' },
   { texto: 'Menú: ahora tiene 3 opciones: Inicio, ¿Qué se hace en el Congreso? y El Congreso en números.', a: '/' },
   { texto: 'Inicio: nuevo buscador «¿Sabe su nombre?» y enlace a la lista de las 28 personas.', a: '/' },

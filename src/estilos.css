@@ -1795,3 +1795,6 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 /* «El Congreso en números»: la respuesta de cada pregunta se lee primero, en letra normal. */
 .preguntas .panel__nota { font-size: 0.95rem; color: var(--texto); line-height: 1.5; }
 .preguntas .panel__cabecera h3 { font-size: 1.05rem; }
+/* Botón «← Regresar» arriba del título de cada página. */
+.regresar { margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.regresar .boton { padding-left: 0.4rem; font-weight: 600; color: var(--enlace); }

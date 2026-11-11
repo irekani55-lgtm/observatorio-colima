@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FUENTES_INSTITUCIONALES, LEGISLATURA } from '../config/legislatura';
 import { useDatos } from '../estado/DatosContext';
 import { fechaCorta } from '../indicadores/filtro';
@@ -189,12 +189,31 @@ export function Disposicion() {
   );
 }
 
+/**
+ * «← Regresar»: vuelve a la página anterior dentro del Observatorio. Si la persona entró directo con un enlace
+ * (no hay página anterior aquí), la lleva al inicio.
+ */
+function BotonRegresar() {
+  const navegar = useNavigate();
+  const loc = useLocation();
+  const hayAnterior = loc.key !== 'default';
+  return (
+    <p className={`regresar${claseNuevo()}`}>
+      <button type="button" className="boton boton--fantasma boton--chico" onClick={() => (hayAnterior ? navegar(-1) : navegar('/'))}>
+        ← {hayAnterior ? 'Regresar' : 'Ir al inicio'}
+      </button>
+      <Nuevo texto="botón para regresar" />
+    </p>
+  );
+}
+
 export function EncabezadoPagina({ titulo, children, migas, destacado }: { titulo: string; children?: ReactNode; migas?: { a: string; texto: string }[]; destacado?: boolean }) {
   useEffect(() => {
     document.title = `${titulo} | Observatorio Legislativo Colima`;
   }, [titulo]);
   return (
     <header className={`encabezado-pagina${destacado ? ' encabezado-pagina--destacado' : ''}`}>
+      {!destacado && <BotonRegresar />}
       {migas && (
         <nav className="migas" aria-label="Ruta de navegación">
           {migas.map((m, i) => (

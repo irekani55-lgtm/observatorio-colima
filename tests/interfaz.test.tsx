@@ -117,6 +117,16 @@ describe('interfaz', () => {
     expect(screen.getByRole('link', { name: 'Ana Ejemplo' })).toHaveAttribute('href', '/diputaciones/D1');
   });
 
+  it('el botón «Regresar» vuelve a la página anterior y, si se entró directo, lleva al inicio', async () => {
+    const u = userEvent.setup();
+    montar('/congreso', datos());
+    await u.click(await screen.findByRole('button', { name: '← Ir al inicio' }));
+    expect(await screen.findByRole('heading', { name: '¿Qué hace una diputación?' })).toBeInTheDocument();
+    await u.click(screen.getByRole('link', { name: 'El Congreso en números' }));
+    await u.click(await screen.findByRole('button', { name: '← Regresar' }));
+    expect(await screen.findByRole('heading', { name: '¿Qué hace una diputación?' })).toBeInTheDocument();
+  });
+
   it('el menú tiene 3 opciones y las páginas viejas llevan a su nuevo lugar', async () => {
     montar('/representacion-proporcional', datos());
     expect(await screen.findByRole('button', { name: 'Llegaron por la lista de su partido', pressed: true })).toBeInTheDocument();
