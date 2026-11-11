@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { Aviso } from '../componentes/Aviso';
 import { SERIES } from '../componentes/colores';
 import { EncabezadoPagina } from '../componentes/Disposicion';
@@ -37,13 +38,15 @@ export default function Exhortos() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Exhortos y puntos de acuerdo">
-        <p>
-          Un exhorto es una solicitud del Congreso a otra autoridad para que realice o informe sobre una acción. <strong>Que el Congreso apruebe un exhorto no significa que la autoridad lo haya atendido</strong>, y no localizar una respuesta no demuestra que la autoridad haya incumplido.
+      <EncabezadoPagina titulo="Peticiones a otras autoridades (exhortos)">
+        <p className={claseNuevo()}>
+          Un exhorto es cuando el Congreso le pide a otra autoridad que atienda un problema o que informe algo. <strong>Aprobarlo no obliga a la autoridad a hacer caso.</strong> Y si no encontramos una respuesta, no quiere decir que la autoridad no
+          hizo nada: puede que no se haya publicado.
+          <Nuevo texto="en palabras sencillas" />
         </p>
       </EncabezadoPagina>
       <BarraFiltros extraLimpiar={['diputado', 'seguimiento', 'orden', 'tema']}>
-        <FiltroParam id="diputado" etiqueta="Promovente" ancho opciones={base.diputados.map((d) => ({ valor: d.id_diputado, etiqueta: d.nombre_completo }))} />
+        <FiltroParam id="diputado" etiqueta="Quién lo propuso" ancho opciones={base.diputados.map((d) => ({ valor: d.id_diputado, etiqueta: d.nombre_completo }))} />
         <FiltroParam id="seguimiento" etiqueta="Seguimiento" opciones={Object.entries(SEGUIMIENTO_EXHORTO).map(([k, v]) => ({ valor: k, etiqueta: v.etiqueta }))} />
         <FiltroParam id="orden" etiqueta="Orden de gobierno" opciones={Object.entries(ORDEN).map(([k, v]) => ({ valor: k, etiqueta: v }))} />
         <FiltroParam id="tema" etiqueta="Tema" opciones={temas.map((t) => ({ valor: t, etiqueta: t }))} />
@@ -93,15 +96,15 @@ export default function Exhortos() {
           ordenInicial={{ id: 'fecha', desc: true }}
           columnas={[
             { id: 'id', titulo: 'ID', valor: (x) => x.exhorto?.id_exhorto ?? x.asunto.id_asunto, render: (x) => <span className="muy-pequeno num">{x.exhorto?.id_exhorto ?? x.asunto.id_asunto}</span> },
-            { id: 'titulo', titulo: 'Exhorto', valor: (x) => `${x.asunto.titulo} ${x.asunto.tema}`, render: (x) => <div style={{ minWidth: 240 }}>{x.asunto.titulo}<div className="muy-pequeno texto-3">{x.asunto.tema}</div>{x.asunto.descripcion && <details className="muy-pequeno"><summary>Descripción</summary>{x.asunto.descripcion}</details>}</div> },
-            { id: 'fecha', titulo: 'Presentación', valor: (x) => x.asunto.fecha_presentacion, render: (x) => fechaCorta(x.asunto.fecha_presentacion) },
-            { id: 'prom', titulo: 'Promoventes', valor: (x) => x.asunto.promoventes.map((p) => nombreDip(base, p.id_diputado) || p.promovente_externo).join('; '), render: (x) => <Promoventes a={x.asunto} resaltar={idDip} /> },
-            { id: 'aut', titulo: 'Autoridad destinataria', valor: (x) => x.exhorto?.autoridad_destinataria ?? '', render: (x) => x.exhorto?.autoridad_destinataria || <span className="texto-3">No registrada</span> },
-            { id: 'com', titulo: 'Comisión / turno', valor: (x) => x.asunto.turnos.map((t) => base.idx.comision.get(t.id_comision)?.nombre).join('; '), render: (x) => (x.asunto.turnos.length ? <span className="muy-pequeno">{x.asunto.turnos.map((t) => `${base.idx.comision.get(t.id_comision)?.nombre ?? t.id_comision} (${fechaCorta(t.fecha_turno)})`).join('; ')}</span> : <span className="muy-pequeno texto-3">Sin turno (dispensa de trámite o sin dato)</span>) },
-            { id: 'estado', titulo: 'Estado procesal', valor: (x) => x.asunto.estado_procesal, render: (x) => <InsigniaCatalogo catalogo={ESTADOS_PROCESALES} valor={x.asunto.estado_procesal} /> },
+            { id: 'titulo', titulo: 'Qué se pidió', valor: (x) => `${x.asunto.titulo} ${x.asunto.tema}`, render: (x) => <div style={{ minWidth: 240 }}>{x.asunto.titulo}<div className="muy-pequeno texto-3">{x.asunto.tema}</div>{x.asunto.descripcion && <details className="muy-pequeno"><summary>Descripción</summary>{x.asunto.descripcion}</details>}</div> },
+            { id: 'fecha', titulo: 'Se presentó', valor: (x) => x.asunto.fecha_presentacion, render: (x) => fechaCorta(x.asunto.fecha_presentacion) },
+            { id: 'prom', titulo: 'Quién lo propuso', valor: (x) => x.asunto.promoventes.map((p) => nombreDip(base, p.id_diputado) || p.promovente_externo).join('; '), render: (x) => <Promoventes a={x.asunto} resaltar={idDip} /> },
+            { id: 'aut', titulo: 'A quién se le pidió', valor: (x) => x.exhorto?.autoridad_destinataria ?? '', render: (x) => x.exhorto?.autoridad_destinataria || <span className="texto-3">No registrada</span> },
+            { id: 'com', titulo: 'Comisión que lo estudia', valor: (x) => x.asunto.turnos.map((t) => base.idx.comision.get(t.id_comision)?.nombre).join('; '), render: (x) => (x.asunto.turnos.length ? <span className="muy-pequeno">{x.asunto.turnos.map((t) => `${base.idx.comision.get(t.id_comision)?.nombre ?? t.id_comision} (${fechaCorta(t.fecha_turno)})`).join('; ')}</span> : <span className="muy-pequeno texto-3">Sin turno (dispensa de trámite o sin dato)</span>) },
+            { id: 'estado', titulo: 'En qué va', valor: (x) => x.asunto.estado_procesal, render: (x) => <InsigniaCatalogo catalogo={ESTADOS_PROCESALES} valor={x.asunto.estado_procesal} /> },
             {
               id: 'fechas',
-              titulo: 'Aprobación / envío / respuesta',
+              titulo: 'Aprobado / enviado / respondido',
               valor: (x) => x.asunto.fecha_aprobacion,
               render: (x) => (
                 <ul className="lista-limpia muy-pequeno num" style={{ minWidth: 150 }}>
@@ -111,9 +114,9 @@ export default function Exhortos() {
                 </ul>
               ),
             },
-            { id: 'seg', titulo: 'Seguimiento', valor: (x) => etiquetaDe(SEGUIMIENTO_EXHORTO, x.seguimiento), render: (x) => <InsigniaCatalogo catalogo={SEGUIMIENTO_EXHORTO} valor={x.seguimiento} /> },
-            { id: 'acc', titulo: 'Acciones posteriores', valor: (x) => x.exhorto?.acciones_posteriores ?? '', render: (x) => (x.exhorto?.acciones_posteriores ? <span className="muy-pequeno">{x.exhorto.acciones_posteriores} <EnlaceFuente id={x.exhorto.id_fuente_acciones} corto /></span> : <span className="texto-3">—</span>) },
-            { id: 'docs', titulo: 'Fuentes', sinBusqueda: true, valor: (x) => x.asunto.url_documento, render: (x) => <span className="muy-pequeno"><EnlaceExterno url={x.asunto.url_documento}>Documento</EnlaceExterno> · <EnlaceFuente id={x.asunto.id_fuente} corto /></span> },
+            { id: 'seg', titulo: '¿Respondió la autoridad?', valor: (x) => etiquetaDe(SEGUIMIENTO_EXHORTO, x.seguimiento), render: (x) => <InsigniaCatalogo catalogo={SEGUIMIENTO_EXHORTO} valor={x.seguimiento} /> },
+            { id: 'acc', titulo: 'Qué hizo después', valor: (x) => x.exhorto?.acciones_posteriores ?? '', render: (x) => (x.exhorto?.acciones_posteriores ? <span className="muy-pequeno">{x.exhorto.acciones_posteriores} <EnlaceFuente id={x.exhorto.id_fuente_acciones} corto /></span> : <span className="texto-3">—</span>) },
+            { id: 'docs', titulo: 'Documentos', sinBusqueda: true, valor: (x) => x.asunto.url_documento, render: (x) => <span className="muy-pequeno"><EnlaceExterno url={x.asunto.url_documento}>Documento</EnlaceExterno> · <EnlaceFuente id={x.asunto.id_fuente} corto /></span> },
           ]}
         />
       </section>

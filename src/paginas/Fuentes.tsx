@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { Aviso } from '../componentes/Aviso';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { EnlaceExterno } from '../componentes/Fuente';
@@ -34,8 +35,12 @@ export default function Fuentes() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Fuentes y calidad de datos">
-        <p>Fuentes institucionales consultadas, evidencias que respaldan cada registro y resultados de la validación automática de los datos.</p>
+      <EncabezadoPagina titulo="¿De dónde salen los datos?">
+        <p className={claseNuevo()}>
+          Todo lo que ve en el Observatorio sale de documentos oficiales del Congreso, del Instituto Electoral del Estado de Colima (IEE) y del Instituto Nacional Electoral (INE). Aquí están esos documentos, las revisiones que hacemos para encontrar
+          errores y la bitácora donde anotamos lo que no cuadra. Esta página es la más detallada; sirve sobre todo a quien quiere revisar a fondo.
+          <Nuevo texto="en palabras sencillas" />
+        </p>
       </EncabezadoPagina>
 
       <section className="seccion">

@@ -17,9 +17,9 @@ export const NAV_PRINCIPAL = [
 
 export const NAV_ACTIVIDAD = [
   { a: '/asistencias', texto: 'Asistencias' },
-  { a: '/asuntos', texto: 'Iniciativas y asuntos' },
+  { a: '/asuntos', texto: 'Propuestas' },
   { a: '/exhortos', texto: 'Exhortos' },
-  { a: '/intervenciones', texto: 'Intervenciones' },
+  { a: '/intervenciones', texto: 'Quién habla' },
   { a: '/comisiones', texto: 'Comisiones' },
   { a: '/votaciones', texto: 'Votaciones' },
 ];
@@ -137,7 +137,7 @@ export function Disposicion() {
         {enActividad && (
           <nav className="subnav" aria-label="Secciones de actividad legislativa">
             <div className="contenedor">
-              <span className="subnav__etiqueta">Actividad</span>
+              <span className="subnav__etiqueta">Ver:</span>
               {NAV_ACTIVIDAD.map((n) => (
                 <NavLink key={n.a} to={n.a} className={({ isActive }) => (isActive ? 'activo' : '')}>
                   {n.texto}

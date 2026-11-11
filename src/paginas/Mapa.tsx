@@ -12,6 +12,7 @@ import { enFunciones } from '../indicadores/filtro';
 import { CONFIG_MAPA } from '../config/mapa';
 import { EnlaceExterno } from '../componentes/Fuente';
 import { claseNuevo, Nuevo } from '../componentes/Nuevo';
+import { QueEsPorLista } from '../componentes/SaberMasLugares';
 import type { Base, Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { useFiltro } from '../estado/useFiltro';
@@ -138,6 +139,10 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
           <p className="pequeno texto-2">
             Llegaron al Congreso por la <Termino t="representacion_proporcional">lista de su partido</Termino>, no por un distrito. Toque a una persona para ver qué ha hecho.
           </p>
+          <div className={claseNuevo()}>
+            <QueEsPorLista />
+            <Nuevo texto="explicación de las diputaciones por lista" />
+          </div>
           <ul className="franja-rp__lista">
             {plurinominales.map((d) => {
               const partido = base.idx.partido.get(d.id_partido);

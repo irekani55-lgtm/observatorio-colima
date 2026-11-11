@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { BarraFiltros, FiltroParam } from '../componentes/Filtros';
 import { InsigniaCatalogo } from '../componentes/Insignia';
@@ -41,11 +42,15 @@ export default function Asuntos() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Iniciativas y asuntos legislativos">
-        <p>Iniciativas, dictámenes, decretos, acuerdos, puntos de acuerdo y exhortos registrados. Cada asunto aparece una sola vez aunque tenga varios promoventes o se haya turnado a varias comisiones.</p>
+      <EncabezadoPagina titulo="Propuestas y decisiones del Congreso">
+        <p className={claseNuevo()}>
+          Aquí están todas las propuestas que llegaron al Congreso y lo que decidió con ellas: propuestas de ley, opiniones de las comisiones (dictámenes), leyes publicadas (decretos) y peticiones a otras autoridades (exhortos). Cada una aparece
+          una sola vez, aunque la hayan firmado varias personas.
+          <Nuevo texto="en palabras sencillas" />
+        </p>
       </EncabezadoPagina>
       <BarraFiltros extraLimpiar={['tipo', 'estado', 'tema', 'comision', 'diputado']}>
-        <FiltroParam id="tipo" etiqueta="Tipo de asunto" opciones={Object.entries(TIPOS_ASUNTO).map(([k, v]) => ({ valor: k, etiqueta: v.etiqueta }))} />
+        <FiltroParam id="tipo" etiqueta="Tipo de propuesta" opciones={Object.entries(TIPOS_ASUNTO).map(([k, v]) => ({ valor: k, etiqueta: v.etiqueta }))} />
         <FiltroParam
           id="estado"
           etiqueta="Estado procesal"

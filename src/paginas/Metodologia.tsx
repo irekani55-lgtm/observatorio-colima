@@ -1,4 +1,5 @@
 import { EncabezadoPagina, NOTA_PUBLICA } from '../componentes/Disposicion';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { InsigniaCatalogo } from '../componentes/Insignia';
 import {
   ESTADOS_ASISTENCIA,
@@ -118,8 +119,11 @@ export default function Metodologia() {
   const { base } = useDatos();
   return (
     <>
-      <EncabezadoPagina titulo="Metodología">
-        <p>Cómo se construyen, calculan e interpretan los indicadores del Observatorio.</p>
+      <EncabezadoPagina titulo="¿Cómo calculamos cada dato?">
+        <p className={claseNuevo()}>
+          Aquí explicamos de dónde sale cada número, qué cuenta y qué no, y sus límites. Es la parte más detallada del Observatorio, pensada para quien quiere comprobar los cálculos.
+          <Nuevo texto="en palabras sencillas" />
+        </p>
       </EncabezadoPagina>
       <p className="nota-publica">{NOTA_PUBLICA}</p>
 

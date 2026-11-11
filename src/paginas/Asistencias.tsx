@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { Aviso } from '../componentes/Aviso';
 import { colorPartido, SERIES } from '../componentes/colores';
 import { EncabezadoPagina } from '../componentes/Disposicion';
@@ -54,20 +55,36 @@ export default function Asistencias() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Asistencias a sesiones del Pleno">
-        <p>Registro de asistencia de cada persona a las sesiones del Pleno. La numeración de las sesiones se reinicia cada año legislativo; por eso cada sesión tiene un ID único y se conservan por separado el año, el periodo y el número.</p>
+      <EncabezadoPagina titulo="¿Quién asiste a las sesiones?">
+        <p className={claseNuevo()}>
+          Aquí puede ver si cada diputada o diputado estuvo en las sesiones, que son las reuniones donde todo el Congreso discute y vota. Importa porque quien no está, no puede votar ni hablar por la gente que representa.
+          <Nuevo texto="en palabras sencillas" />
+        </p>
       </EncabezadoPagina>
 
       <div className="panel" style={{ marginBottom: '1rem' }}>
         <h2 style={{ fontSize: '1rem' }}>¿Cómo se calcula?</h2>
-        <code className="formula">Asistencia (%) = asistencias registradas ÷ sesiones elegibles con información verificable × 100</code>
-        <p className="pequeno texto-2" style={{ marginTop: '0.5rem' }}>
-          El denominador suma asistencias, ausencias y ausencias justificadas. Los registros <em>pendientes</em>, <em>no verificados</em> y las sesiones sin registro <strong>no se cuentan como ausencias</strong>: se excluyen del cálculo y se informan aparte. Solo cuentan las sesiones en que la persona ejercía el cargo y que están marcadas como elegibles (por ejemplo, no se incluyen las de la Comisión Permanente, a la que no pertenecen todas las diputaciones).
+        <p className="pequeno" style={{ marginTop: 0 }}>
+          Contamos en cuántas sesiones asistió la persona y lo dividimos entre las sesiones que le tocaban (asistió + faltó con permiso + faltó sin permiso). Si no tenemos la lista de una sesión, <strong>no la contamos como falta</strong>.
         </p>
+        <details className="saber-mas">
+          <summary>Saber más</summary>
+          <p className="pequeno">
+            Solo cuentan las sesiones en que la persona estaba en el cargo. No se cuentan las de la Comisión Permanente (el grupo pequeño que se reúne cuando el Congreso está de descanso), porque no todas las diputaciones forman parte. La numeración de
+            las sesiones empieza de nuevo cada año; por eso cada sesión tiene una clave propia.
+          </p>
+        </details>
       </div>
 
-      <Aviso titulo="Qué registra la lista oficial">
-        La lista de asistencia de la Gaceta corresponde al <strong>último pase de lista de la sesión</strong> (el de confirmación): coincide con él en el 99.5&nbsp;% de los registros comparables. Por eso una «falta justificada» significa que la persona no estaba en ese pase; pudo estar al inicio, votar y salir, o llegar después. Cuando el acta la registra votando, se anota en la columna de observaciones y el dato oficial no se modifica. Los registros que la Gaceta mezclaba en una sola página se resolvieron con el pase de lista del acta de cada sesión (ver la bitácora en Fuentes).
+      <Aviso titulo="La lista oficial se toma al final">
+        Una falta significa que la persona no estaba cuando se pasó lista la última vez; pudo estar antes y salir, o llegar después.
+        <details className="saber-mas">
+          <summary>Saber más</summary>
+          <p>
+            La lista de asistencia que publica el Congreso coincide con el último pase de lista de cada sesión en el 99.5&nbsp;% de los casos. Por eso alguien con falta pudo estar al inicio y votar. Cuando el acta dice que votó, lo anotamos en la
+            columna de observaciones, sin cambiar el dato oficial. Los casos en que la página del Congreso mezclaba dos sesiones se resolvieron con el acta de cada sesión (vea la bitácora en Fuentes).
+          </p>
+        </details>
       </Aviso>
 
       <BarraFiltros extraLimpiar={['diputado', 'estado', 'periodo_sesion']}>
@@ -82,8 +99,8 @@ export default function Asistencias() {
         </Aviso>
       )}
       {!res.definitivo && res.sesionesElegibles > 0 && (
-        <Aviso tipo="alerta" titulo="Porcentaje provisional">
-          {fmt(res.pendientes + res.sinRegistro + res.noVerificadas)} de {fmt(res.sesionesElegibles)} registros esperados no tienen información verificable ({fmt(res.pendientes)} pendientes, {fmt(res.noVerificadas)} no verificados, {fmt(res.sinRegistro)} sin captura). El porcentaje puede cambiar cuando se integren.
+        <Aviso tipo="alerta" titulo="El porcentaje todavía puede cambiar">
+          En {fmt(res.pendientes + res.sinRegistro + res.noVerificadas)} de {fmt(res.sesionesElegibles)} casos todavía no tenemos una lista confiable. No cuentan como falta; el porcentaje puede cambiar cuando los revisemos.
         </Aviso>
       )}
 
@@ -118,13 +135,13 @@ export default function Asistencias() {
       </section>
 
       <section className="seccion">
-        <h2>Registros de asistencia</h2>
+        <h2>Asistencia de cada persona en cada sesión</h2>
         <p className="seccion__intro">Un renglón por persona y sesión elegible. Las sesiones sin dato aparecen como «Sin registro capturado».</p>
         <TablaAsistencias registros={registros} titulo="Registros de asistencia" archivo="asistencias" />
       </section>
 
       <section className="seccion">
-        <h2>Catálogo de sesiones</h2>
+        <h2>Todas las sesiones</h2>
         <Tabla<Sesion>
           titulo="Catálogo de sesiones"
           filas={sesiones}
@@ -134,12 +151,12 @@ export default function Asistencias() {
           columnas={[
             { id: 'fecha', titulo: 'Fecha', valor: (s) => s.fecha, render: (s) => fechaCorta(s.fecha) },
             { id: 'id', titulo: 'ID', valor: (s) => s.id_sesion },
-            { id: 'anio', titulo: 'Año leg.', numerica: true, valor: (s) => s.anio_legislativo ?? '' },
+            { id: 'anio', titulo: 'Año de la Legislatura', numerica: true, valor: (s) => s.anio_legislativo ?? '' },
             { id: 'per', titulo: 'Periodo', valor: (s) => etiquetaDe(PERIODOS_SESION, s.periodo) },
             { id: 'tipo', titulo: 'Tipo', valor: (s) => etiquetaDe(TIPOS_SESION, s.tipo_sesion) },
             { id: 'num', titulo: 'Número', numerica: true, valor: (s) => s.numero_sesion ?? '' },
-            { id: 'eleg', titulo: 'Cuenta para asistencia', valor: (s) => (s.cuenta_para_asistencia ? 'Sí' : 'No') },
-            { id: 'asis', titulo: 'Asistencias / registros', numerica: true, valor: (s) => conteoSesion.get(s.id_sesion)?.asis ?? 0, render: (s) => { const c = conteoSesion.get(s.id_sesion); return c ? `${c.asis} / ${c.total}` : <span className="texto-3">Sin lista</span>; } },
+            { id: 'eleg', titulo: '¿Cuenta para la asistencia?', valor: (s) => (s.cuenta_para_asistencia ? 'Sí' : 'No') },
+            { id: 'asis', titulo: 'Asistieron / les tocaba', numerica: true, valor: (s) => conteoSesion.get(s.id_sesion)?.asis ?? 0, render: (s) => { const c = conteoSesion.get(s.id_sesion); return c ? `${c.asis} / ${c.total}` : <span className="texto-3">Sin lista</span>; } },
             { id: 'f', titulo: 'Fuente', valor: (s) => s.id_fuente, render: (s) => <EnlaceFuente id={s.id_fuente} corto /> },
           ]}
         />

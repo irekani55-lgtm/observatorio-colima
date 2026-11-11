@@ -5,6 +5,7 @@ import { EncabezadoPagina } from '../componentes/Disposicion';
 import { TarjetaDiputado } from '../componentes/FichaDiputado';
 import { BarraFiltros } from '../componentes/Filtros';
 import { claseNuevo, Nuevo } from '../componentes/Nuevo';
+import { CadaQuienResponde, QueEsPorLista } from '../componentes/SaberMasLugares';
 import { Partido } from '../componentes/Partido';
 import { Tabla, type Columna } from '../componentes/Tabla';
 import { fmtPct } from '../componentes/Tarjeta';
@@ -33,10 +34,13 @@ export default function Directorio() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Directorio de diputadas y diputados">
-        <p>
-          Personas que han ejercido una curul en la LXI Legislatura según el catálogo cargado, incluidas las personas que entraron por una licencia: suplentes en los distritos y, en las diputaciones por lista, la siguiente persona de la lista del partido (esas no tienen suplente).
-        </p>
+      <EncabezadoPagina titulo="Las diputaciones de esta Legislatura">
+        <p>Las 28 personas que han ocupado alguno de los 25 lugares del Congreso en esta Legislatura, incluidas quienes entraron cuando alguien pidió licencia.</p>
+        <div className={claseNuevo()}>
+          <CadaQuienResponde />
+          <QueEsPorLista />
+          <Nuevo texto="explicaciones en palabras sencillas" />
+        </div>
       </EncabezadoPagina>
       <div className={`fila-flex${claseNuevo()}`} role="group" aria-label="Cómo llegaron al cargo" style={{ marginBottom: '0.75rem' }}>
         <button type="button" className="boton boton--chico" aria-pressed={!filtro.tipoRepresentacion} onClick={() => fijar('representacion', undefined)}>

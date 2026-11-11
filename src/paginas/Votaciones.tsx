@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Aviso } from '../componentes/Aviso';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { EncabezadoPagina } from '../componentes/Disposicion';
 import { BarraFiltros, FiltroParam } from '../componentes/Filtros';
 import { EnlaceFuente } from '../componentes/Fuente';
@@ -33,18 +34,36 @@ export default function Votaciones() {
   return (
     <>
       <EncabezadoPagina titulo="Votaciones">
-        <p>Votaciones del Pleno y, cuando la fuente lo permite, el sentido del voto de cada persona.</p>
+        <p>
+          Aquí puede ver cómo votó el Congreso cada propuesta y, cuando el acta lo dice, cómo votó cada diputada o diputado. Importa porque el voto es la decisión final: es lo que convierte una propuesta en ley.
+        </p>
       </EncabezadoPagina>
-      <Aviso>
-        El sentido del voto solo se registra cuando la fuente oficial lo acredita. <strong>Nunca se deduce del partido ni del resultado general</strong>; si la fuente no lo permite, aparece como «voto no localizado». Las votaciones económicas normalmente no dejan registro individual.
-      </Aviso>
-      <Aviso titulo="Asistencia no es lo mismo que votar">
-        Una persona puede tener asistencia en la sesión y no aparecer en una votación: según el área de taquigrafía parlamentaria del Congreso, ocurre cuando sale del salón para atender otros asuntos y no regresa a tiempo para votar. En esos casos el acta no le asigna voto y aquí tampoco se le cuenta como abstención.
-      </Aviso>
+      <div className={claseNuevo()}>
+        <Aviso>
+          Solo anotamos cómo votó una persona cuando el acta lo dice con su nombre. <strong>Nunca lo deducimos por su partido ni por el resultado.</strong>
+          <details className="saber-mas">
+            <summary>Saber más</summary>
+            <p>
+              Hay dos formas de votar. En la votación <strong>con nombres (nominal)</strong>, cada diputación dice su voto y el acta lo anota. En la votación <strong>a mano alzada (económica)</strong>, se levanta la mano y el acta normalmente solo anota
+              el resultado; por eso ahí no sabemos quién votó cómo. Si el acta no permite saberlo, aparece «El acta no dice cómo votó».
+            </p>
+          </details>
+        </Aviso>
+        <Aviso titulo="Estar en la sesión no es lo mismo que votar">
+          Alguien puede pasar lista y no aparecer en una votación.
+          <details className="saber-mas">
+            <summary>Saber más</summary>
+            <p>
+              Según el área de taquigrafía del Congreso, pasa cuando la persona sale del salón para atender otro asunto y no regresa a tiempo para votar. En ese caso el acta no le anota voto, y aquí tampoco se cuenta como abstención.
+            </p>
+          </details>
+        </Aviso>
+        <Nuevo texto="explicaciones cortas, con «Saber más»" />
+      </div>
       <BarraFiltros campos={['anio', 'fechas', 'partido']} extraLimpiar={['diputado', 'sentido', 'divididas']}>
-        <FiltroParam id="divididas" etiqueta="Qué votaciones" todos="Todas" opciones={[{ valor: '1', etiqueta: 'Solo las divididas' }]} />
+        <FiltroParam id="divididas" etiqueta="Qué votaciones" todos="Todas" opciones={[{ valor: '1', etiqueta: 'Solo las divididas (3 o más de cada lado)' }]} />
         <FiltroParam id="diputado" etiqueta="Diputada o diputado" ancho opciones={base.diputados.map((d) => ({ valor: d.id_diputado, etiqueta: d.nombre_completo }))} />
-        <FiltroParam id="sentido" etiqueta="Sentido del voto" opciones={Object.entries(SENTIDOS_VOTO).map(([k, v]) => ({ valor: k, etiqueta: v.etiqueta }))} />
+        <FiltroParam id="sentido" etiqueta="Cómo votó" opciones={Object.entries(SENTIDOS_VOTO).map(([k, v]) => ({ valor: k, etiqueta: v.etiqueta }))} />
       </BarraFiltros>
       {soloDivididas && (
         <p className="filtros-contexto">
@@ -54,13 +73,29 @@ export default function Votaciones() {
           </button>
         </p>
       )}
-      <div className="rejilla rejilla--tarjetas">
-        <Tarjeta titulo="Votaciones registradas" valor={base.votaciones.length ? fmt(votaciones.length) : null} detalle={`${fmt(nominales)} nominales`} />
-        <Tarjeta titulo="Votos individuales" valor={base.votaciones.length ? fmt(votos.length) : null} detalle={porSentido.filter((x) => x.n).map((x) => `${etiquetaDe(SENTIDOS_VOTO, x.k)}: ${fmt(x.n)}`).join(' · ')} explica="Solo votos escritos en el acta." />
-        <Tarjeta titulo="Lista y total coinciden" valor={conCuadre.length ? `${fmt(coinciden)} de ${fmt(conCuadre.length)}` : null} detalle={`${fmt(sinNombre)} votos del total oficial sin nombre en el acta`} explica="Votaciones nominales en que la lista del acta suma lo mismo que el total que declara la Presidencia." />
+      <div className={`rejilla rejilla--tarjetas${claseNuevo()}`}>
+        <Tarjeta
+          titulo="Votaciones"
+          valor={base.votaciones.length ? fmt(votaciones.length) : null}
+          detalle={`${fmt(nominales)} con nombres en el acta`}
+          explica={`El Congreso votó ${fmt(votaciones.length)} veces en este periodo; en ${fmt(nominales)} de ellas el acta anota quién votó cómo.`}
+        />
+        <Tarjeta
+          titulo="Votos con nombre"
+          valor={base.votaciones.length ? fmt(votos.length) : null}
+          detalle={porSentido.filter((x) => x.n).map((x) => `${etiquetaDe(SENTIDOS_VOTO, x.k)}: ${fmt(x.n)}`).join(' · ')}
+          explica="Cada voto que el acta anota con el nombre de la persona."
+        />
+        <Tarjeta
+          titulo="¿Cuadran los votos?"
+          valor={conCuadre.length ? `${fmt(coinciden)} de ${fmt(conCuadre.length)}` : null}
+          detalle={sinNombre ? `${fmt(sinNombre)} votos anunciados sin nombre en el acta` : undefined}
+          explica={`En ${fmt(coinciden)} de ${fmt(conCuadre.length)} votaciones, los nombres del acta suman lo mismo que el total que anunció quien dirige la sesión.`}
+        />
       </div>
       <section className="seccion">
-        <h2>Votaciones</h2>
+        <h2>Cada votación</h2>
+        <p className="seccion__intro">Una fila por votación: qué se votó, cómo se votó y el resultado.</p>
         <Tabla<Votacion>
           titulo="Votaciones"
           filas={votaciones}
@@ -72,12 +107,12 @@ export default function Votaciones() {
             { id: 'f', titulo: 'Fecha', valor: (v) => base.idx.sesion.get(v.id_sesion)?.fecha ?? '', render: (v) => fechaCorta(base.idx.sesion.get(v.id_sesion)?.fecha) },
             { id: 's', titulo: 'Sesión', valor: (v) => v.id_sesion },
             { id: 'a', titulo: 'Asunto', valor: (v) => base.idx.asunto.get(v.id_asunto)?.titulo ?? v.descripcion, render: (v) => <span className="pequeno">{base.idx.asunto.get(v.id_asunto)?.titulo ?? '—'}<div className="muy-pequeno texto-3">{v.descripcion}</div></span> },
-            { id: 't', titulo: 'Tipo', valor: (v) => etiquetaDe(TIPOS_VOTACION, v.tipo_votacion) },
+            { id: 't', titulo: 'Forma de votar', valor: (v) => etiquetaDe(TIPOS_VOTACION, v.tipo_votacion) },
             { id: 'r', titulo: 'Resultado', valor: (v) => v.resultado, render: (v) => <InsigniaCatalogo catalogo={RESULTADOS_VOTACION} valor={v.resultado} /> },
-            { id: 'tot', titulo: 'Favor / contra / abst.', valor: (v) => v.total_favor ?? '', render: (v) => <span className="num">{v.total_favor ?? '—'} / {v.total_contra ?? '—'} / {v.total_abstencion ?? '—'}</span> },
+            { id: 'tot', titulo: 'A favor / en contra / abstención', valor: (v) => v.total_favor ?? '', render: (v) => <span className="num">{v.total_favor ?? '—'} / {v.total_contra ?? '—'} / {v.total_abstencion ?? '—'}</span> },
             {
               id: 'cu',
-              titulo: 'Lista vs. total',
+              titulo: '¿Cuadran los nombres con el total?',
               valor: (v) => (v.cuadre ? etiquetaDe(CUADRE_VOTACION, v.cuadre) : ''),
               render: (v) =>
                 v.cuadre ? (
@@ -96,14 +131,22 @@ export default function Votaciones() {
         />
       </section>
       <section className="seccion">
-        <h2>Votos individuales</h2>
+        <h2>Cómo votó cada persona</h2>
+        <p className="seccion__intro">Solo los votos que el acta anota con nombre.</p>
         <TablaVotos votos={votos} titulo="Votos individuales" archivo="votos" />
       </section>
       <section className="seccion">
-        <h2>Votos probables deducidos por el Observatorio</h2>
+        <h2>Votos probables</h2>
         <p className="seccion__intro">
-          Votos que el acta <strong>no escribe</strong>, pero que se deducen con confianza alta al cuadrar la lista con el total oficial: la persona está escrita sin sentido de voto, es la única presente que no aparece, o el total declarado es igual a todas las diputaciones en funciones. <strong>No se suman</strong> a los votos individuales ni a ningún indicador. Los casos de confianza media o baja no se atribuyen a nadie.
+          Votos que el acta <strong>no anota con nombre</strong>, pero que podemos deducir con mucha seguridad. <strong>No se suman</strong> a ningún número del Observatorio.
         </p>
+        <details className="saber-mas">
+          <summary>Saber más: ¿cómo los deducimos?</summary>
+          <p className="pequeno">
+            Comparamos los nombres del acta con el total que anunció quien dirige la sesión. Solo anotamos un voto probable cuando hay una sola explicación posible: la persona aparece sin decir cómo votó, es la única presente que no aparece, o
+            el total anunciado es igual a todas las diputaciones. Si hay dudas, no se lo atribuimos a nadie.
+          </p>
+        </details>
         <Tabla<VotoInferido>
           titulo="Votos probables"
           filas={inferidos}
@@ -115,8 +158,8 @@ export default function Votaciones() {
             { id: 'f', titulo: 'Fecha', valor: (v) => base.idx.sesion.get(base.idx.votacion.get(v.id_votacion)?.id_sesion ?? '')?.fecha ?? '', render: (v) => fechaCorta(base.idx.sesion.get(base.idx.votacion.get(v.id_votacion)?.id_sesion ?? '')?.fecha) },
             { id: 'v', titulo: 'Votación', valor: (v) => v.id_votacion, render: (v) => <span className="muy-pequeno num">{v.id_votacion}</span> },
             { id: 'd', titulo: 'Diputada/o', valor: (v) => nombreDip(base, v.id_diputado), render: (v) => <EnlaceDip id={v.id_diputado} /> },
-            { id: 's', titulo: 'Sentido probable', valor: (v) => etiquetaDe(SENTIDOS_VOTO, v.sentido) },
-            { id: 'fu', titulo: 'Fundamento', valor: (v) => v.fundamento, render: (v) => <span className="muy-pequeno">{v.fundamento}</span> },
+            { id: 's', titulo: 'Cómo votó (probable)', valor: (v) => etiquetaDe(SENTIDOS_VOTO, v.sentido) },
+            { id: 'fu', titulo: 'Por qué lo deducimos', valor: (v) => v.fundamento, render: (v) => <span className="muy-pequeno">{v.fundamento}</span> },
           ]}
         />
       </section>

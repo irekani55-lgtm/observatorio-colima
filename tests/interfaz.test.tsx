@@ -137,7 +137,7 @@ describe('interfaz', () => {
   it('el perfil muestra fotografía no disponible y los registros de asistencia', async () => {
     montar('/diputaciones/D1', datos());
     expect(await screen.findByLabelText('Fotografía no disponible de Ana Ejemplo')).toBeInTheDocument();
-    expect(screen.getByText('Ausencia registrada')).toBeInTheDocument();
+    expect(screen.getAllByText('Faltó sin permiso').length).toBeGreaterThan(0);
   });
 
   it('en el perfil, tocar un indicador filtra su pestaña, muestra el filtro activo y permite quitarlo', async () => {

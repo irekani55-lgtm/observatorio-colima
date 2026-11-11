@@ -46,7 +46,8 @@ export function resultadoExhortos(asuntos: Asunto[]) {
   const exh = asuntos.filter((a) => a.tipo === 'exhorto');
   const aprobados = exh.filter(esAprobado).length;
   const rechazados = exh.filter((a) => a.estado_procesal === 'rechazado').length;
-  return { total: exh.length, aprobados, rechazados, sinResultado: exh.length - aprobados - rechazados };
+  const sinResultadoLista = exh.filter((a) => !esAprobado(a) && a.estado_procesal !== 'rechazado');
+  return { total: exh.length, aprobados, rechazados, sinResultado: sinResultadoLista.length, sinResultadoLista };
 }
 
 /** ¿Cómo va la asistencia mes a mes? Asistencias ÷ registros evaluables de todas las diputaciones, por mes. */

@@ -18,31 +18,11 @@ type Catalogo<K extends string> = Record<K, EntradaCatalogo>;
 // ---------------------------------------------------------------- Asistencia
 
 export const ESTADOS_ASISTENCIA = {
-  asistencia: {
-    etiqueta: 'Asistencia registrada',
-    descripcion: 'La fuente oficial registra la presencia de la persona legisladora en la sesión.',
-    tono: 'positivo',
-  },
-  ausencia: {
-    etiqueta: 'Ausencia registrada',
-    descripcion: 'La fuente oficial registra que la persona no estuvo presente y no consta justificación.',
-    tono: 'negativo',
-  },
-  justificada: {
-    etiqueta: 'Ausencia con justificación documentada',
-    descripcion: 'La fuente registra la inasistencia y una justificación pública (licencia, comisión oficial, salud, etc.).',
-    tono: 'neutro',
-  },
-  pendiente: {
-    etiqueta: 'Información pendiente',
-    descripcion: 'Aún no se ha localizado o capturado el registro de esta sesión. No se cuenta como ausencia.',
-    tono: 'pendiente',
-  },
-  no_verificado: {
-    etiqueta: 'Registro no verificado',
-    descripcion: 'Existe un dato, pero no se ha contrastado con una fuente oficial. No entra al cálculo.',
-    tono: 'alerta',
-  },
+  asistencia: { etiqueta: 'Asistió', descripcion: 'La lista oficial dice que estuvo en la sesión.', tono: 'positivo' },
+  ausencia: { etiqueta: 'Faltó sin permiso', descripcion: 'La lista oficial dice que no estuvo y no hay un permiso o motivo publicado.', tono: 'negativo' },
+  justificada: { etiqueta: 'Faltó con permiso', descripcion: 'La lista oficial dice que no estuvo, pero hay un permiso o motivo (por ejemplo, salud o un encargo oficial).', tono: 'neutro' },
+  pendiente: { etiqueta: 'Sin dato todavía', descripcion: 'Todavía no tenemos la lista de esta sesión. No cuenta como falta.', tono: 'pendiente' },
+  no_verificado: { etiqueta: 'Sin revisar', descripcion: 'Hay un dato, pero todavía no lo comparamos con la lista oficial. No entra en el cálculo.', tono: 'alerta' },
 } as const satisfies Catalogo<string>;
 export type EstadoAsistencia = keyof typeof ESTADOS_ASISTENCIA;
 
@@ -74,27 +54,27 @@ export type TipoSesion = keyof typeof TIPOS_SESION;
 // ---------------------------------------------------------------- Asuntos
 
 export const TIPOS_ASUNTO = {
-  iniciativa: { etiqueta: 'Iniciativa', descripcion: 'Propuesta para crear, reformar o derogar leyes o decretos.' },
-  dictamen: { etiqueta: 'Dictamen', descripcion: 'Documento de una o varias comisiones que propone al Pleno aprobar, modificar o desechar un asunto.' },
-  decreto: { etiqueta: 'Decreto', descripcion: 'Resolución del Congreso con fuerza obligatoria; algunos se publican en el Periódico Oficial.' },
-  acuerdo: { etiqueta: 'Acuerdo', descripcion: 'Resolución del Congreso sobre asuntos internos o de trámite.' },
-  punto_acuerdo: { etiqueta: 'Punto de acuerdo', descripcion: 'Propuesta para que el Congreso se pronuncie sobre un tema; no modifica leyes.' },
-  exhorto: { etiqueta: 'Exhorto', descripcion: 'Punto de acuerdo que solicita a una autoridad realizar o informar sobre una acción. No es obligatorio para la autoridad.' },
-  otro: { etiqueta: 'Otro asunto', descripcion: 'Asunto que no encaja en las categorías anteriores (comunicaciones, nombramientos, etc.).' },
+  iniciativa: { etiqueta: 'Propuesta de ley (iniciativa)', descripcion: 'Propuesta para crear una ley, cambiarla o quitarla.' },
+  dictamen: { etiqueta: 'Opinión de comisión (dictamen)', descripcion: 'Lo que opina una comisión sobre una propuesta: si se aprueba, se cambia o se rechaza. Después la vota todo el Congreso.' },
+  decreto: { etiqueta: 'Ley aprobada (decreto)', descripcion: 'Decisión del Congreso que hay que cumplir; muchas se publican en el periódico oficial del estado.' },
+  acuerdo: { etiqueta: 'Acuerdo', descripcion: 'Decisión del Congreso sobre su propio funcionamiento o un trámite.' },
+  punto_acuerdo: { etiqueta: 'Postura del Congreso (punto de acuerdo)', descripcion: 'Propuesta para que el Congreso opine o pida algo sobre un tema; no cambia leyes.' },
+  exhorto: { etiqueta: 'Petición a una autoridad (exhorto)', descripcion: 'El Congreso le pide a otra autoridad que atienda un problema o que informe algo. No la obliga.' },
+  otro: { etiqueta: 'Otro', descripcion: 'Otro tipo de asunto (avisos, nombramientos, etc.).' },
 } as const satisfies Catalogo<string>;
 export type TipoAsunto = keyof typeof TIPOS_ASUNTO;
 
 export const ESTADOS_PROCESALES = {
-  presentado: { etiqueta: 'Presentado', descripcion: 'Se dio cuenta del asunto ante el Pleno o la Mesa Directiva.', tono: 'info' },
-  turnado: { etiqueta: 'Turnado', descripcion: 'Se envió a una o varias comisiones para su estudio.', tono: 'info' },
-  dictaminado: { etiqueta: 'Dictaminado', descripcion: 'La comisión emitió dictamen; falta su discusión o votación en el Pleno.', tono: 'info' },
-  aprobado: { etiqueta: 'Aprobado', descripcion: 'El Pleno lo aprobó (en sus términos o con modificaciones).', tono: 'positivo' },
-  rechazado: { etiqueta: 'Rechazado o desechado', descripcion: 'El Pleno o la comisión lo rechazó o desechó.', tono: 'negativo' },
-  retirado: { etiqueta: 'Retirado', descripcion: 'Quien lo presentó lo retiró antes de que se resolviera.', tono: 'neutro' },
-  publicado: { etiqueta: 'Publicado', descripcion: 'Aprobado y publicado en el Periódico Oficial "El Estado de Colima".', tono: 'positivo' },
-  pendiente: { etiqueta: 'Pendiente', descripcion: 'Sigue en trámite sin una etapa más precisa documentada.', tono: 'pendiente' },
-  no_localizado: { etiqueta: 'Información no localizada', descripcion: 'No se encontró información pública sobre su estado actual.', tono: 'alerta' },
-  no_verificado: { etiqueta: 'Estado no verificado', descripcion: 'El estado registrado aún no se contrasta con una fuente oficial.', tono: 'alerta' },
+  presentado: { etiqueta: 'Presentado', descripcion: 'Se presentó ante el Congreso.', tono: 'info' },
+  turnado: { etiqueta: 'En comisión', descripcion: 'Se mandó a una o varias comisiones para que lo estudien.', tono: 'info' },
+  dictaminado: { etiqueta: 'Con opinión de comisión', descripcion: 'La comisión ya dio su opinión (dictamen); falta que lo vote todo el Congreso.', tono: 'info' },
+  aprobado: { etiqueta: 'Aprobado', descripcion: 'Todo el Congreso lo aprobó (tal cual o con cambios).', tono: 'positivo' },
+  rechazado: { etiqueta: 'Rechazado', descripcion: 'El Congreso o la comisión lo rechazó.', tono: 'negativo' },
+  retirado: { etiqueta: 'Retirado', descripcion: 'Quien lo presentó lo retiró antes de que se decidiera.', tono: 'neutro' },
+  publicado: { etiqueta: 'Publicado', descripcion: 'Se aprobó y se publicó en el periódico oficial del estado («El Estado de Colima»): ya está vigente.', tono: 'positivo' },
+  pendiente: { etiqueta: 'Sin resolver', descripcion: 'Todavía no se decide y no sabemos en qué paso va.', tono: 'pendiente' },
+  no_localizado: { etiqueta: 'No sabemos en qué va', descripcion: 'No encontramos información pública sobre en qué va.', tono: 'alerta' },
+  no_verificado: { etiqueta: 'Sin revisar', descripcion: 'Todavía no lo comparamos con un documento oficial.', tono: 'alerta' },
 } as const satisfies Catalogo<string>;
 export type EstadoProcesal = keyof typeof ESTADOS_PROCESALES;
 
@@ -165,35 +145,35 @@ export const RESPUESTA_LOCALIZADA = {
 // ---------------------------------------------------------------- Votaciones
 
 export const SENTIDOS_VOTO = {
-  favor: { etiqueta: 'A favor', descripcion: 'Voto a favor registrado en la fuente.', tono: 'positivo' },
-  contra: { etiqueta: 'En contra', descripcion: 'Voto en contra registrado en la fuente.', tono: 'negativo' },
-  abstencion: { etiqueta: 'Abstención', descripcion: 'Abstención registrada en la fuente.', tono: 'neutro' },
-  ausente: { etiqueta: 'Ausente en la votación', descripcion: 'La fuente registra que no estuvo presente al votar.', tono: 'pendiente' },
-  no_localizado: { etiqueta: 'Voto no localizado', descripcion: 'La fuente no permite acreditar el sentido del voto. Nunca se infiere del partido o del resultado.', tono: 'alerta' },
+  favor: { etiqueta: 'A favor', descripcion: 'El acta dice que votó a favor.', tono: 'positivo' },
+  contra: { etiqueta: 'En contra', descripcion: 'El acta dice que votó en contra.', tono: 'negativo' },
+  abstencion: { etiqueta: 'Abstención', descripcion: 'El acta dice que no votó ni a favor ni en contra (se abstuvo).', tono: 'neutro' },
+  ausente: { etiqueta: 'No estaba al votar', descripcion: 'El acta dice que no estaba en el salón cuando se votó.', tono: 'pendiente' },
+  no_localizado: { etiqueta: 'El acta no dice cómo votó', descripcion: 'El acta no permite saber cómo votó. Nunca lo deducimos por su partido ni por el resultado.', tono: 'alerta' },
 } as const satisfies Catalogo<string>;
 export type SentidoVoto = keyof typeof SENTIDOS_VOTO;
 
 export const TIPOS_VOTACION = {
-  nominal: { etiqueta: 'Nominal', descripcion: 'Cada persona expresa su voto y queda registrado individualmente.' },
-  economica: { etiqueta: 'Económica', descripcion: 'Votación a mano alzada; normalmente no deja registro individual.' },
-  cedula: { etiqueta: 'Por cédula', descripcion: 'Votación secreta por cédula.' },
-  otro: { etiqueta: 'Otro', descripcion: 'Otro mecanismo de votación.' },
+  nominal: { etiqueta: 'Con nombres (nominal)', descripcion: 'Cada diputación dice su voto y el acta lo anota con su nombre.' },
+  economica: { etiqueta: 'A mano alzada (económica)', descripcion: 'Se vota levantando la mano; el acta normalmente solo anota el resultado, no quién votó cómo.' },
+  cedula: { etiqueta: 'Secreta (por papeleta)', descripcion: 'Cada quien vota en una papeleta, sin decir su nombre.' },
+  otro: { etiqueta: 'Otra forma', descripcion: 'Otra forma de votar.' },
 } as const satisfies Catalogo<string>;
 export type TipoVotacion = keyof typeof TIPOS_VOTACION;
 
 export const RESULTADOS_VOTACION = {
   aprobado: { etiqueta: 'Aprobado', descripcion: 'La propuesta obtuvo la mayoría requerida.', tono: 'positivo' },
   rechazado: { etiqueta: 'Rechazado', descripcion: 'La propuesta no obtuvo la mayoría requerida.', tono: 'negativo' },
-  no_localizado: { etiqueta: 'Resultado no localizado', descripcion: 'No se localizó el resultado.', tono: 'alerta' },
+  no_localizado: { etiqueta: 'El acta no dice el resultado', descripcion: 'El acta no anota si se aprobó o no.', tono: 'alerta' },
 } as const satisfies Catalogo<string>;
 export type ResultadoVotacion = keyof typeof RESULTADOS_VOTACION;
 
 /** Cuadre entre la lista nominal del acta y el total que declara la Presidencia. */
 export const CUADRE_VOTACION = {
-  coincide: { etiqueta: 'Coincide', descripcion: 'La lista nominal suma exactamente el total declarado.', tono: 'positivo' },
-  faltan_nombres: { etiqueta: 'Votos sin nombre', descripcion: 'El total declarado es mayor que los nombres escritos en el acta.', tono: 'alerta' },
-  sobran_nombres: { etiqueta: 'Lista con votos de más', descripcion: 'La lista trae más votos de los declarados en algún sentido.', tono: 'alerta' },
-  distinto_reparto: { etiqueta: 'Distinto reparto', descripcion: 'Mismo número de votos, distinta distribución entre a favor, en contra y abstención.', tono: 'alerta' },
+  coincide: { etiqueta: 'Coinciden', descripcion: 'Los nombres del acta suman lo mismo que el total anunciado.', tono: 'positivo' },
+  faltan_nombres: { etiqueta: 'Faltan nombres', descripcion: 'Quien dirige la sesión anunció más votos de los nombres que anota el acta.', tono: 'alerta' },
+  sobran_nombres: { etiqueta: 'Sobran nombres', descripcion: 'El acta anota más nombres de los votos anunciados.', tono: 'alerta' },
+  distinto_reparto: { etiqueta: 'Reparto distinto', descripcion: 'Son los mismos votos en total, pero repartidos distinto entre a favor, en contra y abstención.', tono: 'alerta' },
 } as const satisfies Catalogo<string>;
 
 export const CONFIANZA_OBSERVACION = {

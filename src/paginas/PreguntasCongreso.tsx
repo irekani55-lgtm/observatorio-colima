@@ -1,4 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { BarrasLista, Explicacion, type FilaBarra } from '../componentes/BarrasLista';
+import { ExhortoSinResultado, ExplicacionGobernadora } from './Explicaciones';
 import { Link } from 'react-router-dom';
 import { colorPartido, SERIES } from '../componentes/colores';
 import { etiquetaMes, GraficaBarras, GraficaLineas, PanelGrafica } from '../componentes/Graficas';
@@ -18,24 +20,8 @@ const pct = (v: number) => `${v.toLocaleString('es-MX', { maximumFractionDigits:
  * «El Congreso en números» para la ciudadanía: seis preguntas, cada una con su respuesta en una frase y una sola
  * gráfica. Describen la actividad documentada; ninguna califica a personas ni a partidos.
  */
-/** En pantallas angostas las etiquetas de las barras ocupan menos, para que las barras se vean. */
-function useAngosto() {
-  const consulta = '(max-width: 600px)';
-  const [angosto, setAngosto] = useState(() => typeof window !== 'undefined' && Boolean(window.matchMedia?.(consulta).matches));
-  useEffect(() => {
-    const m = window.matchMedia?.(consulta);
-    if (!m) return;
-    const f = () => setAngosto(m.matches);
-    m.addEventListener?.('change', f);
-    return () => m.removeEventListener?.('change', f);
-  }, []);
-  return angosto;
-}
-
 export function PreguntasCongreso() {
   const { base } = useDatos();
-  const angosto = useAngosto();
-  const ancho = angosto ? 112 : 190;
   const [filtro] = useFiltro();
   const periodo = { anio: filtro.anio, desde: filtro.desde, hasta: filtro.hasta };
   const c = useMemo(() => {
@@ -50,21 +36,36 @@ export function PreguntasCongreso() {
     };
   }, [base, periodo.anio, periodo.desde, periodo.hasta]); // eslint-disable-line react-hooks/exhaustive-deps
   const { avance, origen, exhortos, votos, partidos, asistencia } = c;
+  const [verSinResultado, setVerSinResultado] = useState(false);
+  const [verGobernadora, setVerGobernadora] = useState(false);
   const serie = (clave: string, etiqueta: string) => [{ clave, etiqueta, color: SERIES[0] }];
   const fueraDip = origen.total - (origen.filas.find((f) => f.origen === 'Diputaciones')?.total ?? 0);
   const datosAvance = [
     { paso: 'Llegaron al Congreso', total: avance.presentadas },
     { paso: 'Se aprobaron', total: avance.aprobadas },
-    { paso: '…y crean o cambian leyes', total: avance.fondo },
-    { paso: '…y son trámites de cada año', total: avance.tramite },
-    { paso: '…y son homenajes o fechas', total: avance.conmemorativa },
+    { paso: `De las ${fmt(avance.aprobadas)} aprobadas: crean o cambian leyes`, total: avance.fondo },
+    { paso: `De las ${fmt(avance.aprobadas)} aprobadas: trámites de cada año`, total: avance.tramite },
+    { paso: `De las ${fmt(avance.aprobadas)} aprobadas: homenajes o fechas especiales`, total: avance.conmemorativa },
+  ];
+  const filasAvance: FilaBarra[] = [
+    { etiqueta: 'Llegaron al Congreso', valor: avance.presentadas },
+    { etiqueta: 'Se aprobaron', valor: avance.aprobadas },
+    { etiqueta: `De las ${fmt(avance.aprobadas)} aprobadas:`, valor: 0, encabezado: true },
+    { etiqueta: 'Crean o cambian leyes', valor: avance.fondo, nivel: 1 },
+    { etiqueta: 'Trámites de cada año', valor: avance.tramite, nivel: 1 },
+    { etiqueta: 'Homenajes o fechas especiales', valor: avance.conmemorativa, nivel: 1 },
   ];
   const origenOrdenado = [...origen.filas].sort((a, b) => b.total - a.total);
   const datosExh = [
     { resultado: 'Aprobados', total: exhortos.aprobados },
     { resultado: 'Rechazados', total: exhortos.rechazados },
-    { resultado: 'Sin resultado en el acta', total: exhortos.sinResultado },
+    { resultado: 'El acta no dice si se aprobó', total: exhortos.sinResultado },
   ].filter((x) => x.total > 0);
+  const filasExh: FilaBarra[] = [
+    { etiqueta: 'Aprobados', valor: exhortos.aprobados },
+    { etiqueta: 'Rechazados', valor: exhortos.rechazados },
+    ...(exhortos.sinResultado ? [{ etiqueta: 'El acta no dice si se aprobó', valor: exhortos.sinResultado, onClick: () => setVerSinResultado(true) }] : []),
+  ];
   const datosVotos = [
     { tipo: 'Todos a favor', total: votos.unanimidad },
     { tipo: 'Casi todos (1 o 2 en contra o abstención)', total: votos.casi },
@@ -94,7 +95,7 @@ export function PreguntasCongreso() {
           columnas={[{ clave: 'paso', etiqueta: 'Propuestas' }, { clave: 'total', etiqueta: 'Cuántas' }]}
           vacio={avance.presentadas === 0}
         >
-          <GraficaBarras datos={datosAvance} claveX="paso" series={serie('total', 'Propuestas')} horizontal anchoEtiqueta={ancho} valores={fmt} />
+          <BarrasLista titulo="Propuestas de ley" filas={filasAvance} />
         </PanelGrafica>
 
         <PanelGrafica
@@ -108,7 +109,13 @@ export function PreguntasCongreso() {
           columnas={[{ clave: 'origen', etiqueta: 'Quién la manda' }, { clave: 'total', etiqueta: 'Propuestas' }]}
           vacio={origen.total === 0}
         >
-          <GraficaBarras datos={origenOrdenado} claveX="origen" series={serie('total', 'Propuestas')} horizontal anchoEtiqueta={ancho} valores={fmt} />
+          <BarrasLista
+            titulo="Quién manda las propuestas"
+            filas={origenOrdenado.map((o) => ({ etiqueta: o.origen, valor: o.total, onClick: o.origen === 'Gobernadora' ? () => setVerGobernadora(true) : undefined }))}
+          />
+          <p className="muy-pequeno texto-3" style={{ marginBottom: 0 }}>
+            Toque «Gobernadora» para saber qué le toca hacer según la Constitución de Colima.
+          </p>
         </PanelGrafica>
 
         <PanelGrafica
@@ -122,7 +129,8 @@ export function PreguntasCongreso() {
           columnas={[{ clave: 'resultado', etiqueta: 'Resultado' }, { clave: 'total', etiqueta: 'Exhortos' }]}
           vacio={exhortos.total === 0}
         >
-          <GraficaBarras datos={datosExh} claveX="resultado" series={serie('total', 'Exhortos')} horizontal anchoEtiqueta={ancho} valores={fmt} />
+          <BarrasLista titulo="Exhortos" filas={filasExh} />
+          {exhortos.sinResultado > 0 && <p className="muy-pequeno texto-3" style={{ marginBottom: 0 }}>Toque «El acta no dice si se aprobó» para saber de qué trata.</p>}
         </PanelGrafica>
 
         <PanelGrafica
@@ -137,7 +145,7 @@ export function PreguntasCongreso() {
           columnas={[{ clave: 'tipo', etiqueta: 'Cómo votaron' }, { clave: 'total', etiqueta: 'Votaciones' }]}
           vacio={votos.total === 0}
         >
-          <GraficaBarras datos={datosVotos} claveX="tipo" series={serie('total', 'Votaciones')} horizontal anchoEtiqueta={ancho} valores={fmt} />
+          <BarrasLista titulo="Cómo votaron" filas={datosVotos.map((v) => ({ etiqueta: v.tipo, valor: v.total }))} />
         </PanelGrafica>
 
         <PanelGrafica
@@ -169,6 +177,14 @@ export function PreguntasCongreso() {
           <GraficaBarras datos={partidos} claveX="partido" series={serie('porLugar', 'Propuestas por lugar')} horizontal anchoEtiqueta={70} colorFila={(d) => colorPartido(base, String(d.id_partido))} valores={(v) => v.toLocaleString('es-MX', { maximumFractionDigits: 1 })} />
         </PanelGrafica>
       </div>
+      <Explicacion titulo="¿Qué hace la gobernadora y por qué manda propuestas?" abierta={verGobernadora} onCerrar={() => setVerGobernadora(false)}>
+        <ExplicacionGobernadora />
+      </Explicacion>
+      <Explicacion titulo="Exhortos que el acta no dice si se aprobaron" abierta={verSinResultado} onCerrar={() => setVerSinResultado(false)}>
+        {exhortos.sinResultadoLista.map((a) => (
+          <ExhortoSinResultado key={a.id_asunto} id={a.id_asunto} />
+        ))}
+      </Explicacion>
     </section>
   );
 }

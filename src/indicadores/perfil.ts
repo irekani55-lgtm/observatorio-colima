@@ -87,8 +87,8 @@ export function datosPerfil(b: Base, d: Diputado, f: Filtro) {
         ['favor', 'A favor'],
         ['contra', 'En contra'],
         ['abstencion', 'Abstención'],
-        ['ausente', 'Ausente en la votación'],
-        ['no_localizado', 'Voto no localizado'],
+        ['ausente', 'No estaba al votar'],
+        ['no_localizado', 'El acta no dice cómo votó'],
       ] as const
     )
       .map(([k, e]) => ({ id: k, etiqueta: e, filas: de(lista, (v) => v.sentido === k) }))

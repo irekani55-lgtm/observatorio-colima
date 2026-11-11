@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { Link } from 'react-router-dom';
 import { Aviso } from '../componentes/Aviso';
 import { SERIES } from '../componentes/colores';
@@ -26,11 +27,15 @@ export default function Comisiones() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Comisiones legislativas">
-        <p>Trabajo documentado de las comisiones: asuntos turnados, dictaminados y pendientes, reuniones y asistencia de sus integrantes.</p>
+      <EncabezadoPagina titulo="Comisiones: los grupos que estudian cada tema">
+        <p className={claseNuevo()}>
+          Antes de que todo el Congreso vote una propuesta, la estudia una comisión: un grupo pequeño de diputadas y diputados que se dedica a un tema, como salud, educación o agua. La comisión da su opinión (dictamen) y después vota todo el
+          Congreso. Aquí puede ver cuántas propuestas recibió cada comisión y cuántas ya revisó.
+          <Nuevo texto="en palabras sencillas" />
+        </p>
       </EncabezadoPagina>
       <Aviso>
-        Las comisiones tienen competencias, cargas de trabajo y tipos de asuntos distintos: compare con cautela. <strong>No haber localizado un acta no prueba que no hubo reunión.</strong>
+        Cada comisión trabaja temas distintos y recibe cantidades distintas de propuestas, así que compárelas con cuidado. Si no encontramos el acta de una reunión, no quiere decir que no se reunió.
       </Aviso>
       <BarraFiltros campos={['anio', 'fechas']} />
       {base.comisiones.length === 0 && <Aviso tipo="alerta" titulo="Información pendiente de integración">No hay comisiones cargadas (<code>comisiones.csv</code>).</Aviso>}
@@ -54,7 +59,7 @@ export default function Comisiones() {
         </PanelGrafica>
       </section>
       <section className="seccion">
-        <h2>Comparativo</h2>
+        <h2>Comparar las comisiones</h2>
         <Tabla<IndicadoresComision>
           titulo="Comisiones"
           filas={ind}
@@ -63,10 +68,10 @@ export default function Comisiones() {
           columnas={[
             { id: 'n', titulo: 'Comisión', valor: (i) => i.comision.nombre, render: (i) => (i.comision.url ? <EnlaceExterno url={i.comision.url}>{i.comision.nombre}</EnlaceExterno> : i.comision.nombre) },
             { id: 'int', titulo: 'Integrantes', valor: (i) => i.integrantes.length, render: (i) => (i.integrantes.length ? <ul className="lista-limpia muy-pequeno">{i.integrantes.map((x) => <li key={x.id_diputado}><EnlaceDip id={x.id_diputado} /> · {etiquetaDe(CARGOS_COMISION, x.cargo)}</li>)}</ul> : <span className="texto-3">No documentados</span>) },
-            { id: 't', titulo: 'Turnados', numerica: true, valor: (i) => i.turnados, render: (i) => <Link to={enlaceConPeriodo('/asuntos', periodo, { comision: i.comision.id_comision })}>{fmt(i.turnados)}</Link> },
-            { id: 'd', titulo: 'Dictaminados', numerica: true, valor: (i) => i.dictaminados },
-            { id: 'p', titulo: 'Pendientes', numerica: true, valor: (i) => i.pendientes },
-            { id: 'pl', titulo: 'Llegaron al Pleno', numerica: true, valor: (i) => i.llegaronAlPleno },
+            { id: 't', titulo: 'Propuestas recibidas', numerica: true, valor: (i) => i.turnados, render: (i) => <Link to={enlaceConPeriodo('/asuntos', periodo, { comision: i.comision.id_comision })}>{fmt(i.turnados)}</Link> },
+            { id: 'd', titulo: 'Ya revisadas (dictamen)', numerica: true, valor: (i) => i.dictaminados },
+            { id: 'p', titulo: 'Por revisar', numerica: true, valor: (i) => i.pendientes },
+            { id: 'pl', titulo: 'Votadas por todo el Congreso', numerica: true, valor: (i) => i.llegaronAlPleno },
             {
               id: 'r',
               titulo: 'Reuniones',
@@ -74,8 +79,8 @@ export default function Comisiones() {
               valor: (i) => (i.reuniones || i.comision.reuniones_reportadas) ?? 0,
               render: (i) => (i.reuniones ? `${i.reuniones} (${i.reunionesConActa} con acta)` : i.comision.reuniones_reportadas != null ? `${i.comision.reuniones_reportadas} reportadas` : '—'),
             },
-            { id: 'a', titulo: 'Asistencia integrantes', numerica: true, valor: (i) => i.asistencia.porcentaje, render: (i) => (i.asistencia.porcentaje == null ? <span className="texto-3">Sin listas verificables</span> : `${fmtPct(i.asistencia.porcentaje)} (${i.asistencia.asistencias}/${i.asistencia.evaluables})`) },
-            { id: 'm', titulo: 'Mediana turno → dictamen', numerica: true, valor: (i) => i.diasTurnoDictamen.mediana, render: (i) => (i.diasTurnoDictamen.mediana == null ? '—' : `${fmt(i.diasTurnoDictamen.mediana)} días (n=${i.diasTurnoDictamen.casos})`) },
+            { id: 'a', titulo: 'Asistencia a sus reuniones', numerica: true, valor: (i) => i.asistencia.porcentaje, render: (i) => (i.asistencia.porcentaje == null ? <span className="texto-3">Sin listas verificables</span> : `${fmtPct(i.asistencia.porcentaje)} (${i.asistencia.asistencias}/${i.asistencia.evaluables})`) },
+            { id: 'm', titulo: 'Días que suele tardar en revisar', numerica: true, valor: (i) => i.diasTurnoDictamen.mediana, render: (i) => (i.diasTurnoDictamen.mediana == null ? '—' : `${fmt(i.diasTurnoDictamen.mediana)} días (n=${i.diasTurnoDictamen.casos})`) },
           ]}
         />
       </section>

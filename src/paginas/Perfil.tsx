@@ -221,7 +221,7 @@ function PerfilDe({ d }: { d: Diputado }) {
                 <Aviso tipo="alerta">
                   {(() => {
                     const n = asis.pendientes + asis.sinRegistro + asis.noVerificadas;
-                    return n === 1 ? 'Hay 1 sesión elegible sin registro verificable: no se cuenta como ausencia y queda fuera del porcentaje.' : `Hay ${n} sesiones elegibles sin registro verificable: no se cuentan como ausencias y quedan fuera del porcentaje.`;
+                    return n === 1 ? 'En 1 sesión todavía no tenemos una lista confiable: no cuenta como falta y no entra en el porcentaje.' : `En ${n} sesiones todavía no tenemos una lista confiable: no cuentan como falta y no entran en el porcentaje.`;
                   })()}
                 </Aviso>
               )}

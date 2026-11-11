@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { Aviso } from '../componentes/Aviso';
 import { SERIES } from '../componentes/colores';
 import { EncabezadoPagina } from '../componentes/Disposicion';
@@ -25,12 +26,14 @@ export default function Intervenciones() {
 
   return (
     <>
-      <EncabezadoPagina titulo="Intervenciones en tribuna">
-        <p>Intervenciones registradas en el Diario de los Debates, versiones estenográficas y otros documentos oficiales.</p>
+      <EncabezadoPagina titulo="¿Quién habla ante el Congreso?">
+        <p className={claseNuevo()}>
+          Cada vez que una diputada o diputado pasa al frente (la tribuna) a hablar ante todo el Congreso: para presentar una propuesta, dar su opinión o responder a otra persona. Lo tomamos de los documentos oficiales donde se escribe todo lo que se
+          dice en las sesiones.
+          <Nuevo texto="en palabras sencillas" />
+        </p>
       </EncabezadoPagina>
-      <Aviso>
-        El número de intervenciones describe <strong>participación documentada</strong>. No mide la calidad de los argumentos ni su impacto, y una mayor cantidad no significa mejor desempeño.
-      </Aviso>
+      <Aviso>Hablar más veces no quiere decir trabajar mejor: solo cuenta cuántas veces habló, no qué tan buenos fueron sus argumentos.</Aviso>
       <BarraFiltros extraLimpiar={['diputado', 'tema', 'tipo']}>
         <FiltroParam id="diputado" etiqueta="Diputada o diputado" ancho opciones={base.diputados.map((d) => ({ valor: d.id_diputado, etiqueta: d.nombre_completo }))} />
         <FiltroParam id="tema" etiqueta="Tema" opciones={temas.map((t) => ({ valor: t, etiqueta: t }))} />
