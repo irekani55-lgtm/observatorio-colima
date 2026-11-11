@@ -25,7 +25,7 @@ export const NAV_ACTIVIDAD = [
 ];
 
 export const NOTA_PUBLICA =
-  'Este dashboard presenta información pública documentada sobre la actividad legislativa de las diputadas y los diputados de la LXI Legislatura del Congreso del Estado de Colima. Los indicadores describen aspectos específicos de la actividad y del avance de los asuntos legislativos; no constituyen, por sí solos, una calificación definitiva de la calidad, la relevancia social o el impacto del trabajo de cada legislador. La ausencia de un registro no demuestra necesariamente que una actividad no se haya realizado. Se recomienda consultar las fuentes y la metodología antes de interpretar o comparar los resultados.';
+  'Este Observatorio muestra lo que han hecho las diputadas y los diputados de la LXI Legislatura del Congreso de Colima, con información de documentos oficiales. Los números cuentan lo que está en esos documentos: no dicen quién trabaja mejor ni qué tan importante fue cada cosa. Si algo no aparece, no quiere decir que no pasó. Antes de comparar, revise de dónde salen los datos.';
 
 function leerTema(): 'light' | 'dark' | null {
   try {

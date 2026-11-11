@@ -117,9 +117,9 @@ export type RolComisionTurno = keyof typeof ROLES_COMISION_TURNO;
 // ---------------------------------------------------------------- Verificación
 
 export const ESTADOS_VERIFICACION = {
-  verificado: { etiqueta: 'Verificado', descripcion: 'Contrastado con una fuente oficial enlazada.', tono: 'positivo' },
-  pendiente: { etiqueta: 'Verificación pendiente', descripcion: 'Capturado, a la espera de contraste con la fuente.', tono: 'pendiente' },
-  no_verificado: { etiqueta: 'No verificado', descripcion: 'No se ha podido contrastar con una fuente oficial.', tono: 'alerta' },
+  verificado: { etiqueta: 'Revisado', descripcion: 'Lo comparamos con el documento oficial y coincide.', tono: 'positivo' },
+  pendiente: { etiqueta: 'Por revisar', descripcion: 'Ya está anotado, pero falta compararlo con el documento oficial.', tono: 'pendiente' },
+  no_verificado: { etiqueta: 'Sin revisar', descripcion: 'No pudimos compararlo con un documento oficial.', tono: 'alerta' },
 } as const satisfies Catalogo<string>;
 export type EstadoVerificacion = keyof typeof ESTADOS_VERIFICACION;
 
@@ -127,13 +127,13 @@ export type EstadoVerificacion = keyof typeof ESTADOS_VERIFICACION;
 
 /** Estado de seguimiento DERIVADO de los campos del exhorto (ver indicadores/exhortos.ts). */
 export const SEGUIMIENTO_EXHORTO = {
-  en_tramite: { etiqueta: 'En trámite legislativo', descripcion: 'El exhorto aún no ha sido aprobado; no hay seguimiento que evaluar.', tono: 'info' },
-  no_aprobado: { etiqueta: 'No aprobado', descripcion: 'El exhorto fue rechazado o desechado.', tono: 'neutro' },
-  pendiente_seguimiento: { etiqueta: 'Pendiente de seguimiento', descripcion: 'Aprobado; aún no se ha buscado o capturado si hubo respuesta.', tono: 'pendiente' },
-  sin_respuesta_localizada: { etiqueta: 'Sin respuesta localizada', descripcion: 'Se buscó y no se localizó respuesta oficial. No demuestra que la autoridad haya incumplido.', tono: 'neutro' },
-  con_respuesta: { etiqueta: 'Respuesta oficial localizada', descripcion: 'Se localizó una respuesta oficial de la autoridad destinataria.', tono: 'positivo' },
-  con_acciones: { etiqueta: 'Acciones posteriores documentadas', descripcion: 'Hay evidencia de acciones de la autoridad relacionadas con el exhorto.', tono: 'positivo' },
-  no_verificado: { etiqueta: 'No verificado', descripcion: 'La información de seguimiento no se ha contrastado con una fuente.', tono: 'alerta' },
+  en_tramite: { etiqueta: 'Todavía no se decide', descripcion: 'El Congreso aún no aprueba el exhorto; no hay nada que seguir.', tono: 'info' },
+  no_aprobado: { etiqueta: 'No se aprobó', descripcion: 'El Congreso lo rechazó.', tono: 'neutro' },
+  pendiente_seguimiento: { etiqueta: 'Falta buscar respuesta', descripcion: 'Se aprobó, pero todavía no buscamos si la autoridad respondió.', tono: 'pendiente' },
+  sin_respuesta_localizada: { etiqueta: 'No encontramos respuesta', descripcion: 'Buscamos y no encontramos una respuesta publicada. No quiere decir que la autoridad no hizo nada.', tono: 'neutro' },
+  con_respuesta: { etiqueta: 'La autoridad respondió', descripcion: 'Encontramos una respuesta oficial de la autoridad.', tono: 'positivo' },
+  con_acciones: { etiqueta: 'La autoridad hizo algo', descripcion: 'Hay pruebas de que la autoridad hizo algo relacionado con el exhorto.', tono: 'positivo' },
+  no_verificado: { etiqueta: 'Sin revisar', descripcion: 'Todavía no comparamos el seguimiento con un documento oficial.', tono: 'alerta' },
 } as const satisfies Catalogo<string>;
 export type SeguimientoExhorto = keyof typeof SEGUIMIENTO_EXHORTO;
 
@@ -190,12 +190,12 @@ export const ESTADOS_OBSERVACION = {
 // ---------------------------------------------------------------- Compromisos
 
 export const SEGUIMIENTO_COMPROMISO = {
-  cumplido_documentado: { etiqueta: 'Cumplimiento documentado', descripcion: 'Existe evidencia pública de que el compromiso se cumplió.', tono: 'positivo' },
-  avance_documentado: { etiqueta: 'Avance documentado', descripcion: 'Existe evidencia de avances parciales.', tono: 'info' },
-  no_cumplido_documentado: { etiqueta: 'Incumplimiento documentado', descripcion: 'Solo se usa cuando una fuente acredita expresamente que no se cumplió (p. ej. venció un plazo oficial sin la acción comprometida).', tono: 'negativo' },
-  sin_avance_localizado: { etiqueta: 'Sin avance localizado', descripcion: 'No se localizaron evidencias de avance. No equivale a incumplimiento.', tono: 'neutro' },
-  pendiente_seguimiento: { etiqueta: 'Pendiente de seguimiento', descripcion: 'Aún no se ha revisado su avance.', tono: 'pendiente' },
-  no_verificado: { etiqueta: 'No verificado', descripcion: 'El compromiso o su seguimiento no se han contrastado con una fuente.', tono: 'alerta' },
+  cumplido_documentado: { etiqueta: 'Se cumplió', descripcion: 'Hay pruebas públicas de que cumplió lo que prometió.', tono: 'positivo' },
+  avance_documentado: { etiqueta: 'Va avanzando', descripcion: 'Hay pruebas de que avanzó, pero no del todo.', tono: 'info' },
+  no_cumplido_documentado: { etiqueta: 'No se cumplió', descripcion: 'Solo cuando un documento oficial dice claramente que no se cumplió (por ejemplo, venció el plazo sin hacerlo).', tono: 'negativo' },
+  sin_avance_localizado: { etiqueta: 'No encontramos avances', descripcion: 'No encontramos pruebas de avance. No quiere decir que no se cumplió.', tono: 'neutro' },
+  pendiente_seguimiento: { etiqueta: 'Falta revisar', descripcion: 'Todavía no revisamos cómo va.', tono: 'pendiente' },
+  no_verificado: { etiqueta: 'Sin revisar', descripcion: 'Todavía no lo comparamos con un documento oficial.', tono: 'alerta' },
 } as const satisfies Catalogo<string>;
 export type SeguimientoCompromiso = keyof typeof SEGUIMIENTO_COMPROMISO;
 

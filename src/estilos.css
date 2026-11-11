@@ -1819,3 +1819,11 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 .saber-mas { margin-top: 0.35rem; }
 .saber-mas summary { cursor: pointer; color: var(--enlace); font-weight: 600; font-size: 0.88rem; }
 .saber-mas p { margin: 0.35rem 0 0; }
+/* Las listas desplegables nunca deben pasar del ancho de la pantalla. */
+.campo { min-width: 0; max-width: 100%; }
+.campo select, .campo input { max-width: 100%; }
+@media (max-width: 600px) {
+  .filtros .campo { flex-wrap: wrap; max-width: 100%; }
+  .filtros .campo label { white-space: normal; }
+  .filtros .campo select, .filtros .campo input { max-width: 100%; }
+}

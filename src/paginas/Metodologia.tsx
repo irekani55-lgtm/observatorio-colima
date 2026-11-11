@@ -22,81 +22,81 @@ import { UMBRAL_DIVIDIDA } from '../indicadores/votaciones';
 
 const INDICADORES: { nombre: string; mide: string; calculo: string; denominador: string; faltantes: string }[] = [
   {
-    nombre: 'Asistencia a sesiones del Pleno',
-    mide: 'Presencia registrada en las sesiones del Pleno.',
-    calculo: 'asistencias registradas ÷ sesiones elegibles con información verificable × 100',
-    denominador: 'Sesiones marcadas como elegibles, dentro del periodo y en fechas en que la persona ejercía el cargo, con estado «asistencia», «ausencia» o «ausencia justificada». Las justificadas forman parte del denominador y se informan aparte.',
-    faltantes: 'Los registros «pendientes», «no verificados» y las sesiones sin captura se excluyen del denominador y NUNCA se cuentan como ausencia. Si existen, el porcentaje se rotula como provisional.',
+    nombre: 'Asistencia a las sesiones',
+    mide: 'En cuántas sesiones estuvo cada persona.',
+    calculo: 'Sesiones en que asistió ÷ sesiones que le tocaban, por cien.',
+    denominador: 'Las sesiones en que estaba en el cargo, con la lista oficial: asistió, faltó con permiso o faltó sin permiso.',
+    faltantes: 'Si no tenemos la lista de una sesión, no la contamos como falta: la dejamos fuera y avisamos que el porcentaje todavía puede cambiar.',
   },
   {
-    nombre: 'Iniciativas presentadas / aprobadas',
-    mide: 'Iniciativas en las que la persona figura como autora o coautora y su desenlace en el Pleno.',
-    calculo: 'Conteo de id_asunto únicos de tipo iniciativa; «aprobadas» = estado aprobado o publicado.',
-    denominador: 'Para el porcentaje de aprobación: iniciativas presentadas en el mismo periodo (por fecha de presentación).',
-    faltantes: 'Iniciativas sin promovente registrado no se atribuyen a nadie y se reportan en Calidad de datos.',
+    nombre: 'Propuestas de ley presentadas y aprobadas',
+    mide: 'Cuántas propuestas firmó cada persona y cuántas aprobó el Congreso.',
+    calculo: 'Contamos cada propuesta una sola vez. «Aprobada» quiere decir que el Congreso la aprobó (y, en su caso, ya se publicó).',
+    denominador: 'Para el porcentaje: las propuestas presentadas en el mismo periodo.',
+    faltantes: 'Si no sabemos quién firmó una propuesta, no se la contamos a nadie.',
   },
   {
-    nombre: 'Exhortos presentados / aprobados',
-    mide: 'Exhortos promovidos por la persona y aprobados por el Congreso.',
-    calculo: 'Conteo de id_asunto únicos de tipo exhorto con estado aprobado. En la ficha individual solo se cuentan los de autoría verificada; los demás se muestran como «pendientes de verificación».',
-    denominador: 'Exhortos presentados en el periodo.',
-    faltantes: 'Si el registro no permite identificar a los promoventes, el dato se muestra pendiente de verificación.',
+    nombre: 'Exhortos presentados y aprobados',
+    mide: 'Cuántas peticiones a otras autoridades propuso cada persona y cuántas aprobó el Congreso.',
+    calculo: 'Contamos cada exhorto una sola vez. En la ficha de cada persona solo cuentan los que ya revisamos.',
+    denominador: 'Los exhortos presentados en el periodo.',
+    faltantes: 'Si el acta no dice quién lo propuso, aparece como «por revisar».',
   },
   {
-    nombre: 'Seguimiento de exhortos',
-    mide: 'Lo documentado después de aprobar un exhorto: envío, respuesta y acciones de la autoridad.',
-    calculo: 'Estado derivado en orden: no aprobado → no verificado → acciones documentadas → respuesta localizada → sin respuesta localizada → pendiente de seguimiento.',
-    denominador: 'Exhortos aprobados.',
-    faltantes: 'Nunca se deriva «incumplido». «Sin respuesta localizada» significa que se buscó y no se encontró.',
+    nombre: '¿Respondió la autoridad a un exhorto?',
+    mide: 'Qué pasó después de aprobar un exhorto: si se envió, si la autoridad respondió o hizo algo.',
+    calculo: 'Revisamos en orden: si no se aprobó, si falta revisar, si hubo acciones, si hubo respuesta o si no la encontramos.',
+    denominador: 'Los exhortos aprobados.',
+    faltantes: 'Nunca decimos que una autoridad «no cumplió»: si no encontramos respuesta, solo decimos eso.',
   },
   {
-    nombre: 'Decretos publicados',
-    mide: 'Resoluciones publicadas en el Periódico Oficial.',
-    calculo: 'Números de decreto únicos con publicación; si falta el número, cuenta el id_asunto. Evita contar dos veces la iniciativa, su dictamen y el decreto.',
-    denominador: 'No aplica (conteo).',
-    faltantes: 'Asuntos aprobados sin fecha de publicación no se cuentan como publicados.',
+    nombre: 'Leyes publicadas (decretos)',
+    mide: 'Cuántas decisiones del Congreso se publicaron en el periódico oficial del estado y ya están vigentes.',
+    calculo: 'Contamos cada número de decreto una sola vez, para no contar dos veces la propuesta, la opinión de la comisión y la ley publicada.',
+    denominador: 'No se compara: es un conteo.',
+    faltantes: 'Si algo se aprobó pero no tiene fecha de publicación, no lo contamos como publicado.',
   },
   {
-    nombre: 'Asuntos pendientes',
-    mide: 'Asuntos en trámite.',
-    calculo: 'Asuntos con estado presentado, turnado, dictaminado o pendiente.',
-    denominador: 'Asuntos del periodo.',
-    faltantes: '«Información no localizada» y «estado no verificado» se cuentan aparte, no como pendientes.',
+    nombre: 'Propuestas sin resolver',
+    mide: 'Cuántas propuestas siguen esperando una decisión.',
+    calculo: 'Las que se presentaron, están en comisión, ya tienen opinión de comisión o siguen sin resolver.',
+    denominador: 'Las propuestas del periodo.',
+    faltantes: 'Las que no sabemos en qué van se cuentan aparte.',
   },
   {
-    nombre: 'Tiempos procesales',
-    mide: 'Días entre presentación, turno, dictamen y aprobación.',
-    calculo: 'Mediana de días entre fechas registradas (la mediana es menos sensible a casos extremos que el promedio).',
-    denominador: 'Solo asuntos con ambas fechas; se informa cuántos casos entran al cálculo.',
-    faltantes: 'Asuntos sin alguna fecha quedan fuera; los pendientes no tienen fecha final, lo que sesga hacia los asuntos más rápidos.',
+    nombre: 'Cuánto tarda una propuesta',
+    mide: 'Cuántos días pasan entre que se presenta, se manda a comisión, la comisión opina y se aprueba.',
+    calculo: 'Usamos la mediana: el valor del medio si se ordenan todos los casos. Así un caso muy lento no cambia todo el resultado.',
+    denominador: 'Solo las propuestas que tienen las dos fechas; siempre decimos cuántas son.',
+    faltantes: 'Las que todavía no se resuelven no tienen fecha final y quedan fuera; por eso el número tiende a mostrar las más rápidas.',
   },
   {
-    nombre: 'Intervenciones en tribuna',
-    mide: 'Participación documentada en el Diario de los Debates.',
-    calculo: 'Conteo de intervenciones registradas.',
-    denominador: 'No aplica (conteo).',
-    faltantes: 'Sesiones sin Diario de los Debates disponible no aportan intervenciones. No mide calidad ni impacto.',
+    nombre: 'Veces que habló ante el Congreso',
+    mide: 'Cuántas veces cada persona pasó al frente (la tribuna) a hablar, según el documento donde se escribe todo lo que se dice en las sesiones.',
+    calculo: 'Contamos cada vez que habló.',
+    denominador: 'No se compara: es un conteo.',
+    faltantes: 'Si de una sesión no está ese documento, no aparecen sus intervenciones. No mide qué tan buenos fueron sus argumentos.',
   },
   {
-    nombre: 'Votaciones',
-    mide: 'Sentido del voto individual cuando la fuente lo acredita.',
-    calculo: 'Conteo por sentido. Se cotejan los totales oficiales contra los votos individuales capturados.',
-    denominador: 'Votos individuales capturados.',
-    faltantes: 'Si la fuente no permite acreditarlo: «voto no localizado». Nunca se infiere del partido ni del resultado.',
+    nombre: 'Cómo votó cada persona',
+    mide: 'Cómo votó cada persona, cuando el acta lo dice con su nombre.',
+    calculo: 'Contamos los votos a favor, en contra y abstenciones. Comparamos los nombres del acta con el total que anunció quien dirige la sesión.',
+    denominador: 'Los votos que el acta anota con nombre.',
+    faltantes: 'Si el acta no lo dice, aparece «El acta no dice cómo votó». Nunca lo deducimos por su partido ni por el resultado.',
   },
   {
     nombre: 'Comisiones',
-    mide: 'Asuntos turnados, dictaminados y pendientes; reuniones y asistencia de integrantes.',
-    calculo: 'Por comisión, cada turno cuenta. En el total general, cada asunto cuenta una sola vez aunque se haya turnado a varias comisiones.',
-    denominador: 'Asuntos turnados a la comisión en el periodo (por fecha de turno).',
-    faltantes: 'No haber localizado un acta no se interpreta como que no hubo reunión.',
+    mide: 'Cuántas propuestas recibió cada comisión, cuántas revisó y cuántas le faltan; sus reuniones y quién asistió.',
+    calculo: 'Si una propuesta se mandó a dos comisiones, cuenta en cada una; en el total del Congreso cuenta una sola vez.',
+    denominador: 'Las propuestas que recibió la comisión en el periodo.',
+    faltantes: 'Si no encontramos el acta de una reunión, no quiere decir que no se reunió.',
   },
   {
-    nombre: 'Registros con evidencia verificable',
-    mide: 'Qué proporción de la base está respaldada por un documento enlazado.',
-    calculo: 'Registros cuyo id_fuente existe en «evidencias» y tiene URL válida ÷ registros de las tablas principales × 100.',
-    denominador: 'Todas las filas de diputados, sesiones, asistencias, asuntos, intervenciones, votaciones, reuniones, compromisos y agenda.',
-    faltantes: 'Un enlace puede dejar de funcionar después de la fecha de consulta registrada.',
+    nombre: 'Datos con documento',
+    mide: 'Qué parte de los datos tiene un documento oficial que lo respalda, con su enlace.',
+    calculo: 'Datos con un documento enlazado ÷ todos los datos, por cien.',
+    denominador: 'Todos los datos de diputaciones, sesiones, asistencias, propuestas, intervenciones, votaciones, reuniones, compromisos y agenda.',
+    faltantes: 'Un enlace puede dejar de funcionar después de la fecha en que lo consultamos.',
   },
 ];
 
@@ -107,7 +107,7 @@ function Catalogo({ catalogo }: { catalogo: Record<string, EntradaCatalogo> }) {
         <div key={k} style={{ display: 'contents' }}>
           <dt>{v.tono ? <InsigniaCatalogo catalogo={catalogo} valor={k} /> : v.etiqueta}</dt>
           <dd>
-            {v.descripcion} <code className="muy-pequeno texto-3">{k}</code>
+            {v.descripcion}
           </dd>
         </div>
       ))}
@@ -127,52 +127,58 @@ export default function Metodologia() {
       </EncabezadoPagina>
       <p className="nota-publica">{NOTA_PUBLICA}</p>
 
-      <section className="seccion">
-        <h2>Periodo de análisis</h2>
+      <section className={`seccion${claseNuevo()}`}>
+        <h2>¿Qué periodo cubren los datos?</h2>
         <p>
-          La {LEGISLATURA.nombre} abarca {LEGISLATURA.periodo}. Los datos se presentan con corte al <strong>{base.manifiesto.fecha_corte ? fechaCorta(base.manifiesto.fecha_corte) : '(sin definir)'}</strong>. Los filtros permiten acotar por año legislativo o por un rango de fechas.
+          Esta Legislatura va de {LEGISLATURA.periodo}. Los datos llegan hasta el <strong>{base.manifiesto.fecha_corte ? fechaCorta(base.manifiesto.fecha_corte) : '(sin definir)'}</strong>. Puede elegir ver todo o un solo año:
         </p>
         <ul>
           {ANIOS_LEGISLATIVOS.anios.map((a) => (
             <li key={a.numero}>
-              {a.etiqueta}: {fechaCorta(a.inicio)} – {fechaCorta(a.fin)}
+              {a.etiqueta}: {fechaCorta(a.inicio)} a {fechaCorta(a.fin)}
             </li>
           ))}
         </ul>
-        {!ANIOS_LEGISLATIVOS.verificado && <p className="pequeno texto-2">Los límites de cada año legislativo están pendientes de verificar contra la Ley Orgánica del Poder Legislativo y el acta de instalación; se configuran en <code>src/config/legislatura.ts</code>.</p>}
-        <p className="pequeno texto-2">
-          Las sesiones llevan su año legislativo de forma explícita, porque la numeración se reinicia cada año. Asuntos e intervenciones se ubican en el periodo por su fecha (presentación o sesión). Los registros sin fecha válida solo se incluyen cuando no hay filtro de periodo.
-        </p>
+        <details className="saber-mas">
+          <summary>Saber más</summary>
+          <p className="pequeno">
+            Cada sesión lleva anotado su año, porque la numeración de las sesiones empieza de nuevo cada año. Las propuestas y las intervenciones se ubican por su fecha. Si algo no tiene fecha, solo aparece cuando se ve toda la Legislatura.
+            {!ANIOS_LEGISLATIVOS.verificado && ' Las fechas de inicio y fin de cada año todavía están por confirmar con la ley del Congreso.'}
+          </p>
+        </details>
+        <Nuevo texto="en palabras sencillas" />
       </section>
 
       <section className="seccion">
-        <h2>Indicadores</h2>
+        <h2>Cómo calculamos cada número</h2>
+        <p className="seccion__intro">Toque un tema para ver qué dice el número, cómo lo contamos y qué pasa si falta información.</p>
         {INDICADORES.map((i) => (
           <details className="desplegable" key={i.nombre}>
             <summary>{i.nombre}</summary>
             <dl className="definiciones" style={{ marginTop: '0.6rem' }}>
-              <dt>Qué mide</dt>
+              <dt>¿Qué dice este número?</dt>
               <dd>{i.mide}</dd>
-              <dt>Cálculo</dt>
+              <dt>¿Cómo lo contamos?</dt>
               <dd>{i.calculo}</dd>
-              <dt>Denominador</dt>
+              <dt>¿Contra qué lo comparamos?</dt>
               <dd>{i.denominador}</dd>
-              <dt>Datos faltantes</dt>
+              <dt>¿Y si falta información?</dt>
               <dd>{i.faltantes}</dd>
             </dl>
           </details>
         ))}
       </section>
 
-      <section className="seccion">
-        <h2>Iniciativas compartidas y no duplicación</h2>
+      <section className={`seccion${claseNuevo()}`}>
+        <h2>¿Cómo contamos una propuesta que firmaron varias personas?</h2>
         <ul>
-          <li>Cada asunto tiene un identificador único y aparece una sola vez en la tabla de asuntos. Los promoventes y las comisiones se registran en tablas de relación aparte.</li>
-          <li>Un asunto es <strong>individual</strong> si tiene un solo promovente atribuible (autor/a) y <strong>compartido</strong> si tiene dos o más (autores/as y coautores/as). Las adhesiones posteriores se muestran, pero no cuentan.</li>
-          <li>En la ficha de cada persona, un asunto compartido cuenta una vez para cada promovente. En los totales de la Legislatura cuenta una sola vez. Por eso la suma de conteos individuales puede superar el total.</li>
-          <li>Los asuntos de promoventes externos (Ejecutivo, ayuntamientos, ciudadanía) cuentan en los totales, pero no se atribuyen a ninguna diputación.</li>
-          <li>Con filtro de partido, un asunto se incluye si al menos un promovente pertenece al partido.</li>
+          <li>Cada propuesta aparece una sola vez en el Observatorio, aunque la hayan firmado varias personas o se haya mandado a varias comisiones.</li>
+          <li>Si la firmó una sola persona, es una propuesta <strong>sola</strong>; si la firmaron dos o más, es <strong>con otras personas</strong>. Quien se suma después de presentada se muestra, pero no cuenta como autora.</li>
+          <li>En la ficha de cada persona, una propuesta compartida cuenta para cada quien la firmó. En el total del Congreso cuenta una sola vez. Por eso, si suma las fichas, le dará más que el total.</li>
+          <li>Las propuestas que mandan la gobernadora, los ayuntamientos o la ciudadanía cuentan en el total del Congreso, pero no se le cuentan a ninguna diputación.</li>
+          <li>Si elige un partido, aparecen las propuestas en las que firmó al menos una persona de ese partido.</li>
         </ul>
+        <Nuevo texto="en palabras sencillas" />
       </section>
 
       <section className="seccion" id="clasificacion-propuestas">
@@ -207,70 +213,81 @@ export default function Metodologia() {
       <section className="seccion" id="votaciones-divididas">
         <h2>Votaciones divididas</h2>
         <p>
-          Llamamos <strong>votación dividida</strong> a una votación nominal en la que, según los totales del acta, al menos {UMBRAL_DIVIDIDA} diputaciones votaron a favor y al menos {UMBRAL_DIVIDIDA} votaron en contra o se abstuvieron. La mayoría de las votaciones del Congreso son por unanimidad o casi; en las divididas se ve mejor la postura de cada persona. Solo contamos votos escritos con nombre en el acta; los votos probables nunca se suman.
+          Llamamos <strong>votación dividida</strong> a una votación con nombres en el acta en la que, según los totales del acta, al menos {UMBRAL_DIVIDIDA} diputaciones votaron a favor y al menos {UMBRAL_DIVIDIDA} votaron en contra o se abstuvieron. La mayoría de las votaciones del Congreso son por unanimidad o casi; en las divididas se ve mejor la postura de cada persona. Solo contamos votos escritos con nombre en el acta; los votos probables nunca se suman.
         </p>
       </section>
 
-      <section className="seccion">
-        <h2>Estados procesales</h2>
-        <p className="seccion__intro">No todos los asuntos siguen el mismo procedimiento. Un estado que no corresponde al tipo de asunto se marca como incompatible en la validación.</p>
+      <section className={`seccion${claseNuevo()}`}>
+        <h2>¿En qué paso va una propuesta?</h2>
+        <p className="seccion__intro">Estos son los pasos que puede tener una propuesta, desde que llega al Congreso hasta que se publica.</p>
         <Catalogo catalogo={ESTADOS_PROCESALES} />
-        <h3 style={{ marginTop: '1rem' }}>Etapas admitidas por tipo de asunto</h3>
-        <ul className="pequeno">
-          {Object.entries(ETAPAS_POR_TIPO).map(([t, e]) => (
-            <li key={t}>
-              <strong>{etiquetaDe(TIPOS_ASUNTO, t)}</strong> — {TIPOS_ASUNTO[t as keyof typeof TIPOS_ASUNTO].descripcion} Etapas: {e.map((x) => etiquetaDe(ESTADOS_PROCESALES, x).toLowerCase()).join(', ')}.
-            </li>
-          ))}
-        </ul>
+        <details className="saber-mas">
+          <summary>Saber más: los pasos de cada tipo de propuesta</summary>
+          <ul className="pequeno">
+            {Object.entries(ETAPAS_POR_TIPO).map(([t, e]) => (
+              <li key={t}>
+                <strong>{etiquetaDe(TIPOS_ASUNTO, t)}</strong>: {TIPOS_ASUNTO[t as keyof typeof TIPOS_ASUNTO].descripcion} Pasos posibles: {e.map((x) => etiquetaDe(ESTADOS_PROCESALES, x).toLowerCase()).join(', ')}.
+              </li>
+            ))}
+          </ul>
+          <p className="pequeno">No todas las propuestas siguen los mismos pasos. Si un dato dice que una propuesta está en un paso que no le corresponde, nuestra revisión automática lo marca como error.</p>
+        </details>
+        <Nuevo texto="en palabras sencillas" />
       </section>
 
       <section className="seccion rejilla rejilla--2">
         <div className="panel">
-          <h3>Estados de asistencia</h3>
+          <h3>¿Asistió?</h3>
           <Catalogo catalogo={ESTADOS_ASISTENCIA} />
         </div>
         <div className="panel">
-          <h3>Seguimiento de exhortos</h3>
+          <h3>¿Respondió la autoridad a un exhorto?</h3>
           <Catalogo catalogo={SEGUIMIENTO_EXHORTO} />
         </div>
         <div className="panel">
-          <h3>Sentido del voto</h3>
+          <h3>Cómo votó</h3>
           <Catalogo catalogo={SENTIDOS_VOTO} />
         </div>
         <div className="panel">
-          <h3>Seguimiento de compromisos</h3>
+          <h3>¿Cumplió lo que prometió?</h3>
           <Catalogo catalogo={SEGUIMIENTO_COMPROMISO} />
         </div>
       </section>
 
-      <section className="seccion">
-        <h2>Verificación de fuentes</h2>
-        <Catalogo catalogo={ESTADOS_VERIFICACION} />
-        <ol style={{ marginTop: '1rem' }}>
-          <li>Cada registro indica un <code>id_fuente</code> que remite al catálogo de evidencias, con URL, institución, fecha del documento y fecha de consulta.</li>
-          <li>Se priorizan las fuentes institucionales: sitio del Congreso, Gaceta Parlamentaria, Diario de los Debates, portal de transparencia, Periódico Oficial e IEE Colima. Las notas de prensa sirven como pista, no como prueba única.</li>
-          <li>Un registro es «verificado» cuando una persona revisora lo contrastó contra el documento enlazado.</li>
-          <li>La validación automática detecta IDs duplicados, fechas inválidas, registros sin fuente, relaciones inexistentes, estados incompatibles, posibles duplicados, datos incompletos y discrepancias de cálculo. Nada se borra en silencio: todo se reporta en <a href="#/fuentes">Fuentes y calidad de datos</a>.</li>
+      <section className={`seccion${claseNuevo()}`}>
+        <h2>¿Cómo revisamos los datos?</h2>
+        <ol>
+          <li>Cada dato lleva el documento oficial de donde salió, con su enlace y la fecha en que lo consultamos.</li>
+          <li>Usamos primero documentos oficiales: el sitio del Congreso, la Gaceta Parlamentaria (donde el Congreso publica sus documentos), las actas, el portal de transparencia, el periódico oficial del estado y el Instituto Electoral del Estado de Colima. Las noticias nos sirven como pista, nunca como única prueba.</li>
+          <li>Un dato está «revisado» cuando una persona lo comparó con el documento oficial.</li>
+          <li>Además, una revisión automática busca errores: datos repetidos, fechas imposibles, datos sin documento o números que no cuadran. Nada se borra a escondidas: todo se muestra en «¿De dónde salen los datos?».</li>
         </ol>
+        <details className="saber-mas">
+          <summary>Saber más: estados de revisión</summary>
+          <Catalogo catalogo={ESTADOS_VERIFICACION} />
+        </details>
+        <Nuevo texto="en palabras sencillas" />
       </section>
 
-      <section className="seccion">
-        <h2>Limitaciones</h2>
+      <section className={`seccion${claseNuevo()}`}>
+        <h2>Lo que estos datos no dicen</h2>
         <ul>
-          <li>La ausencia de un registro no demuestra que una actividad no se haya realizado: puede no estar publicada o no haberse capturado.</li>
-          <li>Los conteos no ponderan la complejidad, la relevancia social ni el impacto de cada asunto.</li>
-          <li>La aprobación de una iniciativa depende también de la correlación de fuerzas en el Congreso, no solo del trabajo de quien la presenta.</li>
-          <li>La adscripción partidaria puede cambiar durante la Legislatura; el criterio usado se indica en cada ficha.</li>
-          <li>Las suplencias dividen la actividad de una curul entre varias personas; los indicadores se calculan por persona y por su periodo de ejercicio.</li>
-          <li>Las comisiones tienen cargas y competencias distintas y no son directamente comparables.</li>
-          <li>No se construye un índice único ni un ranking de calidad legislativa.</li>
+          <li>Si algo no aparece, no quiere decir que no pasó: puede que no se haya publicado o que todavía no lo hayamos anotado.</li>
+          <li>Contamos cuántas cosas hizo cada persona, no qué tan difíciles, importantes o útiles fueron.</li>
+          <li>Que se apruebe una propuesta depende también de cuántos votos tiene cada partido, no solo del trabajo de quien la presentó.</li>
+          <li>Una persona puede cambiar de partido durante la Legislatura; en cada ficha decimos qué partido usamos.</li>
+          <li>Cuando alguien pide licencia, su lugar lo ocupa otra persona; a cada quien le contamos solo el tiempo en que estuvo en el cargo.</li>
+          <li>Cada comisión trabaja temas distintos y recibe cantidades distintas de propuestas: no se comparan directamente.</li>
+          <li>No hacemos un ranking ni una calificación de quién trabaja mejor.</li>
         </ul>
+        <Nuevo texto="en palabras sencillas" />
       </section>
 
       <section className="seccion">
-        <h2>Diccionario de datos</h2>
-        <p className="seccion__intro">Estructura de las {NOMBRES_TABLAS.length} tablas relacionadas. Los datos originales, los valores calculados y las etiquetas de la interfaz se mantienen separados.</p>
+        <h2>Para quien descarga los datos</h2>
+        <p className="seccion__intro">
+          Si descarga los archivos para analizarlos (por ejemplo, en Excel), aquí está qué trae cada uno de los {NOMBRES_TABLAS.length} archivos y qué significa cada columna. Esta parte es técnica.
+        </p>
         {NOMBRES_TABLAS.map((t) => {
           const def = ESQUEMA[t];
           return (

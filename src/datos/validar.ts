@@ -28,18 +28,18 @@ export type CategoriaProblema =
   | 'error_calculo';
 
 export const CATEGORIAS_PROBLEMA: Record<CategoriaProblema, string> = {
-  archivo: 'Archivo faltante o ilegible',
-  estructura: 'Estructura de columnas',
-  id_duplicado: 'ID duplicado',
-  fecha_invalida: 'Fecha inválida',
-  sin_fuente: 'Registro sin fuente',
-  relacion_inexistente: 'Relación con ID inexistente',
-  estado_incompatible: 'Estado incompatible',
-  asunto_duplicado: 'Posible asunto duplicado',
+  archivo: 'Falta un archivo o no se puede leer',
+  estructura: 'Columnas que no corresponden',
+  id_duplicado: 'Clave repetida',
+  fecha_invalida: 'Fecha imposible',
+  sin_fuente: 'Dato sin documento',
+  relacion_inexistente: 'Se refiere a algo que no existe',
+  estado_incompatible: 'Paso que no corresponde',
+  asunto_duplicado: 'Posible propuesta repetida',
   dato_incompleto: 'Dato incompleto',
-  valor_invalido: 'Valor fuera de catálogo',
-  inconsistencia: 'Inconsistencia entre campos',
-  error_calculo: 'Error de cálculo',
+  valor_invalido: 'Valor que no se reconoce',
+  inconsistencia: 'Datos que no cuadran entre sí',
+  error_calculo: 'Cuenta que no cuadra',
 };
 
 export interface Problema {

@@ -38,6 +38,7 @@ export const CAMBIOS_VISTA_PREVIA = [
   { texto: 'Votaciones: palabras sencillas («cómo votó», «el acta lo dice», «quien dirige la sesión»), tarjetas que dicen qué significan y detalles en «Saber más».', a: '/votaciones' },
   { texto: 'Diputaciones por lista: explicación de qué son, por qué no tienen suplente y por qué hay 28 personas para 25 lugares.', a: '/diputaciones' },
   { texto: 'Todas las páginas: títulos, explicaciones, columnas y estados en palabras sencillas.', a: '/asistencias' },
+  { texto: '«¿Cómo calculamos cada dato?» y «¿De dónde salen los datos?»: todo el contenido en palabras sencillas; lo técnico, en «Saber más».', a: '/metodologia' },
   { texto: 'Todas las páginas (menos el inicio) tienen arriba un botón «← Regresar» a la página anterior.', a: '/congreso' },
   { texto: 'El Congreso en números: ahora son seis preguntas en palabras sencillas, cada una con su respuesta y una gráfica; lo técnico quedó guardado en «Para revisar a fondo».', a: '/congreso' },
   { texto: 'Menú: ahora tiene 3 opciones: Inicio, ¿Qué se hace en el Congreso? y El Congreso en números.', a: '/' },
