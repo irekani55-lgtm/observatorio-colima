@@ -1792,3 +1792,6 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
   .mapa-disposicion--fijo .mapa-izquierda .mapa-lienzo svg { max-height: calc(100vh - var(--alto-cabecera, 110px) - 15rem); }
 }
 @media (min-width: 901px) { .mapa-disposicion--fijo .mapa-izquierda .mapa-lienzo svg { max-height: calc(100vh - var(--alto-cabecera, 110px) - 19rem); } }
+/* «El Congreso en números»: la respuesta de cada pregunta se lee primero, en letra normal. */
+.preguntas .panel__nota { font-size: 0.95rem; color: var(--texto); line-height: 1.5; }
+.preguntas .panel__cabecera h3 { font-size: 1.05rem; }

@@ -17,6 +17,7 @@ import { coberturaEvidencia } from '../indicadores/evidencia';
 import { diputadosFiltrados, fechaEnPeriodo } from '../indicadores/filtro';
 import { NotaTablaDistritos, TablaDistritos } from './Mapa';
 import { IndicadoresDetallados } from './Eficacia';
+import { PreguntasCongreso } from './PreguntasCongreso';
 import { ejercioEnPeriodo, TablaComparativa } from './Directorio';
 import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 
@@ -126,140 +127,148 @@ export default function Congreso() {
   return (
     <>
       <EncabezadoPagina titulo="El Congreso en números">
-        <p>Lo que ha hecho todo el Congreso del Estado en la LXI Legislatura ({LEGISLATURA.periodo}). Para ver a una persona en particular, búsquela en el <Link to="/">inicio</Link>.</p>
+        <p>Seis preguntas sobre lo que hace el Congreso de Colima en esta Legislatura ({LEGISLATURA.periodo}), contestadas con documentos oficiales. Para ver a una persona en particular, búsquela en el <Link to="/">inicio</Link>.</p>
       </EncabezadoPagina>
-      <BarraFiltros />
+      <BarraFiltros campos={['anio']} />
+      <PreguntasCongreso />
 
-      <div className="rejilla rejilla--tarjetas">
-        <Tarjeta
-          titulo="Diputadas y diputados en la base"
-          valor={base.diputados.length ? fmt(dips.length) : null}
-          detalle={`${fmt(enFuncionesHoy)} en funciones · integración constitucional: ${LEGISLATURA.integracion.total} curules`}
-          explica="Incluye a quienes entraron por una licencia (suplentes de distrito y sustitutos de la lista de un partido); por eso puede superar el número de curules."
-          enlace={{ a: '/diputaciones', texto: 'Ver directorio' }}
-        />
-        <Tarjeta
-          titulo="Asistencia a sesiones del Pleno"
-          valor={asis.porcentaje == null ? null : fmtPct(asis.porcentaje)}
-          pendiente={base.sesiones.length ? 'Pendiente de verificación' : 'Información pendiente de integración'}
-          detalle={
-            <>
-              {fmt(asis.asistencias)} de {fmt(asis.denominador)} registros evaluables
-              {!asis.definitivo && <strong> · Provisional: {fmt(asis.pendientes + asis.sinRegistro + asis.noVerificadas)} registros sin verificar</strong>}
-            </>
-          }
-          explica="Asistencias registradas ÷ sesiones elegibles con información verificable."
-          enlace={{ a: enlaceConPeriodo('/asistencias', filtro), texto: 'Ver asistencias' }}
-        />
-        <Tarjeta titulo="Iniciativas presentadas" valor={hayAsuntos ? fmt(res.iniciativasPresentadas) : null} explica="Iniciativas únicas presentadas en el periodo, de cualquier promovente." enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { tipo: 'iniciativa' }), texto: 'Ver iniciativas' }} />
-        <Tarjeta
-          titulo="Iniciativas aprobadas"
-          valor={hayAsuntos ? fmt(res.iniciativasAprobadas) : null}
-          detalle={res.iniciativasPresentadas ? `${fmtPct((res.iniciativasAprobadas / res.iniciativasPresentadas) * 100)} de las presentadas en el periodo` : undefined}
-          explica="Aprobadas por el Pleno (incluye las ya publicadas)."
-          enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { tipo: 'iniciativa', estado: 'aprobados' }), texto: 'Ver aprobadas' }}
-        />
-        <Tarjeta titulo="Dictámenes aprobados" valor={hayAsuntos ? fmt(res.dictamenesAprobados) : null} explica="Dictámenes de comisión aprobados por el Pleno." enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { tipo: 'dictamen', estado: 'aprobados' }), texto: 'Ver dictámenes' }} />
-        <Tarjeta titulo="Exhortos aprobados" valor={hayAsuntos ? fmt(res.exhortosAprobados) : null} explica="Aprobación del Congreso; no implica que la autoridad lo haya atendido." enlace={{ a: enlaceConPeriodo('/exhortos', filtro), texto: 'Ver exhortos' }} />
-        <Tarjeta titulo="Decretos publicados" valor={hayAsuntos ? fmt(res.decretosPublicados) : null} explica="Números de decreto únicos publicados en el Periódico Oficial, cuando corresponde." enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { estado: 'publicado' }), texto: 'Ver publicados' }} />
-        <Tarjeta titulo="Asuntos pendientes" valor={hayAsuntos ? fmt(res.pendientes) : null} explica="Presentados, turnados o dictaminados que aún no se resuelven en el Pleno." enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { estado: 'pendientes' }), texto: 'Ver pendientes' }} />
-        <Tarjeta
-          titulo="Registros con evidencia verificable"
-          valor={evid.porcentaje == null ? null : fmtPct(evid.porcentaje)}
-          detalle={`${fmt(evid.conEvidencia)} de ${fmt(evid.total)} registros enlazan a un documento`}
-          explica="Toda la base, sin filtros: registros cuya fuente existe y tiene URL."
-          enlace={{ a: '/fuentes', texto: 'Ver calidad de datos' }}
-        />
-      </div>
+      <section className={`seccion${claseNuevo()}`} aria-labelledby="titulo-a-fondo">
+        <h2 id="titulo-a-fondo">Para revisar a fondo</h2>
+        <p className="seccion__intro">Las tablas y gráficas completas, para periodistas, estudiantes y quien quiera revisar cada número.</p>
+        <Nuevo texto="lo técnico quedó aquí, guardado" />
+        <details className="desplegable" id="totales">
+          <summary>Todos los totales y las gráficas detalladas</summary>
+          <div style={{ marginTop: '0.75rem' }}>
+            <BarraFiltros campos={['partido', 'representacion']} />
 
-      {(filtro.partido || filtro.tipoRepresentacion) && (
-        <Aviso>Con filtro de partido o representación, los asuntos se cuentan si al menos un promovente cumple el filtro. Un asunto compartido entre partidos aparece en ambos.</Aviso>
-      )}
+          <div className="rejilla rejilla--tarjetas">
+            <Tarjeta
+              titulo="Diputadas y diputados en la base"
+              valor={base.diputados.length ? fmt(dips.length) : null}
+              detalle={`${fmt(enFuncionesHoy)} en funciones · integración constitucional: ${LEGISLATURA.integracion.total} curules`}
+              explica="Incluye a quienes entraron por una licencia (suplentes de distrito y sustitutos de la lista de un partido); por eso puede superar el número de curules."
+              enlace={{ a: '/diputaciones', texto: 'Ver directorio' }}
+            />
+            <Tarjeta
+              titulo="Asistencia a sesiones del Pleno"
+              valor={asis.porcentaje == null ? null : fmtPct(asis.porcentaje)}
+              pendiente={base.sesiones.length ? 'Pendiente de verificación' : 'Información pendiente de integración'}
+              detalle={
+                <>
+                  {fmt(asis.asistencias)} de {fmt(asis.denominador)} registros evaluables
+                  {!asis.definitivo && <strong> · Provisional: {fmt(asis.pendientes + asis.sinRegistro + asis.noVerificadas)} registros sin verificar</strong>}
+                </>
+              }
+              explica="Asistencias registradas ÷ sesiones elegibles con información verificable."
+              enlace={{ a: enlaceConPeriodo('/asistencias', filtro), texto: 'Ver asistencias' }}
+            />
+            <Tarjeta titulo="Iniciativas presentadas" valor={hayAsuntos ? fmt(res.iniciativasPresentadas) : null} explica="Iniciativas únicas presentadas en el periodo, de cualquier promovente." enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { tipo: 'iniciativa' }), texto: 'Ver iniciativas' }} />
+            <Tarjeta
+              titulo="Iniciativas aprobadas"
+              valor={hayAsuntos ? fmt(res.iniciativasAprobadas) : null}
+              detalle={res.iniciativasPresentadas ? `${fmtPct((res.iniciativasAprobadas / res.iniciativasPresentadas) * 100)} de las presentadas en el periodo` : undefined}
+              explica="Aprobadas por el Pleno (incluye las ya publicadas)."
+              enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { tipo: 'iniciativa', estado: 'aprobados' }), texto: 'Ver aprobadas' }}
+            />
+            <Tarjeta titulo="Dictámenes aprobados" valor={hayAsuntos ? fmt(res.dictamenesAprobados) : null} explica="Dictámenes de comisión aprobados por el Pleno." enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { tipo: 'dictamen', estado: 'aprobados' }), texto: 'Ver dictámenes' }} />
+            <Tarjeta titulo="Exhortos aprobados" valor={hayAsuntos ? fmt(res.exhortosAprobados) : null} explica="Aprobación del Congreso; no implica que la autoridad lo haya atendido." enlace={{ a: enlaceConPeriodo('/exhortos', filtro), texto: 'Ver exhortos' }} />
+            <Tarjeta titulo="Decretos publicados" valor={hayAsuntos ? fmt(res.decretosPublicados) : null} explica="Números de decreto únicos publicados en el Periódico Oficial, cuando corresponde." enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { estado: 'publicado' }), texto: 'Ver publicados' }} />
+            <Tarjeta titulo="Asuntos pendientes" valor={hayAsuntos ? fmt(res.pendientes) : null} explica="Presentados, turnados o dictaminados que aún no se resuelven en el Pleno." enlace={{ a: enlaceConPeriodo('/asuntos', filtro, { estado: 'pendientes' }), texto: 'Ver pendientes' }} />
+            <Tarjeta
+              titulo="Registros con evidencia verificable"
+              valor={evid.porcentaje == null ? null : fmtPct(evid.porcentaje)}
+              detalle={`${fmt(evid.conEvidencia)} de ${fmt(evid.total)} registros enlazan a un documento`}
+              explica="Toda la base, sin filtros: registros cuya fuente existe y tiene URL."
+              enlace={{ a: '/fuentes', texto: 'Ver calidad de datos' }}
+            />
+          </div>
 
-      <section className="seccion">
-        <h2>Explorar la actividad</h2>
-        <div className="rejilla rejilla--2">
-          <PanelGrafica titulo="Actividad legislativa por año" nota={`Asuntos únicos por año legislativo, según su fecha de presentación.${sinAnio ? ` ${sinAnio} asuntos sin fecha válida no se ubican en un año.` : ''}`} datos={porAnio} columnas={[{ clave: 'anio', etiqueta: 'Año legislativo' }, ...seriesTipo.map((s) => ({ clave: s.clave, etiqueta: s.etiqueta }))]} vacio={asuntos.length === 0}>
-            <GraficaBarras datos={porAnio} claveX="anio" series={seriesTipo} />
-          </PanelGrafica>
+          {(filtro.partido || filtro.tipoRepresentacion) && (
+            <Aviso>Con filtro de partido o representación, los asuntos se cuentan si al menos un promovente cumple el filtro. Un asunto compartido entre partidos aparece en ambos.</Aviso>
+          )}
 
-          <PanelGrafica titulo="Asuntos por estado procesal" nota="Estado actual documentado de todos los asuntos del periodo." datos={porEstado} columnas={[{ clave: 'estado', etiqueta: 'Estado' }, { clave: 'total', etiqueta: 'Asuntos' }]}>
-            <GraficaBarras datos={porEstado} claveX="estado" series={[{ clave: 'total', etiqueta: 'Asuntos', color: SERIES[0] }]} horizontal anchoEtiqueta={170} />
-          </PanelGrafica>
+            <div className="rejilla rejilla--2">
+              <PanelGrafica titulo="Actividad legislativa por año" nota={`Asuntos únicos por año legislativo, según su fecha de presentación.${sinAnio ? ` ${sinAnio} asuntos sin fecha válida no se ubican en un año.` : ''}`} datos={porAnio} columnas={[{ clave: 'anio', etiqueta: 'Año legislativo' }, ...seriesTipo.map((s) => ({ clave: s.clave, etiqueta: s.etiqueta }))]} vacio={asuntos.length === 0}>
+                <GraficaBarras datos={porAnio} claveX="anio" series={seriesTipo} />
+              </PanelGrafica>
 
-          <PanelGrafica
-            titulo="Iniciativas por tema"
-            nota="El tema es la comisión principal a la que se turnó cada iniciativa. Se muestran las 10 con más iniciativas; el resto se agrupa en «Otras comisiones». El nombre completo aparece al pasar el cursor y en la tabla."
-            datos={porTema}
-            columnas={[{ clave: 'nombre', etiqueta: 'Comisión' }, { clave: 'total', etiqueta: 'Iniciativas' }]}
-          >
-            <GraficaBarras datos={porTema} claveX="tema" series={[{ clave: 'total', etiqueta: 'Iniciativas', color: SERIES[0] }]} horizontal anchoEtiqueta={160} alto={porTema.length * 34 + 50} etiquetaX={(v) => porTema.find((x) => x.tema === v)?.nombre ?? v} etiquetaEje={(v) => v} />
-          </PanelGrafica>
+              <PanelGrafica titulo="Asuntos por estado procesal" nota="Estado actual documentado de todos los asuntos del periodo." datos={porEstado} columnas={[{ clave: 'estado', etiqueta: 'Estado' }, { clave: 'total', etiqueta: 'Asuntos' }]}>
+                <GraficaBarras datos={porEstado} claveX="estado" series={[{ clave: 'total', etiqueta: 'Asuntos', color: SERIES[0] }]} horizontal anchoEtiqueta={170} />
+              </PanelGrafica>
 
-          <PanelGrafica titulo="Evolución de los asuntos legislativos" nota="Iniciativas, exhortos y puntos de acuerdo presentados y aprobados por mes (los dictámenes no se suman para no contar dos veces el mismo asunto)." datos={evolucion} columnas={[{ clave: 'mes', etiqueta: 'Mes' }, { clave: 'presentados', etiqueta: 'Presentados' }, { clave: 'aprobados', etiqueta: 'Aprobados' }]}>
-            <GraficaLineas datos={evolucion} claveX="mes" etiquetaX={etiquetaMes} series={[{ clave: 'presentados', etiqueta: 'Presentados', color: SERIES[0] }, { clave: 'aprobados', etiqueta: 'Aprobados', color: SERIES[1] }]} />
-          </PanelGrafica>
-        </div>
+              <PanelGrafica
+                titulo="Iniciativas por tema"
+                nota="El tema es la comisión principal a la que se turnó cada iniciativa. Se muestran las 10 con más iniciativas; el resto se agrupa en «Otras comisiones». El nombre completo aparece al pasar el cursor y en la tabla."
+                datos={porTema}
+                columnas={[{ clave: 'nombre', etiqueta: 'Comisión' }, { clave: 'total', etiqueta: 'Iniciativas' }]}
+              >
+                <GraficaBarras datos={porTema} claveX="tema" series={[{ clave: 'total', etiqueta: 'Iniciativas', color: SERIES[0] }]} horizontal anchoEtiqueta={160} alto={porTema.length * 34 + 50} etiquetaX={(v) => porTema.find((x) => x.tema === v)?.nombre ?? v} etiquetaEje={(v) => v} />
+              </PanelGrafica>
 
-        <div style={{ marginTop: '1rem' }}>
-          <PanelGrafica
-            titulo={agrupar === 'partido' ? 'Asuntos presentados por partido' : 'Asuntos presentados por diputada o diputado'}
-            nota={
-              <>
-                Asuntos únicos en los que el grupo o la persona figura como autora o coautora. Un asunto compartido cuenta para cada promovente, así que la suma de barras puede superar el total. <strong>Describe actividad documentada; no mide calidad ni impacto.</strong>
-              </>
-            }
-            datos={actividad}
-            columnas={[{ clave: 'nombre', etiqueta: agrupar === 'partido' ? 'Partido' : 'Persona' }, ...seriesAct.map((s) => ({ clave: s.clave, etiqueta: s.etiqueta })), { clave: 'total', etiqueta: 'Total' }]}
-          >
-            <div className="fila-flex" role="group" aria-label="Agrupar por" style={{ marginBottom: '0.5rem' }}>
-              <span className="pequeno texto-2">Agrupar por:</span>
-              <button type="button" className="boton boton--chico" aria-pressed={agrupar === 'partido'} onClick={() => setAgrupar('partido')}>
-                Partido
-              </button>
-              <button type="button" className="boton boton--chico" aria-pressed={agrupar === 'diputado'} onClick={() => setAgrupar('diputado')}>
-                Diputada o diputado
-              </button>
+              <PanelGrafica titulo="Evolución de los asuntos legislativos" nota="Iniciativas, exhortos y puntos de acuerdo presentados y aprobados por mes (los dictámenes no se suman para no contar dos veces el mismo asunto)." datos={evolucion} columnas={[{ clave: 'mes', etiqueta: 'Mes' }, { clave: 'presentados', etiqueta: 'Presentados' }, { clave: 'aprobados', etiqueta: 'Aprobados' }]}>
+                <GraficaLineas datos={evolucion} claveX="mes" etiquetaX={etiquetaMes} series={[{ clave: 'presentados', etiqueta: 'Presentados', color: SERIES[0] }, { clave: 'aprobados', etiqueta: 'Aprobados', color: SERIES[1] }]} />
+              </PanelGrafica>
             </div>
-            <GraficaBarras datos={actividad} claveX="nombre" series={seriesAct} horizontal apilado anchoEtiqueta={agrupar === 'partido' ? 70 : 190} etiquetaEje={agrupar === 'diputado' ? recortar : undefined} />
-            {agrupar === 'diputado' && (
-              <>
-                <p className="muy-pequeno texto-3">Partido de cada persona:</p>
-                <Leyenda series={partidosEnGrafica.map((p) => ({ clave: p, etiqueta: base.idx.partido.get(p)?.siglas ?? p, color: colorPartido(base, p) }))} />
-                <ul className="lista-limpia muy-pequeno texto-2" style={{ columns: '14rem', marginTop: '0.25rem' }}>
-                  {actividad.map((x) => (
-                    <li key={x.clave}>
-                      <span className="punto" style={{ background: colorPartido(base, x.partido), marginRight: 6 }} />
-                      <Link to={`/diputaciones/${encodeURIComponent(x.clave)}`}>{x.nombre}</Link> · {base.idx.partido.get(x.partido)?.siglas}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </PanelGrafica>
-        </div>
-      </section>
 
-      <section className="seccion">
-        <h2>Comparar los 16 distritos</h2>
-        <NotaTablaDistritos />
-        <TablaDistritos />
-      </section>
-      <section className={`seccion${claseNuevo()}`} id="comparar">
-        <h2>Comparar a las diputaciones, dato por dato</h2>
-        <p className="seccion__intro">Cada columna se ordena por separado. Sirve para ver diferencias, no para decir quién trabaja mejor.</p>
-        <TablaComparativa lista={dipsComparar} />
-        <Nuevo texto="antes estaba en Diputaciones" />
-      </section>
-
-      <section className={`seccion${claseNuevo()}`} id="indicadores">
-        <details className="desplegable">
+            <div style={{ marginTop: '1rem' }}>
+              <PanelGrafica
+                titulo={agrupar === 'partido' ? 'Asuntos presentados por partido' : 'Asuntos presentados por diputada o diputado'}
+                nota={
+                  <>
+                    Asuntos únicos en los que el grupo o la persona figura como autora o coautora. Un asunto compartido cuenta para cada promovente, así que la suma de barras puede superar el total. <strong>Describe actividad documentada; no mide calidad ni impacto.</strong>
+                  </>
+                }
+                datos={actividad}
+                columnas={[{ clave: 'nombre', etiqueta: agrupar === 'partido' ? 'Partido' : 'Persona' }, ...seriesAct.map((s) => ({ clave: s.clave, etiqueta: s.etiqueta })), { clave: 'total', etiqueta: 'Total' }]}
+              >
+                <div className="fila-flex" role="group" aria-label="Agrupar por" style={{ marginBottom: '0.5rem' }}>
+                  <span className="pequeno texto-2">Agrupar por:</span>
+                  <button type="button" className="boton boton--chico" aria-pressed={agrupar === 'partido'} onClick={() => setAgrupar('partido')}>
+                    Partido
+                  </button>
+                  <button type="button" className="boton boton--chico" aria-pressed={agrupar === 'diputado'} onClick={() => setAgrupar('diputado')}>
+                    Diputada o diputado
+                  </button>
+                </div>
+                <GraficaBarras datos={actividad} claveX="nombre" series={seriesAct} horizontal apilado anchoEtiqueta={agrupar === 'partido' ? 70 : 190} etiquetaEje={agrupar === 'diputado' ? recortar : undefined} />
+                {agrupar === 'diputado' && (
+                  <>
+                    <p className="muy-pequeno texto-3">Partido de cada persona:</p>
+                    <Leyenda series={partidosEnGrafica.map((p) => ({ clave: p, etiqueta: base.idx.partido.get(p)?.siglas ?? p, color: colorPartido(base, p) }))} />
+                    <ul className="lista-limpia muy-pequeno texto-2" style={{ columns: '14rem', marginTop: '0.25rem' }}>
+                      {actividad.map((x) => (
+                        <li key={x.clave}>
+                          <span className="punto" style={{ background: colorPartido(base, x.partido), marginRight: 6 }} />
+                          <Link to={`/diputaciones/${encodeURIComponent(x.clave)}`}>{x.nombre}</Link> · {base.idx.partido.get(x.partido)?.siglas}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </PanelGrafica>
+            </div>
+          </div>
+        </details>
+        <details className="desplegable" id="distritos">
+          <summary>Comparar los 16 distritos</summary>
+          <div style={{ marginTop: '0.75rem' }}>
+            <NotaTablaDistritos />
+            <TablaDistritos />
+          </div>
+        </details>
+        <details className="desplegable" id="comparar">
+          <summary>Comparar a las diputaciones, dato por dato</summary>
+          <div style={{ marginTop: '0.75rem' }}>
+            <p className="seccion__intro">Cada columna se ordena por separado. Sirve para ver diferencias, no para decir quién trabaja mejor.</p>
+            <TablaComparativa lista={dipsComparar} />
+          </div>
+        </details>
+        <details className="desplegable" id="indicadores">
           <summary>Indicadores detallados: cómo se calcula cada número y sus límites</summary>
           <div style={{ marginTop: '0.75rem' }}>
             <IndicadoresDetallados />
           </div>
         </details>
-        <Nuevo texto="aquí quedó lo que antes era «Indicadores»" />
       </section>
     </>
   );
