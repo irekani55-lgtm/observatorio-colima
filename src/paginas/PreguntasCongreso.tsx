@@ -13,7 +13,13 @@ import { diputadosFiltrados } from '../indicadores/filtro';
 import { asistenciaPorMes, avancePropuestas, divisionVotaciones, origenesPropuestas, propuestasPorLugar, resultadoExhortos } from '../indicadores/numeros';
 import { votacionesFiltradas } from '../indicadores/votaciones';
 
-const deCada10 = (n: number, d: number) => (d ? Math.round((n / d) * 10) : 0);
+/** Proporción en palabras de informe: «la mitad» cuando cae cerca, y si no, porcentaje redondeado («el 60 %»). */
+const parte = (n: number, d: number) => {
+  const p = d ? (n / d) * 100 : 0;
+  if (Math.abs(p - 50) <= 2) return p < 49.5 ? 'casi la mitad' : p > 50.5 ? 'poco más de la mitad' : 'la mitad';
+  return `el ${Math.round(p)} %`;
+};
+const mayus = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const pct = (v: number) => `${v.toLocaleString('es-MX', { maximumFractionDigits: 1 })} %`;
 
 /**
@@ -98,7 +104,7 @@ export function PreguntasCongreso() {
           titulo="¿Cuántas propuestas de ley se aprueban?"
           nota={
             <>
-              <Resalta>Se aprobaron {fmt(avance.aprobadas)}</Resalta> de {fmt(avance.presentadas)}: unas <strong>{deCada10(avance.aprobadas, avance.presentadas)} de cada 10</strong>. De las aprobadas, {deCada10(avance.tramite, avance.aprobadas)} de cada 10 son <Resalta>trámites que se repiten cada año</Resalta>, como descuentos en el predial o el agua.{' '}
+              <Resalta>Se aprobaron {fmt(avance.aprobadas)}</Resalta> de {fmt(avance.presentadas)} (<strong>{avance.presentadas ? Math.round((avance.aprobadas / avance.presentadas) * 100) : 0} %</strong>). <strong>{mayus(parte(avance.tramite, avance.aprobadas))}</strong> de las aprobadas ({fmt(avance.tramite)}) son <Resalta>trámites que se repiten cada año</Resalta>, como descuentos en el predial o el agua.{' '}
               <Link to="/metodologia#clasificacion-propuestas">¿Cómo las separamos?</Link>
             </>
           }
@@ -113,7 +119,7 @@ export function PreguntasCongreso() {
           titulo="¿Quién manda las propuestas al Congreso?"
           nota={
             <>
-              <strong>{deCada10(fueraDip, origen.total)} de cada 10</strong> propuestas no las presentan las diputaciones: las mandan sobre todo los <Resalta>ayuntamientos</Resalta> y la <Resalta>gobernadora</Resalta>.{tramitesAyun.total > 0 && <> De los trámites (como los descuentos en el predial), <strong>{deCada10(tramitesAyun.ayun, tramitesAyun.total)} de cada 10</strong> los mandan los ayuntamientos.</>} Las diputaciones también votan esas propuestas.
+              <strong>{mayus(parte(fueraDip, origen.total))}</strong> de las propuestas no las presentan las diputaciones: las mandan sobre todo los <Resalta>ayuntamientos</Resalta> y la <Resalta>gobernadora</Resalta>.{tramitesAyun.total > 0 && <> De los trámites (como los descuentos en el predial), <strong>{parte(tramitesAyun.ayun, tramitesAyun.total)}</strong> los mandan los ayuntamientos.</>} Las diputaciones también votan esas propuestas.
             </>
           }
           datos={origenOrdenado}
@@ -150,7 +156,7 @@ export function PreguntasCongreso() {
           titulo="¿Qué tan dividido vota el Congreso?"
           nota={
             <>
-              En <strong>{deCada10(votos.unanimidad, votos.total)} de cada 10</strong> votaciones con nombres en el acta, todas las diputaciones presentes votaron a favor. Solo {fmt(votos.divididas)} de {fmt(votos.total)} <Resalta>estuvieron divididas</Resalta>.{' '}
+              En <strong>{parte(votos.unanimidad, votos.total)}</strong> de las votaciones con nombres en el acta, todas las diputaciones presentes votaron a favor. Solo {fmt(votos.divididas)} de {fmt(votos.total)} <Resalta>estuvieron divididas</Resalta>.{' '}
               <Link to="/votaciones?divididas=1">Ver las divididas</Link>
             </>
           }

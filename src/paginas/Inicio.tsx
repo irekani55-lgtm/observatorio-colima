@@ -102,7 +102,7 @@ export default function Inicio() {
             </li>
             {resumen.asis.porcentaje != null && (
               <li>
-                En promedio, las diputaciones fueron a <strong>{Math.round(resumen.asis.porcentaje / 10)} de cada 10</strong> sesiones del Congreso ({fmtPct(resumen.asis.porcentaje)}).
+                En promedio, las diputaciones fueron al <strong>{fmtPct(resumen.asis.porcentaje)}</strong> de las sesiones del Congreso.
               </li>
             )}
           </ul>
