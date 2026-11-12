@@ -33,6 +33,7 @@ export const CAMBIOS_VISTA_PREVIA = [
   { texto: 'Menú: se quitó «Mapa», porque todo lo del mapa ya está en el inicio. Los enlaces viejos llevan al inicio.', a: '/' },
   { texto: 'Mapa: al abrir una ficha, el mapa se queda fijo a la izquierda mientras usted baja por la ficha (sin espacio vacío).', a: '/?mapa_distrito=3' },
   { texto: 'En números: en «¿Quién manda las propuestas?», debajo de cada barra dice en chiquito cuántas son trámites (como el predial) y cuántas cambian leyes.', a: '/congreso' },
+  { texto: 'En números: arriba de las barras hay una leyenda que dice qué significa el color y qué significa el gris; los nombres que se pueden tocar dicen «(toca para saber más)».', a: '/congreso' },
   { texto: 'En números: en cada gráfica, la barra que explica la frase va en color y las demás en gris; la asistencia trae una línea de promedio y el mes más bajo; cada partido dice cuántos lugares tiene.', a: '/congreso' },
   { texto: 'En números: en «Propuestas», las tres últimas barras van debajo de «De las 273 aprobadas:», con sangría.', a: '/congreso' },
   { texto: 'En números: «El acta no dice si se aprobó» se puede tocar y explica de qué trataba el exhorto, con el párrafo del acta.', a: '/congreso' },

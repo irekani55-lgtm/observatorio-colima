@@ -26,6 +26,12 @@ export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-
   const colorDe = (f: FilaBarra) => (!hayDestacadas || f.destacada ? color : 'var(--barra-contexto)');
   return (
     <>
+    {hayDestacadas && (
+      <p className="barras-lista__leyenda">
+        <span><span className="barras-lista__muestra" style={{ background: color }} aria-hidden="true" />Lo que dice la frase de arriba</span>
+        <span><span className="barras-lista__muestra" style={{ background: 'var(--barra-contexto)' }} aria-hidden="true" />Los demás, para comparar</span>
+      </p>
+    )}
     <ul className="barras-lista" aria-label={titulo}>
       {filas.map((f, i) =>
         f.encabezado ? (
@@ -37,7 +43,8 @@ export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-
             <span className="barras-lista__etiqueta">
               {f.onClick ? (
                 <button type="button" className="barras-lista__enlace" onClick={f.onClick}>
-                  {f.etiqueta}
+                  <span className="barras-lista__enlace-texto">{f.etiqueta}</span>
+                  <span className="barras-lista__toca">(toca para saber más)</span>
                 </button>
               ) : (
                 f.etiqueta
@@ -52,7 +59,6 @@ export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-
         ),
       )}
     </ul>
-    {hayDestacadas && <p className="barras-lista__nota">La barra en color es la que explica la frase de arriba.</p>}
     </>
   );
 }

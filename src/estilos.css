@@ -1812,8 +1812,9 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 .barras-lista__pista { display: block; height: 0.85rem; }
 .barras-lista__barra { display: block; height: 100%; border-radius: 0 4px 4px 0; }
 .barras-lista__valor { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--texto-2); }
-.barras-lista__enlace { font: inherit; padding: 0; border: 0; background: none; color: var(--enlace); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; text-align: left; }
-.barras-lista__enlace:hover { text-decoration-thickness: 2px; }
+.barras-lista__enlace { font: inherit; padding: 0; border: 0; background: none; color: var(--enlace); cursor: pointer; text-align: left; }
+.barras-lista__enlace-texto { text-decoration: underline; text-underline-offset: 2px; }
+.barras-lista__enlace:hover .barras-lista__enlace-texto { text-decoration-thickness: 2px; }
 @media (max-width: 600px) { .barras-lista__fila { grid-template-columns: 7.5rem 1fr 2.6rem; gap: 0.4rem; font-size: 0.85rem; } }
 /* Ventana de explicación */
 .explicacion__fondo { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.45); z-index: 100; display: grid; place-items: center; padding: 1rem; }
@@ -1834,10 +1835,14 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
   .filtros .campo select, .filtros .campo input { max-width: 100%; }
 }
 .barras-lista__fila--destacada .barras-lista__valor, .barras-lista__fila--destacada .barras-lista__etiqueta { color: var(--texto); font-weight: 700; }
-.barras-lista__nota { margin: 0.4rem 0 0; font-size: 0.78rem; color: var(--texto-3); }
 /* Leyenda de la línea de promedio y del punto marcado, debajo de la gráfica. */
 .grafica__leyenda-ref { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin: 0.35rem 0 0; font-size: 0.8rem; color: var(--texto-2); }
 .grafica__linea-ref { display: inline-block; width: 1.4rem; border-top: 2px dashed var(--texto-3); vertical-align: middle; }
 .grafica__punto-ref { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--serie-1); vertical-align: middle; }
 /* Detalle en letra chica debajo de una barra (ocupa todo el renglón). */
 .barras-lista__detalle { grid-column: 1 / -1; margin-top: -0.2rem; font-size: 0.76rem; color: var(--texto-3); line-height: 1.35; }
+
+.barras-lista__leyenda { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0.6rem 0 0.2rem; font-size: 0.8rem; color: var(--texto-2); }
+.barras-lista__leyenda > span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.barras-lista__muestra { display: inline-block; width: 0.9rem; height: 0.7rem; border-radius: 2px; }
+.barras-lista__toca { display: block; font-size: 0.72rem; font-weight: 400; color: var(--texto-3); text-decoration: none; }

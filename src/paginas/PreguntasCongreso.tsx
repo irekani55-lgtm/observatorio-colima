@@ -130,9 +130,6 @@ export function PreguntasCongreso() {
             titulo="Quién manda las propuestas"
             filas={origenOrdenado.map((o) => ({ etiqueta: o.origen, valor: o.total, destacada: o.origen === 'Ayuntamientos' || o.origen === 'Gobernadora', onClick: o.origen === 'Gobernadora' ? () => setVerGobernadora(true) : undefined, nota: desglose(o) }))}
           />
-          <p className="muy-pequeno texto-3" style={{ marginBottom: 0 }}>
-            Toque «Gobernadora» para saber qué le toca hacer según la Constitución de Colima.
-          </p>
         </PanelGrafica>
 
         <PanelGrafica
@@ -147,7 +144,6 @@ export function PreguntasCongreso() {
           vacio={exhortos.total === 0}
         >
           <BarrasLista titulo="Exhortos" filas={filasExh} />
-          {exhortos.sinResultado > 0 && <p className="muy-pequeno texto-3" style={{ marginBottom: 0 }}>Toque «El acta no dice si se aprobó» para saber de qué trata.</p>}
         </PanelGrafica>
 
         <PanelGrafica
