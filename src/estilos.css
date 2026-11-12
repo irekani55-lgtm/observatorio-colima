@@ -1842,7 +1842,5 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 /* Detalle en letra chica debajo de una barra (ocupa todo el renglón). */
 .barras-lista__detalle { grid-column: 1 / -1; margin-top: -0.2rem; font-size: 0.76rem; color: var(--texto-3); line-height: 1.35; }
 
-.barras-lista__leyenda { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0.6rem 0 0.2rem; font-size: 0.8rem; color: var(--texto-2); }
-.barras-lista__leyenda > span { display: inline-flex; align-items: center; gap: 0.35rem; }
-.barras-lista__muestra { display: inline-block; width: 0.9rem; height: 0.7rem; border-radius: 2px; }
 .barras-lista__toca { display: block; font-size: 0.72rem; font-weight: 400; color: var(--texto-3); text-decoration: none; }
+.resalta { color: var(--serie-1); font-weight: 700; }

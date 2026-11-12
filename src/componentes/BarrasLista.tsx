@@ -26,12 +26,6 @@ export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-
   const colorDe = (f: FilaBarra) => (!hayDestacadas || f.destacada ? color : 'var(--barra-contexto)');
   return (
     <>
-    {hayDestacadas && (
-      <p className="barras-lista__leyenda">
-        <span><span className="barras-lista__muestra" style={{ background: color }} aria-hidden="true" />Lo que dice la frase de arriba</span>
-        <span><span className="barras-lista__muestra" style={{ background: 'var(--barra-contexto)' }} aria-hidden="true" />Los demás, para comparar</span>
-      </p>
-    )}
     <ul className="barras-lista" aria-label={titulo}>
       {filas.map((f, i) =>
         f.encabezado ? (
@@ -61,6 +55,11 @@ export function BarrasLista({ filas, max, formato = (v) => v.toLocaleString('es-
     </ul>
     </>
   );
+}
+
+/** Palabras de la frase que corresponden a la barra en color: van del mismo color para que el ojo las una. */
+export function Resalta({ children }: { children: ReactNode }) {
+  return <strong className="resalta">{children}</strong>;
 }
 
 /** Ventana sencilla para una explicación (se cierra con «Cerrar», tocando afuera o con Escape). */

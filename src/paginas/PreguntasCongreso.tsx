@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { BarrasLista, Explicacion, type FilaBarra } from '../componentes/BarrasLista';
+import { BarrasLista, Explicacion, Resalta, type FilaBarra } from '../componentes/BarrasLista';
 import { ExhortoSinResultado, ExplicacionGobernadora } from './Explicaciones';
 import { Link } from 'react-router-dom';
 import { colorPartido, SERIES } from '../componentes/colores';
@@ -98,7 +98,7 @@ export function PreguntasCongreso() {
           titulo="¿Cuántas propuestas de ley se aprueban?"
           nota={
             <>
-              Se aprobaron <strong>{fmt(avance.aprobadas)}</strong> de {fmt(avance.presentadas)}: unas <strong>{deCada10(avance.aprobadas, avance.presentadas)} de cada 10</strong>. De las aprobadas, <strong>{deCada10(avance.tramite, avance.aprobadas)} de cada 10</strong> son trámites que se repiten cada año, como descuentos en el predial o el agua.{' '}
+              <Resalta>Se aprobaron {fmt(avance.aprobadas)}</Resalta> de {fmt(avance.presentadas)}: unas <strong>{deCada10(avance.aprobadas, avance.presentadas)} de cada 10</strong>. De las aprobadas, {deCada10(avance.tramite, avance.aprobadas)} de cada 10 son <Resalta>trámites que se repiten cada año</Resalta>, como descuentos en el predial o el agua.{' '}
               <Link to="/metodologia#clasificacion-propuestas">¿Cómo las separamos?</Link>
             </>
           }
@@ -113,7 +113,7 @@ export function PreguntasCongreso() {
           titulo="¿Quién manda las propuestas al Congreso?"
           nota={
             <>
-              <strong>{deCada10(fueraDip, origen.total)} de cada 10</strong> propuestas no las presentan las diputaciones: las mandan sobre todo los ayuntamientos y la gobernadora.{tramitesAyun.total > 0 && <> De los trámites (como los descuentos en el predial), <strong>{deCada10(tramitesAyun.ayun, tramitesAyun.total)} de cada 10</strong> los mandan los ayuntamientos.</>} Las diputaciones también votan esas propuestas.
+              <strong>{deCada10(fueraDip, origen.total)} de cada 10</strong> propuestas no las presentan las diputaciones: las mandan sobre todo los <Resalta>ayuntamientos</Resalta> y la <Resalta>gobernadora</Resalta>.{tramitesAyun.total > 0 && <> De los trámites (como los descuentos en el predial), <strong>{deCada10(tramitesAyun.ayun, tramitesAyun.total)} de cada 10</strong> los mandan los ayuntamientos.</>} Las diputaciones también votan esas propuestas.
             </>
           }
           datos={origenOrdenado}
@@ -136,7 +136,7 @@ export function PreguntasCongreso() {
           titulo="¿Qué pasó con los exhortos?"
           nota={
             <>
-              Un exhorto es cuando el Congreso le pide a otra autoridad que atienda un problema. De {fmt(exhortos.total)}, se aprobaron <strong>{fmt(exhortos.aprobados)}</strong>. Aprobarlo no obliga a la autoridad a hacer caso.
+              Un exhorto es cuando el Congreso le pide a otra autoridad que atienda un problema. De {fmt(exhortos.total)}, <Resalta>se aprobaron {fmt(exhortos.aprobados)}</Resalta>. Aprobarlo no obliga a la autoridad a hacer caso.
             </>
           }
           datos={datosExh}
@@ -150,7 +150,7 @@ export function PreguntasCongreso() {
           titulo="¿Qué tan dividido vota el Congreso?"
           nota={
             <>
-              En <strong>{deCada10(votos.unanimidad, votos.total)} de cada 10</strong> votaciones con nombres en el acta, todas las diputaciones presentes votaron a favor. Solo <strong>{fmt(votos.divididas)}</strong> de {fmt(votos.total)} estuvieron divididas.{' '}
+              En <strong>{deCada10(votos.unanimidad, votos.total)} de cada 10</strong> votaciones con nombres en el acta, todas las diputaciones presentes votaron a favor. Solo {fmt(votos.divididas)} de {fmt(votos.total)} <Resalta>estuvieron divididas</Resalta>.{' '}
               <Link to="/votaciones?divididas=1">Ver las divididas</Link>
             </>
           }
