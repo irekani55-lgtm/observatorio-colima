@@ -14,7 +14,7 @@ import { useFiltro } from '../estado/useFiltro';
 import { asistenciaAgregada } from '../indicadores/asistencia';
 import { asuntosFiltrados, esAprobado, idsDiputadosPromoventes, resumenAsuntos } from '../indicadores/asuntos';
 import { coberturaEvidencia } from '../indicadores/evidencia';
-import { diputadosFiltrados, fechaEnPeriodo } from '../indicadores/filtro';
+import { diputadosFiltrados, enFunciones, fechaEnPeriodo } from '../indicadores/filtro';
 import { NotaTablaDistritos, TablaDistritos } from './Mapa';
 import { IndicadoresDetallados } from './Eficacia';
 import { PreguntasCongreso } from './PreguntasCongreso';
@@ -53,7 +53,7 @@ export default function Congreso() {
   const res = resumenAsuntos(asuntos);
   const evid = coberturaEvidencia(base);
   const hayAsuntos = base.asuntos.length > 0;
-  const enFuncionesHoy = dips.filter((d) => !d.fecha_fin).length;
+  const enFuncionesHoy = dips.filter((d) => enFunciones(d, base.manifiesto.fecha_corte)).length;
 
   // --- Actividad por año legislativo
   const porAnio = ANIOS_LEGISLATIVOS.anios.map((a) => {
@@ -143,9 +143,9 @@ export default function Congreso() {
 
           <div className="rejilla rejilla--tarjetas">
             <Tarjeta
-              titulo="Diputadas y diputados en la base"
-              valor={base.diputados.length ? fmt(dips.length) : null}
-              detalle={`${fmt(enFuncionesHoy)} en funciones · integración constitucional: ${LEGISLATURA.integracion.total} curules`}
+              titulo="Diputaciones"
+              valor={base.diputados.length ? fmt(enFuncionesHoy) : null}
+              detalle={dips.length > enFuncionesHoy ? `Además, ${fmt(dips.length - enFuncionesHoy)} ocuparon un lugar durante una licencia` : undefined}
               explica="Incluye a quienes entraron por una licencia (suplentes de distrito y sustitutos de la lista de un partido); por eso puede superar el número de curules."
               enlace={{ a: '/diputaciones', texto: 'Ver directorio' }}
             />

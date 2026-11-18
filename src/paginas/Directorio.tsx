@@ -8,13 +8,13 @@ import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { CadaQuienResponde, QueEsPorLista } from '../componentes/SaberMasLugares';
 import { Partido } from '../componentes/Partido';
 import { Tabla, type Columna } from '../componentes/Tabla';
-import { fmtPct } from '../componentes/Tarjeta';
+import { fmt, fmtPct } from '../componentes/Tarjeta';
 import type { Diputado } from '../datos/modelo';
 import { useDatos } from '../estado/DatosContext';
 import { useFiltro } from '../estado/useFiltro';
 import { asistenciaDeDiputado } from '../indicadores/asistencia';
 import { indicadoresAsuntosDiputado } from '../indicadores/asuntos';
-import { diputadosFiltrados, hayFiltroDePeriodo, intervalo, type Filtro } from '../indicadores/filtro';
+import { diputadosFiltrados, enFunciones, hayFiltroDePeriodo, intervalo, type Filtro } from '../indicadores/filtro';
 import { intervencionesFiltradas } from '../indicadores/intervenciones';
 
 /** ¿La persona ejerció el cargo en algún momento del periodo? */
@@ -35,7 +35,7 @@ export default function Directorio() {
   return (
     <>
       <EncabezadoPagina titulo="Las diputaciones de esta Legislatura">
-        <p>Las 28 personas que han ocupado alguno de los 25 lugares del Congreso en esta Legislatura, incluidas quienes entraron cuando alguien pidió licencia.</p>
+        <p>Las 25 diputaciones del Congreso en esta Legislatura. También aparecen quienes ocuparon un lugar mientras alguien tenía licencia.</p>
         <div className={claseNuevo()}>
           <CadaQuienResponde />
           <QueEsPorLista />
@@ -68,7 +68,10 @@ export default function Directorio() {
             <button type="button" className="boton boton--chico" aria-pressed={vista === 'tabla'} onClick={() => setVista('tabla')}>
               Tabla comparativa
             </button>
-            <span className="pequeno texto-2">{lista.length} personas</span>
+            <span className="pequeno texto-2">
+              {fmt(lista.filter((d) => enFunciones(d, base.manifiesto.fecha_corte)).length)} diputaciones
+              {lista.some((d) => !enFunciones(d, base.manifiesto.fecha_corte)) && <> · y {fmt(lista.filter((d) => !enFunciones(d, base.manifiesto.fecha_corte)).length)} que ocuparon un lugar durante una licencia</>}
+            </span>
           </div>
           {vista === 'fichas' ? (
             <div className="rejilla rejilla--3">

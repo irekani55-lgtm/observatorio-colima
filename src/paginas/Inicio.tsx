@@ -85,10 +85,24 @@ export default function Inicio() {
         </div>
       </section>
 
+
+      <section className="seccion" aria-labelledby="titulo-mapa-inicio">
+        <h2 id="titulo-mapa-inicio">¿Quién le representa?</h2>
+        <p className="seccion__intro">Búsquelo con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
+        <div className="buscadores">
+          <BuscadorDistrito clave="mapa_distrito" />
+          <div className={claseNuevo()}>
+            <BuscadorNombre />
+            <Nuevo texto="buscar por nombre" />
+          </div>
+        </div>
+        <MapaInteractivo clave="mapa_distrito" />
+      </section>
+
       {hayDatos && (
         <section className={`seccion${claseNuevo()}`} aria-labelledby="titulo-resumen">
           <h2 id="titulo-resumen">El Congreso en resumen</h2>
-          <Nuevo texto="va al principio, con la misma letra y en palabras más sencillas" />
+          <Nuevo texto="ahora va después del mapa" />
           <ul className="resumen-frases">
             <li>
               Desde que empezó esta Legislatura, en octubre de 2024, llegaron al Congreso <strong>{fmt(resumen.ini)}</strong> propuestas de ley y se aprobaron <strong>{fmt(resumen.iniAprob)}</strong>. Pero no todas pesan
@@ -113,19 +127,6 @@ export default function Inicio() {
           </p>
         </section>
       )}
-
-      <section className="seccion" aria-labelledby="titulo-mapa-inicio">
-        <h2 id="titulo-mapa-inicio">¿Quién le representa?</h2>
-        <p className="seccion__intro">Búsquelo con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
-        <div className="buscadores">
-          <BuscadorDistrito clave="mapa_distrito" />
-          <div className={claseNuevo()}>
-            <BuscadorNombre />
-            <Nuevo texto="buscar por nombre" />
-          </div>
-        </div>
-        <MapaInteractivo clave="mapa_distrito" />
-      </section>
     </>
   );
 }

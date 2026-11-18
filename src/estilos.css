@@ -1844,3 +1844,23 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 
 .barras-lista__toca { display: block; font-size: 0.72rem; font-weight: 400; color: var(--texto-3); text-decoration: none; }
 .resalta { color: var(--serie-1); font-weight: 700; }
+
+/* ---------------------------------------------------------------- Todo el estado (diputaciones por lista) junto al mapa */
+.todo-estado { margin: 0.6rem 0 0.75rem; padding: 0.65rem 0.75rem 0.5rem; border: 1px solid var(--borde); border-radius: var(--radio-s); background: var(--superficie-2); }
+.todo-estado__titulo { font-size: 0.92rem; font-weight: 700; margin: 0; }
+.todo-estado__titulo .texto-3 { font-weight: 400; }
+.todo-estado__nota { margin: 0.15rem 0 0.5rem; }
+.todo-estado__lista { list-style: none; padding: 0; margin: 0 0 0.35rem; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 0.35rem; }
+.todo-estado__persona { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; width: 100%; padding: 0.25rem 0.1rem; font: inherit; color: inherit; background: none; border: 1px solid transparent; border-radius: var(--radio-s); cursor: pointer; text-align: center; }
+.todo-estado__persona:hover { background: var(--superficie); border-color: var(--borde); }
+.todo-estado__persona[aria-pressed='true'] { background: var(--superficie); border-color: var(--texto); box-shadow: 0 0 0 1px var(--texto); }
+.todo-estado__foto { display: block; width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 3px solid var(--borde); background: var(--superficie); }
+.todo-estado__foto img, .todo-estado__foto .foto, .todo-estado__foto .foto__vacia { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 0; }
+.todo-estado__foto .foto__vacia span { display: none; }
+.todo-estado__nombre { font-size: 0.7rem; line-height: 1.15; color: var(--texto); overflow-wrap: anywhere; }
+.todo-estado__partido { font-size: 0.66rem; color: var(--texto-3); font-weight: 600; }
+@media (max-width: 700px) { .todo-estado__lista { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (max-width: 380px) { .todo-estado__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.mapa-halo { fill: none; stroke: var(--texto); stroke-width: 10; stroke-linejoin: round; pointer-events: none; }
+.mapa-aviso-todo { position: absolute; left: 0.25rem; bottom: 0.25rem; margin: 0; max-width: 60%; padding: 0.3rem 0.55rem; font-size: 0.8rem; font-weight: 600; color: var(--texto); background: var(--superficie); border: 1px solid var(--texto); border-radius: var(--radio-s); pointer-events: none; }
+@media (min-width: 901px) { .mapa-disposicion--fijo .mapa-izquierda .mapa-lienzo svg { max-height: calc(100vh - var(--alto-cabecera, 110px) - 27rem); } }

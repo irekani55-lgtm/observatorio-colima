@@ -57,13 +57,15 @@ interface Props {
   /** Color de relleno de cada distrito (p. ej. el del partido de quien ocupa la curul). */
   colorDistrito?: (d: number) => string | undefined;
   titulo: string;
+  /** Resalta el estado completo (cuando se elige una diputación por lista, que representa a todo Colima). */
+  todoElEstado?: string;
 }
 
 /**
  * Lienzo SVG del mapa. Cada distrito es un control accesible: se activa con
  * clic, toque, Enter o Espacio. El cursor resalta y muestra el número.
  */
-export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito, colorDistrito, titulo }: Props) {
+export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito, colorDistrito, titulo, todoElEstado }: Props) {
   const [hover, setHover] = useState<{ d: number; x: number; y: number } | null>(null);
   const caja = useRef<HTMLDivElement>(null);
 
@@ -77,9 +79,11 @@ export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito
   const formas = [...mapa.formas].sort((a, b) => Number(a.distrito === seleccionado) - Number(b.distrito === seleccionado));
 
   return (
-    <div className={`mapa-lienzo${colorDistrito ? ' mapa-lienzo--color' : ''}${seleccionado != null ? ' mapa-lienzo--seleccion' : ''}`} ref={caja} onPointerLeave={() => setHover(null)}>
+    <div className={`mapa-lienzo${colorDistrito ? ' mapa-lienzo--color' : ''}${seleccionado != null ? ' mapa-lienzo--seleccion' : ''}${todoElEstado ? ' mapa-lienzo--todo' : ''}`} ref={caja} onPointerLeave={() => setHover(null)}>
       <svg viewBox={`0 0 ${mapa.ancho} ${mapa.alto}`} role="group" aria-label={titulo}>
         <title>{titulo}</title>
+        {/* Con una diputación por lista elegida, un borde grueso alrededor de todo el estado (las formas tapan los bordes internos). */}
+        {todoElEstado && mapa.formas.map((f) => <path key={`h-${f.distrito}-${f.d.length}`} d={f.d} className="mapa-halo" aria-hidden="true" />)}
         {formas.map((f) => {
           const sel = f.distrito === seleccionado;
           const nombre = etiquetaDistrito?.(f.distrito) ?? `Distrito ${f.distrito}`;
@@ -114,6 +118,7 @@ export function LienzoMapa({ mapa, seleccionado, onSeleccionar, etiquetaDistrito
           </text>
         ))}
       </svg>
+      {todoElEstado && <p className="mapa-aviso-todo">{todoElEstado}</p>}
       {hover && (
         <div className="mapa-tooltip" style={{ left: hover.x, top: hover.y }} aria-hidden="true">
           {etiquetaDistrito?.(hover.d) ?? `Distrito ${hover.d}`}

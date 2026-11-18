@@ -6,7 +6,7 @@ import { etiquetaSuplencia, licenciaVigente } from './FichaDiputado';
 
 const normal = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-/** «¿Sabe su nombre?»: busca entre las 28 personas que han ocupado un lugar y lleva a su perfil. */
+/** «¿Sabe su nombre?»: busca entre todas las personas que han ocupado un lugar y lleva a su perfil. */
 export function BuscadorNombre() {
   const { base } = useDatos();
   const [texto, setTexto] = useState('');
@@ -50,7 +50,7 @@ export function BuscadorNombre() {
         )}
       </div>
       <p className="muy-pequeno" style={{ marginBottom: 0 }}>
-        <Link to="/diputaciones">Ver la lista de las {base.diputados.length} personas que han ocupado un lugar</Link>
+        <Link to="/diputaciones">Ver la lista de las 25 diputaciones</Link>
       </p>
     </div>
   );

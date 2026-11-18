@@ -142,7 +142,7 @@ export function IndicadoresDetallados() {
           { indicador: 'Intervenciones por persona', valor: dips.length ? (inter.length / dips.length).toLocaleString('es-MX', { maximumFractionDigits: 1 }) : 'No calculable', calculo: `${fmt(inter.length)} ÷ ${fmt(dips.length)} personas`, limitacion: 'Promedio sensible a valores extremos; ver distribución en Intervenciones.', enlace: '/intervenciones' },
           { indicador: 'Votaciones nominales registradas', valor: fmt(nominales.length), calculo: `${fmt(nominales.length)} de ${fmt(votaciones.length)} votaciones; ${fmt(votos.length)} votos individuales`, limitacion: 'Las votaciones económicas no dejan registro individual.', enlace: '/votaciones' },
           { indicador: 'Votos con sentido acreditado', valor: pct(votos.filter((v) => ['favor', 'contra', 'abstencion'].includes(v.sentido)).length, votos.length), calculo: `Votos a favor, en contra o abstención ÷ ${fmt(votos.length)} votos capturados`, limitacion: `Base: ${fmt(votosEsperados)} votos capturados en votaciones nominales.` },
-          { indicador: 'Personas con cargo en comisiones', valor: fmt(integrantesConCargo), calculo: `de ${fmt(base.diputados.length)} en el catálogo`, limitacion: 'Integración vigente según la fuente; puede haber cambios no capturados.', enlace: '/comisiones' },
+          { indicador: 'Personas con cargo en comisiones', valor: fmt(integrantesConCargo), calculo: 'Personas distintas en la integración de las comisiones', limitacion: 'Integración vigente según la fuente; puede haber cambios no capturados.', enlace: '/comisiones' },
         ]}
       />
       <TablaDimension

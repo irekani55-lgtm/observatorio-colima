@@ -61,7 +61,7 @@ export function RedirigirMapa() {
   return <Navigate to={texto ? `/?${texto}` : '/'} replace />;
 }
 
-export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima · 16 distritos locales' }: { clave?: string; titulo?: string }) {
+export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima · 25 diputaciones' }: { clave?: string; titulo?: string }) {
   const { base } = useDatos();
   const [filtro, , params, fijar] = useFiltro();
   const cartografia = useCartografia();
@@ -131,47 +131,42 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
           <Nuevo texto="lista desplegable en lugar de los botones del 1 al 16" />
         </section>
   );
-  const franjaRp = plurinominales.length > 0 ? (
-        <section className="panel franja-rp" aria-labelledby={`${claveRp}-titulo`}>
-          <h3 id={`${claveRp}-titulo`} style={{ fontSize: '1.05rem', marginTop: 0 }}>
-            Además, a todo Colima le representan estas {plurinominales.length} diputaciones
+  const corto = (nombre: string) => nombre.split(' ').slice(0, 2).join(' ');
+  const todoEstado = plurinominales.length > 0 ? (
+        <div className={`todo-estado${claseNuevo()}`} role="group" aria-labelledby={`${claveRp}-titulo`}>
+          <h3 id={`${claveRp}-titulo`} className="todo-estado__titulo" style={{ scrollMarginTop: 90 }}>
+            Todo el estado <span className="texto-3">· {plurinominales.length} diputaciones por lista</span>
           </h3>
-          <p className="pequeno texto-2">
-            Llegaron al Congreso por la <Termino t="representacion_proporcional">lista de su partido</Termino>, no por un distrito. Toque a una persona para ver qué ha hecho.
+          <p className="muy-pequeno texto-2 todo-estado__nota">
+            No tienen distrito: llegaron por la <Termino t="representacion_proporcional">lista de su partido</Termino> y representan a todo Colima. Toque una foto.
           </p>
-          <div className={claseNuevo()}>
-            <QueEsPorLista />
-            <Nuevo texto="explicación de las diputaciones por lista" />
-          </div>
-          <ul className="franja-rp__lista">
+          <ul className="todo-estado__lista">
             {plurinominales.map((d) => {
-              const partido = base.idx.partido.get(d.id_partido);
+              const partido = base.idx.partido.get(d.id_partido)?.siglas ?? d.id_partido;
+              const etiqueta = `${d.nombre_completo} (${partido})${etiquetaSuplencia(d) ? `, ${etiquetaSuplencia(d)}` : ''}`;
               return (
                 <li key={d.id_diputado}>
                   <button
                     type="button"
-                    className="franja-rp__persona"
+                    className="todo-estado__persona"
                     aria-pressed={rp?.id_diputado === d.id_diputado}
-                    style={{ borderLeftColor: colorPartido(base, d.id_partido) }}
-                    onClick={() => seleccionarRp(d.id_diputado)}
+                    aria-label={etiqueta}
+                    title={etiqueta}
+                    onClick={() => (rp?.id_diputado === d.id_diputado ? seleccionar(null) : seleccionarRp(d.id_diputado))}
                   >
-                    <span className="franja-rp__foto">
+                    <span className="todo-estado__foto" style={{ borderColor: colorPartido(base, d.id_partido) }}>
                       <Foto url={d.url_foto} archivo={d.archivo_foto} nombre={d.nombre_completo} />
                     </span>
-                    <span>
-                      <span className="franja-rp__nombre">{d.nombre_completo}</span>
-                      <span className="franja-rp__partido">
-                        <span className="muestra" style={{ background: colorPartido(base, d.id_partido) }} aria-hidden="true" />
-                        {partido?.siglas ?? d.id_partido}
-                        {etiquetaSuplencia(d) && ` · ${etiquetaSuplencia(d)}`}
-                      </span>
-                    </span>
+                    <span className="todo-estado__nombre" aria-hidden="true">{corto(d.nombre_completo)}</span>
+                    <span className="todo-estado__partido" aria-hidden="true">{partido}</span>
                   </button>
                 </li>
               );
             })}
           </ul>
-        </section>
+          <QueEsPorLista />
+          <Nuevo texto="las 9 diputaciones por lista ahora están junto al mapa; al tocar una, se marca todo el estado" />
+        </div>
   ) : null;
 
   return (
@@ -183,10 +178,10 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             <div>
               <h2 style={{ fontSize: '1.1rem', marginBottom: '0.2rem' }}>{titulo}</h2>
               <p className={`mapa-indicacion${claseNuevo()}`}>
-                Toque un distrito en el mapa para ver quién le representa. <Nuevo texto="indicación" />
+                16 ganaron un distrito y 9 llegaron por lista. Toque un distrito o una foto para ver qué ha hecho. <Nuevo texto="título: Estado de Colima · 25 diputaciones" />
               </p>
             </div>
-            {sel != null && (
+            {fichaAbierta && (
               <button type="button" className="boton boton--chico" onClick={() => seleccionar(null)}>
                 <IcoReiniciar width={15} height={15} /> Restablecer selección
               </button>
@@ -198,7 +193,8 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             </p>
           ) : (
             <>
-              <LienzoMapa mapa={cartografia.mapa} seleccionado={sel} onSeleccionar={(d) => seleccionar(d === sel ? null : d)} etiquetaDistrito={etiquetaMapa} colorDistrito={colorDe} titulo="Mapa de distritos electorales locales de Colima" />
+              <LienzoMapa mapa={cartografia.mapa} seleccionado={sel} onSeleccionar={(d) => seleccionar(d === sel ? null : d)} etiquetaDistrito={etiquetaMapa} colorDistrito={colorDe} titulo="Mapa de distritos electorales locales de Colima" todoElEstado={rp ? `${rp.nombre_completo} representa a todo el estado` : undefined} />
+              {todoEstado}
               <ul className="leyenda-mapa" aria-label="Partido de quien representa cada distrito">
                 {leyenda.map(([id, n]) => (
                   <li key={id}>
@@ -231,7 +227,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
             <>
               <h2 className="mapa-columna__titulo">Elija su distrito</h2>
               <p className="pequeno texto-2" style={{ margin: '0 0 0.35rem' }}>
-                Toque su distrito en el mapa o elíjalo en la lista de abajo. Verá quién le representa y qué ha hecho en el Congreso.
+                Toque su distrito en el mapa o elíjalo en la lista de abajo. Verá quién le representa y qué ha hecho en el Congreso. Debajo del mapa están las {plurinominales.length} diputaciones que representan a todo el estado.
               </p>
               <p className="muy-pequeno texto-3" style={{ margin: 0 }}>
                 Con teclado: use Tab para moverse entre los distritos y Enter para elegir uno.
@@ -296,7 +292,6 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
         </div>
       </div>
 
-      {franjaRp}
     </>
   );
 }
