@@ -18,6 +18,7 @@ import { diputadosFiltrados, enFunciones, fechaEnPeriodo } from '../indicadores/
 import { NotaTablaDistritos, TablaDistritos } from './Mapa';
 import { IndicadoresDetallados } from './Eficacia';
 import { PreguntasCongreso } from './PreguntasCongreso';
+import { CuantoGana } from '../componentes/CuantoGana';
 import { ejercioEnPeriodo, TablaComparativa } from './Directorio';
 import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 
@@ -127,10 +128,11 @@ export default function Congreso() {
   return (
     <>
       <EncabezadoPagina titulo="El Congreso en números">
-        <p>Seis preguntas sobre lo que hace el Congreso de Colima en esta Legislatura ({LEGISLATURA.periodo}), contestadas con documentos oficiales. Para ver a una persona en particular, búsquela en el <Link to="/">inicio</Link>.</p>
+        <p>Preguntas sobre lo que hace el Congreso de Colima en esta Legislatura ({LEGISLATURA.periodo}), contestadas con documentos oficiales. Para ver a una persona en particular, búsquela en el <Link to="/">inicio</Link>.</p>
       </EncabezadoPagina>
       <BarraFiltros campos={['anio']} />
       <PreguntasCongreso />
+      <CuantoGana />
 
       <section className={`seccion${claseNuevo()}`} aria-labelledby="titulo-a-fondo">
         <h2 id="titulo-a-fondo">Para revisar a fondo</h2>

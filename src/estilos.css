@@ -1864,3 +1864,14 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 .mapa-halo { fill: none; stroke: var(--texto); stroke-width: 10; stroke-linejoin: round; pointer-events: none; }
 .mapa-aviso-todo { position: absolute; left: 0.25rem; bottom: 0.25rem; margin: 0; max-width: 60%; padding: 0.3rem 0.55rem; font-size: 0.8rem; font-weight: 600; color: var(--texto); background: var(--superficie); border: 1px solid var(--texto); border-radius: var(--radio-s); pointer-events: none; }
 @media (min-width: 901px) { .mapa-disposicion--fijo .mapa-izquierda .mapa-lienzo svg { max-height: calc(100vh - var(--alto-cabecera, 110px) - 27rem); } }
+
+/* ---------------------------------------------------------------- Cuanto gana una diputacion */
+.cuanto-gana { max-width: 760px; }
+.cuanto-gana__frase { font-size: 1.02rem; margin-top: 0; }
+.cuanto-gana .tabla th[scope='row'] { font-weight: 400; text-align: left; }
+.cuanto-gana__total th[scope='row'], .cuanto-gana__total td { font-weight: 700; }
+.cuanto-gana td.num { white-space: nowrap; }
+.cuanto-gana__nota-quincena { display: none; }
+@media (max-width: 600px) { .cuanto-gana__quincena { display: none; } .cuanto-gana__nota-quincena { display: inline; } }
+.cuanto-gana .tabla th[scope='row'] { white-space: normal; min-width: 0; }
+.cuanto-gana .tabla { min-width: 0; width: 100%; }
