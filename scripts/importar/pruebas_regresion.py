@@ -7,6 +7,7 @@ Uso: python scripts/importar/pruebas_regresion.py
 from __future__ import annotations
 
 import sys
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -39,21 +40,33 @@ def main() -> None:
     comprobar(asuntos.get("PA-61-A20260128-1", {}).get("estado_procesal") == "rechazado", "«se desecha por no alcanzar la votación» del 28 ene 2026 se lee como rechazado (OBS-EXH-03)")
 
     print("Licencias y suplencias")
-    comprobar(diputados["DIP-133"]["licencias"] == "2025-01-16/2026-10-15", "Diana Zepeda: licencia hasta el 15 oct 2026; reincorporación el 16 oct (Acuerdo 67)")
+    comprobar(diputados.get("DIP-133", {}).get("licencias") == "2025-01-16/2026-10-15", "Diana Zepeda: licencia hasta el 15 oct 2026; reincorporación el 16 oct (Acuerdo 67)")
     comprobar(("S-A3-PO1-ORD-002", "DIP-S09") in asis and ("S-A3-PO1-ORD-002", "DIP-133") not in asis, "14 oct 2026: la curul del distrito 9 la ocupa la suplente Alma Yesenia Ventura")
     comprobar(asis.get(("S-A1-PO1-ORD-001", "DIP-RP-JCLT"), {}).get("estado") == "justificada", "2 oct 2024, Ordinaria 01: Julio César León Trujillo con falta justificada (acta)")
     comprobar(asis.get(("S-A1-PO1-ORD-002", "DIP-148"), {}).get("estado") == "asistencia", "2 oct 2024, Ordinaria 02: Alfredo Álvarez Ramírez presente tras rendir protesta (acta)")
     for n, archivo in ((4, "Acuerdo_04_61.pdf"), (6, "Acuerdo_06_61.pdf"), (29, "ACUERDO_29_61.pdf")):
         comprobar(evid.get(f"EV-ACUERDO-{n}", {}).get("url", "").endswith(archivo), f"Enlace correcto al Acuerdo {n} ({archivo})")
-    comprobar("art. 24, fr. II" in diputados["DIP-137"]["notas"], "Licencia de Isamar Ramírez con su motivo (art. 24, fr. II)")
+    comprobar("art. 24, fr. II" in diputados.get("DIP-137", {}).get("notas", ""), "Licencia de Isamar Ramírez con su motivo (art. 24, fr. II)")
+    jigm, aepp = diputados.get("DIP-142", {}), diputados.get("DIP-RP-AEPP", {})
+    comprobar(jigm.get("nombre_completo") == "José Israel González Mendoza" and jigm.get("licencias") == "2026-11-01/2027-01-01",
+              "DIP-142 sigue siendo José Israel González Mendoza, con licencia del 1 nov 2026 al 1 ene 2027 (Acuerdo 69)")
+    comprobar(aepp.get("nombre_completo") == "Alfredo Eduardo Pimienta Pelayo" and aepp.get("fecha_inicio") == "2026-11-04" and aepp.get("id_titular") == "DIP-142",
+              "Alfredo Eduardo Pimienta Pelayo entra el 4 nov 2026 (protesta en la Ordinaria 04) en lugar de José Israel González Mendoza")
+    comprobar(evid.get("EV-ACUERDO-69", {}).get("url", "").endswith("Acuerdo_69_61.pdf"), "Enlace correcto al Acuerdo 69 (Acuerdo_69_61.pdf)")
+    comprobar(sum(1 for (_, d) in votos if d == "DIP-142") >= 382, "José Israel González Mendoza conserva sus votos anteriores a la licencia")
 
     print("Iniciativas")
     comprobar(promov.get("INI-61-224", 0) == 5, "INI-61-224 tiene sus cinco autores, tomados del documento (OBS-INI-01)")
 
     print("Votaciones")
-    comprobar(votaciones["VOT-61-20241213-139-02"]["cuadre"] == "coincide" and ("VOT-61-20241213-139-02", "DIP-S13") in votos,
+    # Las claves no cambian cuando el Congreso publica actas nuevas (numeración fija de documentos).
+    numeracion = json.load(open(Path(__file__).parent / "numeracion_documentos.json", encoding="utf-8"))
+    comprobar(all(len(set(v.values())) == len(v) for v in numeracion.values()), "La numeración fija de actas y síntesis no repite números")
+    comprobar(numeracion.get("actas", {}).get("Acta de la Sesión Pública Solemne 01 de Instalación del Primer Periodo Ordinario de Sesiones del Primer año de Ejercicio Constitucional de fecha 01 de octubre de 2024.") == 161,
+              "El acta de instalación (1 oct 2024) conserva su número 161")
+    comprobar(votaciones.get("VOT-61-20241213-139-02", {}).get("cuadre") == "coincide" and ("VOT-61-20241213-139-02", "DIP-S13") in votos,
               "«Sharon Monserrat Díaz García, favor» (sin la «a») se lee como voto a favor")
-    comprobar(votaciones["VOT-61-20241204-141-01"]["cuadre"] == "faltan_nombres" and not any(x["id_votacion"] == "VOT-61-20241204-141-01" for x in inferidos),
+    comprobar(votaciones.get("VOT-61-20241204-141-01", {}).get("cuadre") == "faltan_nombres" and not any(x["id_votacion"] == "VOT-61-20241204-141-01" for x in inferidos),
               "4 dic 2024: el total contradice el pase de lista; no se asignan votos")
     comprobar(all(x["confianza"] == "alta" for x in inferidos), "Solo se registran votos probables con confianza alta")
     comprobar(all((x["id_votacion"], x["id_diputado"]) not in votos for x in inferidos), "Ningún voto probable duplica un voto escrito en el acta")
@@ -67,7 +80,6 @@ def main() -> None:
     comprobar(asis.get(("S-A1-PO1-SOL-005", "DIP-145"), {}).get("estado") == "asistencia", "26 nov 2024: Jaime Sotelo presente según el acta (sin marca en la Gaceta)")
 
     print("Mapa")
-    import json
     geo = json.load(open(Path(__file__).resolve().parents[2] / "public" / "geo" / "distritos_locales.geojson", encoding="utf-8"))
     nums = sorted(int(f["properties"]["distrito_l"]) for f in geo["features"])
     comprobar(nums == list(range(1, 17)), "La cartografía tiene exactamente los distritos 1 a 16, uno por polígono")

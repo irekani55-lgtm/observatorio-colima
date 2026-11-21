@@ -169,7 +169,7 @@ def catalogo(refrescar: bool) -> list[dict]:
 
 # ----------------------------------------------------------------- licencias y suplencias
 # Nombres de archivo tal como los publica la lista de acuerdos de la Gaceta (no siguen un solo patrón).
-ACUERDO_ARCHIVO = {4: "Acuerdo_04_61.pdf", 6: "Acuerdo_06_61.pdf", 17: "Acuerdo_17_61.pdf", 29: "ACUERDO_29_61.pdf", 67: "Acuerdo_67_61.pdf"}
+ACUERDO_ARCHIVO = {4: "Acuerdo_04_61.pdf", 6: "Acuerdo_06_61.pdf", 17: "Acuerdo_17_61.pdf", 29: "ACUERDO_29_61.pdf", 67: "Acuerdo_67_61.pdf", 69: "Acuerdo_69_61.pdf"}
 
 
 def acuerdo_pdf(n: int) -> str:
@@ -194,7 +194,57 @@ LICENCIAS = [
          "S-A1-PO1-ORD-002": ("DIP-148", "asistencia", "Acta de la Sesión Ordinaria 02 (2 oct 2024): rinde protesta Alfredo Álvarez Ramírez y el pase de lista posterior verifica 25 presentes."),
      },
      "nota": "Licencia por tiempo indefinido, a partir de su aprobación por el Pleno el 2 oct 2024, para desempeñar una comisión o empleo público (art. 24, fr. II, Ley Orgánica; Acuerdo 4). Por ser de representación proporcional no tiene suplente: se llamó a Alfredo Álvarez Ramírez, siguiente en la lista de MORENA (IEE/CG/A097/2024), quien rindió protesta el 2 oct 2024 en la Sesión Ordinaria 02."},
+    # Acuerdo 69 (aprobado el 28 oct 2026): licencia temporal por tiempo definido del 1 nov 2026 al 1 ene 2027. El
+    # titular manifestó su voluntad de reincorporarse el 2 ene 2027. Entra el siguiente hombre de la lista de MC
+    # (posición 4), que rindió protesta en la Sesión Ordinaria 04 del 4 nov 2026; entre el 1 y el 4 nov no hubo sesiones.
+    {"titular": "DIP-142", "desde": "2026-11-01", "hasta": "2027-01-01", "acuerdos": [69],
+     "suplente": {"id": "DIP-RP-AEPP", "nombre": None}, "inicio_suplente": "2026-11-04", "ambiguo": [],
+     "nota": "Licencia temporal por tiempo definido del 1 nov 2026 al 1 ene 2027 (Acuerdo 69, aprobado el 28 oct 2026); en su solicitud manifestó su voluntad de reincorporarse el 2 ene 2027. Por ser de representación proporcional no tiene suplente: se llamó a Alfredo Eduardo Pimienta Pelayo, siguiente hombre en la lista de Movimiento Ciudadano (posición 4), quien rindió protesta el 4 nov 2026 en la Sesión Ordinaria 04."},
 ]
+
+# El directorio del Congreso reutiliza el número de la persona titular para quien entra en su lugar (la ficha
+# index2.php?id=142 muestra hoy a Alfredo Eduardo Pimienta Pelayo). Sin esta tabla, el importador «renombraría»
+# a la persona titular y le quitaría su historial. Clave: id de la persona titular; se indica su nombre tal como
+# estaba registrado y la clave nueva para quien aparece hoy en el directorio.
+REEMPLAZOS_DIRECTORIO = {
+    "DIP-142": {"titular": "José Israel González Mendoza", "id_nuevo": "DIP-RP-AEPP",
+                "url_foto_titular": BASE + "/web/Sistema/uploads/Diputados/142.JPG"},
+}
+
+
+def mismo_nombre(a: str, b: str) -> bool:
+    return tokens(a) == tokens(b)
+
+
+def aplicar_reemplazos(diputados: list[dict]) -> None:
+    """Si el directorio muestra a otra persona con el número de una titular con licencia, quien aparece recibe su propia
+    clave y la persona titular conserva la suya (con su nombre, su foto y su historial)."""
+    for d in list(diputados):
+        r = REEMPLAZOS_DIRECTORIO.get(d["id_diputado"])
+        if not r or mismo_nombre(d["nombre_completo"], r["titular"]):
+            continue
+        titular = dict(d)
+        foto = r["url_foto_titular"]
+        titular.update({"nombre_completo": r["titular"], "url_foto": foto, "_fotos": {foto.rsplit("/", 1)[-1].lower()},
+                        "url_ficha_oficial": "", "notas": "La ficha del directorio con su número muestra hoy a la persona que ocupa su lugar durante la licencia."})
+        d["id_diputado"] = r["id_nuevo"]
+        diputados.append(titular)
+
+
+def revisar_identidades(diputados: list[dict]) -> None:
+    """Freno de seguridad: ninguna clave que ya existía puede cambiar de persona ni desaparecer."""
+    previo = SALIDA / "diputados.csv"
+    if not previo.exists():
+        return
+    with open(previo, encoding="utf-8-sig") as f:
+        antes = {r["id_diputado"]: r["nombre_completo"] for r in csv.DictReader(f)}
+    ahora = {d["id_diputado"]: d["nombre_completo"] for d in diputados}
+    problemas = [f"{k}: antes «{v}», ahora «{ahora[k]}»" for k, v in antes.items() if k in ahora and not mismo_nombre(v, ahora[k])]
+    problemas += [f"{k} ({v}) ya no aparece" for k, v in antes.items() if k not in ahora and not k.startswith("DIP-X")]
+    if problemas:
+        sys.exit("ALTO: el directorio muestra a otra persona en una clave que ya existía (probable licencia o sustitución).\n  "
+                 + "\n  ".join(problemas)
+                 + "\nRegistre el cambio en LICENCIAS y REEMPLAZOS_DIRECTORIO (scripts/importar/congreso_asistencias.py) con su acuerdo.")
 
 
 def aplicar_licencias(diputados: list[dict]) -> None:
@@ -215,7 +265,7 @@ def aplicar_licencias(diputados: list[dict]) -> None:
         sup = lic["suplente"]
         if sup["nombre"] is None:  # la suplente/el suplente ya está en el directorio (sigue en funciones)
             s_ = por_id[sup["id"]]
-            s_.update({"calidad": "suplente", "id_titular": t["id_diputado"], "fecha_inicio": lic["desde"], "estado_verificacion": "verificado",
+            s_.update({"calidad": "suplente", "id_titular": t["id_diputado"], "fecha_inicio": lic.get("inicio_suplente", lic["desde"]), "fecha_fin": lic["hasta"], "estado_verificacion": "verificado",
                        "notas": f"Entró en lugar de {t['nombre_completo']} como siguiente persona en la lista de su partido (las diputaciones de representación proporcional no tienen suplente). {lic['nota']}"})
         else:
             diputados.append({"id_diputado": sup["id"], "nombre_completo": sup["nombre"], "id_partido": t["id_partido"], "criterio_adscripcion": "Partido de la persona titular (verificar)",
@@ -457,6 +507,7 @@ def main() -> None:
 
     print("1/3 Catálogo de diputaciones…")
     dips = catalogo(args.refrescar)
+    aplicar_reemplazos(dips)
     print("   distritos…")
     dist = distritos(dips, args.refrescar)
     print("2/3 Sesiones…")
@@ -472,6 +523,7 @@ def main() -> None:
     print("   fotografías oficiales…")
     fotos(dips, args.refrescar)
     todos = dips + extra
+    revisar_identidades(todos)
     usados = {d["id_partido"] for d in todos if d["id_partido"]}
     partidos = sorted((v for v in PARTIDOS.values() if v[0] in usados), key=lambda v: v[3])
     print("Escribiendo CSV en", SALIDA.relative_to(RAIZ))

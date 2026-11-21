@@ -8,7 +8,7 @@ import type { Base } from '../datos/modelo';
 import type { NombreTabla } from '../datos/esquema';
 
 const TABLAS_CON_FUENTE: { tabla: NombreTabla; titulo: string }[] = [
-  { tabla: 'diputados', titulo: 'Diputaciones (25) y quienes ocuparon un lugar durante una licencia' },
+  { tabla: 'diputados', titulo: 'Diputaciones (25) y personas relacionadas con licencias' },
   { tabla: 'sesiones', titulo: 'Sesiones' },
   { tabla: 'asistencias', titulo: 'Asistencias' },
   { tabla: 'asuntos', titulo: 'Asuntos legislativos' },

@@ -147,7 +147,7 @@ export default function Congreso() {
             <Tarjeta
               titulo="Diputaciones"
               valor={base.diputados.length ? fmt(enFuncionesHoy) : null}
-              detalle={dips.length > enFuncionesHoy ? `Además, ${fmt(dips.length - enFuncionesHoy)} ocuparon un lugar durante una licencia` : undefined}
+              detalle={dips.length > enFuncionesHoy ? `Además, ${fmt(dips.length - enFuncionesHoy)} personas por licencias: quienes pidieron licencia o ya dejaron el lugar que ocuparon` : undefined}
               explica="Incluye a quienes entraron por una licencia (suplentes de distrito y sustitutos de la lista de un partido); por eso puede superar el número de curules."
               enlace={{ a: '/diputaciones', texto: 'Ver directorio' }}
             />

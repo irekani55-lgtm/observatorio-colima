@@ -7,7 +7,7 @@ lo usan.
 
 Uso: python scripts/importar/congreso_actas.py [--refrescar]
 Salida: datos_crudos/congreso/actas/ y datos_crudos/congreso/sintesis/
-        (<fecha>_<n>.txt por documento e indice.json)
+        (<fecha>_<n>.txt por documento e indice.json; <n> es fijo, ver numeracion_documentos.json)
 """
 from __future__ import annotations
 
@@ -25,6 +25,31 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, str(Path(__file__).parent))
 from congreso_asistencias import BASE, CRUDOS, GACETA, descargar, sesion_http, texto  # noqa: E402
+
+# Número fijo de cada documento de la lista. La Gaceta lista los documentos del más nuevo al más viejo: si el número
+# fuera la posición en la lista, cada acta nueva movería el número de todas las anteriores y, con él, las claves de
+# votaciones, intervenciones y fuentes (VOT-61-<fecha>-<n>-..). Por eso el número se guarda la primera vez que aparece
+# un documento y ya no cambia; los nuevos reciben el siguiente número libre.
+NUMERACION = Path(__file__).parent / "numeracion_documentos.json"
+
+
+def clave_documento(d: dict) -> str:
+    return re.sub(r"\s+", " ", d["descripcion"]).strip()
+
+
+def numerar(carpeta: str, indice: list[dict]) -> list[int]:
+    todo = json.loads(NUMERACION.read_text(encoding="utf-8")) if NUMERACION.exists() else {}
+    numeros = todo.setdefault(carpeta, {})
+    libre = max(numeros.values(), default=-1) + 1
+    for d in reversed(indice):  # los nuevos, del más viejo al más nuevo
+        k = clave_documento(d)
+        if k not in numeros:
+            numeros[k] = libre
+            print(f"   documento nuevo n.º {libre}: {k[:110]}")
+            libre += 1
+    NUMERACION.write_text(json.dumps(todo, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+    return [numeros[clave_documento(d)] for d in indice]
+
 
 MESES = {m: i for i, m in enumerate(["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"], start=1)}
 
@@ -78,8 +103,8 @@ def procesar(v: str, carpeta: str, refrescar: bool) -> None:
         indice.append({"descripcion": desc, "fecha": fecha, "fecha_aprobacion_acta": texto(fa) if fa else "", "docx": next((e for e in enlaces if e.lower().endswith("docx")), ""), "pdf": next((e for e in enlaces if e.lower().endswith(".pdf")), "")})
     print(f"{v}: {len(indice)} documentos en la lista")
     ok = 0
-    for i, a in enumerate(indice):
-        base = f"{a['fecha']}_{i:03d}"
+    for n, a in zip(numerar(carpeta, indice), indice):
+        base = f"{a['fecha']}_{n:03d}"
         txt = DIR / f"{base}.txt"
         if txt.exists() and not refrescar:
             a["archivo"] = txt.name

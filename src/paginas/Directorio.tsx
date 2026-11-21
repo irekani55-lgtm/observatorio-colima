@@ -35,7 +35,7 @@ export default function Directorio() {
   return (
     <>
       <EncabezadoPagina titulo="Las diputaciones de esta Legislatura">
-        <p>Las 25 diputaciones del Congreso en esta Legislatura. También aparecen quienes ocuparon un lugar mientras alguien tenía licencia.</p>
+        <p>Las 25 diputaciones del Congreso en esta Legislatura. También aparecen las personas que pidieron licencia y quienes ocuparon un lugar mientras duró una licencia.</p>
         <div className={claseNuevo()}>
           <CadaQuienResponde />
           <QueEsPorLista />
@@ -70,7 +70,7 @@ export default function Directorio() {
             </button>
             <span className="pequeno texto-2">
               {fmt(lista.filter((d) => enFunciones(d, base.manifiesto.fecha_corte)).length)} diputaciones
-              {lista.some((d) => !enFunciones(d, base.manifiesto.fecha_corte)) && <> · y {fmt(lista.filter((d) => !enFunciones(d, base.manifiesto.fecha_corte)).length)} que ocuparon un lugar durante una licencia</>}
+              {lista.some((d) => !enFunciones(d, base.manifiesto.fecha_corte)) && <> · y {fmt(lista.filter((d) => !enFunciones(d, base.manifiesto.fecha_corte)).length)} personas más por licencias</>}
             </span>
           </div>
           {vista === 'fichas' ? (
