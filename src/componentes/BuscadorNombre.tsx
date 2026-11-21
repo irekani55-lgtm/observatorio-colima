@@ -16,7 +16,7 @@ export function BuscadorNombre() {
   const corte = base.manifiesto.fecha_corte;
   const estado = (id: string) => {
     const d = base.idx.diputado.get(id)!;
-    if (licenciaVigente(d)) return 'con licencia';
+    if (licenciaVigente(d, corte)) return 'con licencia';
     if (!enFunciones(d, corte)) return 'ya no está en el cargo';
     return etiquetaSuplencia(d);
   };

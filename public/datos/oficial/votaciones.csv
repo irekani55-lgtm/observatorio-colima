@@ -1,4 +1,13 @@
 id_votacion,id_sesion,id_asunto,descripcion,tipo_votacion,resultado,total_favor,total_contra,total_abstencion,votos_en_lista,votos_sin_nombre,cuadre,observaciones,id_observacion,id_fuente,estado_verificacion
+VOT-61-20261104-164-01,,,Votación en lo general y en lo particular: Asunto no identificado,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-11-04-164,pendiente
+VOT-61-20261104-164-02,,INI-61-403,Votación en lo general y en lo particular: Dictamen 217,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-11-04-164,pendiente
+VOT-61-20261028-163-01,S-A3-PO1-ORD-003,DIC-61-20261027-099,Votación en lo general y en lo particular: Dictamen 99,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-10-28-163,verificado
+VOT-61-20261028-163-02,S-A3-PO1-ORD-003,DIC-61-20261027-035,Votación en lo general y en lo particular: Dictamen 35,nominal,aprobado,15,7,0,22,0,coincide,,,EV-ACTA-2026-10-28-163,verificado
+VOT-61-20261028-163-03,S-A3-PO1-ORD-003,DIC-61-20261027-035,Votación en lo general y en lo particular: Dictamen 35,nominal,aprobado,21,0,0,21,0,coincide,,,EV-ACTA-2026-10-28-163,verificado
+VOT-61-20261028-163-04,S-A3-PO1-ORD-003,DIC-61-20261026-022,Votación en lo general y en lo particular: Dictamen 22,nominal,aprobado,21,0,1,22,0,coincide,,,EV-ACTA-2026-10-28-163,verificado
+VOT-61-20261028-163-05,S-A3-PO1-ORD-003,,"Votación en lo general y en lo particular: dio lectura al Acuerdo Parlamentario, relativo a la autorización del uso de curules a efecto de que se lleve a cabo el evento conmemorativo por el “Día Internac",nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-10-28-163,verificado
+VOT-61-20261014-000-01,S-A3-PO1-ORD-002,DIC-61-20260929-021,Votación en lo general y en lo particular: Dictamen 21,nominal,aprobado,21,0,1,22,0,coincide,,,EV-ACTA-2026-10-14-000,verificado
+VOT-61-20261014-000-02,S-A3-PO1-ORD-002,DIC-61-20261014-008,Votación en lo general y en lo particular: Dictamen 08,nominal,aprobado,22,0,0,22,0,coincide,,,EV-ACTA-2026-10-14-000,verificado
 VOT-61-20261006-001-01,S-A3-PO1-ORD-001,INI-61-370,Votación en lo general y en lo particular: Dictamen 216,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-10-06-001,verificado
 VOT-61-20261006-001-02,S-A3-PO1-ORD-001,DIC-61-20261005-214,Votación en lo general y en lo particular: Dictamen 214,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-10-06-001,verificado
 VOT-61-20261006-001-03,S-A3-PO1-ORD-001,DIC-61-20261005-215,Votación en lo general y en lo particular: Dictamen 215,nominal,aprobado,23,0,0,23,0,coincide,,,EV-ACTA-2026-10-06-001,verificado
@@ -454,6 +463,9 @@ VOT-PA-61-004,S-A1-PO1-ORD-025,PA-61-004,Votación del punto de acuerdo (sin reg
 VOT-PA-61-003,,PA-61-003,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-003,pendiente
 VOT-PA-61-002,,PA-61-002,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-002,pendiente
 VOT-PA-61-001,,PA-61-001,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-001,pendiente
+VOT-PA-61-A20261028-1,S-A3-PO1-ORD-003,PA-61-A20261028-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20261028-1,verificado
+VOT-PA-61-A20261014-1,S-A3-PO1-ORD-002,PA-61-A20261014-1,Votación del punto de acuerdo (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20261014-1,verificado
+VOT-PA-61-A20261014-2,S-A3-PO1-ORD-002,PA-61-A20261014-2,Votación del punto de acuerdo (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20261014-2,verificado
 VOT-PA-61-A20260812-1,S-A2-PO2-ORD-019,PA-61-A20260812-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260812-1,verificado
 VOT-PA-61-A20260715-1,,PA-61-A20260715-1,Votación del exhorto (sin registro nominal en el acta),economica,aprobado,,,,,,,,,EV-PA-61-A20260715-1,pendiente
 VOT-PA-61-A20260715-2,,PA-61-A20260715-2,Votación del exhorto (sin registro nominal en el acta),economica,rechazado,,,,,,,,,EV-PA-61-A20260715-2,pendiente

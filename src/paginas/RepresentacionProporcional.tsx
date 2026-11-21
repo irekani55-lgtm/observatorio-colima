@@ -43,7 +43,7 @@ export default function RepresentacionProporcional() {
                       </span>
                       <span className="tarjeta-dip__meta">
                         <Partido id={d.id_partido} />
-                        <span className="muy-pequeno texto-2">{periodoEjercicio(d)}</span>
+                        <span className="muy-pequeno texto-2">{periodoEjercicio(d, base.manifiesto.fecha_corte)}</span>
                       </span>
                     </span>
                   </button>

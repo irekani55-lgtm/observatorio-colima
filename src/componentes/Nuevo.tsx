@@ -38,6 +38,7 @@ export const CAMBIOS_VISTA_PREVIA = [
   { texto: 'Inicio: las 9 diputaciones por lista ahora están dentro del recuadro del mapa, con su foto. Al tocar una, el mapa marca todo el estado y su ficha se abre a un lado.', a: '/' },
   { texto: 'El título del mapa dice «Estado de Colima · 25 diputaciones», y ya no dice «28 personas» en ningún lugar: dice 25 diputaciones y, aparte, las personas relacionadas con licencias.', a: '/' },
   { texto: 'En números: nuevo recuadro «¿Cuánto gana una diputación?», con el tabulador oficial 2026 (lo mismo para las 25) y la comparación con el salario mínimo.', a: '/congreso' },
+  { texto: 'Datos al 18 nov 2026: licencia de José Israel González Mendoza (Acuerdo 69, 1 nov 2026 – 1 ene 2027) y entrada de Alfredo Eduardo Pimienta Pelayo (protesta el 4 nov), con las actas, votaciones y propuestas nuevas.', a: '/diputaciones/DIP-142' },
   { texto: 'El sueldo ahora va primero en «El Congreso en números»; en el Inicio aparece arriba del buscador («Cada diputación recibe … al mes. Busque la suya») y en «El Congreso en resumen».', a: '/' },
   { texto: 'Inicio: «El Congreso en resumen» ahora va después del mapa, para que lo primero sea encontrar a quien le representa.', a: '/' },
   { texto: 'En números: en cada gráfica, la barra que explica la frase va en color y las demás en gris; la asistencia trae una línea de promedio y el mes más bajo; cada partido dice cuántos lugares tiene.', a: '/congreso' },

@@ -250,7 +250,7 @@ export function MapaInteractivo({ clave = 'distrito', titulo = 'Estado de Colima
                   <span className="texto-2">Personas que han ocupado esta curul:</span>
                   {personas.map((p) => (
                     <button key={p.id_diputado} type="button" className="boton boton--chico" aria-pressed={p.id_diputado === persona.id_diputado} onClick={() => fijar('persona', p.id_diputado)}>
-                      {p.nombre_completo} ({periodoEjercicio(p)})
+                      {p.nombre_completo} ({periodoEjercicio(p, base.manifiesto.fecha_corte)})
                     </button>
                   ))}
                 </div>

@@ -27,15 +27,28 @@ export function enlaceConPeriodo(ruta: string, f: Filtro, extra: Record<string, 
 }
 
 /** Fecha de inicio de una licencia que sigue abierta (sin fecha de regreso), o null. */
-export function licenciaVigente(d: Diputado): string | null {
-  const abierta = (d.licencias ?? []).find(([, b]) => !b);
-  return abierta ? abierta[0] : null;
+/** Licencia que sigue vigente a la fecha de corte: sin fecha de regreso, o con regreso posterior al corte. */
+export function licenciaActual(d: Diputado, corte = ''): [string, string] | null {
+  const l = (d.licencias ?? []).find(([a, b]) => a && (!b || (corte && a <= corte && corte <= b)));
+  return l ? [l[0], l[1]] : null;
 }
 
-export function periodoEjercicio(d: Diputado): string {
-  const vigente = licenciaVigente(d);
-  const pasadas = (d.licencias ?? []).filter(([, b]) => b).map(([a, b]) => `licencia ${fechaCorta(a)} – ${fechaCorta(b)}`);
-  const fin = d.fecha_fin ? fechaCorta(d.fecha_fin) : vigente ? `con licencia desde ${fechaCorta(vigente)}, no ha regresado` : 'en funciones';
+export function licenciaVigente(d: Diputado, corte = ''): string | null {
+  return licenciaActual(d, corte)?.[0] ?? null;
+}
+
+export function periodoEjercicio(d: Diputado, corte = ''): string {
+  const actual = licenciaActual(d, corte);
+  const pasadas = (d.licencias ?? []).filter(([a, b]) => b && a !== actual?.[0]).map(([a, b]) => `licencia ${fechaCorta(a)} – ${fechaCorta(b)}`);
+  const fin = actual
+    ? actual[1]
+      ? `con licencia del ${fechaCorta(actual[0])} al ${fechaCorta(actual[1])}`
+      : `con licencia desde ${fechaCorta(actual[0])}, no ha regresado`
+    : d.fecha_fin && corte && d.fecha_fin > corte
+      ? `en funciones (hasta el ${fechaCorta(d.fecha_fin)}, cuando termina la licencia de la persona titular)`
+      : d.fecha_fin
+        ? fechaCorta(d.fecha_fin)
+        : 'en funciones';
   const base = `${fechaCorta(d.fecha_inicio)} – ${fin}`;
   return pasadas.length ? `${base} (${pasadas.join('; ')})` : base;
 }
@@ -49,7 +62,9 @@ export function etiquetaSuplencia(d: Diputado): string {
 /** Quién ocupa hoy el lugar de una persona con licencia. */
 function EnSuLugar({ d }: { d: Diputado }) {
   const { base } = useDatos();
-  const quien = base.diputados.find((x) => x.id_titular === d.id_diputado && !x.fecha_fin);
+  const corte = base.manifiesto.fecha_corte;
+  // Quien ocupa el lugar a la fecha de corte (puede tener ya fecha de salida, si la licencia tiene fecha de regreso).
+  const quien = base.diputados.find((x) => x.id_titular === d.id_diputado && x.fecha_inicio <= corte && (!x.fecha_fin || x.fecha_fin >= corte));
   return quien ? (
     <>
       En su lugar está <Link to={`/diputaciones/${encodeURIComponent(quien.id_diputado)}`}>{quien.nombre_completo}</Link>.
@@ -64,6 +79,7 @@ function EnlaceTitular({ d }: { d: Diputado }) {
 }
 
 export function DatosGenerales({ d }: { d: Diputado }) {
+  const corte = useDatos().base.manifiesto.fecha_corte;
   return (
     <dl>
       <dt>Partido</dt>
@@ -98,16 +114,25 @@ export function DatosGenerales({ d }: { d: Diputado }) {
           </dd>
         </>
       )}
-      {licenciaVigente(d) && (
+      {licenciaActual(d, corte) && (
         <>
           <dt>Situación</dt>
           <dd>
-            Pidió <Termino t="licencia">licencia</Termino> el {fechaCorta(licenciaVigente(d)!)} y no ha regresado al Congreso. <EnSuLugar d={d} />
+            {licenciaActual(d, corte)![1] ? (
+              <>
+                Tiene <Termino t="licencia">licencia</Termino> del {fechaCorta(licenciaActual(d, corte)![0])} al {fechaCorta(licenciaActual(d, corte)![1])}.{' '}
+              </>
+            ) : (
+              <>
+                Pidió <Termino t="licencia">licencia</Termino> el {fechaCorta(licenciaActual(d, corte)![0])} y no ha regresado al Congreso.{' '}
+              </>
+            )}
+            <EnSuLugar d={d} />
           </dd>
         </>
       )}
       <dt>En el cargo</dt>
-      <dd>{periodoEjercicio(d)}</dd>
+      <dd>{periodoEjercicio(d, corte)}</dd>
     </dl>
   );
 }
@@ -297,6 +322,7 @@ export function FichaResumen({ d, filtro }: { d: Diputado; filtro: Filtro }) {
 }
 
 export function TarjetaDiputado({ d }: { d: Diputado }) {
+  const { base } = useDatos();
   return (
     <Link to={`/diputaciones/${encodeURIComponent(d.id_diputado)}`} className="tarjeta-dip">
       <Foto url={d.url_foto} archivo={d.archivo_foto} nombre={d.nombre_completo} />
@@ -307,7 +333,7 @@ export function TarjetaDiputado({ d }: { d: Diputado }) {
           <span className="insignia insignia--neutro">{d.tipo_representacion === 'MR' ? `Distrito ${d.distrito ?? '¿?'}` : 'Representación proporcional'}</span>
         </div>
         <div className="muy-pequeno texto-2">
-          {d.calidad === 'suplente' ? (d.tipo_representacion === 'RP' ? 'En sustitución (siguiente en la lista)' : 'Suplente en funciones') : licenciaVigente(d) ? 'Titular con licencia' : etiquetaDe(CALIDAD_CARGO, d.calidad)} · {periodoEjercicio(d)}
+          {d.calidad === 'suplente' ? (d.tipo_representacion === 'RP' ? 'En sustitución (siguiente en la lista)' : 'Suplente en funciones') : licenciaVigente(d, base.manifiesto.fecha_corte) ? 'Titular con licencia' : etiquetaDe(CALIDAD_CARGO, d.calidad)} · {periodoEjercicio(d, base.manifiesto.fecha_corte)}
         </div>
       </div>
     </Link>

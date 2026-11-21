@@ -2,6 +2,6 @@
   "id": "oficial",
   "nombre": "Datos oficiales verificados",
   "es_demo": false,
-  "fecha_corte": "2026-10-28",
-  "descripcion": "Información pública documentada de la LXI Legislatura. Integrado: diputaciones, licencias y suplencias, distritos, sesiones y asistencias al Pleno (Gaceta Parlamentaria). En integración: iniciativas, dictámenes, acuerdos, exhortos, votaciones, intervenciones y comisiones."
+  "fecha_corte": "2026-11-18",
+  "descripcion": "Información pública documentada de la LXI Legislatura, consultada el 21 de noviembre de 2026. Cada tipo de dato llega hasta lo que el Congreso ya publicó: propuestas, dictámenes, acuerdos y exhortos, hasta el 18 de noviembre de 2026; actas, votaciones e intervenciones, hasta la sesión del 4 de noviembre de 2026; listas de asistencia, hasta la sesión del 28 de octubre de 2026."
 }
