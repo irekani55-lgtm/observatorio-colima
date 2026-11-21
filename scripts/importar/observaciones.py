@@ -160,8 +160,11 @@ def cuadre_votaciones(observaciones: list[dict]):
     for a in asistencias:
         en_funciones[a["id_sesion"]].add(a["id_diputado"])
     pases = pases_de_lista(rec, en_funciones)
-    resueltos = resolver_asistencia_con_actas(asistencias, pases, {e["id_fuente"] for e in leer_csv("evidencias")})
-    print(f"  asistencias resueltas con el pase de lista del acta: {resueltos}")
+    nuevos = resolver_asistencia_con_actas(asistencias, pases, {e["id_fuente"] for e in leer_csv("evidencias")})
+    # Se cuenta el total de registros resueltos con el acta, no solo los de esta corrida: si el paso se vuelve a
+    # correr solo, los que ya estaban resueltos no deben desaparecer del conteo de la bitácora.
+    resueltos = sum(1 for a in asistencias if "Resuelto con el acta de la sesión" in (a.get("notas") or ""))
+    print(f"  asistencias resueltas con el pase de lista del acta: {resueltos} ({nuevos} en esta corrida)")
     estado_asis = defaultdict(dict)
     for a in asistencias:
         estado_asis[a["id_sesion"]][a["id_diputado"]] = a["estado"]
