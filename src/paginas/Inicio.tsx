@@ -7,6 +7,7 @@ import { fmt, fmtPct } from '../componentes/Tarjeta';
 import { Termino } from '../componentes/Termino';
 import { claseNuevo, Nuevo } from '../componentes/Nuevo';
 import { LEGISLATURA } from '../config/legislatura';
+import { REMUNERACION_DIPUTACION } from '../config/remuneraciones';
 import { useDatos } from '../estado/DatosContext';
 import { asistenciaAgregada } from '../indicadores/asistencia';
 import { esAprobado } from '../indicadores/asuntos';
@@ -54,6 +55,7 @@ export default function Inicio() {
     };
   }, [base]);
   const corte = base.manifiesto.fecha_corte;
+  const pesosMes = (quincena: number) => `$${(quincena * 2).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   const hayDatos = base.asuntos.length > 0;
 
   return (
@@ -88,7 +90,12 @@ export default function Inicio() {
 
       <section className="seccion" aria-labelledby="titulo-mapa-inicio">
         <h2 id="titulo-mapa-inicio">¿Quién le representa?</h2>
-        <p className="seccion__intro">Búsquelo con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
+        <p className={`gancho-sueldo${claseNuevo()}`}>
+          Cada diputación recibe <strong>{pesosMes(REMUNERACION_DIPUTACION.quincena.neto)} al mes</strong> después de impuestos. Busque la suya y vea qué ha hecho.{' '}
+          <Link to="/congreso#cuanto-gana">¿De dónde sale este dato?</Link>
+          <Nuevo texto="el sueldo como puerta de entrada al buscador" />
+        </p>
+        <p className="seccion__intro">Búsquela con el número de sección de su credencial para votar o toque su distrito en el mapa.</p>
         <div className="buscadores">
           <BuscadorDistrito clave="mapa_distrito" />
           <div className={claseNuevo()}>
@@ -119,6 +126,10 @@ export default function Inicio() {
                 En promedio, las diputaciones fueron al <strong>{fmtPct(resumen.asis.porcentaje)}</strong> de las sesiones del Congreso.
               </li>
             )}
+            <li>
+              Las {LEGISLATURA.integracion.total} diputaciones ganan lo mismo: <strong>{pesosMes(REMUNERACION_DIPUTACION.quincena.neto)} al mes</strong> después de impuestos ({REMUNERACION_DIPUTACION.anio}).{' '}
+              <Link to="/congreso#cuanto-gana">Ver el detalle y el documento oficial</Link>
+            </li>
           </ul>
           <p>
             <Link to="/congreso" className="boton boton--primario">

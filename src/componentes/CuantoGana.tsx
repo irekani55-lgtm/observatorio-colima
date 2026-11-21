@@ -19,9 +19,9 @@ export function CuantoGana() {
     { concepto: 'Lo que recibe', valor: q.neto, total: true },
   ];
   return (
-    <section className={`seccion${claseNuevo()}`} aria-labelledby="titulo-cuanto-gana">
+    <section className={`seccion${claseNuevo()}`} id="cuanto-gana" aria-labelledby="titulo-cuanto-gana" style={{ scrollMarginTop: 90 }}>
       <h2 id="titulo-cuanto-gana">¿Cuánto gana una diputación?</h2>
-      <Nuevo texto="cuánto gana una diputación, con el documento oficial" />
+      <Nuevo texto="cuánto gana una diputación, con el documento oficial; ahora va primero" />
       <div className="panel cuanto-gana">
         <p className="cuanto-gana__frase">
           Las 25 diputaciones ganan lo mismo. En {R.anio}, cada una recibe <strong>{pesos(q.neto * 2)} al mes</strong> después de impuestos. Antes de impuestos son {pesos(q.bruto * 2)}: casi{' '}
