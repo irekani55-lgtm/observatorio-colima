@@ -2,6 +2,6 @@
   "id": "oficial",
   "nombre": "Datos oficiales verificados",
   "es_demo": false,
-  "fecha_corte": "2026-11-18",
-  "descripcion": "Información pública documentada de la LXI Legislatura, consultada el 21 de noviembre de 2026. Cada tipo de dato llega hasta lo que el Congreso ya publicó: propuestas, dictámenes, acuerdos y exhortos, hasta el 18 de noviembre de 2026; actas, votaciones e intervenciones, hasta la sesión del 4 de noviembre de 2026; listas de asistencia, hasta la sesión del 28 de octubre de 2026."
+  "fecha_corte": "2026-11-24",
+  "descripcion": "Información pública documentada de la LXI Legislatura, consultada el 24 de noviembre de 2026. Cada tipo de dato llega hasta lo que el Congreso ya publicó: publicaciones de decretos en el Periódico Oficial, hasta el 21 de noviembre de 2026; propuestas, dictámenes, acuerdos y exhortos, hasta la sesión del 18 de noviembre de 2026; actas, votaciones e intervenciones, hasta la sesión del 4 de noviembre de 2026; listas de asistencia, hasta la sesión del 28 de octubre de 2026."
 }

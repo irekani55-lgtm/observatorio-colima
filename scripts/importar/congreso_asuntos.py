@@ -359,6 +359,18 @@ def main() -> None:
     buscar_com = id_comision_por_nombre(coms)
     print("2/4 Decretos y acuerdos…")
     decretos = lista_con_fechas("tdecretos", "No. Decreto", args.refrescar)
+    # Fechas que la lista de la Gaceta trae mal y que el propio documento oficial aclara. Se usa la del documento y
+    # la diferencia queda en la bitácora (observaciones.py) con los dos documentos.
+    FECHAS_DEL_DOCUMENTO = {
+        377: {"fecha_aprobacion": ("2026-10-28", "2026-11-28",
+                                   "La lista de decretos de la Gaceta da como fecha de aprobación el 28 nov 2026, posterior a su publicación (21 nov 2026); "
+                                   "el propio Decreto 377 dice «Dado en el Recinto Oficial… a los 28 veintiocho días del mes de octubre de 2026». Se usa la fecha del decreto.")},
+    }
+    for n, campos in FECHAS_DEL_DOCUMENTO.items():
+        for campo, (correcta, en_gaceta, nota) in campos.items():
+            d = decretos.get(n)
+            if d and d[campo] == en_gaceta:
+                d[campo], d["nota_fecha"] = correcta, nota
     acuerdos = lista_con_fechas("tacuerdos", "No. Acuerdo", args.refrescar)
     print(f"   {len(decretos)} decretos, {len(acuerdos)} acuerdos")
     print("3/4 Iniciativas…")
@@ -454,7 +466,8 @@ def main() -> None:
             "url_documento": d["url"], "url_ficha": f"{GACETA}?v=tdecretos&l=61",
             "id_fuente": ev(f"EV-DECRETO-{n}", "gaceta", f"Decreto {n} de la LXI Legislatura", d["url"] or f"{GACETA}?v=tdecretos&l=61", d["fecha_aprobacion"]),
             "estado_verificacion": "verificado",
-            "notas": ("Resuelve las iniciativas " + ", ".join(origenes) + "." if len(origenes) > 1 else "") + ("" if origenes else " No se identificó la iniciativa de origen en la lista de iniciativas."),
+            "notas": (("Resuelve las iniciativas " + ", ".join(origenes) + "." if len(origenes) > 1 else "") + ("" if origenes else " No se identificó la iniciativa de origen en la lista de iniciativas.")
+                      + (" " + d["nota_fecha"] if d.get("nota_fecha") else "")).strip(),
         })
 
     print("4/4 Escribiendo…")

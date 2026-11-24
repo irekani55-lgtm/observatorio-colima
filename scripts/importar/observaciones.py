@@ -351,6 +351,12 @@ REVISION = [
     ("OBS-DEC-01", "asuntos", "DEC-61-266", "dato_faltante",
      "El Decreto 266 (reforma al Decreto 259, estímulos fiscales de agua de Colima y Villa de Álvarez; aprobado el 1 abr 2026) tiene fecha de publicación 0001-01-01 en la Gaceta y no tiene PDF publicado.",
      "abierta", "", "EV-GACETA-INICIATIVAS", "", ""),
+    ("OBS-DEC-02", "asuntos", "DEC-61-377", "inconsistencia_documental",
+     "La lista de decretos de la Gaceta da como fecha de aprobación del Decreto 377 (reforma al párrafo cuarto del artículo 11 de la Constitución de Colima) "
+     "el 28 nov 2026, posterior a su fecha de publicación (21 nov 2026) y a la fecha de consulta.", "resuelta",
+     "El propio Decreto 377 dice «Dado en el Recinto Oficial del Poder Legislativo del Estado de Colima, a los 28 veintiocho días del mes de octubre de 2026». "
+     "Se usa el 28 oct 2026 como fecha de aprobación para el decreto y para la iniciativa 363 que lo originó.",
+     "EV-GACETA-INICIATIVAS", "EV-DECRETO-377", "2026-11-24"),
     ("OBS-VOT-00", "votaciones", "(todas las nominales)", "criterio",
      "Personas con asistencia que no aparecen en una votación nominal.", "resuelta",
      "Quien sale del salón para atender otros asuntos no vota y el acta no le asigna voto; no es error ni abstención. " + TAQUIGRAFA,

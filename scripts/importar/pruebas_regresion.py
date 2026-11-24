@@ -56,6 +56,8 @@ def main() -> None:
     comprobar(sum(1 for (_, d) in votos if d == "DIP-142") >= 382, "José Israel González Mendoza conserva sus votos anteriores a la licencia")
 
     print("Iniciativas")
+    comprobar(asuntos.get("DEC-61-377", {}).get("fecha_aprobacion") == "2026-10-28" and asuntos.get("INI-61-363", {}).get("fecha_aprobacion") == "2026-10-28",
+              "Decreto 377 aprobado el 28 oct 2026, según el propio decreto (la lista de la Gaceta dice 28 nov; OBS-DEC-02)")
     comprobar(promov.get("INI-61-224", 0) == 5, "INI-61-224 tiene sus cinco autores, tomados del documento (OBS-INI-01)")
 
     print("Votaciones")
