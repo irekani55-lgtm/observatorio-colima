@@ -14,6 +14,7 @@ import Compromisos from './paginas/Compromisos';
 import Metodologia from './paginas/Metodologia';
 import Fuentes from './paginas/Fuentes';
 import NoEncontrada from './paginas/NoEncontrada';
+import Acerca from './paginas/Acerca';
 
 /** «Indicadores» se unió a «El Congreso en números». */
 function RedirigirIndicadores() {
@@ -48,6 +49,7 @@ export function Rutas() {
       <Route path="eficacia" element={<RedirigirIndicadores />} />
       <Route path="metodologia" element={<Metodologia />} />
       <Route path="fuentes" element={<Fuentes />} />
+      <Route path="acerca" element={<Acerca />} />
       <Route path="*" element={<NoEncontrada />} />
     </>
   );

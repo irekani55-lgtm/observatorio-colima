@@ -1876,3 +1876,7 @@ details.aviso-vista-previa a { color: #3d3000; font-weight: 700; }
 .cuanto-gana .tabla th[scope='row'] { white-space: normal; min-width: 0; }
 .cuanto-gana .tabla { min-width: 0; width: 100%; }
 .gancho-sueldo { font-size: 1.05rem; margin: 0 0 0.4rem; padding: 0.6rem 0.85rem; border-left: 4px solid var(--primario); background: var(--superficie-2); border-radius: 0 var(--radio-s) var(--radio-s) 0; }
+
+/* ---------------------------------------------------------------- ¿Quién hace el Observatorio? */
+.lista-reglas, .lista-pasos { max-width: 760px; padding-left: 1.3rem; line-height: 1.55; }
+.lista-reglas li, .lista-pasos li { margin-bottom: 0.4rem; }

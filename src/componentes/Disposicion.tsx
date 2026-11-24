@@ -181,6 +181,11 @@ export function Disposicion() {
             <div>
               <h2>Sobre este sitio</h2>
               <p>Proyecto ciudadano de consulta. No es un sitio oficial del H. Congreso del Estado de Colima ni del Instituto Electoral del Estado de Colima.</p>
+              <ul className={claseNuevo()}>
+                <li><Link to="/acerca">¿Quién hace el Observatorio?</Link></li>
+                <li><Link to="/acerca#corregir">¿Encontró un dato que no está bien?</Link></li>
+                <li><Link to="/acerca#acerca-privacidad">Uso de los datos y privacidad</Link></li>
+              </ul>
             </div>
           </div>
         </div>

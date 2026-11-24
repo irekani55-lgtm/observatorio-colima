@@ -17,6 +17,7 @@
     "geo:convertir": "node scripts/convertir-cartografia.mjs"
   },
   "dependencies": {
+    "@fontsource/public-sans": "5.3.0",
     "d3-geo": "^3.1.1",
     "papaparse": "^5.5.3",
     "react": "^19.1.0",

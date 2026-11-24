@@ -101,6 +101,27 @@ Veinte tablas relacionadas por identificadores (el diccionario completo está en
 Las fotografías oficiales se enlazan por su URL de origen (`url_foto`) o se copian a `public/`
 (`archivo_foto`). Si faltan o fallan, se muestra «Fotografía no disponible».
 
+## Publicar en internet
+
+El sitio es estático: lo que sale en `dist/` se puede subir a cualquier servicio de páginas web.
+
+**GitHub Pages (automático).** El flujo `.github/workflows/publicar.yml` corre las pruebas, construye el sitio y lo
+publica cada vez que se guardan cambios en `main`. Si una prueba falla, no se publica nada. Para activarlo, una sola vez:
+
+1. El repositorio debe ser público (GitHub Pages es gratuito para repositorios públicos).
+2. Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+3. Settings → Actions → General: permitir que corran los flujos de trabajo.
+
+La dirección queda como `https://<usuario>.github.io/observatorio-colima/`.
+
+**Dominio propio.** Después de comprarlo, en Settings → Pages → Custom domain escriba el dominio y siga las
+instrucciones para agregar los registros DNS en el panel donde lo compró. Marque «Enforce HTTPS».
+La imagen de vista previa al compartir (`public/compartir.png`) usa la dirección pública que da GitHub Pages
+(variable `URL_SITIO`).
+
+**Datos de contacto y repositorio.** Se escriben en `src/config/proyecto.ts`. Mientras estén vacíos, la página
+«¿Quién hace el Observatorio?» no los muestra.
+
 ## Mapa
 
 El mapa necesita `public/geo/distritos_locales.geojson` con los 16 distritos electorales
