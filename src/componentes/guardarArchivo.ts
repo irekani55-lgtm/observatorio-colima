@@ -1,7 +1,7 @@
 /**
- * Guarda un archivo generado en la página. Publicado en claude.ai, el dashboard vive dentro de un marco que
- * bloquea las descargas comunes; ahí se usa la capacidad `downloads` (la persona confirma antes de guardar).
- * Fuera de claude.ai (desarrollo local, otro servidor) se usa la descarga normal del navegador.
+ * Guarda un archivo generado en la página. Si la página se muestra dentro de un visor que bloquea las descargas
+ * comunes y ofrece su propia función para guardar archivos, se usa esa (la persona confirma antes de guardar).
+ * En cualquier otro lugar (página propia, desarrollo local, otro servidor) se usa la descarga normal del navegador.
  */
 type Guardado = 'guardado' | 'cancelado' | 'no_disponible';
 

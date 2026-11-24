@@ -68,7 +68,7 @@ export function Tabla<T>({ columnas, filas, clave, titulo, porPagina = 25, archi
     const blob = new Blob(['﻿' + aCsv(cols, datos)], { type: 'text/csv;charset=utf-8' });
     setAvisoDescarga('');
     const r = await guardarArchivo(`${archivo ?? 'registros'}.csv`, blob);
-    if (r === 'no_disponible') setAvisoDescarga('No se pudo descargar aquí. Abra el dashboard en claude.ai o en otro navegador e intente de nuevo.');
+    if (r === 'no_disponible') setAvisoDescarga('No se pudo descargar aquí. Abra la página en otro navegador e intente de nuevo.');
   }
 
   return (
